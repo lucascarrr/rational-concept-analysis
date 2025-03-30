@@ -1,0 +1,41 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{guidelines}
+
+\title{Rational Concept Analysis}
+\author{Lucas Carr}
+\date{March 2025}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{4cm}
+    {\Huge \bfseries \thetitle \par}
+    \vspace{1.5cm}
+    {\Large \theauthor \par}
+    \vfill
+    A thesis submitted for the degree of \\
+    \textit{Master of Something} \\
+    Department of Computer Science \\
+    University Name \\
+    \vspace{1cm}
+    \thedate
+\end{titlepage}
+
+\addcontentsline{toc}{chapter}{Abstract}
+
+\input{chapters/Introduction.tex}
+\tableofcontents
+\part{Foundations}
+\input{chapters/Mathematical Preliminaries.tex}
+\input{chapters/Formal Concept Analysis.tex}
+\input{chapters/Non-Monotonic Reasoning.tex}
+\part{Rational Concept Analysis}
+\input{chapters/Defeasible Reaosning in FCA.tex}
+\input{chapters/Rational Concepts.tex}
+\printindex
+
+\printbibliography
+
+\end{document}
+

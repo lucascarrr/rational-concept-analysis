@@ -1,1 +1,8 @@
 .bin/*
+.DS_Store
+*.bbl
+*.aux
+*.bib
+*.synctex.gz
+.vscode/*
+.vscode

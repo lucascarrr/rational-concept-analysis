@@ -1,0 +1,85 @@
+% thesis.sty – Custom style for Master's thesis
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thesis}[2025/03/30 Master's Thesis Style]
+
+% --- Subfile support ---
+\usepackage{subfiles}
+
+% --- Encoding and Language ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+
+% --- XeLaTeX / LuaLaTeX Required ---
+\RequirePackage{fontspec}
+\setmainfont{EB Garamond}
+\setmonofont{Inconsolata}[Scale=0.85]
+
+% \usepackage{unicode-math}
+% \setmathfont{STIX Two Math}  % Recommended math font with wide symbol support
+
+% --- Geometry and Spacing ---
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{setspace}
+\setstretch{1.35}  % More conservative than \onehalfspacing, reduces highlight overlap
+
+% --- Math and theorem environments ---
+\usepackage{amsmath,amsthm}     % Keep structural math packages
+\usepackage{amssymb}
+\usepackage{mathtools}          % For extensible math environments
+\usepackage{nicefrac}           % For inline fractions
+\usepackage{thmtools}
+\everymath{\displaystyle}  % Optional — makes inline math match display math sizing CAN DELETE
+
+% --- Theorem declarations ---
+\declaretheorem[style=plain]{theorem}
+\declaretheorem[style=definition]{definition}
+\declaretheorem[style=remark]{remark}
+\declaretheorem{lemma}
+\declaretheorem{proposition}
+\declaretheorem{corollary}
+
+% --- Figures and floats ---
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% --- Hyperlinks ---
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage{url}
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{subfigure}{subfigure}{subfigures}
+\Crefname{subfigure}{Subfigure}{Subfigures}
+
+% --- Bibliography ---
+\usepackage{makeidx}
+\usepackage{csquotes}
+\makeindex
+\usepackage[
+  backend=bibtex,
+  style=ieee,
+  citestyle=numeric
+]{biblatex}
+\addbibresource{references.bib}
+
+% --- Custom commands for metadata ---
+\newcommand{\thetitle}{}
+\newcommand{\theauthor}{}
+\newcommand{\thedate}{}
+
+\renewcommand{\title}[1]{\renewcommand{\thetitle}{#1}}
+\renewcommand{\author}[1]{\renewcommand{\theauthor}{#1}}
+\renewcommand{\date}[1]{\renewcommand{\thedate}{#1}}
+
+% --- Miscellaneous tweaks ---
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}

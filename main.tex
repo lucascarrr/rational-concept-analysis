@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{report}
-\usepackage{guidelines}
+\usepackage{thesis}
 
 \title{Rational Concept Analysis}
 \author{Lucas Carr}
@@ -8,24 +8,26 @@
 \begin{document}
 
 \begin{titlepage}
-    \centering
-    \vspace*{4cm}
-    {\Huge \bfseries \thetitle \par}
-    \vspace{1.5cm}
-    {\Large \theauthor \par}
-    \vfill
-    A thesis submitted for the degree of \\
-    \textit{Master of Something} \\
-    Department of Computer Science \\
-    University Name \\
-    \vspace{1cm}
-    \thedate
+  \centering
+  \vspace*{4cm}
+  {\Huge \bfseries \thetitle \par}
+  \vspace{1.5cm}
+  {\Large \theauthor \par}
+  \vfill
+  A thesis submitted for the degree of \\
+  \textit{Master of Computer Science} \\
+  Department of Computer Science \\
+  University Name \\
+  \vspace{1cm}
+  \thedate
 \end{titlepage}
 
 \addcontentsline{toc}{chapter}{Abstract}
+\addcontentsline{toc}{chapter}{Acknowledgements}
 
-\input{chapters/Introduction.tex}
+\input{chapters/foreword.tex}
 \tableofcontents
+\input{chapters/Introduction.tex}
 \part{Foundations}
 \input{chapters/Mathematical Preliminaries.tex}
 \input{chapters/Formal Concept Analysis.tex}
@@ -33,9 +35,7 @@
 \part{Rational Concept Analysis}
 \input{chapters/Defeasible Reaosning in FCA.tex}
 \input{chapters/Rational Concepts.tex}
-\printindex
-
 \printbibliography
 
+\printindex
 \end{document}
-

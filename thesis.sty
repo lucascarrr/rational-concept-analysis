@@ -2,6 +2,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{thesis}[2025/03/30 Master's Thesis Style]
 
+\input{macros/formal-concept-analysis.tex}
+
 % --- Subfile support ---
 \usepackage{subfiles}
 
@@ -10,6 +12,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 \usepackage{microtype}
+\usepackage{dirtytalk}
 
 % --- XeLaTeX / LuaLaTeX Required ---
 \RequirePackage{fontspec}
@@ -31,6 +34,8 @@
 \usepackage{nicefrac}           % For inline fractions
 \usepackage{thmtools}
 \everymath{\displaystyle}  % Optional — makes inline math match display math sizing CAN DELETE
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
 
 % --- Theorem declarations ---
 \declaretheorem[style=plain]{theorem}
@@ -53,12 +58,12 @@
 
 % --- Hyperlinks ---
 \usepackage[hidelinks]{hyperref}
-\usepackage{cleveref}
+\usepackage[nameinlink]{cleveref}
 \usepackage{url}
 \crefname{figure}{figure}{figures}
 \Crefname{figure}{Figure}{Figures}
-\crefname{subfigure}{subfigure}{subfigures}
-\Crefname{subfigure}{Subfigure}{Subfigures}
+\crefname{subfigure}{sub-figure}{sub-figures}
+\Crefname{subfigure}{Sub-figure}{Sub-figures}
 
 % --- Bibliography ---
 \usepackage{makeidx}

@@ -1,0 +1,10 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Abstract}{1}{Doc-Start}%
+\contentsline {chapter}{Acknowledgements}{1}{Doc-Start}%
+\contentsline {chapter}{\numberline {1}Mathematical Preliminaries}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Order and Lattice Theory}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Orders}{2}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Lattices}{4}{subsection.1.1.2}%
+\contentsline {section}{\numberline {1.2}Propositional Logic}{4}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Formal Concept Analysis}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Basic Notions}{5}{section.2.1}%

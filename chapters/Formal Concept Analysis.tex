@@ -61,7 +61,9 @@ The tabular representation of a formal context allows for easy identification of
 
 The derivation operators provide a clear way of describing, for a given set $A\subseteq G$ of objects, the set of attributes which every object in $A$ satisfies, denoted $A^\uparrow$. As an illustration, given the set of objects $\{\texttt{semigroup, monoid}\}$ from \Cref{figure:formal-context-group-structures}, its derivation would be $\{\texttt{closure, associativity}\}$. It is quite easy to spot that this is just the intersection of the object intents of \texttt{semigroup} and \texttt{monoid}.
 
-Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}$ would yield the set of objects $\{\texttt{semigroup, monoid, group, abelian group}\}$, which can rather cumbersomely be described as ``the set of all  objects that satisfy all the attributes satisfied by \texttt{semigroup} and \texttt{monoid}''.
+Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}$ would yield the set of objects 
+
+$\{\texttt{semigroup, monoid, group, abelian group}\}$, which can rather cumbersomely be described as ``the set of all  objects that satisfy all the attributes satisfied by \texttt{semigroup} and \texttt{monoid}''.
 
 % If we were to then take the derivation of this set of attributes, $A^{\uparrow \downarrow}$, we get the set of objects $\{\texttt{semigroup, monoid, group, abelian group}\}$: the set of all group-likes that have a closed and associative binary operation!
 
@@ -75,7 +77,7 @@ for all $A, A_1 \subseteq G$. Thus, $(\cdot)^{\uparrow \downarrow}$ describes a 
 
 \begin{proposition}
   \label{proposition:properties-about-derivation-operators}
-  Let $\fcontext$ be a formal context with subsets $A_0, A_1, A_2 \subseteq G$ of objects and $B_0, B_1, B_2 \subseteq M$ of attributes. Then,
+  Let $\fcontext$ be a formal context with subsets $A_0, A_1, A_2 \subseteq G$ and $B_0, B_1, B_2 \subseteq M$ of attributes. Then,
   \begin{center}
     \begin{minipage}[t]{0.48\textwidth}
       \begin{enumerate}
@@ -166,3 +168,4 @@ Now explain why derivation of set of objects is always a concept intent by propo
   \end{tikzpicture}
   \caption{The concept lattice associated with the formal context in \Cref{figure:formal-context-group-structures}}
 \end{figure}
+

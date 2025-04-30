@@ -93,21 +93,13 @@ More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to
 
 \subsection{Lattice Theory}
 \label{subsection:lattice-theory}
-\index{lattices}
+Lattice theory studies partially ordered sets that behave well with respect to upper and lower bounds. Given an ordered set $\mathbf{X}$ and a subset $\mathbf{Y} \subseteq \mathbf{X}$, the set of upper bounds of $\mathbf{Y}$ is defined as
+\[
+\mathbf{Y}^u \coloneqq \{x \in \mathbf{X} \mid \forall y \in \mathbf{Y} : y \preceq x\},
+\]
+and the set of lower bounds, $\mathbf{Y}^l$, is defined dually. If $\mathbf{Y}^u$ has a minimum element, then we call that element the \textit{supremum} of $\mathbf{Y}$; dually, if $\mathbf{Y}^l$ has a maximum element, then we call that element the \textit{infimum} of $\mathbf{Y}$. Instead of talking about the supremum of two elements $x,y \in \mathbf{X}$, we opt for the term \textit{join} and write $x \vee y$, or $\bigvee \mathbf{Y}$ where $\mathbf{Y} \subseteq \mathbf{X}$. Instead of infimum, we say \textit{meet} and write $x \wedge y$, or $\bigwedge \mathbf{Y}$. \index{upper bound} \index{lower bound} \index{join} \index{meet}
 
-Lattice theory studies partially ordered sets that behave well with respect to upper and lower bounds. Informally, a lattice is a partially ordered set where any two elements have both a smallest element above them and a largest element below them in the order.
-
-\begin{definition}
-  \label{definition:infimum-supremum}
-  Let $\mathbf{X}$ be a partially ordered set, and $\mathbf{Y} \subseteq \mathbf{X}$ a subset. A \textit{lower bound} of $\mathbf{Y}$ is an element $x \in \mathbf{X}$ such that $x \preceq y$ for all $y \in \mathbf{Y}$. The set of lower bounds of $\mathbf{Y}$ is defined as
-  \[
-    \mathbf{Y}^l \coloneqq \{x \in \mathbf{X} \mid x \preceq y \text{ for all } y \in \mathbf{Y}\}.
-  \]
-  The notion of an \textit{upper bound} (and the set of upper bounds) of $\mathbf{Y}$ is defined dually. If $\mathbf{Y}^l$ has a greatest element, this element is called the \textit{infimum} (or, meet) of $\mathbf{Y}$ and is often denoted $\bigwedge \mathbf{Y}$. Dually, if the set of upper bounds of $\mathbf{Y}$ has a least element, this element is the \textit{supremum} (or, join) of $\mathbf{Y}$ and is written $\bigvee \mathbf{Y}$.
-  \index{supremum} \index{infimum}
-\end{definition}
-
-Formally, a \textit{lattice} is a partially ordered set $\mathbf{L}$ where the meet and join exist for any pair of elements. A \textit{complete lattice} is a stronger condition, where the meet and join exist for all subsets of $\mathbf{L}$. \index{lattice} \index{lattice! complete lattice}
+A \textit{lattice} is a non-empty partially ordered set $\mathbf{L}$ in which every pair of elements $x,y \in \mathbf{L}$ for which $x \wedge y$ and $x \vee y$ exists. If $\bigwedge \mathbf{M}$ and $\bigvee \mathbf{M}$ exist for any subset $\mathbf{M} \subseteq \mathbf{L}$ then $\mathbf{L}$ is a \textit{complete lattice}. \index{lattice} \index{lattice! complete lattice}
 
 % \begin{example}
 %   \label{example:lattice of naturals}
@@ -116,9 +108,24 @@ Formally, a \textit{lattice} is a partially ordered set $\mathbf{L}$ where the m
 
 \subsubsection{Lattices as algebraic structures}
 \label{subsubsection:lattices-as-algebraic-structures}
-We test this now
 
-Another perspective views a lattice as an algebraic structure; that is $(\mathbf{L},\vee, \wedge)$ where $\vee$ and $\wedge$ are binary operations that are associative, commutative, idempotent, and satisfy the property of absorbtion. That meets and joins are order-preserving; and in fact induce a partial order, is a direct result of each of these properties. 
+From another perspective, we can view lattices as an algebraic structure where meet and join are binary operations on the lattice. Then, $\langle L, \vee, \wedge \rangle$ is a lattice (although, we will just write $L$ and use the surrounding context as guidance). 
+
+For each binary operation we have a substructure called a \textit{semilattice}. That is, $\langle L, \vee \rangle$ is a \textit{join semilattice} and $\langle L, \wedge \rangle$ is called a \textit{meet semilattice}. The $\vee$ operation of join semilattice $\langle L, \vee \rangle$ (resp. meet semilattice $\langle L, \wedge \rangle$) is
+\vspace{-1em}
+\begin{align}
+     \text{(associative)} & \quad x \vee y = y \vee x & \text{(resp.)}  & \quad x \wedge y = y \wedge x \\
+     \text{(commutative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & (x \wedge y) \wedge z = x \wedge (y \wedge z) \\ 
+     \text{(idempotent)}  & \quad x \vee x = x & \text{(resp.)}  & \quad x \wedge x = x
+\end{align}
+for all $x,y,z \in L$. 
+
+The relationship between a lattice $\langle L, \vee, \wedge \rangle$ and its substructures $\langle L, \vee\rangle$ and $\langle L, \wedge \rangle$ is described by another property
+\vspace{-1em}
+\begin{align}
+     \text{(absorbtion)} & \quad x \vee (x \wedge y) = x & \text{(resp.)}  & \quad x \wedge (x \vee y) = x 
+\end{align}
+
 
 \begin{lemma}[The Connecting Lemma]
   \label{lemma:the-connecting-lemma}

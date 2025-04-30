@@ -28,19 +28,23 @@
 
   \indexspace
 
-  \item infimum, \hyperpage{4}
   \item intension, \hyperpage{5}
+
+  \indexspace
+
+  \item join, \hyperpage{4}
 
   \indexspace
 
   \item lattice, \hyperpage{4}
     \subitem  complete lattice, \hyperpage{4}
-  \item lattices, \hyperpage{3}
+  \item lower bound, \hyperpage{4}
 
   \indexspace
 
   \item maximal, \hyperpage{3}
   \item maximum, \hyperpage{3}
+  \item meet, \hyperpage{4}
   \item minimal, \hyperpage{3}
   \item minimum, \hyperpage{3}
 
@@ -58,6 +62,6 @@
 
   \indexspace
 
-  \item supremum, \hyperpage{4}
+  \item upper bound, \hyperpage{4}
 
 \end{theindex}

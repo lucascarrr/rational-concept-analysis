@@ -10,9 +10,10 @@
 \indexentry{order-embedding|hyperpage}{3}
 \indexentry{order-isomorphism|hyperpage}{3}
 \indexentry{order-reversing map|hyperpage}{3}
-\indexentry{lattices|hyperpage}{3}
-\indexentry{supremum|hyperpage}{4}
-\indexentry{infimum|hyperpage}{4}
+\indexentry{upper bound|hyperpage}{4}
+\indexentry{lower bound|hyperpage}{4}
+\indexentry{join|hyperpage}{4}
+\indexentry{meet|hyperpage}{4}
 \indexentry{lattice|hyperpage}{4}
 \indexentry{lattice! complete lattice|hyperpage}{4}
 \indexentry{formal concept analysis|hyperpage}{5}

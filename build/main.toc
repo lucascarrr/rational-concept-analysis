@@ -4,7 +4,12 @@
 \contentsline {chapter}{\numberline {1}Mathematical Preliminaries}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Order and Lattice Theory}{2}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Orders}{2}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Lattice Theory}{3}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.2}Lattice Theory}{4}{subsection.1.1.2}%
 \contentsline {subsubsection}{\numberline {1.1.2.1}Lattices as algebraic structures}{4}{subsubsection.1.1.2.1}%
-\contentsline {chapter}{\numberline {2}Formal Concept Analysis}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Basic Notions}{5}{section.2.1}%
+\contentsline {section}{\numberline {1.2}Propositional Logic}{5}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Syntax}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Semantics}{6}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Logical Consequence}{7}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Deduction Systems}{8}{subsection.1.2.4}%
+\contentsline {chapter}{\numberline {2}Formal Concept Analysis}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Basic Notions}{9}{section.2.1}%

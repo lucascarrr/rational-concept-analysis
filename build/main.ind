@@ -5,22 +5,22 @@
   \indexspace
 
   \item derivation operators
-    \subitem  attribute extent, \hyperpage{6}
-    \subitem  object intent, \hyperpage{6}
+    \subitem  attribute extent, \hyperpage{10}
+    \subitem  object intent, \hyperpage{10}
 
   \indexspace
 
-  \item extension, \hyperpage{5}
+  \item extension, \hyperpage{9}
 
   \indexspace
 
-  \item formal concept, \hyperpage{6}
-  \item formal concept analysis, \hyperpage{5}
-  \item formal context, \hyperpage{5}
+  \item formal concept, \hyperpage{11}
+  \item formal concept analysis, \hyperpage{9}
+  \item formal context, \hyperpage{9}
 
   \indexspace
 
-  \item Galois connections, \hyperpage{6}
+  \item Galois connections, \hyperpage{11}
 
   \indexspace
 
@@ -28,7 +28,7 @@
 
   \indexspace
 
-  \item intension, \hyperpage{5}
+  \item intension, \hyperpage{9}
 
   \indexspace
 
@@ -38,6 +38,7 @@
 
   \item lattice, \hyperpage{4}
     \subitem  complete lattice, \hyperpage{4}
+  \item logical consequence, \hyperpage{7}
   \item lower bound, \hyperpage{4}
 
   \indexspace
@@ -47,6 +48,7 @@
   \item meet, \hyperpage{4}
   \item minimal, \hyperpage{3}
   \item minimum, \hyperpage{3}
+  \item model, \hyperpage{7}
 
   \indexspace
 
@@ -59,9 +61,18 @@
 
   \item partial-order, \hyperpage{2}
     \subitem  strict partial-order, \hyperpage{3}
+  \item propositional logic, \hyperpage{5}
+
+  \indexspace
+
+  \item satisfaction, \hyperpage{7}
 
   \indexspace
 
   \item upper bound, \hyperpage{4}
+
+  \indexspace
+
+  \item valuations, \hyperpage{6}
 
 \end{theindex}

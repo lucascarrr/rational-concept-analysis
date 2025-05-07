@@ -34,27 +34,27 @@ We write $x \npreceq y$ to indicate that $\op{x,y}$ is not in the relation, and 
   \label{definition:strict-partial-order}
   A \textit{strict partial-order} \index{partial-order! strict partial-order} is a binary relation $\prec \; \subseteq X \times X$ that satisfies:
   \begin{align}
-    & \text{(Irreflexivity)} & x \nprec x \\
-    & \text{(Asymmetry)} & x \prec y \text{ implies } y \nprec x \\
-    & \text{(Transitivity)} & x \prec y \text{ and } y \prec z \text{ implies } x \prec z
+     \text{(Irreflexivity)} \quad & x \nprec x \\
+     \text{(Asymmetry)} \quad & x \prec y \text{ implies } y \nprec x \\
+     \text{(Transitivity)} \quad & x \prec y \text{ and } y \prec z \text{ implies } x \prec z
   \end{align}
   for all $x,y,z \in X$.
 \end{definition}
 
 An \textit{ordered set} is a pair $(X, \preceq)$ with $X$ being a set and $\preceq$ being an ordering on the elements of $X$. We make notation easier, and use $\mathbf{X}$ to denote the pair; moreover, the order relation associated with $\mathbf{X}$ may be written $\preceq_X$ in settings where ambiguity arises. If $\mathbf{Y}$ is a subset of $\mathbf{X}$, then $\mathbf{Y}$ inherits the order relation from $\mathbf{X}$; and so, for $x,y \in \mathbf{Y}$, $x \preceq_Y y$ if and only if $x \preceq_X y$.
 
-We can visualise ordered sets through the use of \textit{Hasse} diagrams\index{Hasse diagrams}.
+We can visualize ordered sets through the use of \textit{Hasse} diagrams\index{Hasse diagrams}.
 
 \begin{figure}[H]
   \centering
   \small
   \begin{subfigure}{0.3\textwidth}
     \centering
-    \begin{tikzpicture}[every node/.style={circle, draw, minimum size=0.25cm}]
-      \node (w) at (0,2) {w};
-      \node (y) at (-1.5,0) {x};
-      \node (z) at (1.5,0) {y};
-      \node (x) at (0,-2) {z};
+    \begin{tikzpicture}[every node/.style={circle, draw, minimum size=0.1cm, font=\small}]
+      \node (w) at (0,1) {w};
+      \node (y) at (-1,0) {x};
+      \node (z) at (1,0) {y};
+      \node (x) at (0,-1) {z};
 
       \draw (w) -- (y);
       \draw (w) -- (z);
@@ -66,10 +66,10 @@ We can visualise ordered sets through the use of \textit{Hasse} diagrams\index{H
   \end{subfigure}%
   \begin{subfigure}{0.3\textwidth}
     \centering
-    \begin{tikzpicture}[every node/.style={circle, draw, minimum size=0.25cm}]
-      \node (y) at (-1.5,0) {$\phi$};
-      \node (z) at (1.5,0) {$\psi$};
-      \node (x) at (0,2) {$\omega$};
+    \begin{tikzpicture}[every node/.style={circle, draw, minimum size=0.1cm, font=\small}]
+      \node (y) at (-1,0) {$\phi$};
+      \node (z) at (1,0) {$\psi$};
+      \node (x) at (0,1) {$\omega$};
 
       \draw (y) -- (x);
       \draw (z) -- (x);
@@ -95,11 +95,11 @@ More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to
 \label{subsection:lattice-theory}
 Lattice theory studies partially ordered sets that behave well with respect to upper and lower bounds. Given an ordered set $\mathbf{X}$ and a subset $\mathbf{Y} \subseteq \mathbf{X}$, the set of upper bounds of $\mathbf{Y}$ is defined as
 \[
-\mathbf{Y}^u \coloneqq \{x \in \mathbf{X} \mid \forall y \in \mathbf{Y} : y \preceq x\},
+  \mathbf{Y}^u \coloneqq \{x \in \mathbf{X} \mid \forall y \in \mathbf{Y} : y \preceq x\},
 \]
 and the set of lower bounds, $\mathbf{Y}^l$, is defined dually. If $\mathbf{Y}^u$ has a minimum element, then we call that element the \textit{supremum} of $\mathbf{Y}$; dually, if $\mathbf{Y}^l$ has a maximum element, then we call that element the \textit{infimum} of $\mathbf{Y}$. Instead of talking about the supremum of two elements $x,y \in \mathbf{X}$, we opt for the term \textit{join} and write $x \vee y$, or $\bigvee \mathbf{Y}$ where $\mathbf{Y} \subseteq \mathbf{X}$. Instead of infimum, we say \textit{meet} and write $x \wedge y$, or $\bigwedge \mathbf{Y}$. \index{upper bound} \index{lower bound} \index{join} \index{meet}
 
-A \textit{lattice} is a non-empty partially ordered set $\mathbf{L}$ in which every pair of elements $x,y \in \mathbf{L}$ for which $x \wedge y$ and $x \vee y$ exists. If $\bigwedge \mathbf{M}$ and $\bigvee \mathbf{M}$ exist for any subset $\mathbf{M} \subseteq \mathbf{L}$ then $\mathbf{L}$ is a \textit{complete lattice}. \index{lattice} \index{lattice! complete lattice}
+A \textit{lattice} is a non-empty partially ordered set $\mathbf{L}$ in which every pair of elements $x,y \in \mathbf{L}$ for which $x \wedge y$ and $x \vee y$ exists. If $\bigwedge \mathbf{M}$ and $\bigvee \mathbf{M}$ exist for any subset $\mathbf{M} \subseteq \mathbf{L}$ then $\mathbf{L}$ is a \textit{complete lattice}. \index{lattice} \index{lattice! complete lattice} 
 
 % \begin{example}
 %   \label{example:lattice of naturals}
@@ -109,23 +109,44 @@ A \textit{lattice} is a non-empty partially ordered set $\mathbf{L}$ in which ev
 \subsubsection{Lattices as algebraic structures}
 \label{subsubsection:lattices-as-algebraic-structures}
 
-From another perspective, we can view lattices as an algebraic structure where meet and join are binary operations on the lattice. Then, $\langle L, \vee, \wedge \rangle$ is a lattice (although, we will just write $L$ and use the surrounding context as guidance). 
+From another perspective, a lattice can be seen as an algebraic structure where meet and join are binary operations on a set. Then, $\langle L, \vee, \wedge \rangle$ formally represents a lattice. Often, we simplify notation to just $L$ when the context clearly indicates the operations.
 
-For each binary operation we have a substructure called a \textit{semilattice}. That is, $\langle L, \vee \rangle$ is a \textit{join semilattice} and $\langle L, \wedge \rangle$ is called a \textit{meet semilattice}. The $\vee$ operation of join semilattice $\langle L, \vee \rangle$ (resp. meet semilattice $\langle L, \wedge \rangle$) is
+If the set $L$ is equipped with only one of these operations, the structure is called a \textit{semilattice}. Specifically, the structure $\langle L, \vee \rangle$ (resp. $\langle L, \wedge \rangle$) is called a \textit{join semilattice} (resp. a \textit{meet semilattice}). Such a structure is a reduct of a lattice, satisfying the following properties for all $x, y, z \in L$:
+
 \vspace{-1em}
 \begin{align}
-     \text{(associative)} & \quad x \vee y = y \vee x & \text{(resp.)}  & \quad x \wedge y = y \wedge x \\
-     \text{(commutative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & (x \wedge y) \wedge z = x \wedge (y \wedge z) \\ 
-     \text{(idempotent)}  & \quad x \vee x = x & \text{(resp.)}  & \quad x \wedge x = x
+  \text{(associative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & (x \wedge y) \wedge z = x \wedge (y \wedge z) \\
+  \text{(commutative)} & \quad x \vee y = y \vee x & \text{(resp.)}  & \quad x \wedge y = y \wedge x \\
+  \text{(idempotent)}  & \quad x \vee x = x & \text{(resp.)}  & \quad x \wedge x = x
 \end{align}
-for all $x,y,z \in L$. 
 
-The relationship between a lattice $\langle L, \vee, \wedge \rangle$ and its substructures $\langle L, \vee\rangle$ and $\langle L, \wedge \rangle$ is described by another property
+Finally, when considering both operations simultaneously, the interaction between join and meet operations within a lattice structure is governed by the absorption laws:
+
 \vspace{-1em}
 \begin{align}
-     \text{(absorbtion)} & \quad x \vee (x \wedge y) = x & \text{(resp.)}  & \quad x \wedge (x \vee y) = x 
+  \text{(absorption)} & \quad x \vee (x \wedge y) = x & \text{(resp.)}  & \quad x \wedge (x \vee y) = x
 \end{align}
 
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[every node/.style={circle, draw, minimum size=0.05cm, font=\small}]
+    \node (s) at (-1,-2) {$s$};
+    \node (t) at (-3,0) {$t$};
+    \node (u) at (-1,2) {$u$};
+    \node (v) at (1,4) {$u$};
+    \node (w) at (3,2) {$w$};
+    \node (x) at (1,0) {$x$};
+    \node (y) at (-1,0) {$y$};
+    \node (z) at (1,2) {$z$};
+
+    \draw (s) -- (t) -- (u) -- (v) -- (w) -- (x) -- (s);
+    \draw (s) -- (y) -- (u) -- (x) -- (z) -- (v);
+  \end{tikzpicture}
+  \caption{A complete lattice}
+  \label{figure:complete-lattice}
+\end{figure}
+
+\Cref{figure:complete-lattice} illustrates a simple complete lattice; verifying that arbitrary meets and joins exist for all subsets. There is an obvious similarity between this representation of a lattice and the Hasse diagrams in \Cref{figure:hasse-diagram} used to describe partially ordered sets. This is perhaps obvious, given the opening remarks where we described a lattice as an ordered set, satisfying certain properties on upper and lower bounds. However, \Cref{lemma:the-connecting-lemma} makes the connection between the order and algebraic views of lattices concrete.
 
 \begin{lemma}[The Connecting Lemma]
   \label{lemma:the-connecting-lemma}
@@ -138,4 +159,85 @@ The relationship between a lattice $\langle L, \vee, \wedge \rangle$ and its sub
     \item $x \wedge y = x$.
   \end{enumerate}
 \end{lemma}
+
+Moving forward, we will no longer keep the order‑theoretic and algebraic perspectives on lattices strictly separate; rather, we will tacitly adopt whichever viewpoint best suits the surrounding context. Lattices are central to Formal Concept Analysis and will be revisited in \Cref{chapter:formal-concept-analysis}.
+
+\section{Propositional Logic}
+\label{section:propositional-logic}
+
+Propositional logic is a system for abstracting reasoning away from natural language. A \textit{propositional statement} is a claim like \say{Tralfamadorians have one eye}; that is, something that can be assigned a value of \textit{true} or \textit{false} \cite[p. 7]{Ben1993Mathematical}. More complex statements can be recursively constructed from simpler ones; our interest is then about which propositions follow from others. \index{propositional logic}
+
+\subsection{Syntax}
+\label{subsection:syntax}
+\textit{Propositional atoms} are the construction blocks of a propositional language. They are indivisible statements that can either be true or false, and maybe be combined with the boolean connectives $\{\neg, \lor, \land, \rightarrow\}$ to construct more complex statements, or \textit{formulae}. We denote propositional atoms with lower-case letters $p,q,r,s,$ and $t$, and formulae with lower-case Greek letters $\alpha, \beta, \gamma, \phi, \psi,$ and $\varphi$. 
+
+Not all combinations of atoms and boolean connectives result in meaningful expressions (for example, `$\land \rightarrow \phi$') and so we make a distinction between any formulae and \textit{well-formed formulae}. The latter being constructions that are valid with respect to the rules of the grammar defined in Backus-Naur form below. We are entirely uninterested in formulae that are not well-formed formulae, and so we drop the `well-formed' suffix with the recognition that we shall never again mention the alternative \cite[p. 33]{Huth_Ryan_2004}.
+
+\begin{align}
+  \phi ::= p \mid (\neg \phi) \mid (\phi_1 \lor \phi_2) \mid (\phi_1 \land \phi_2) \mid (\phi_1 \rightarrow \phi_2) \mid (\phi_1 \leftrightarrow \phi_2)
+\end{align}
+
+Any formula accepted by this grammar is said to be in the language $\mathcal{L}^\mathcal{P}$, although we will drop the superscript where possible.
+To make reading this dissertation slightly more enjoyable, we may construct examples where we denote propositional atoms by monospaced text, enabling the expression of formulae like $\texttt{tralfamadorians} \rightarrow \neg \texttt{human}$, which should be interpreted as meaning \say{Tralfamadorians are not human}.
+
+\subsection{Semantics}
+\label{subsection:semantics}
+In the previous section we described the syntax of propositional logic and how the boolean connectives enable the construction of arbitrary formulae from atoms. The semantics of propositional logic are concerned with how meaning can be ascribed to these formulae. The aim is to provide a method of answer questions like \say{when is this formula true?} or, \say{if $\phi, \psi, \varphi$ are true, what else must be true?}.
+
+Propositional atoms were described as indivisible statements that can be assigned values of \textit{true} or \textit{false}. We now define a function that assigns a truth value to each proposition in the set $\mathcal{P}$ of propositions, sometimes called the \textit{universe of discourse}. \index{valuations}
+
+\begin{definition}
+  \label{definition:valuation} \index{valuations}
+  A \textit{valuation} is a function \(u : \mathcal{P} \to \{\textit{ true}, \textit{ false }\}\) that assigns a truth value to each propositional atom.
+\end{definition}
+
+Given a set of atoms $\mathcal{P} = \{p,q,r\}$, we write $\mathcal{U}$ to denote the set of all possible valuations. A valuation $u \in \mathcal{U}$ \textit{satisfies} an atom $p \in \mathcal{P}$ if $u$ maps $p$ to \textit{true}, then we write $u \Vdash p$. Otherwise, we write $u \nVdash p$ to indicate that $u$ does not satisfy $p$ (in this context, meaning $u$ maps $p$ to \textit{false}) \cite[p. 16]{Ben1993Mathematical}. We might represent the valuation that maps $p$ and $q$ to true but $r$ to false by $\{p,q,\overline{r}\}$.
+
+This satisfaction relation can be extended beyond propositional atoms to include more complex formulae, as described in \Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$ \index{satisfaction}
+
+\begin{itemize}
+  \item $u \Vdash \neg \phi$ if and only if $u \nVdash \phi$
+  \item $u \Vdash \phi \vee \psi$ if and only if $u \Vdash \phi$ or $u \Vdash \psi$
+  \item $u \Vdash \phi \wedge \psi$ if and only if $u \Vdash \phi$ and $u \Vdash psi$
+  \item $u \Vdash \phi \rightarrow \psi$ if and only if $u \Vdash \neg \phi$ or $u \Vdash \psi$
+  \item $u \Vdash \phi \leftrightarrow \psi$ if and only if $u \Vdash \phi \rightarrow \psi$ and $u \Vdash \psi \rightarrow \phi$
+\end{itemize}
+
+\begin{definition} 
+  \label{definition:model}
+  \index{model}
+  For a valuation $u \in \mathcal{U}$ and formula $\phi \in \mathcal{L}$ we call $u$ a \textit{model} of $\phi$ if and only if $u$ satisfies $\phi$. The set of models of $\phi$ is constructed by $\hat{\phi} \coloneqq \{u \in \mathcal{U} \mid u \Vdash \phi \}$.
+\end{definition}
+
+Satisfiability can be extended to sets of of formulae so that a valuation $u \in \mathcal{U}$ \textit{satisfies} the set $\Phi \coloneqq \{\phi_0, \ldots, \phi_n \}$ when $u \Vdash \phi_i$ for all $0 \leq i \leq n$, and we write $u \Vdash \Phi$. If no such valuation exists then $\Phi$ is unsatisfiable \cite[p. 31]{Ben1993Mathematical}. 
+
+\subsection{Logical Consequence}
+\label{subsection:logical-consequence}
+
+The introduction of models leads quite naturally into a discussion on the matter of \textit{logical consequence}. This is an attempt to formalise the process of determining what should (logically) follow from a set of true propositional statements.
+
+As an example, if we know that \say{\textit{Billy lived in Slaughterhouse 5}} and that \say{\textit{The inhabitants of Slaughterhouse 5 survived the bombing of Dresden}}, then we may find it sensible to infer that \say{\textit{Billy survived the bombing of Dresden}}. Of course, this inference being \textit{sensible}---under some common concept of consequence---gives little insight into how logical consequence may be formalised.
+
+Tarski \cite[p. 410]{turquette1957logic} provides such insight through a semantic account of logical consequence,
+
+\begin{definition}
+     \label{definition:logical-consequence}
+     \index{logical consequence}
+     Let $\Gamma$ be a set of formulae and $\varphi$ a formula in the language $\mathcal{L}$. We say that $\varphi$ is a \textit{logical consequence} of $\Gamma$, and write $\Gamma \models \varphi$, if and only if every model of $\Gamma$ is a model of $\varphi$, or equivalently if $\hat{\Gamma} \subseteq \hat{\varphi}$.
+\end{definition}
+
+\begin{example}
+     \label{example-logical-consequence}   
+If we model the earlier scenario in propositional logic (where we initialise \textit{Billy} with \texttt{b}, \textit{slaughterhouse 5} with \texttt{h}, and \textit{survived} with \texttt{s} ), we can answer the question of whether $\texttt{b} \rightarrow \texttt{s}$ is a logical inference by determining if the models of $\texttt{b} \rightarrow \texttt{s}$ are a superset of the models of $\{ \texttt{b} \rightarrow \texttt{h, h} \rightarrow \texttt{s}\}$. By the earlier satisfaction relation, we know that the implication $\texttt{b} \rightarrow \texttt{s}$ is satisfied by any valuation that satisfies either $\neg \texttt{b}$ or $\texttt{s}$. It is then quite simple to spot that the only possible valuations that are not models of this implication are $\{\texttt{b},\overline{\texttt{s}}, \texttt{h}\}$ and $\{\texttt{b},\overline{\texttt{s,h}}\}$ neither of which are models of $\{ \texttt{b} \rightarrow \texttt{h, h} \rightarrow \texttt{s}\}$. 
+\end{example}
+
+Before we progress any further, some attention needs to be given to the distinction between what we call the \textit{object} and \textit{meta-languages}. In \Cref{example-logical-consequence}, propositional logic forms the object-language; and so the boolean connectives are object-level connectives. Logical consequence, however, is a concept pertaining to the meta-language. If we consider the sentence $\texttt{b} \rightarrow \texttt{s}$, what this expression tells us is that in any valuation where \texttt{b} is true, \texttt{s} must also be true. 
+
+The meta-language facilitates reasoning over the elements in the object-language itself. 
+
+
+\subsection{Deduction Systems}
+\label{subsection:deduction-systems}
+
+
 

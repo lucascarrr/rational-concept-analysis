@@ -12,7 +12,7 @@ This section refers extensively to the fundamental text by Davey and Priestley \
 \label{subsection:orders}
 
 A \textit{binary relation} \index{binary relation} $R$ over the sets $X$ and $Y$ is a set of ordered pairs $\op{x,y}$ where $x \in X$ and $y \in Y$. We may choose to express $\op{x,y} \in R$ using infix notation and write $xRy$, which tells us that $R$ relates $x$ to $y$.
-
+ 
 Certain binary relations, satisfying specific properties, occur frequently enough to warrant their own denomination. One such relation, which will be used in almost every section of this dissertation, is called a \textit{partial order}.
 
 \begin{definition}
@@ -115,7 +115,7 @@ If the set $L$ is equipped with only one of these operations, the structure is c
 
 \vspace{-1em}
 \begin{align}
-  \text{(associative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & (x \wedge y) \wedge z = x \wedge (y \wedge z) \\
+  \text{(associative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & \quad (x \wedge y) \wedge z = x \wedge (y \wedge z) \\
   \text{(commutative)} & \quad x \vee y = y \vee x & \text{(resp.)}  & \quad x \wedge y = y \wedge x \\
   \text{(idempotent)}  & \quad x \vee x = x & \text{(resp.)}  & \quad x \wedge x = x
 \end{align}
@@ -171,7 +171,7 @@ Propositional logic is a system for abstracting reasoning away from natural lang
 \label{subsection:syntax}
 \textit{Propositional atoms} are the construction blocks of a propositional language. They are indivisible statements that can either be true or false, and maybe be combined with the boolean connectives $\{\neg, \lor, \land, \rightarrow\}$ to construct more complex statements, or \textit{formulae}. We denote propositional atoms with lower-case letters $p,q,r,s,$ and $t$, and formulae with lower-case Greek letters $\alpha, \beta, \gamma, \phi, \psi,$ and $\varphi$. 
 
-Not all combinations of atoms and boolean connectives result in meaningful expressions (for example, `$\land \rightarrow \phi$') and so we make a distinction between any formulae and \textit{well-formed formulae}. The latter being constructions that are valid with respect to the rules of the grammar defined in Backus-Naur form below. We are entirely uninterested in formulae that are not well-formed formulae, and so we drop the `well-formed' suffix with the recognition that we shall never again mention the alternative \cite[p. 33]{Huth_Ryan_2004}.
+Not all combinations of atoms and boolean connectives result in meaningful expressions (for example, `$\land \rightarrow \phi$' has no discernible meaning) and so we make a distinction between any formulae and \textit{well-formed formulae}. The latter being constructions that are valid with respect to the rules of the grammar defined in Backus-Naur form below. We are entirely uninterested in formulae that are not well-formed formulae, and so we drop the `well-formed' suffix with the recognition that we shall never again mention the alternative \cite[p. 33]{Huth_Ryan_2004}.
 
 \begin{align}
   \phi ::= p \mid (\neg \phi) \mid (\phi_1 \lor \phi_2) \mid (\phi_1 \land \phi_2) \mid (\phi_1 \rightarrow \phi_2) \mid (\phi_1 \leftrightarrow \phi_2)
@@ -198,7 +198,7 @@ This satisfaction relation can be extended beyond propositional atoms to include
 \begin{itemize}
   \item $u \Vdash \neg \phi$ if and only if $u \nVdash \phi$
   \item $u \Vdash \phi \vee \psi$ if and only if $u \Vdash \phi$ or $u \Vdash \psi$
-  \item $u \Vdash \phi \wedge \psi$ if and only if $u \Vdash \phi$ and $u \Vdash psi$
+  \item $u \Vdash \phi \wedge \psi$ if and only if $u \Vdash \phi$ and $u \Vdash \psi$
   \item $u \Vdash \phi \rightarrow \psi$ if and only if $u \Vdash \neg \phi$ or $u \Vdash \psi$
   \item $u \Vdash \phi \leftrightarrow \psi$ if and only if $u \Vdash \phi \rightarrow \psi$ and $u \Vdash \psi \rightarrow \phi$
 \end{itemize}
@@ -214,30 +214,85 @@ Satisfiability can be extended to sets of of formulae so that a valuation $u \in
 \subsection{Logical Consequence}
 \label{subsection:logical-consequence}
 
-The introduction of models leads quite naturally into a discussion on the matter of \textit{logical consequence}. This is an attempt to formalise the process of determining what should (logically) follow from a set of true propositional statements.
+The introduction of models at the end of \Cref{section:propositional-logic} leads quite naturally into a discussion on the matter of \textit{logical consequence}, which concerns how a formal system might be developed which remains compatible with the common usage of \textit{consequence} \cite[p. 408]{turquette1957logic}.  
 
-As an example, if we know that \say{\textit{Billy lived in Slaughterhouse 5}} and that \say{\textit{The inhabitants of Slaughterhouse 5 survived the bombing of Dresden}}, then we may find it sensible to infer that \say{\textit{Billy survived the bombing of Dresden}}. Of course, this inference being \textit{sensible}---under some common concept of consequence---gives little insight into how logical consequence may be formalised.
+For example, if we know that \say{\textit{Billy lived in Slaughterhouse 5}} and that \say{\textit{The inhabitants of Slaughterhouse 5 survived the bombing of Dresden}}. We may then hold the view that, as a consequence of these two pieces of knowledge, it would be sensible to infer that \say{\textit{Billy survived the bombing of Dresden}}. Of course, this inference being \textit{sensible}---under some common concept of consequence---gives little insight into how logical consequence may be appropriately be formalised. 
 
-Tarski \cite[p. 410]{turquette1957logic} provides such insight through a semantic account of logical consequence,
+\index{object language} \index{metalanguage}
+We place a brief moratorium on this discussion, as it is now necessary to (formally) introduce the notions of the \textit{object} and \textit{metalanguage}. In the scenario we have just described, the italicised sentences from a part of the object language: the language we use to model the world and represent information. The metalanguage facilitates reasoning about elements in the object language; that is, we can use the metalanguage to describe one sentence being a consequence of another (where these sentences are elements in the object language). Here, \textit{consequence} is an element of the metalanguage \cite[p 22]{Ben1993Mathematical}.
+
+In this case, both the object and metalanguage are comprised of English which can certainly lead to confusion. It is more common to use a language like the one described in \Cref{subsection:syntax} as the object language, and a metalanguage comprising of symbols like $\vDash$ and $\vdash$, which we introduce below. 
 
 \begin{definition}
      \label{definition:logical-consequence}
      \index{logical consequence}
-     Let $\Gamma$ be a set of formulae and $\varphi$ a formula in the language $\mathcal{L}$. We say that $\varphi$ is a \textit{logical consequence} of $\Gamma$, and write $\Gamma \models \varphi$, if and only if every model of $\Gamma$ is a model of $\varphi$, or equivalently if $\hat{\Gamma} \subseteq \hat{\varphi}$.
+     Let $\Gamma$ be a set of formulae and $\varphi$ a formula in the language $\mathcal{L}$. We say that $\varphi$ is a \textit{logical consequence} of $\Gamma$, and write $\Gamma \vDash \varphi$, if and only if every model of $\Gamma$ is a model of $\varphi$, or equivalently if $\hat{\Gamma} \subseteq \hat{\varphi}$.
 \end{definition}
+
+Logical consequence can be used to define an operator $\mathcal{C}n$ such that if $\Gamma$ is a set of formulae in $\mathcal{L}$, then $\mathcal{C}n(\Gamma) \coloneqq \{\alpha \in \mathcal{L} \mid \Gamma \vDash \alpha\}$
 
 \begin{example}
      \label{example-logical-consequence}   
-If we model the earlier scenario in propositional logic (where we initialise \textit{Billy} with \texttt{b}, \textit{slaughterhouse 5} with \texttt{h}, and \textit{survived} with \texttt{s} ), we can answer the question of whether $\texttt{b} \rightarrow \texttt{s}$ is a logical inference by determining if the models of $\texttt{b} \rightarrow \texttt{s}$ are a superset of the models of $\{ \texttt{b} \rightarrow \texttt{h, h} \rightarrow \texttt{s}\}$. By the earlier satisfaction relation, we know that the implication $\texttt{b} \rightarrow \texttt{s}$ is satisfied by any valuation that satisfies either $\neg \texttt{b}$ or $\texttt{s}$. It is then quite simple to spot that the only possible valuations that are not models of this implication are $\{\texttt{b},\overline{\texttt{s}}, \texttt{h}\}$ and $\{\texttt{b},\overline{\texttt{s,h}}\}$ neither of which are models of $\{ \texttt{b} \rightarrow \texttt{h, h} \rightarrow \texttt{s}\}$. 
+Let us model the earlier scenario in propositional logic, and so we now initialise \textit{Billy} with \texttt{b}, \textit{slaughterhouse 5} with \texttt{h}, and \textit{survived} with \texttt{s}. The ``sensible inference'' we posed was to determine whether $\texttt{b} \rightarrow \texttt{s}$ should---under some reasonable account of consequence---follow from the set $\{\texttt{b} \rightarrow \texttt{h},\; \texttt{h} \rightarrow \texttt{s}\}$. 
 \end{example}
 
-Before we progress any further, some attention needs to be given to the distinction between what we call the \textit{object} and \textit{meta-languages}. In \Cref{example-logical-consequence}, propositional logic forms the object-language; and so the boolean connectives are object-level connectives. Logical consequence, however, is a concept pertaining to the meta-language. If we consider the sentence $\texttt{b} \rightarrow \texttt{s}$, what this expression tells us is that in any valuation where \texttt{b} is true, \texttt{s} must also be true. 
 
-The meta-language facilitates reasoning over the elements in the object-language itself. 
-
-
-\subsection{Deduction Systems}
+\subsection{Deductive Systems}
 \label{subsection:deduction-systems}
+Logical consequence---as described in \Cref{subsection:logical-consequence}---offers a purely semantic perspective on how we might justify that a certain inference follows (logically) from another formula, or set thereof. In contrast, deductive systems are a purely syntactic alternative for defining when an inference can be made. 
 
+Generally, these systems are comprised of \textit{axioms} and \textit{rules of inference} which are chained together in a finite sequence to construct a \textit{proof}. In such a sequence, every element is either an axiom of the system, or can be inferred by application of an inference rule to an earlier element. The final element of such a valid sequence is called a \textit{theorem}. 
 
+Deductive systems offer some advantages over their semantic counterparts; particularly, when reasoning over large---possibly infinite---domains, logical consequence can become difficult. Moreover, semantic consequence provides little insight into the relationships between pieces of information that lead to the inferences we make; while sequential nature of deduction systems trace a path describing this relationship \cite[p. 50]{Ben1993Mathematical}.
+
+\subsubsection{Hilbert Systems} 
+\label{subsubsection:hilbert-systems}
+\index{Hilbert systems}
+A Hilbert system $\mathcal{H}$ is characterised by three axioms,
+\begin{align}
+    \text{(Axiom 1)} \quad & \vdash (\phi \rightarrow (\psi \rightarrow \phi)),  \\ 
+    \text{(Axiom 2)} \quad & \vdash (\phi \rightarrow (\psi \rightarrow \gamma)) \rightarrow ((\phi \rightarrow \psi) \rightarrow (\phi \rightarrow \gamma)), \\
+    \text{(Axiom 3)} \quad & \vdash (\neg \phi \rightarrow \neg \psi) \rightarrow (\phi \rightarrow \psi),
+\end{align}
+%
+combined with the single inference rule
+\begin{align}
+     \text{(Modus Ponens)} \quad & \frac{\vdash \phi, \qquad \vdash \phi \rightarrow \psi}{\vdash \psi}.
+\end{align}
+%
+The turnstile $\vdash$ symbol followed by a formula means that the proceeding formula is provable. By necessity, all the axioms of $\mathcal{H}$ are provable. Modus Ponens, sometimes called \textit{forward chaining}, describes the hypothetical syllogism where if $\phi$ implies $\psi$, and $\phi$ is true, then $\psi$ must also be true. 
+
+It is necessary to point out that the three axioms described above are more correctly thought of as \textit{axiom schema}. In this representation, $\phi, \psi$ and $\gamma$ are placeholders, or variables, that when substituted with actual formulae will form valid sentences in the system \cite[p. 55]{Ben1993Mathematical}. 
+
+As an illustration, we provide the following Hilbert-style proof sequence for the inference made in \Cref{example-logical-consequence}. 
+
+\begin{theorem}
+     $\texttt{b} \rightarrow \texttt{h}, \texttt{h} \rightarrow \texttt{s} \vdash \texttt{b} \rightarrow \texttt{s}$
+\end{theorem}  
+
+\begin{proofH}
+  \Hstep[Premise]{(\texttt{b} \rightarrow \texttt{h})}
+  \Hstep[Premise]{(\texttt{h} \rightarrow \texttt{s})}
+  \Hstep[Axiom 1]{(\texttt{h} \rightarrow \texttt{s}) \rightarrow (\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s}))}
+  \Hstep[MP 2,3]{(\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s}))}
+  \Hstep[Axiom 2]{(\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s})) \rightarrow ((\texttt{b} \rightarrow \texttt{h}) \rightarrow (\texttt{b} \rightarrow \texttt{s}))} 
+  \Hstep[MP 4,5]{(\texttt{b} \rightarrow \texttt{h}) \rightarrow (\texttt{b} \rightarrow \texttt{s})}
+  \Hstep[MP 1,6]{(\texttt{b} \rightarrow \texttt{s})}
+\end{proofH} 
+
+\subsubsection{Gentzen Systems} 
+\label{subsubsection:gentzen-systems}
+\index{Genzten systems}
+
+\subsubsection{Natural Deduction} 
+\label{subsubsection:natural-deduction}
+\index{Natural deduction}
+
+\subsection{Soundness and Completeness} 
+\label{subsection:soundness-and-completeness}
+\index{soundness} \index{completeness}
+
+\subsection{Consequence Relations} 
+\label{subsection:consequence-relations}
+\index{consequence relations}
 

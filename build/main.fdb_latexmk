@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex build/main"] 1746610468.54392 "build/main.aux" "build/main.bbl" "build/main" 1746610708.51108 0
-  "./references.bib" 1746531047.13268 1614 2cf05383addaf8d2f921f3236c096529 ""
+["bibtex build/main"] 1747129078.02734 "build/main.aux" "build/main.bbl" "build/main" 1747135663.54112 0
+  "./references.bib" 1747054377.8865 1923 54b81d4f90a5c2c961fdbcebb626561e ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1678141846 65484 b7949c47a88ed6dca66ebc7a04577312 ""
-  "build/main-blx.bib" 1746610708.11385 343 1611d3bac8f724313c9b8207b0d00714 "pdflatex"
-  "build/main.aux" 1746610708.10888 12303 6e23c48b1a1463e1c84ee806a81e11b0 "pdflatex"
+  "build/main-blx.bib" 1747135663.12507 343 1611d3bac8f724313c9b8207b0d00714 "pdflatex"
+  "build/main.aux" 1747135663.11907 16232 696b5901c430a201ab0278e9b2bb3930 "pdflatex"
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["makeindex build/main.idx"] 1746603554.33051 "build/main.idx" "build/main.ind" "build/main" 1746610708.51099 0
-  "build/main.idx" 1746610708.11458 1341 2628aa09c0f4f1ac5801cf76b4422baf "pdflatex"
+["makeindex build/main.idx"] 1747129077.94849 "build/main.idx" "build/main.ind" "build/main" 1747135663.54101 0
+  "build/main.idx" 1747135663.12575 1690 7b65989b49f855a3d20268ee7d6a5335 "pdflatex"
   (generated)
   "build/main.ilg"
   "build/main.ind"
   (rewritten before read)
-["pdflatex"] 1746610706.59861 "main.tex" "build/main.pdf" "main" 1746610708.51118 0
+["pdflatex"] 1747135661.16069 "main.tex" "build/main.pdf" "main" 1747135663.54125 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbb.enc" 1610747736 2904 e0faa515d685129700e18ca6e0e2b48f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbbit.enc" 1610747736 3037 3eafdf65b501e8b35502c04463f0acc0 ""
@@ -27,8 +27,11 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathscr.enc" 1610747736 2985 50a8cc5f8d35d60a3a371f6172be1026 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathsf.enc" 1610747736 3241 7569a3534b3b0a809752019573bbfa29 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1.enc" 1610747736 7007 7bfc8f72039f2cce6ca911c3c71db584 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1sc.enc" 1610747736 7017 40d76105290f0e4c158c74ad8614d129 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-ts1.enc" 1610747736 2923 6a3d03919e8648554154ee58dc078229 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecit0800.tfm" 1136768653 1536 09682d3e827df9145fea3c41a21d8b01 ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecit1000.tfm" 1136768653 1536 34ad639b0caa1b405dc14b9703b4e5b9 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ectt0800.tfm" 1136768653 1536 0b0b8ca286de6a006b681926403f35cd ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ectt1000.tfm" 1136768653 1536 06717a2b50de47d4087ac0e6cd759455 ""
@@ -53,7 +56,9 @@
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text-bold.tfm" 1610747736 28532 15c9fc954b1440700b35aab90bfb9230 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text-italic.tfm" 1610747736 30900 0903f6d37c44d064d62d9c928b7560fc ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text.tfm" 1610747736 28540 097ba14dab39294b86bfe4de12d2fe0b ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2textsc.tfm" 1610747736 28348 81425d9b56ec860c57b0a461ce328cb2 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/ts1-stix2text.tfm" 1610747736 1460 ab4098db9455eb1e01cadc3c0fc30c5f ""
+  "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb" 1215737283 157419 ef2add7d886ed65124e72477bd51c8f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb" 1215737283 175641 e30a691dc1402b08fd6535cf8a31e5b7 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb" 1215737283 169201 9ebf99020dde51a5086e186761a34e8f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb" 1610747736 1095268 889498542f05a309f190bb89c64415e5 ""
@@ -259,18 +264,23 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1736597313 8221421 fa87dd08f8dbddbf01ac5649e8630930 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "/usr/local/texlive/texmf-local/web2c/texmf.cnf" 1744122474.37654 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "build/main.aux" 1746610708.10888 12303 6e23c48b1a1463e1c84ee806a81e11b0 "pdflatex"
-  "build/main.bbl" 1746610468.63388 4885 42809b75b0953aa1cf03b2bc051c2451 "bibtex build/main"
-  "build/main.ind" 1746603554.41017 1454 b54c0f1ea0d73c7f923f2dc3cb624dd4 "makeindex build/main.idx"
-  "build/main.out" 1746610708.11179 1737 dff344cf63723e390860ffab616ae2f8 "pdflatex"
-  "build/main.run.xml" 1746610708.11452 2586 697b4530b4d7fa63cd386a3b820dd5ae "pdflatex"
-  "build/main.toc" 1746610708.11461 1136 eb9fb0f66844dd3197ba6616dbafb1f5 "pdflatex"
+  "build/main.aux" 1747135663.11907 16232 696b5901c430a201ab0278e9b2bb3930 "pdflatex"
+  "build/main.bbl" 1747129078.1137 4885 42809b75b0953aa1cf03b2bc051c2451 "bibtex build/main"
+  "build/main.ind" 1747129078.02664 1810 48415497215b096a05863e415f0bedbd "makeindex build/main.idx"
+  "build/main.out" 1747135663.12212 3024 abe30a903fadc25160869a4bf07bae35 "pdflatex"
+  "build/main.run.xml" 1747135663.12569 2586 697b4530b4d7fa63cd386a3b820dd5ae "pdflatex"
+  "build/main.toc" 1747135663.12578 2015 07fbf1fef2bd864cb63c2c2fe49a78dc "pdflatex"
+  "chapters/Defeasible Reaosning in FCA.tex" 1745912173.50597 101 03e23d3b59f9d4ca23924bf4c1286df3 ""
+  "chapters/Foreword.tex" 1747055662.20157 108 fa880e032f614f4752049503932bfef1 ""
   "chapters/Formal Concept Analysis.tex" 1746522428.6999 10005 8d863914346c902bc186a2f65680ef06 ""
-  "chapters/Mathematical Preliminaries.tex" 1746610705.1053 19398 9f1d005edaabb2d6df65a123f3a8a18a ""
+  "chapters/Introduction.tex" 1745912173.50631 53 46bd5078ba663caa8149aee0c847a8e5 ""
+  "chapters/Mathematical Preliminaries.tex" 1747135660.00363 23528 129fca3a46177e693335bf8f134d2461 ""
+  "chapters/Non-Monotonic Reasoning.tex" 1745912173.50659 101 6ea32ae9897a2fe09d64d6afd056d863 ""
+  "chapters/Rational Concepts.tex" 1745912173.50668 61 060e9da0ff1b2449eb883e00acd7e785 ""
   "macros/formal-concept-analysis.tex" 1745912946.07876 530 d23dc972136e2beb30fb3374ba745244 ""
   "macros/general.tex" 1745917300.73834 80 2c3404cdfa484a481d94787e78ec0228 ""
-  "main.tex" 1746471389.74826 986 32ca5fca9689b10ff0ae70a3a051210c ""
-  "thesis.sty" 1746448618.55451 2639 b9e80268bf2c9feacb1fdb3e5810bf95 ""
+  "main.tex" 1747055736.69911 972 8e3d4d2f2cf8af2fc5d83e45b91b854d ""
+  "thesis.sty" 1747129557.0314 3529 f9b7642491c9e5c4f27b57997168dace ""
   (generated)
   "build/main-blx.bib"
   "build/main.aux"

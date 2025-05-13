@@ -1,78 +1,92 @@
 \begin{theindex}
 
-  \item binary relation, \hyperpage{2}
+  \item binary relation, \hyperpage{6}
+
+  \indexspace
+
+  \item completeness, \hyperpage{13}
+  \item consequence relations, \hyperpage{13}
 
   \indexspace
 
   \item derivation operators
-    \subitem  attribute extent, \hyperpage{10}
-    \subitem  object intent, \hyperpage{10}
+    \subitem  attribute extent, \hyperpage{15}
+    \subitem  object intent, \hyperpage{15}
 
   \indexspace
 
-  \item extension, \hyperpage{9}
+  \item extension, \hyperpage{14}
 
   \indexspace
 
-  \item formal concept, \hyperpage{11}
-  \item formal concept analysis, \hyperpage{9}
-  \item formal context, \hyperpage{9}
+  \item formal concept, \hyperpage{16}
+  \item formal concept analysis, \hyperpage{14}
+  \item formal context, \hyperpage{14}
 
   \indexspace
 
-  \item Galois connections, \hyperpage{11}
+  \item Galois connections, \hyperpage{16}
+  \item Genzten systems, \hyperpage{13}
 
   \indexspace
 
-  \item Hasse diagrams, \hyperpage{3}
+  \item Hasse diagrams, \hyperpage{7}
+  \item Hilbert systems, \hyperpage{12}
 
   \indexspace
 
-  \item intension, \hyperpage{9}
+  \item intension, \hyperpage{14}
 
   \indexspace
 
-  \item join, \hyperpage{4}
+  \item join, \hyperpage{8}
 
   \indexspace
 
-  \item lattice, \hyperpage{4}
-    \subitem  complete lattice, \hyperpage{4}
-  \item logical consequence, \hyperpage{7}
-  \item lower bound, \hyperpage{4}
+  \item lattice, \hyperpage{8}
+    \subitem  complete lattice, \hyperpage{8}
+  \item logical consequence, \hyperpage{12}
+  \item lower bound, \hyperpage{8}
 
   \indexspace
 
-  \item maximal, \hyperpage{3}
-  \item maximum, \hyperpage{3}
-  \item meet, \hyperpage{4}
-  \item minimal, \hyperpage{3}
-  \item minimum, \hyperpage{3}
-  \item model, \hyperpage{7}
+  \item maximal, \hyperpage{7}
+  \item maximum, \hyperpage{7}
+  \item meet, \hyperpage{8}
+  \item metalanguage, \hyperpage{11}
+  \item minimal, \hyperpage{7}
+  \item minimum, \hyperpage{7}
+  \item model, \hyperpage{11}
 
   \indexspace
 
-  \item order-embedding, \hyperpage{3}
-  \item order-isomorphism, \hyperpage{3}
-  \item order-preserving map, \hyperpage{3}
-  \item order-reversing map, \hyperpage{3}
+  \item Natural deduction, \hyperpage{13}
 
   \indexspace
 
-  \item partial-order, \hyperpage{2}
-    \subitem  strict partial-order, \hyperpage{3}
-  \item propositional logic, \hyperpage{5}
+  \item object language, \hyperpage{11}
+  \item order-embedding, \hyperpage{7}
+  \item order-isomorphism, \hyperpage{7}
+  \item order-preserving map, \hyperpage{7}
+  \item order-reversing map, \hyperpage{7}
 
   \indexspace
 
-  \item satisfaction, \hyperpage{7}
+  \item partial-order, \hyperpage{6}
+    \subitem  strict partial-order, \hyperpage{7}
+  \item propositional logic, \hyperpage{9}
 
   \indexspace
 
-  \item upper bound, \hyperpage{4}
+  \item satisfaction, \hyperpage{11}
+  \item soundness, \hyperpage{13}
 
   \indexspace
 
-  \item valuations, \hyperpage{6}
+  \item upper bound, \hyperpage{8}
+
+  \indexspace
+
+  \item valuations, \hyperpage{10}
 
 \end{theindex}

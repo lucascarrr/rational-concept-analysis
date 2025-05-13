@@ -1,32 +1,40 @@
-\indexentry{binary relation|hyperpage}{2}
-\indexentry{partial-order|hyperpage}{2}
-\indexentry{partial-order! strict partial-order|hyperpage}{3}
-\indexentry{Hasse diagrams|hyperpage}{3}
-\indexentry{maximum|hyperpage}{3}
-\indexentry{minimum|hyperpage}{3}
-\indexentry{maximal|hyperpage}{3}
-\indexentry{minimal|hyperpage}{3}
-\indexentry{order-preserving map|hyperpage}{3}
-\indexentry{order-embedding|hyperpage}{3}
-\indexentry{order-isomorphism|hyperpage}{3}
-\indexentry{order-reversing map|hyperpage}{3}
-\indexentry{upper bound|hyperpage}{4}
-\indexentry{lower bound|hyperpage}{4}
-\indexentry{join|hyperpage}{4}
-\indexentry{meet|hyperpage}{4}
-\indexentry{lattice|hyperpage}{4}
-\indexentry{lattice! complete lattice|hyperpage}{4}
-\indexentry{propositional logic|hyperpage}{5}
-\indexentry{valuations|hyperpage}{6}
-\indexentry{valuations|hyperpage}{6}
-\indexentry{satisfaction|hyperpage}{7}
-\indexentry{model|hyperpage}{7}
-\indexentry{logical consequence|hyperpage}{7}
-\indexentry{formal concept analysis|hyperpage}{9}
-\indexentry{extension|hyperpage}{9}
-\indexentry{intension|hyperpage}{9}
-\indexentry{formal context|hyperpage}{9}
-\indexentry{derivation operators! object intent|hyperpage}{10}
-\indexentry{derivation operators! attribute extent|hyperpage}{10}
-\indexentry{formal concept|hyperpage}{11}
-\indexentry{Galois connections|hyperpage}{11}
+\indexentry{binary relation|hyperpage}{6}
+\indexentry{partial-order|hyperpage}{6}
+\indexentry{partial-order! strict partial-order|hyperpage}{7}
+\indexentry{Hasse diagrams|hyperpage}{7}
+\indexentry{maximum|hyperpage}{7}
+\indexentry{minimum|hyperpage}{7}
+\indexentry{maximal|hyperpage}{7}
+\indexentry{minimal|hyperpage}{7}
+\indexentry{order-preserving map|hyperpage}{7}
+\indexentry{order-embedding|hyperpage}{7}
+\indexentry{order-isomorphism|hyperpage}{7}
+\indexentry{order-reversing map|hyperpage}{7}
+\indexentry{upper bound|hyperpage}{8}
+\indexentry{lower bound|hyperpage}{8}
+\indexentry{join|hyperpage}{8}
+\indexentry{meet|hyperpage}{8}
+\indexentry{lattice|hyperpage}{8}
+\indexentry{lattice! complete lattice|hyperpage}{8}
+\indexentry{propositional logic|hyperpage}{9}
+\indexentry{valuations|hyperpage}{10}
+\indexentry{valuations|hyperpage}{10}
+\indexentry{satisfaction|hyperpage}{11}
+\indexentry{model|hyperpage}{11}
+\indexentry{object language|hyperpage}{11}
+\indexentry{metalanguage|hyperpage}{11}
+\indexentry{logical consequence|hyperpage}{12}
+\indexentry{Hilbert systems|hyperpage}{12}
+\indexentry{Genzten systems|hyperpage}{13}
+\indexentry{Natural deduction|hyperpage}{13}
+\indexentry{soundness|hyperpage}{13}
+\indexentry{completeness|hyperpage}{13}
+\indexentry{consequence relations|hyperpage}{13}
+\indexentry{formal concept analysis|hyperpage}{14}
+\indexentry{extension|hyperpage}{14}
+\indexentry{intension|hyperpage}{14}
+\indexentry{formal context|hyperpage}{14}
+\indexentry{derivation operators! object intent|hyperpage}{15}
+\indexentry{derivation operators! attribute extent|hyperpage}{15}
+\indexentry{formal concept|hyperpage}{16}
+\indexentry{Galois connections|hyperpage}{16}

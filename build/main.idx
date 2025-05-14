@@ -6,9 +6,9 @@
 \indexentry{minimum|hyperpage}{7}
 \indexentry{maximal|hyperpage}{7}
 \indexentry{minimal|hyperpage}{7}
-\indexentry{order-preserving map|hyperpage}{7}
-\indexentry{order-embedding|hyperpage}{7}
-\indexentry{order-isomorphism|hyperpage}{7}
+\indexentry{map! order-preserving|hyperpage}{7}
+\indexentry{map! order-embedding|hyperpage}{7}
+\indexentry{map! order-isomorphism|hyperpage}{7}
 \indexentry{order-reversing map|hyperpage}{7}
 \indexentry{upper bound|hyperpage}{8}
 \indexentry{lower bound|hyperpage}{8}
@@ -16,19 +16,37 @@
 \indexentry{meet|hyperpage}{8}
 \indexentry{lattice|hyperpage}{8}
 \indexentry{lattice! complete lattice|hyperpage}{8}
-\indexentry{propositional logic|hyperpage}{9}
+\indexentry{Boolean operator! associativity|hyperpage}{8}
+\indexentry{Boolean operator! commutativity|hyperpage}{8}
+\indexentry{Boolean operator! idempotency|hyperpage}{8}
+\indexentry{syntax! propositional logic|hyperpage}{10}
+\indexentry{Atom|hyperpage}{10}
+\indexentry{Propositional atom|hyperpage}{10}
+\indexentry{Boolean operator|hyperpage}{10}
+\indexentry{Boolean operator! and|hyperpage}{10}
+\indexentry{Boolean operator! or|hyperpage}{10}
+\indexentry{Boolean operator! material implication|hyperpage}{10}
+\indexentry{Boolean operator! negation|hyperpage}{10}
+\indexentry{semantics! propositional logic|hyperpage}{10}
 \indexentry{valuations|hyperpage}{10}
 \indexentry{valuations|hyperpage}{10}
-\indexentry{satisfaction|hyperpage}{11}
+\indexentry{satisfaction! propositional logic|hyperpage}{11}
 \indexentry{model|hyperpage}{11}
+\indexentry{Logical consequence! propositional logic|hyperpage}{11}
 \indexentry{object language|hyperpage}{11}
 \indexentry{metalanguage|hyperpage}{11}
-\indexentry{logical consequence|hyperpage}{12}
-\indexentry{Hilbert systems|hyperpage}{12}
+\indexentry{Deductive system|hyperpage}{12}
+\indexentry{Rule of inference|hyperpage}{12}
+\indexentry{Axiom|hyperpage}{12}
+\indexentry{Deductive system! Hilbert system|hyperpage}{12}
+\indexentry{Axiom scheme|hyperpage}{12}
+\indexentry{Rule of inference! \textit  {modus ponens}|hyperpage}{12}
+\indexentry{Rule of inference! deduction|hyperpage}{13}
 \indexentry{Genzten systems|hyperpage}{13}
-\indexentry{Natural deduction|hyperpage}{13}
-\indexentry{soundness|hyperpage}{13}
-\indexentry{completeness|hyperpage}{13}
+\indexentry{soundness! propositional logic! Hilbert system|hyperpage}{13}
+\indexentry{soundness! propositional logic! Gentzen system|hyperpage}{13}
+\indexentry{completeness! propositional logic! Gentzen system|hyperpage}{13}
+\indexentry{completeness! propositional logic! Hilbert system|hyperpage}{13}
 \indexentry{consequence relations|hyperpage}{13}
 \indexentry{formal concept analysis|hyperpage}{14}
 \indexentry{extension|hyperpage}{14}

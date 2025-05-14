@@ -110,7 +110,7 @@
   \setcounter{proofHstep}{0}%
   \ignorespaces
 }{%
-  \par\smallskip
+  \par\smallskip\qed
 }
 
 % \Hstep[<rule>]{<formula>}
@@ -119,7 +119,7 @@
   \noindent\makebox[2.1em][r]{\bfseries\arabic{proofHstep}.}\,
   $#2$%
   \ifstrempty{#1}{}{%
-    \hfill(\textsc{#1})%
+    \hfill(\text{#1})%
   }%
   \par
 }

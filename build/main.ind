@@ -1,14 +1,33 @@
 \begin{theindex}
 
-  \item binary relation, \hyperpage{6}
+  \item Atom, \hyperpage{10}
+  \item Axiom, \hyperpage{12}
+  \item Axiom scheme, \hyperpage{12}
 
   \indexspace
 
-  \item completeness, \hyperpage{13}
+  \item binary relation, \hyperpage{6}
+  \item Boolean operator, \hyperpage{10}
+    \subitem  and, \hyperpage{10}
+    \subitem  associativity, \hyperpage{8}
+    \subitem  commutativity, \hyperpage{8}
+    \subitem  idempotency, \hyperpage{8}
+    \subitem  material implication, \hyperpage{10}
+    \subitem  negation, \hyperpage{10}
+    \subitem  or, \hyperpage{10}
+
+  \indexspace
+
+  \item completeness
+    \subitem  propositional logic
+      \subsubitem  Gentzen system, \hyperpage{13}
+      \subsubitem  Hilbert system, \hyperpage{13}
   \item consequence relations, \hyperpage{13}
 
   \indexspace
 
+  \item Deductive system, \hyperpage{12}
+    \subitem  Hilbert system, \hyperpage{12}
   \item derivation operators
     \subitem  attribute extent, \hyperpage{15}
     \subitem  object intent, \hyperpage{15}
@@ -31,7 +50,6 @@
   \indexspace
 
   \item Hasse diagrams, \hyperpage{7}
-  \item Hilbert systems, \hyperpage{12}
 
   \indexspace
 
@@ -45,11 +63,16 @@
 
   \item lattice, \hyperpage{8}
     \subitem  complete lattice, \hyperpage{8}
-  \item logical consequence, \hyperpage{12}
+  \item Logical consequence
+    \subitem  propositional logic, \hyperpage{11}
   \item lower bound, \hyperpage{8}
 
   \indexspace
 
+  \item map
+    \subitem  order-embedding, \hyperpage{7}
+    \subitem  order-isomorphism, \hyperpage{7}
+    \subitem  order-preserving, \hyperpage{7}
   \item maximal, \hyperpage{7}
   \item maximum, \hyperpage{7}
   \item meet, \hyperpage{8}
@@ -60,26 +83,33 @@
 
   \indexspace
 
-  \item Natural deduction, \hyperpage{13}
-
-  \indexspace
-
   \item object language, \hyperpage{11}
-  \item order-embedding, \hyperpage{7}
-  \item order-isomorphism, \hyperpage{7}
-  \item order-preserving map, \hyperpage{7}
   \item order-reversing map, \hyperpage{7}
 
   \indexspace
 
   \item partial-order, \hyperpage{6}
     \subitem  strict partial-order, \hyperpage{7}
-  \item propositional logic, \hyperpage{9}
+  \item Propositional atom, \hyperpage{10}
 
   \indexspace
 
-  \item satisfaction, \hyperpage{11}
-  \item soundness, \hyperpage{13}
+  \item Rule of inference, \hyperpage{12}
+    \subitem  \textit  {modus ponens}, \hyperpage{12}
+    \subitem  deduction, \hyperpage{13}
+
+  \indexspace
+
+  \item satisfaction
+    \subitem  propositional logic, \hyperpage{11}
+  \item semantics
+    \subitem  propositional logic, \hyperpage{10}
+  \item soundness
+    \subitem  propositional logic
+      \subsubitem  Gentzen system, \hyperpage{13}
+      \subsubitem  Hilbert system, \hyperpage{13}
+  \item syntax
+    \subitem  propositional logic, \hyperpage{10}
 
   \indexspace
 

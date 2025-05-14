@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.11)  13 MAY 2025 13:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.11)  14 MAY 2025 17:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1245,9 +1245,9 @@ Package hyperref Info: bookmark level for unknown definition defaults to 0 on in
 [6
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathit.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm.enc}] [7{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbbit.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathcal.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathex.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathrm-bold.enc}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathsf.enc}] [8]
-Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 151.
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 152.
  [9]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 181.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 183.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1256,7 +1256,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [10{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-LaTeX Font Info:    Trying to load font information for TS1+stix2 on input line 199.
+LaTeX Font Info:    Trying to load font information for TS1+stix2 on input line 202.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/ts1stix2.fd
 File: ts1stix2.fd 2018/04/02 v2.0.0-latex stix2 TS1 font definitions
 )
@@ -1264,10 +1264,10 @@ Package microtype Info: Character `textflorin ' is missing
 (microtype)             in font `TS1/stix2/m/n/10'.
 (microtype)             Ignoring protrusion settings for this character.
  [11{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-ts1.enc}]
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 235.
+Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 238.
  [12]
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 270.
-) (./chapters/Formal Concept Analysis.tex [13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1sc.enc}]
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 286.
+) (./chapters/Formal Concept Analysis.tex [13]
 Chapter 2.
 [14
 
@@ -1290,6 +1290,8 @@ Chapter 5.
 ] (build/main.ind [22
 
 ] [23
+
+] [24
 
 ]) (build/main.aux)
  ***********
@@ -1316,18 +1318,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 41110 strings out of 474116
- 761203 string characters out of 5743682
+ 41108 strings out of 474116
+ 761194 string characters out of 5743682
  1947187 words of memory out of 5000000
- 62525 multiletter control sequences out of 15000+600000
- 744528 words of font info for 236 fonts, out of 8000000 for 9000
+ 62522 multiletter control sequences out of 15000+600000
+ 737633 words of font info for 235 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,10n,101p,1882b,1981s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Regular.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on build/main.pdf (24 pages, 799083 bytes).
+Output written on build/main.pdf (25 pages, 798748 bytes).
 PDF statistics:
- 466 PDF objects out of 1000 (max. 8388607)
- 409 compressed objects within 5 object streams
- 123 named destinations out of 1000 (max. 500000)
- 42157 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 487 PDF objects out of 1000 (max. 8388607)
+ 430 compressed objects within 5 object streams
+ 126 named destinations out of 1000 (max. 500000)
+ 40109 words of extra memory for PDF output out of 42996 (max. 10000000)
 

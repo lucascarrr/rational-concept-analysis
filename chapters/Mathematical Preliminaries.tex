@@ -87,7 +87,8 @@ More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to
 
 \begin{definition}
   \label{definition:order-maps}
-  \index{order-preserving map} \index{order-embedding} \index{order-isomorphism}
+
+     \index{map! order-preserving} \index{map! order-embedding} \index{map! order-isomorphism}
   Let $\mathbf{X}$ and $\mathbf{Y}$ be ordered sets with a mapping $\varphi : \mathbf{X} \to \mathbf{Y}$. We call $\varphi$ an \textit{order-preserving} (or, isotone) map if $x \preceq_X y$ implies $\varphi(x) \preceq_Y \varphi(y)$. It is an \textit{order-embedding} if it is injective, and $x \preceq_X y$ if and only if $\varphi(x) \preceq_Y \varphi(y)$ for all $x,y \in X$. Finally, $\varphi$ is an \textit{order-isomorphism} if it is an order-embedding that is also \textit{surjective}. The dual notion to an order-preserving map is an \textit{order-reversing} (or, antitone) map. \index{order-reversing map}
 \end{definition}
 
@@ -115,9 +116,9 @@ If the set $L$ is equipped with only one of these operations, the structure is c
 
 \vspace{-1em}
 \begin{align}
-  \text{(associative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & \quad (x \wedge y) \wedge z = x \wedge (y \wedge z) \\
-  \text{(commutative)} & \quad x \vee y = y \vee x & \text{(resp.)}  & \quad x \wedge y = y \wedge x \\
-  \text{(idempotent)}  & \quad x \vee x = x & \text{(resp.)}  & \quad x \wedge x = x
+     \text{(associative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & \quad (x \wedge y) \wedge z = x \wedge (y \wedge z) \\ \index{Boolean operator! associativity} 
+  \text{(commutative)} & \quad x \vee y = y \vee x & \text{(resp.)}  & \quad x \wedge y = y \wedge x \\ \index{Boolean operator! commutativity}
+  \text{(idempotent)}  & \quad x \vee x = x & \text{(resp.)}  & \quad x \wedge x = x \index{Boolean operator! idempotency}
 \end{align}
 
 Finally, when considering both operations simultaneously, the interaction between join and meet operations within a lattice structure is governed by the absorption laws:
@@ -165,10 +166,11 @@ Moving forward, we will no longer keep the order‑theoretic and algebraic persp
 \section{Propositional Logic}
 \label{section:propositional-logic}
 
-Propositional logic is a system for abstracting reasoning away from natural language. A \textit{propositional statement} is a claim like \say{Tralfamadorians have one eye}; that is, something that can be assigned a value of \textit{true} or \textit{false} \cite[p. 7]{Ben1993Mathematical}. More complex statements can be recursively constructed from simpler ones; our interest is then about which propositions follow from others. \index{propositional logic}
+Propositional logic is a system for abstracting reasoning away from natural language. A \textit{propositional statement} is a claim like \say{Tralfamadorians have one eye}; that is, something that can be assigned a value of \textit{true} or \textit{false} \cite[p. 7]{Ben1993Mathematical}. More complex statements can be recursively constructed from simpler ones; our interest is then about which propositions follow from others. 
 
 \subsection{Syntax}
 \label{subsection:syntax}
+\index{syntax! propositional logic} \index{Atom} \index{Propositional atom} \index{Boolean operator} \index{Boolean operator! and} \index{Boolean operator! or} \index{Boolean operator! material implication} \index{Boolean operator! negation}
 \textit{Propositional atoms} are the construction blocks of a propositional language. They are indivisible statements that can either be true or false, and maybe be combined with the boolean connectives $\{\neg, \lor, \land, \rightarrow\}$ to construct more complex statements, or \textit{formulae}. We denote propositional atoms with lower-case letters $p,q,r,s,$ and $t$, and formulae with lower-case Greek letters $\alpha, \beta, \gamma, \phi, \psi,$ and $\varphi$. 
 
 Not all combinations of atoms and boolean connectives result in meaningful expressions (for example, `$\land \rightarrow \phi$' has no discernible meaning) and so we make a distinction between any formulae and \textit{well-formed formulae}. The latter being constructions that are valid with respect to the rules of the grammar defined in Backus-Naur form below. We are entirely uninterested in formulae that are not well-formed formulae, and so we drop the `well-formed' suffix with the recognition that we shall never again mention the alternative \cite[p. 33]{Huth_Ryan_2004}.
@@ -182,18 +184,19 @@ To make reading this dissertation slightly more enjoyable, we may construct exam
 
 \subsection{Semantics}
 \label{subsection:semantics}
+\index{semantics! propositional logic}
 In the previous section we described the syntax of propositional logic and how the boolean connectives enable the construction of arbitrary formulae from atoms. The semantics of propositional logic are concerned with how meaning can be ascribed to these formulae. The aim is to provide a method of answer questions like \say{when is this formula true?} or, \say{if $\phi, \psi, \varphi$ are true, what else must be true?}.
 
 Propositional atoms were described as indivisible statements that can be assigned values of \textit{true} or \textit{false}. We now define a function that assigns a truth value to each proposition in the set $\mathcal{P}$ of propositions, sometimes called the \textit{universe of discourse}. \index{valuations}
 
 \begin{definition}
-  \label{definition:valuation} \index{valuations}
+  \label{definition:valuation} \index{valuations} 
   A \textit{valuation} is a function \(u : \mathcal{P} \to \{\textit{ true}, \textit{ false }\}\) that assigns a truth value to each propositional atom.
 \end{definition}
 
 Given a set of atoms $\mathcal{P} = \{p,q,r\}$, we write $\mathcal{U}$ to denote the set of all possible valuations. A valuation $u \in \mathcal{U}$ \textit{satisfies} an atom $p \in \mathcal{P}$ if $u$ maps $p$ to \textit{true}, then we write $u \Vdash p$. Otherwise, we write $u \nVdash p$ to indicate that $u$ does not satisfy $p$ (in this context, meaning $u$ maps $p$ to \textit{false}) \cite[p. 16]{Ben1993Mathematical}. We might represent the valuation that maps $p$ and $q$ to true but $r$ to false by $\{p,q,\overline{r}\}$.
 
-This satisfaction relation can be extended beyond propositional atoms to include more complex formulae, as described in \Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$ \index{satisfaction}
+This satisfaction relation can be extended beyond propositional atoms to include more complex formulae, as described in \Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$ \index{satisfaction! propositional logic}
 
 \begin{itemize}
   \item $u \Vdash \neg \phi$ if and only if $u \nVdash \phi$
@@ -213,19 +216,19 @@ Satisfiability can be extended to sets of of formulae so that a valuation $u \in
 
 \subsection{Logical Consequence}
 \label{subsection:logical-consequence}
+\index{Logical consequence! propositional logic}
 
-The introduction of models at the end of \Cref{section:propositional-logic} leads quite naturally into a discussion on the matter of \textit{logical consequence}, which concerns how a formal system might be developed which remains compatible with the common usage of \textit{consequence} \cite[p. 408]{turquette1957logic}.  
+The introduction of models at the end of \Cref{section:propositional-logic} leads quite naturally into a discussion on the matter of \textit{logical consequence}, which provides an answer to the question of when it is appropriate to infer one formula from another  \cite[p. 408]{turquette1957logic}.  
 
 For example, if we know that \say{\textit{Billy lived in Slaughterhouse 5}} and that \say{\textit{The inhabitants of Slaughterhouse 5 survived the bombing of Dresden}}. We may then hold the view that, as a consequence of these two pieces of knowledge, it would be sensible to infer that \say{\textit{Billy survived the bombing of Dresden}}. Of course, this inference being \textit{sensible}---under some common concept of consequence---gives little insight into how logical consequence may be appropriately be formalised. 
 
 \index{object language} \index{metalanguage}
-We place a brief moratorium on this discussion, as it is now necessary to (formally) introduce the notions of the \textit{object} and \textit{metalanguage}. In the scenario we have just described, the italicised sentences from a part of the object language: the language we use to model the world and represent information. The metalanguage facilitates reasoning about elements in the object language; that is, we can use the metalanguage to describe one sentence being a consequence of another (where these sentences are elements in the object language). Here, \textit{consequence} is an element of the metalanguage \cite[p 22]{Ben1993Mathematical}.
+We place a brief moratorium on this discussion to (formally) introduce the notions of the \textit{object} and \textit{metalanguage}. In the scenario we have just described, the italicised sentences from a part of the object language: the language we use to model the world and represent information. The metalanguage facilitates reasoning about elements in the object language; that is, we can use the metalanguage to describe one sentence being a consequence of another (where these sentences are elements in the object language). Here, \textit{consequence} is an element of the metalanguage \cite[p 22]{Ben1993Mathematical}.
 
 In this case, both the object and metalanguage are comprised of English which can certainly lead to confusion. It is more common to use a language like the one described in \Cref{subsection:syntax} as the object language, and a metalanguage comprising of symbols like $\vDash$ and $\vdash$, which we introduce below. 
 
 \begin{definition}
      \label{definition:logical-consequence}
-     \index{logical consequence}
      Let $\Gamma$ be a set of formulae and $\varphi$ a formula in the language $\mathcal{L}$. We say that $\varphi$ is a \textit{logical consequence} of $\Gamma$, and write $\Gamma \vDash \varphi$, if and only if every model of $\Gamma$ is a model of $\varphi$, or equivalently if $\hat{\Gamma} \subseteq \hat{\varphi}$.
 \end{definition}
 
@@ -239,58 +242,72 @@ Let us model the earlier scenario in propositional logic, and so we now initiali
 
 \subsection{Deductive Systems}
 \label{subsection:deduction-systems}
-Logical consequence---as described in \Cref{subsection:logical-consequence}---offers a purely semantic perspective on how we might justify that a certain inference follows (logically) from another formula, or set thereof. In contrast, deductive systems are a purely syntactic alternative for defining when an inference can be made. 
+\index{Deductive system} \index{Rule of inference} \index{Axiom}
+Logical consequence, described in \Cref{subsection:logical-consequence}, offers a purely semantic account of how it might be inferred that one formula follows (logically) from another set thereof. In contrast, deductive systems answer this question syntactically by describing a system of \textit{axiomata} and \textit{rules of inference}. 
 
-Generally, these systems are comprised of \textit{axioms} and \textit{rules of inference} which are chained together in a finite sequence to construct a \textit{proof}. In such a sequence, every element is either an axiom of the system, or can be inferred by application of an inference rule to an earlier element. The final element of such a valid sequence is called a \textit{theorem}. 
+\begin{definition}
+     \label{definition:deductive-system} 
+     A \textit{deductive system} is a collection of axiomata and rules of inference. A \textit{proof} in such a system is a sequence of formulae where each formula is either an axiom, or has been inferred by application of an inference rule to previous formulae in the sequence. The final formula in the sequence, $\phi$, is called the \textit{theorem} and is \textit{provable}, and so we write $\vdash \phi$. 
+\end{definition}
 
-Deductive systems offer some advantages over their semantic counterparts; particularly, when reasoning over large---possibly infinite---domains, logical consequence can become difficult. Moreover, semantic consequence provides little insight into the relationships between pieces of information that lead to the inferences we make; while sequential nature of deduction systems trace a path describing this relationship \cite[p. 50]{Ben1993Mathematical}.
+Deductive systems offer some advantages over their semantic counterparts; particularly, when reasoning over large---possibly infinite---domains, logical consequence can become difficult. Moreover, semantic consequence provides little insight into the relationships between pieces of information that lead to the inferences we make; while the sequential nature of deduction systems trace a path describing this relationship \cite[p. 55]{Ben1993Mathematical}.
 
 \subsubsection{Hilbert Systems} 
 \label{subsubsection:hilbert-systems}
-\index{Hilbert systems}
-A Hilbert system $\mathcal{H}$ is characterised by three axioms,
+\index{Deductive system! Hilbert system}
+
+A propositional Hilbert system $\mathcal{H}$ is characterised by three axiom schemata, \index{Axiom scheme}
 \begin{align}
     \text{(Axiom 1)} \quad & \vdash (\phi \rightarrow (\psi \rightarrow \phi)),  \\ 
     \text{(Axiom 2)} \quad & \vdash (\phi \rightarrow (\psi \rightarrow \gamma)) \rightarrow ((\phi \rightarrow \psi) \rightarrow (\phi \rightarrow \gamma)), \\
     \text{(Axiom 3)} \quad & \vdash (\neg \phi \rightarrow \neg \psi) \rightarrow (\phi \rightarrow \psi),
 \end{align}
 %
-combined with the single inference rule
+and a single rule of inference:
+%
 \begin{align}
+     \index{Rule of inference! \textit{modus ponens}}
      \text{(Modus Ponens)} \quad & \frac{\vdash \phi, \qquad \vdash \phi \rightarrow \psi}{\vdash \psi}.
 \end{align}
 %
-The turnstile $\vdash$ symbol followed by a formula means that the proceeding formula is provable. By necessity, all the axioms of $\mathcal{H}$ are provable. Modus Ponens, sometimes called \textit{forward chaining}, describes the hypothetical syllogism where if $\phi$ implies $\psi$, and $\phi$ is true, then $\psi$ must also be true. 
+The axiom schemata themselves are not axioms, but rather patterns containing meta-variables that, when uniformly substituted for formulae, result in an axiom. The turnstile symbol ($\vdash$) is the syntactic counterpart to the double-turnstile ($\vDash$) used for logical consequence. We frequently express that $\phi$ is a theorem by writing $\vdash \phi$ \cite[p. 55]{Ben1993Mathematical}.
 
-It is necessary to point out that the three axioms described above are more correctly thought of as \textit{axiom schema}. In this representation, $\phi, \psi$ and $\gamma$ are placeholders, or variables, that when substituted with actual formulae will form valid sentences in the system \cite[p. 55]{Ben1993Mathematical}. 
+As it stands, constructing proofs from instances of axiom schema and applications of modus ponens is a challenging ordeal. \textit{Derived rules} are introduced as a means to make it easier to spot the next step in a proof sequence. Of particular importance is the so called \textit{deduction theorem}; which allows the construction of proofs that are conditioned on a hypothesis, without requiring that the hypothesis be an axiom. \index{Rule of inference! deduction}
+%
+\begin{align}
+     \text{(Deduction Theorem)} \quad & \frac{\Delta \cup \phi \vdash \psi}{\Delta \vdash \phi \rightarrow \psi}
+\end{align}
+%
+Derived rules must be sound with respect to what can be proved by the three axioms and applications of modus ponens. That is, a derived rule should not enable one to make an inference that would not be possible without such a rule. 
 
-As an illustration, we provide the following Hilbert-style proof sequence for the inference made in \Cref{example-logical-consequence}. 
+As an illustration, we provide the following Hilbert-style proof for the inference made in \Cref{example-logical-consequence}. 
 
 \begin{theorem}
-     $\texttt{b} \rightarrow \texttt{h}, \texttt{h} \rightarrow \texttt{s} \vdash \texttt{b} \rightarrow \texttt{s}$
-\end{theorem}  
-
+\(
+  \texttt{b} \rightarrow \texttt{h},\;
+  \texttt{h} \rightarrow \texttt{s}
+  \;\vdash\;
+  \texttt{b} \rightarrow \texttt{s}
+\)
+\end{theorem}
+%
 \begin{proofH}
-  \Hstep[Premise]{(\texttt{b} \rightarrow \texttt{h})}
-  \Hstep[Premise]{(\texttt{h} \rightarrow \texttt{s})}
-  \Hstep[Axiom 1]{(\texttt{h} \rightarrow \texttt{s}) \rightarrow (\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s}))}
-  \Hstep[MP 2,3]{(\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s}))}
-  \Hstep[Axiom 2]{(\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s})) \rightarrow ((\texttt{b} \rightarrow \texttt{h}) \rightarrow (\texttt{b} \rightarrow \texttt{s}))} 
-  \Hstep[MP 4,5]{(\texttt{b} \rightarrow \texttt{h}) \rightarrow (\texttt{b} \rightarrow \texttt{s})}
-  \Hstep[MP 1,6]{(\texttt{b} \rightarrow \texttt{s})}
+  \Hstep[Premise]{\vdash (\texttt{b} \rightarrow \texttt{h})}
+  \Hstep[Premise]{\vdash (\texttt{h} \rightarrow \texttt{s})}
+  \Hstep[Axiom 1]{\vdash (\texttt{h} \rightarrow \texttt{s}) \rightarrow (\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s}))}
+  \Hstep[MP 2,3]{\vdash (\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s}))}
+  \Hstep[Axiom 2]{\vdash (\texttt{b} \rightarrow (\texttt{h} \rightarrow \texttt{s})) \rightarrow ((\texttt{b} \rightarrow \texttt{h}) \rightarrow (\texttt{b} \rightarrow \texttt{s}))} 
+  \Hstep[MP 4,5]{\vdash (\texttt{b} \rightarrow \texttt{h}) \rightarrow (\texttt{b} \rightarrow \texttt{s})}
+  \Hstep[MP 1,6]{\vdash (\texttt{b} \rightarrow \texttt{s})}
 \end{proofH} 
 
 \subsubsection{Gentzen Systems} 
 \label{subsubsection:gentzen-systems}
 \index{Genzten systems}
 
-\subsubsection{Natural Deduction} 
-\label{subsubsection:natural-deduction}
-\index{Natural deduction}
-
 \subsection{Soundness and Completeness} 
 \label{subsection:soundness-and-completeness}
-\index{soundness} \index{completeness}
+\index{soundness! propositional logic! Hilbert system} \index{soundness! propositional logic! Gentzen system} \index{completeness! propositional logic! Gentzen system} \index{completeness! propositional logic! Hilbert system}
 
 \subsection{Consequence Relations} 
 \label{subsection:consequence-relations}

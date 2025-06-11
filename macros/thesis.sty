@@ -1,0 +1,144 @@
+% thesis.sty – Custom style for Master's thesis
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{macros/thesis}[2025/03/30 Master's Thesis Style]
+
+\input{macros/formal-concept-analysis.tex}
+\input{macros/general.tex}
+\input{fca.sty}
+% --- Subfile support ---
+\usepackage{subfiles}
+
+% --- Encoding and Language ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{dirtytalk}
+
+% --- XeLaTeX / LuaLaTeX Required ---
+%\RequirePackage{fontspec}
+%\setmainfont{Georgia}
+%\setmonofont{Inconsolata}[Scale=0.85]
+\usepackage{stix2}
+%\usepackage{fourier}
+%\usepackage{libertinus}
+%\usepackage[scaled=0.75]{beramono}
+%\usepackage{unicode-math}
+%\setmathfont{STIX Two Math}  % Recommended math font with wide symbol support
+
+% --- Geometry and Spacing ---
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{setspace}
+\setstretch{1.35}
+\RequirePackage{fancyhdr}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[EL]{\rightmark}    % current SECTION on the left
+\fancyhead[ER]{\thepage}      % page number on the right
+\fancyhead[OL]{\thepage}      % page number on the left
+\fancyhead[OR]{\leftmark}     % current CHAPTER on the right
+\fancyfoot{}                  % no footers
+\renewcommand{\headrulewidth}{0.4pt}   % keep or adjust
+\fancypagestyle{plain}{        % redefine the 'plain' pagestyle
+  \fancyhf{}                   % clear header and footer
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% --- Math and theorem environments ---
+\usepackage{amsmath,amsthm}     % Keep structural math packages
+\usepackage{amssymb}
+\usepackage{mathtools}          % For extensible math environments
+\usepackage{nicefrac}           % For inline fractions
+\usepackage{thmtools}
+\everymath{\displaystyle}  % Optional — makes inline math match display math sizing CAN DELETE
+\theoremstyle{definition}
+
+% --- Theorem declarations ---
+\usepackage{etoolbox}
+\declaretheorem[style=plain]{theorem}
+\newtheorem{example}{Example}
+\AtEndEnvironment{example}{\par\addvspace{\baselineskip}}
+\declaretheorem[style=definition]{definition}
+\declaretheorem[style=remark]{remark}
+\declaretheorem{lemma}
+\declaretheorem{proposition}
+\declaretheorem{corollary}
+
+% --- Figures and floats ---
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+% --- Hyperlinks ---
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{url}
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
+\crefname{subfigure}{sub-figure}{sub-figures}
+\Crefname{subfigure}{Sub-figure}{Sub-figures}
+\crefname{section}{\S}{\S}
+\Crefname{section}{\S}{\S}
+
+\crefname{subsection}{sub-section}{Sub-sections}
+\Crefname{subsection}{Sub-section}{Sub-sections}
+% --- Bibliography ---
+\usepackage{makeidx}
+\usepackage{csquotes}
+\makeindex
+\usepackage[
+  backend=bibtex,
+  style=ieee,
+  citestyle=numeric
+]{biblatex}
+\addbibresource{references.bib}
+
+% --- Custom commands for metadata ---
+\newcommand{\thetitle}{}
+\newcommand{\theauthor}{}
+\newcommand{\thedate}{}
+
+\renewcommand{\title}[1]{\renewcommand{\thetitle}{#1}}
+\renewcommand{\author}[1]{\renewcommand{\theauthor}{#1}}
+\renewcommand{\date}[1]{\renewcommand{\thedate}{#1}}
+
+% --- Miscellaneous tweaks ---
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+% ------------------------------------------------------------------
+% Hilbert-style proof environment with header
+% ------------------------------------------------------------------
+
+\newcounter{proofHstep}
+
+% \begin{proofH}[<heading>] … \end{proofH}
+% Optional argument lets you override the heading if you need to:
+%   \begin{proofH}[Sketch] … \end{proofH}
+\newenvironment{proofH}[1][Proof]{%
+  \par\smallskip\noindent\textit{#1.\\}  % “Proof.” by default
+  \setcounter{proofHstep}{0}%
+  \ignorespaces
+}{%
+  \par\smallskip\qed
+}
+
+% \Hstep[<rule>]{<formula>}
+\newcommand{\Hstep}[2][]{%
+  \refstepcounter{proofHstep}%
+  \noindent\makebox[2.1em][r]{\bfseries\arabic{proofHstep}.}\,
+  $#2$%
+  \ifstrempty{#1}{}{%
+    \hfill(\text{#1})%
+  }%
+  \par
+}

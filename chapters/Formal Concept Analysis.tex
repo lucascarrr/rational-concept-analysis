@@ -1,11 +1,9 @@
 \chapter{Formal Concept Analysis}
 \label{chapter:formal-concept-analysis}
 
-\FCA (henceforth initialised as FCA) provides a mathematical framework for reasoning about concepts and corresponding conceptual structures. It is an example of applied lattice theory, and benefits from rich, rigorous mathematical theory, as well as an easily graspable intuition. 
+\FCA (henceforth initialised as FCA) provides a mathematical framework for reasoning about concepts and their corresponding conceptual structures. It is an example of applied lattice theory, and benefits from rich, rigorous mathematical theory, as well as an easily graspable intuition. 
 
-Prior to any direct discussion on FCA, it is important to provide some contextual justification for the philosophical ideas of concepts that were adopted into the foundation of FCA. 
-
-\FCA (henceforth initialised as FCA) provides a simple, yet mathematically rigorous, framework for identifying and reasoning about ``concepts'' and their corresponding hierarchies in data \cite{ganter1999formal,ganter2016conceptual}. 
+This is the end
 
 The central view of concepts as a dual between \textit{extension}---what one refers to as instances of a concept---and \textit{intension}---what meaning is ascribed to a concept---is supported by a rich philosophical backing. \index{formal concept analysis} \index{extension} \index{intension}
 
@@ -25,31 +23,25 @@ A formal context \index{formal context} in some sense describes an open-world in
 \begin{example}
   \label{example:first-example-formal-context}
   Finite formal contexts of a reasonable size can be described entirely by a tabular representation. Each object corresponds to a row, and each attribute to a column.
+
   \begin{figure}[H]
     \centering
-    \scriptsize
-    \begin{tabular}{|c||c|c|c|c|c|}
-      \hline
-      & \rotatebox{0}{\texttt{closure}}
-      & \rotatebox{0}{\texttt{associativity}}
-      & \rotatebox{0}{\texttt{identity}}
-      & \rotatebox{0}{\texttt{divisibility}}
-      & \rotatebox{0}{\texttt{commutativity}} \\
-      \hline\hline
-      \texttt{magma}             & $\times$ &          &          &          &          \\ \hline
-      \texttt{semigroup}         & $\times$ & $\times$ &          &          &          \\ \hline
-      \texttt{monoid}            & $\times$ & $\times$ & $\times$ &          &          \\ \hline
-      \texttt{group}             & $\times$ & $\times$ & $\times$ & $\times$ &          \\ \hline
-      \texttt{abelian group}     & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ \\ \hline
-      \texttt{loop}              & $\times$ &          & $\times$ & $\times$ &          \\ \hline
-      \texttt{quasigroup}        & $\times$ &          &          & $\times$ &          \\ \hline
-      \texttt{groupoid}          &          & $\times$ & $\times$ & $\times$ &          \\ \hline
-      \texttt{category}          &          & $\times$ & $\times$ &          &          \\ \hline
-      \texttt{semicategory}      &          & $\times$ &          &          &          \\ \hline
-      \specialrule{1.25pt}{0pt}{0pt}
-    \end{tabular}
+    \begin{cxt}
+         \cxtName{\textbf{\texttt{Algebraic Structures}}}
+      \att{\texttt{closure}} \att{\texttt{associativity}} \att{\texttt{identity}} \att{\texttt{divisibility}} \att{\texttt{commutativity}}
+      \obj{x....}{\texttt{magma}}
+      \obj{xx...}{\texttt{semigroup}}
+      \obj{xxx..}{\texttt{monoid}}
+      \obj{xxxx.}{\texttt{group}}
+      \obj{xxxxx}{\texttt{abelian group}}
+      \obj{x.xx.}{\texttt{loop}}
+      \obj{x..x.}{\texttt{quasiagroup}}
+      \obj{.xxx.}{\texttt{groupoid}}
+      \obj{.xx..}{\texttt{category}}
+      \obj{.x...}{\texttt{semicategory}}
+    \end{cxt}
     \caption{A formal context showing necessary properties of group-like structures.}
-    \label{figure:formal-context-group-structures}
+    \label{context:formal-context-group-structures}
   \end{figure}
 \end{example}
 
@@ -64,9 +56,9 @@ The tabular representation of a formal context allows for easy identification of
   \end{align*}
 \end{definition}
 
-The derivation operators provide a clear way of describing, for a given set $A\subseteq G$ of objects, the set of attributes which every object in $A$ satisfies, denoted $A^\uparrow$. As an illustration, given the set of objects $\{\texttt{semigroup, monoid}\}$ from \Cref{figure:formal-context-group-structures}, its derivation would be $\{\texttt{closure, associativity}\}$. It is quite easy to spot that this is just the intersection of the object intents of \texttt{semigroup} and \texttt{monoid}.
+The derivation operators provide a clear way of describing, for a given set $A\subseteq G$ of objects, the set of attributes which every object in $A$ satisfies, denoted $A^\uparrow$. As an illustration, given the set of objects $\{\texttt{semigroup, monoid}\}$ from \Cref{context:formal-context-group-structures}, its derivation would be $\{\texttt{closure, associativity}\}$. It is quite easy to spot that this is just the intersection of the object intents of \texttt{semigroup} and \texttt{monoid}.
 
-Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}$ would yield the set of objects 
+Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}$ would yield the set of objects
 
 $\{\texttt{semigroup, monoid, group, abelian group}\}$, which can rather cumbersomely be described as ``the set of all  objects that satisfy all the attributes satisfied by \texttt{semigroup} and \texttt{monoid}''.
 
@@ -171,6 +163,12 @@ Now explain why derivation of set of objects is always a concept intent by propo
     \node (f1) at (0,-7)[label=above:{\scriptsize commutativity},label=below:{\scriptsize abelian group}] {y};
     \draw (f1) -- (e1);
   \end{tikzpicture}
-  \caption{The concept lattice associated with the formal context in \Cref{figure:formal-context-group-structures}}
+  \caption{The concept lattice associated with the formal context in \Cref{context:formal-context-group-structures}}
 \end{figure}
 
+
+\section{Contextual Attribute Logic}
+\label{section:contextual-attribute-logic}
+
+The logic that underlies FCA 
+\cite{ganter2025language, ganter1999contextual}

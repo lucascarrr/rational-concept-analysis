@@ -14,40 +14,36 @@
 \indexentry{lower bound|hyperpage}{3}
 \indexentry{join|hyperpage}{3}
 \indexentry{meet|hyperpage}{3}
-\indexentry{Boolean operator! associativity|hyperpage}{4}
-\indexentry{Boolean operator! commutativity|hyperpage}{4}
-\indexentry{Boolean operator! idempotency|hyperpage}{4}
-\indexentry{syntax! propositional logic|hyperpage}{5}
-\indexentry{Atom|hyperpage}{5}
-\indexentry{Propositional atom|hyperpage}{5}
-\indexentry{Boolean operator|hyperpage}{5}
-\indexentry{Boolean operator! and|hyperpage}{5}
-\indexentry{Boolean operator! or|hyperpage}{5}
-\indexentry{Boolean operator! material implication|hyperpage}{5}
-\indexentry{Boolean operator! negation|hyperpage}{5}
+\indexentry{syntax! propositional logic|hyperpage}{6}
+\indexentry{Atom|hyperpage}{6}
+\indexentry{Propositional atom|hyperpage}{6}
+\indexentry{Boolean operator|hyperpage}{6}
+\indexentry{Boolean operator! and|hyperpage}{6}
+\indexentry{Boolean operator! or|hyperpage}{6}
+\indexentry{Boolean operator! material implication|hyperpage}{6}
+\indexentry{Boolean operator! negation|hyperpage}{6}
 \indexentry{semantics! propositional logic|hyperpage}{6}
 \indexentry{valuations|hyperpage}{6}
 \indexentry{valuations|hyperpage}{6}
-\indexentry{satisfaction! propositional logic|hyperpage}{6}
-\indexentry{model|hyperpage}{6}
-\indexentry{Logical consequence! propositional logic|hyperpage}{6}
+\indexentry{satisfaction! propositional logic|hyperpage}{7}
+\indexentry{model|hyperpage}{7}
+\indexentry{Logical consequence! propositional logic|hyperpage}{7}
 \indexentry{object language|hyperpage}{7}
 \indexentry{metalanguage|hyperpage}{7}
 \indexentry{Deductive system|hyperpage}{8}
 \indexentry{Rule of inference|hyperpage}{8}
 \indexentry{Axiom|hyperpage}{8}
-\indexentry{Deductive system! Hilbert system|hyperpage}{8}
-\indexentry{Axiom scheme|hyperpage}{8}
-\indexentry{Rule of inference! \textit  {modus ponens}|hyperpage}{8}
+\indexentry{Deductive system! Hilbert system|hyperpage}{9}
+\indexentry{Axiom scheme|hyperpage}{9}
+\indexentry{Rule of inference! \textit  {modus ponens}|hyperpage}{9}
 \indexentry{Rule of inference! deduction|hyperpage}{9}
-\indexentry{completeness ! propositional logic|hyperpage}{9}
-\indexentry{Genzten systems|hyperpage}{9}
-\indexentry{consequence relations|hyperpage}{9}
-\indexentry{formal concept analysis|hyperpage}{11}
-\indexentry{extension|hyperpage}{11}
-\indexentry{intension|hyperpage}{11}
-\indexentry{formal context|hyperpage}{11}
-\indexentry{derivation operators! object intent|hyperpage}{12}
-\indexentry{derivation operators! attribute extent|hyperpage}{12}
-\indexentry{formal concept|hyperpage}{13}
-\indexentry{Galois connections|hyperpage}{13}
+\indexentry{completeness ! propositional logic|hyperpage}{10}
+\indexentry{Genzten systems|hyperpage}{10}
+\indexentry{consequence relations|hyperpage}{10}
+\indexentry{extension|hyperpage}{12}
+\indexentry{intension|hyperpage}{12}
+\indexentry{formal context|hyperpage}{12}
+\indexentry{derivation operators|hyperpage}{13}
+\indexentry{closure operator|hyperpage}{13}
+\indexentry{galois connection|hyperpage}{14}
+\indexentry{formal concept|hyperpage}{14}

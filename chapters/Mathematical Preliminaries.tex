@@ -1,7 +1,6 @@
 \chapter{Mathematical Preliminaries}
 \label{chapter:mathematical-preliminaries}
 
-
 This chapter is intended to serve as a reference point, clarifying ideas and notation for the more fundamental concepts that will be used throughout the remainder of this dissertation. In the first section we discuss order and lattice theory. The third and final section introduces propositional logic, as well more general ideas in logic.
 
 \section{Order and Lattice Theory}
@@ -54,8 +53,8 @@ We can visually describe ordered sets through the use of \textit{Hasse} diagrams
   \begin{tikzpicture}[
       every node/.style={
         circle,
-        fill=black,
-        text=white,
+        %fill=black,
+        text=black,
         inner sep=1.2pt,   % controls how tight the circle hugs the letter
         font=\small  % smaller label size → smaller overall node
       }]
@@ -77,8 +76,8 @@ We can visually describe ordered sets through the use of \textit{Hasse} diagrams
   \begin{tikzpicture}[
       every node/.style={
         circle,
-        fill=black,
-        text=white,
+        %fill=black,
+        text=black,
         inner sep=1.2pt,   % controls how tight the circle hugs the letter
         font=\small   % smaller label size → smaller overall node
       }]
@@ -124,20 +123,22 @@ With these definitions of meets and joins in mind, we are able to define a latti
 Given a partially ordered set $\mathbf{L}$, we say that $\mathbf{L}$ is a \textit{lattice} if for every pair $x,y \in \mathbf{L}$ the join $x \vee y$ and meet $x \wedge y$ exist, and are unique. Then, we call $\mathbf{L}$ a \textit{complete lattice} if for every subset $\mathbf{M} \subseteq \mathbf{L}$ both $\bigvee \mathbf{M}$ and $\bigwedge \mathbf{M}$ exist in $\mathbf{L}$.
 \end{definition}
 
-We say that a lattice $\mathbf{L}$ is \textit{bounded} if there exists an element $x \in \mathbf{L}$ such that $x \vee y = x$ for all $y \in \mathbf{L}$, and there exists an element $z \in \mathbf{L}$ with $z \wedge y = z$ for all $y \in \mathbf{L}$. Frequently we refer to such an $x$ and $y$ as a top and bottom element and denote them by $\top$ and $\bot$, respectively. It is not difficult to spot that every complete lattice is bounded---in fact this is true by definition of a complete lattice---as a corollary every finite lattice is also bounded. 
+We say that a lattice $\mathbf{L}$ is \textit{bounded} if there exists an element $x \in \mathbf{L}$ such that $x \vee y = x$ for all $y \in \mathbf{L}$, and there exists an element $z \in \mathbf{L}$ with $z \wedge y = z$ for all $y \in \mathbf{L}$. Frequently we refer to such an $x$ and $y$ as a top and bottom element and denote them by $\top$ and $\bot$, respectively. It is not difficult to spot that every complete lattice is bounded---in fact this is true by definition of a complete lattice---as a corollary every finite lattice is also bounded \cite[p. 36]{davey2002introduction}. 
 
-The lattice $(\mathbb{Z}, \leq)$ constructed by imposing the natural order over the integers is an example of an lattice that is not bounded \cite[p. 36]{davey2002introduction}. 
+\begin{remark}
+The lattice $(\mathbb{Z}, <)$, constructed by imposing the natural order over the integers, is an example of an lattice that is not bounded.
+\end{remark}
 
 \begin{example}
 \label{example:lattice of naturals}
-The set of natural numbers $\mathbb{N}$ forms a complete lattice when ordered by divisibility sometimes called the \textit{division lattice}. In the division lattice, the join operation corresponds to the \textit{least common multiple} and the meet operation to the greatest common divisor. The bottom element of this lattice is $1$ as it divides every other natural, while the top element is $0$ since it is divisible by all other naturals. Although the division lattice is infinite, it is indeed a complete lattice. 
+The set of natural numbers $\mathbb{N}$ forms a complete lattice when ordered by divisibility, sometimes called the \textit{division lattice}. In the division lattice, the join operation corresponds to the \textit{least common multiple}, and the meet operation to the greatest common divisor. The bottom element of this lattice is $1$ as it divides every other natural number, while the top element is $0$ since it is divisible by all other naturals. Although the division lattice is infinite, it is indeed an example of a complete lattice. 
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[
       every node/.style={
         circle,
-        fill=black,
-        text=white,
+ %       %fill=black,
+        text=black,
         inner sep=1.2pt,   % controls how tight the circle hugs the letter
         font=\small   % smaller label size → smaller overall node
       }]
@@ -200,34 +201,75 @@ The set of natural numbers $\mathbb{N}$ forms a complete lattice when ordered by
   \caption{The division lattice $(\mathbb{N}, \leq)$}
   \label{figure:complete-lattice}
 \end{figure}
-
-
 \end{example}
 
 \subsubsection{Lattices as algebraic structures}
 \label{subsubsection:lattices-as-algebraic-structures}
 
-From another perspective, a lattice can be viewed as an algebraic structure where meet and join are binary operations on a set. Then, $\langle L, \vee, \wedge \rangle$ formally represents a lattice. Often, we simplify notation to just $L$ when the context clearly indicates this perspective. 
+Lattices can also be considered from an algebraic perspective; although, as we will soon show, the algebraic and order-theroetic perspectives coincide it is often useful to switch consideration between these perspectives. 
 
-If the set $L$ is equipped with just one of these operations, the structure is called a \textit{semilattice}. Specifically, the structures $\langle L, \vee \rangle$ and $\langle L, \wedge \rangle$ are called a \textit{join semilattice} and \textit{meet semilattice}, respectively. Such structures are reducts of a lattice, satisfying the following properties for all $x, y, z \in L$:
-
-\vspace{-1em}
+Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the following properties for all $x,y,z \in L$, 
+%
 \begin{align}
-     \text{(associative)} & \quad (x \vee y) \vee z = x \vee (y \vee z) & \quad \text{(resp.)} & \quad (x \wedge y) \wedge z = x \wedge (y \wedge z) \\ \index{Boolean operator! associativity} 
-  \text{(commutative)} & \quad x \vee y = y \vee x & \text{(resp.)}  & \quad x \wedge y = y \wedge x \\ \index{Boolean operator! commutativity}
-  \text{(idempotent)}  & \quad x \vee x = x & \text{(resp.)}  & \quad x \wedge x = x \index{Boolean operator! idempotency}
+  \text{(idempotence)} & \quad x \vee x = x \label{eq:idempotence} \\
+  \text{(commutativity)} & \quad x \vee y = y \vee x \label{eq:commutativity} \\
+  \text{(associativity)} & \quad (x \vee y) \vee z = x \vee (y \vee z) \label{eq:associativity}
 \end{align}
+%
+From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partial order $\preceq$ on $L$ by construction of the relation $\{(x, x \vee y) \mid x,y \in L \}$ \cite[pp. 173]{bergman2015invitation}. The structure $(L, \vee)$ is called an algebraic \textit{join semilattice}, and $\preceq$ its \textit{underlying partial order}. The relation can equivalently be described as \say{$x \preceq y$ if and only if $x \vee y = y$} \cite[pp.173]{bergman2015invitation}.
+%
+\begin{example}
+     Consider the set $S = \{1,2,3\}$ and the union operation $\cup$. From $(S, \cup)$ we can induce the order relation characterised by the set $\{(X, X \cup Y) \mid X,Y \subseteq S \}$ (frequently, this kind of ordering is called the \textit{set inclusion order}). From the Hasse diagram in \Cref{figure:set-inclusion-order} representing this order, we observe that the $\cup$ binary relation corresponds to the $\vee$ described in \Cref{definition:lattice}. 
+%
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[
+      every node/.style={
+        circle,
+ %       %fill=black,
+        text=black,
+        inner sep=0pt,          % no extra padding
+        minimum size=6mm,       % ← choose one diameter for all nodes
+        font=\scriptsize   % smaller label size → smaller overall node
+      }]
 
-Finally, when considering both operations simultaneously, the interaction between join and meet operations within a lattice structure is governed by the absorption laws:
+     \node (root) at (0,0) {$\emptyset$};
+     \node (1) at (-1,1) {$\{1\}$};
+     \node (2) at (0,1) {$\{2\}$};
+     \node (3) at (1,1) {$\{3\}$};
 
-\vspace{-1em}
+     \node (12) at (-1,2) {$\{1,2\}$};
+     \node (13) at (0,2) {$\{1,3\}$};
+     \node (23) at (1,2) {$\{2,3\}$};
+     \node (123) at (0,3) {$\{1,2,3\}$};
+
+     \draw (root) -- (1) -- (12) -- (123); 
+     \draw (root) -- (2) -- (12);
+     \draw (root) -- (3) -- (23) -- (123);
+     \draw (1) -- (13) -- (123);
+     \draw (2) -- (23);
+     \draw (3) -- (13);
+  \end{tikzpicture}
+  \caption{The underlying order of $(S, \cup)$}
+  \label{figure:set-inclusion-order}
+\end{figure}
+\end{example}
+
+If we instead consider the structure $(L, \wedge)$ where $\wedge$ is a different binary operation on $L$ satisfying the same properties \cref{eq:idempotence}--\cref{eq:associativity} we can construct a partial order characterised by the set $\{(x,y) \mid x \wedge y = x \text{ and } x,y \in L\}$. The structure $(L, \wedge)$ is called a \textit{meet semilattice}. 
+
+It is an obvious next step to wonder how these two algebraic structures fit together: fix a set non-empty set $L$ with the two binary operations, $\vee$ and $\wedge$, introduced in the prior paragraphs. We have already seen that the underlying order of the join semilattice can be described as $x \preceq y$ if and only if $x \vee y = y$, while the underlying order of the meet semilattice is described by $x \preceq y$ if and only if $x \wedge y = x$. These two partial orders are \textit{compatible} under the following condition:
 \begin{align}
-  \text{(absorption)} & \quad x \vee (x \wedge y) = x & \text{(resp.)}  & \quad x \wedge (x \vee y) = x
+     \text{(compatibility)} & \quad x \vee (x \wedge y) = x & \text{(resp.)}  & \quad x \wedge (x \vee y) = x
 \end{align}
+%
+Compatibility (which is sometimes also called \textit{absorption}) is satisfied when the underlying orders of both semilattices refer to the same partial order. The property can be rewritten as $x \vee y = y$ if and only if $x \wedge y = x$. The formal definition of an algebraic lattice is given below: 
 
-\textbf{Talk about the duality principle of proving things for $\vee$ and $\wedge$. Talk about distributive lattices}
+\begin{definition}
+     \label{definition:algebraic-lattice}
+The algebraic structure $(L, \vee, \wedge)$, where $L$ is a set and $\vee, \wedge$ are two binary operations on $L$, is a \emph{lattice} if both binary operations satisfy \textit{idempotence, commutativity,} and \textit{associativity} as well well as \textit{absorbtion}.
+\end{definition}
 
-The connection between partially ordered sets and lattices is quite straightforward; however, that the order-theoretic and algebraic views of lattices do in fact coincide is shown by the lemma below. 
+
 
 \begin{lemma}[The Connecting Lemma]
   \label{lemma:the-connecting-lemma}
@@ -242,6 +284,10 @@ The connection between partially ordered sets and lattices is quite straightforw
 \end{lemma}
 
 Moving forward, we will no longer maintain a rigid distinction between these two perspectives on lattices; rather, we will tacitly adopt whichever viewpoint best suits the surrounding context. Lattices are central to Formal Concept Analysis, and will be revisited in \Cref{chapter:formal-concept-analysis}.
+
+\subsection{Closure Operators}
+\label{subsection:closure-operators}
+[this section needs to be completed]
 
 \section{Propositional Logic}
 \label{section:propositional-logic}
@@ -445,5 +491,4 @@ We can view a consequence relation as a set of ordered pairs $\{(\Gamma_0, \varp
 This is a much more significant abstraction on the matter of consequence, requiring no concrete proof system or semantics. 
 
 As we will see in \Cref{chapter:non-monotonic-reasoning}, consequence relations provide a useful abstraction which allow a logic to be described in terms of certain properties, or \textit{postulates}, corresponding to a certain desired behaviour. The properties are able to provide an intuition for the logic without the construction of a semantics, or deduction-system. 
-
 

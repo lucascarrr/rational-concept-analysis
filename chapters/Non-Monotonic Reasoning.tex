@@ -1,11 +1,28 @@
 \chapter{Non-Monotonic Reasoning}
 \label{chapter:non-monotonic-reasoning}
 
-In the previous chapter the matter of consequence was discussed. It is perhaps more appropriate to rephrase this discussion more precisely as being on the matter of classical consequence, for the notion put forward likely does not align with a common understanding of consequence. To make this clearer, consider the following propositions:
+\section{Background}
+\label{section:nmr-background}
+Near the end of the previous chapter, the matter of consequence was discussed in a very formal sense. It is perhaps helpful to distinguish this subject---the matter of classical consequence---from the common concept, as the former yields some surprising results which do not appear at all congruent with how a person, or otherwise intelligent agent should reason \cite{turquette1957logic, kraus1990nonmonotonic}.
+
+For a demonstration of a result which may be \textit{surprising}, consider the following propositions: 
 \begin{enumerate}
      \item $\texttt{human} \rightarrow \texttt{chronological time}$
-     \item $\texttt{billy pilgrim} \rightarrow \texttt{human}$
+     \item $\texttt{soldier} \rightarrow \texttt{human}$
      \item $\texttt{billy pilgrim} \rightarrow \neg \texttt{chronological time}$
 \end{enumerate}
-The only models of propositions 1--3 are valuations which map \texttt{billy pilgrim} to false. As such, $\neg \texttt{billy pilgrim}$ is a classical consequence of propositions 1--3: a result of classical logic which is perhaps quite surprising. 
+If, upon knowing these propositions, we were to encounter an individual in fatigues we might find it sensible---by propositions 2 and 1---to infer that the individual experienced time chronologically. If we were to later learn that the individual was, in fact, Billy Pilgrim, given proposition 3, we should like to retract our prior inference, replacing it with the knowledge that the individual does not experience time chronologically. 
+
+This is not, however, what would happen: when we see the that the individual is a soldier, the possible worlds satisfying our knowledge are reduced to the single model: $\{\overline{b},c,h,s\}$ (where $b$: \texttt{billy pilgrim}, $c$: \texttt{chronological time}. $h$: \texttt{human}, and $s$: \texttt{soldier}). Should we later learn that the individual is indeed billy pilgrim, our theory becomes inconsistent. 
+%TODO: Add section in preliminaries about principle of explosion
+And, by the principle of explosion, discussed in \Cref{subsection:logical-consequence}, our theory now entails that the individual experiences time both chronologically and non-chronologically. 
+
+This property of classical logic---that adding new information never results in retraction of pre-existing knowledge---monotonicity. A consequence being that, should we like to make a claim like \say{humans experience time chronologically}, we should be absolutely sure of ourselves, so as to never worry about needing to retract an inference. Of course, this is too strict a requirement as we cannot determine for all future, present, and past humans if this were the case. If we remain in the classical realm, our only option is to abandon our original claim. 
+
+It quite obvious that we would answer the question of whether this constitutes a reasonable response in the negative. For most humans do indeed experience time chronologically; Billy Pilgrim is merely an \textit{exceptional} human.
+
+\section{Preferential Consequence}
+
+
+\section{Rational Consequence}
 

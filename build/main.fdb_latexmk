@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex build/main"] 1750166383.09674 "build/main.aux" "build/main.bbl" "build/main" 1750181800.06386 0
-  "./references.bib" 1749721769.70342 7067 87b0c3939473e0e95aee0af25a54f34b ""
+["bibtex build/main"] 1750248042.44462 "build/main.aux" "build/main.bbl" "build/main" 1750256285.63021 0
+  "./references.bib" 1750244639.58787 9431 06ac0cfc47c55fb07baae61c5dfb88a4 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1678141846 65484 b7949c47a88ed6dca66ebc7a04577312 ""
-  "build/main-blx.bib" 1750181799.65168 343 1611d3bac8f724313c9b8207b0d00714 "pdflatex"
-  "build/main.aux" 1750181799.64368 21893 0501958dab9c0b91ead6cd35085fe8e5 "pdflatex"
+  "build/main-blx.bib" 1750256285.21839 343 1611d3bac8f724313c9b8207b0d00714 "pdflatex"
+  "build/main.aux" 1750256285.21047 22890 07471c6adfdfcb940bfb96fb113fa5be "pdflatex"
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["makeindex build/main.idx"] 1750166383.0161 "build/main.idx" "build/main.ind" "build/main" 1750181800.06376 0
-  "build/main.idx" 1750181799.65261 2196 bf2ec70686493d070f2b423dd965361d "pdflatex"
+["makeindex build/main.idx"] 1750248042.3698 "build/main.idx" "build/main.ind" "build/main" 1750256285.63011 0
+  "build/main.idx" 1750256285.21941 2196 e24e20ba89c6941c06591eb69c431127 "pdflatex"
   (generated)
   "build/main.ilg"
   "build/main.ind"
   (rewritten before read)
-["pdflatex"] 1750181797.4925 "main.tex" "build/main.pdf" "main" 1750181800.06399 0
+["pdflatex"] 1750256283.10985 "main.tex" "build/main.pdf" "main" 1750256285.63034 0
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbb.enc" 1610747736 2904 e0faa515d685129700e18ca6e0e2b48f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathbbit.enc" 1610747736 3037 3eafdf65b501e8b35502c04463f0acc0 ""
@@ -275,14 +275,14 @@
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1736597313 8221421 fa87dd08f8dbddbf01ac5649e8630930 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "/usr/local/texlive/texmf-local/web2c/texmf.cnf" 1744122474.37654 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "build/main.aux" 1750181799.64368 21893 0501958dab9c0b91ead6cd35085fe8e5 "pdflatex"
-  "build/main.bbl" 1750166383.18508 11114 a30472dd6bbfb8ffc62b0fb4372a434d "bibtex build/main"
-  "build/main.ind" 1750166383.09582 2306 8f9fe128c2f83b49f9eaf9b64c640633 "makeindex build/main.idx"
-  "build/main.out" 1750181799.64838 2732 8cced82e4a9a5dfca10bb99ebd3d32d2 "pdflatex"
-  "build/main.run.xml" 1750181799.65254 2586 697b4530b4d7fa63cd386a3b820dd5ae "pdflatex"
-  "chapters/Formal Concept Analysis.tex" 1750165814.25251 13773 dec3e86628bfd22665d700f3ebd20003 ""
+  "build/main.aux" 1750256285.21047 22890 07471c6adfdfcb940bfb96fb113fa5be "pdflatex"
+  "build/main.bbl" 1750248042.55384 12988 137336753aadc5eb5a01f138689ab375 "bibtex build/main"
+  "build/main.ind" 1750248042.44364 2306 3b2c18bddee15b4a53dca5d01b7d86e6 "makeindex build/main.idx"
+  "build/main.out" 1750256285.21649 3173 8e13796577547b2f7052d3e828b5119d "pdflatex"
+  "build/main.run.xml" 1750256285.21933 2586 697b4530b4d7fa63cd386a3b820dd5ae "pdflatex"
+  "chapters/Formal Concept Analysis.tex" 1750230157.15226 13774 7f19eae98a79701e09e828dafaa746ec ""
   "chapters/Mathematical Preliminaries.tex" 1750149914.19224 36897 826f3de99822473bff539411f3273213 ""
-  "chapters/Non-Monotonic Reasoning.tex" 1750181795.87056 909 4e782e1fb6b9ffcc87714812d5aec5a8 ""
+  "chapters/Non-Monotonic Reasoning.tex" 1750256281.47744 2865 11f84eb362da7a498df4f4e21f31a065 ""
   "macros/fca.sty" 1749633157.64235 32453 a3fb8a5df377f37ccf694ca719ba7f5e ""
   "macros/formal-concept-analysis.tex" 1745912946.07876 530 d23dc972136e2beb30fb3374ba745244 ""
   "macros/general.tex" 1747665503.08547 113 7e1979bd24a986ad30d0d4fe20def910 ""

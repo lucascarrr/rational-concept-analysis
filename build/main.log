@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.11)  17 JUN 2025 19:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.11)  18 JUN 2025 16:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1361,14 +1361,9 @@ Package microtype Info: Character `textflorin ' is missing
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 427.
  [9]) (./chapters/Non-Monotonic Reasoning.tex [10]
 Chapter 2.
-
-Overfull \hbox (14.48373pt too wide) in paragraph at lines 10--11
-\T1/stix2/m/n/10 (-20) The only mod-els of propo-si-tions 1--3 are val-u-a-tions which map \T1/cmtt/m/n/10 billy pilgrim \T1/stix2/m/n/10 (-20) to false. As such, $\LS1/stix2/m/n/10 ›[]$
- []
-
 ) (./chapters/Formal Concept Analysis.tex [11
 
-]
+] [12]
 Chapter 3.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 30.
@@ -1377,15 +1372,15 @@ Overfull \hbox (7.38849pt too wide) in paragraph at lines 30--41
  [][] 
  []
 
-[12
+[13
 
 ]
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 70.
- [13{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathscr.enc}] [14{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathfrak.enc}] [15]) [16
+ [14{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathscr.enc}] [15{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-mathfrak.enc}] [16]) [17
 
-] (build/main.ind [17
+] (build/main.ind [18
 
-{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1sc.enc}] [18
+{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/stix2-type1/stix2-t1sc.enc}] [19
 
 ]) (build/main.aux)
  ***********
@@ -1401,7 +1396,7 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 8CCED82E4A9A5DFCA10BB99EBD3D32D2;2732.
+(rerunfilecheck)             Checksum: 8E13796577547B2F7052D3E828B5119D;3173.
 
 Package biblatex Warning: Please (re)run BibTeX on the file(s):
 (biblatex)                main
@@ -1412,18 +1407,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42469 strings out of 474116
- 781374 string characters out of 5743682
+ 42486 strings out of 474116
+ 781933 string characters out of 5743682
  1950187 words of memory out of 5000000
- 63800 multiletter control sequences out of 15000+600000
- 746982 words of font info for 250 fonts, out of 8000000 for 9000
+ 63813 multiletter control sequences out of 15000+600000
+ 746825 words of font info for 249 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,101p,1882b,1827s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Math.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Bold.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Italic.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stix2-type1/STIX2Text-Regular.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfit1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt0800.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on build/main.pdf (18 pages, 821643 bytes).
+Output written on build/main.pdf (19 pages, 824940 bytes).
 PDF statistics:
- 488 PDF objects out of 1000 (max. 8388607)
- 437 compressed objects within 5 object streams
- 149 named destinations out of 1000 (max. 500000)
- 42141 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 511 PDF objects out of 1000 (max. 8388607)
+ 459 compressed objects within 5 object streams
+ 155 named destinations out of 1000 (max. 500000)
+ 42165 words of extra memory for PDF output out of 42996 (max. 10000000)
 

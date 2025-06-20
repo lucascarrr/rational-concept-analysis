@@ -10,7 +10,7 @@ The starting point in FCA is a structure called a \textit{formal context}, or si
 %
 \begin{definition}
 \label{definition:formal-context} \index{formal context}
-  A \textit{formal context} $\Fcontext$ is a triple comprised of a set of objects $G$, a set of attributes $M$, and a binary relation $I \subseteq G \times M$ referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we might say that \say{object $g$ \textit{has} the attribute $m$}.
+  A \textit{formal context} $\GMI$ is a triple comprised of a set of objects $G$, a set of attributes $M$, and a binary relation $I \subseteq G \times M$ referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we might say that \say{object $g$ \textit{has} the attribute $m$}.
 \end{definition}
 %
 We regard the set $G$ of objects as being the extensional dimension of the context, while the set $M$ of attributes is intensional. Although, there is no strict requirement around what these sets are made up of, or that they be distinct---it is perfectly fine to have a context where $G$ and $M$ are the same sets.
@@ -48,7 +48,7 @@ The efficacy of this approach obviously diminishes when we are interested in non
 
 \begin{definition}
      \label{definition:derivation-operators} \index{derivation operators}
-  Given a formal context $\fcontext$, the \textit{derivation operators} are two order-reversing maps $(\cdot)^\uparrow : 2^G \to 2^M$ and $(\cdot)^\downarrow : 2^M \to 2^G$ where the order is given by subset inclusion. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
+  Given a formal context $\GMI$, the \textit{derivation operators} are two order-reversing maps $(\cdot)^\uparrow : 2^G \to 2^M$ and $(\cdot)^\downarrow : 2^M \to 2^G$ where the order is given by subset inclusion. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
   \begin{align*}
        A^\uparrow & \coloneqq \{m \in M \mid \forall g \in A, \; (g,m) \in I\} \\
        B^\downarrow & \coloneqq \{g \in G \mid \forall m \in B, \; (g,m) \in I\}
@@ -69,7 +69,7 @@ for all $A, A_1 \subseteq G$. Thus, $(\cdot)^{\uparrow \downarrow}$ describes a 
 
 \begin{proposition}
   \label{proposition:properties-about-derivation-operators}
-  Let $\fcontext$ be a formal context with subsets $A_0, A_1, A_2 \subseteq G$ and $B_0, B_1, B_2 \subseteq M$ of attributes. Then,
+  Let $\GMI$ be a formal context with subsets $A_0, A_1, A_2 \subseteq G$ and $B_0, B_1, B_2 \subseteq M$ of attributes. Then,
   \vspace{-1em}
   \begin{center}
     \begin{minipage}[t]{0.48\textwidth}
@@ -105,7 +105,7 @@ With the above relationship between sets of objets and attributes in mind, it is
 
 \begin{definition}
   \label{definition:formal-concept} \index{formal concept}
-  A \textit{formal concept} of a formal context $\GMI$ is a pair $(A,B)$ of subsets $A \subseteq G$ and $B \subseteq M$ that satisfies $A^\uparrow = B$ and $B^\downarrow = A$. Then, we say that $A$ is the concept \textit{extent} and that $B$ is the \textit{intent}. We write $\B$ to denote the set of all concepts of $\fcontext$.
+  A \textit{formal concept} of a formal context $\GMI$  is a pair $(A,B)$ of subsets $A \subseteq G$ and $B \subseteq M$ that satisfies $A^\uparrow = B$ and $B^\downarrow = A$. Then, we say that $A$ is the concept \textit{extent} and that $B$ is the \textit{intent}. We write $\BGMI$ to denote the set of all concepts of $\GMI$.
 \end{definition}
 
 We can prescribe a rather intuitive ordering over concepts induced by the \textit{subconcept–superconcept} relation. If $(A_0, B_0)$ and $(A_1, B_1)$ are two concepts in a context, then $(A_0, B_0)$ is a \textit{subconcept} of $(A_1, B_1)$ if and only if $A_0 \subseteq A_1$, equivalently if $B_1 \subseteq B_0$. Otherwise, $(A_0, B_0)$ is a \textit{superconcept} of $(A_1, B_1)$. We denote set of all concepts ordered in this way by $\CLGMI$, and call this set the \textit{concept lattice} of $\GMI$.
@@ -119,8 +119,6 @@ In FCA, attribute implications represent dependencies that exist between attribu
      \label{definition:attribute-implication}
      Let $M$ be a non-empty set of attributes, then an \emph{attribute implication} over $M$ is a
 \end{definition}
-
-
 
 
 If we examine the context in \Cref{context:voting-records-small} it is apparent that every representative who voted in favour of the proposed crime bill also voted in favour of the immigration bill; we write this dependency as $\texttt{crime} \rightarrow \texttt{immigration}$.

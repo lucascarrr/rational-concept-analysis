@@ -1,109 +1,109 @@
 \begin{theindex}
 
-  \item Atom, \hyperpage{6}
-  \item Axiom, \hyperpage{8}
-  \item Axiom scheme, \hyperpage{9}
+  \item Atom, \hyperpage{8}
+  \item Axiom, \hyperpage{10}
+  \item Axiom scheme, \hyperpage{11}
 
   \indexspace
 
-  \item binary relation, \hyperpage{2}
-  \item Boolean operator, \hyperpage{6}
-    \subitem  and, \hyperpage{6}
-    \subitem  material implication, \hyperpage{6}
-    \subitem  negation, \hyperpage{6}
-    \subitem  or, \hyperpage{6}
+  \item binary relation, \hyperpage{4}
+  \item Boolean operator, \hyperpage{8}
+    \subitem  and, \hyperpage{8}
+    \subitem  material implication, \hyperpage{8}
+    \subitem  negation, \hyperpage{8}
+    \subitem  or, \hyperpage{8}
 
   \indexspace
 
-  \item closure operator, \hyperpage{12}
+  \item closure operator, \hyperpage{14}
   \item completeness 
-    \subitem  propositional logic, \hyperpage{10}
-  \item consequence relations, \hyperpage{10}
+    \subitem  propositional logic, \hyperpage{12}
+  \item consequence relations, \hyperpage{12}
 
   \indexspace
 
-  \item Deductive system, \hyperpage{8}
-    \subitem  Hilbert system, \hyperpage{9}
-  \item derivation operators, \hyperpage{12}
+  \item Deductive system, \hyperpage{10}
+    \subitem  Hilbert system, \hyperpage{11}
+  \item derivation operators, \hyperpage{14}
 
   \indexspace
 
-  \item extension, \hyperpage{11}
+  \item extension, \hyperpage{13}
 
   \indexspace
 
-  \item formal concept, \hyperpage{13}
-  \item formal context, \hyperpage{11}
+  \item formal concept, \hyperpage{15}
+  \item formal context, \hyperpage{13}
 
   \indexspace
 
-  \item galois connection, \hyperpage{13}
-  \item Genzten systems, \hyperpage{10}
+  \item galois connection, \hyperpage{15}
+  \item Genzten systems, \hyperpage{12}
 
   \indexspace
 
-  \item Hasse diagrams, \hyperpage{3}
+  \item Hasse diagrams, \hyperpage{5}
 
   \indexspace
 
-  \item intension, \hyperpage{11}
+  \item intension, \hyperpage{13}
 
   \indexspace
 
-  \item join, \hyperpage{4}
+  \item join, \hyperpage{6}
 
   \indexspace
 
   \item Logical consequence
-    \subitem  propositional logic, \hyperpage{7}
-  \item lower bound, \hyperpage{4}
+    \subitem  propositional logic, \hyperpage{9}
+  \item lower bound, \hyperpage{6}
 
   \indexspace
 
   \item map
-    \subitem  order-embedding, \hyperpage{3}
-    \subitem  order-isomorphism, \hyperpage{3}
-    \subitem  order-preserving, \hyperpage{3}
-  \item maximal, \hyperpage{3}
-  \item maximum, \hyperpage{3}
-  \item meet, \hyperpage{4}
-  \item metalanguage, \hyperpage{7}
-  \item minimal, \hyperpage{3}
-  \item minimum, \hyperpage{3}
-  \item model, \hyperpage{7}
+    \subitem  order-embedding, \hyperpage{5}
+    \subitem  order-isomorphism, \hyperpage{5}
+    \subitem  order-preserving, \hyperpage{5}
+  \item maximal, \hyperpage{5}
+  \item maximum, \hyperpage{5}
+  \item meet, \hyperpage{6}
+  \item metalanguage, \hyperpage{9}
+  \item minimal, \hyperpage{5}
+  \item minimum, \hyperpage{5}
+  \item model, \hyperpage{9}
 
   \indexspace
 
-  \item object language, \hyperpage{7}
-  \item order-reversing map, \hyperpage{3}
+  \item object language, \hyperpage{9}
+  \item order-reversing map, \hyperpage{5}
 
   \indexspace
 
-  \item partial-order, \hyperpage{2}
-    \subitem  strict partial-order, \hyperpage{3}
-  \item Propositional atom, \hyperpage{6}
+  \item partial-order, \hyperpage{4}
+    \subitem  strict partial-order, \hyperpage{5}
+  \item Propositional atom, \hyperpage{8}
 
   \indexspace
 
-  \item Rule of inference, \hyperpage{8}
-    \subitem  \textit  {modus ponens}, \hyperpage{9}
-    \subitem  deduction, \hyperpage{9}
+  \item Rule of inference, \hyperpage{10}
+    \subitem  \textit  {modus ponens}, \hyperpage{11}
+    \subitem  deduction, \hyperpage{12}
 
   \indexspace
 
   \item satisfaction
-    \subitem  propositional logic, \hyperpage{7}
+    \subitem  propositional logic, \hyperpage{9}
   \item semantics
-    \subitem  propositional logic, \hyperpage{6}
+    \subitem  propositional logic, \hyperpage{8}
   \item syntax
-    \subitem  propositional logic, \hyperpage{6}
+    \subitem  propositional logic, \hyperpage{8}
 
   \indexspace
 
-  \item upper bound, \hyperpage{4}
+  \item upper bound, \hyperpage{6}
 
   \indexspace
 
-  \item valuations, \hyperpage{6, 7}
+  \item valuations, \hyperpage{8, 9}
 
 \end{theindex}

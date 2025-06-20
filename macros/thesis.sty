@@ -4,7 +4,6 @@
 
 % --- Subfile support ---
 \usepackage{subfiles}
-
 \input{macros/formal-concept-analysis.tex}
 \input{macros/general.tex}
 \input{macros/fca.sty}
@@ -26,14 +25,14 @@
 \usepackage{setspace}
 \setstretch{1.35}
 \RequirePackage{fancyhdr}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ : #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ : #1}}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[EL]{\rightmark}    % current SECTION on the left
-\fancyhead[ER]{\thepage}      % page number on the right
-\fancyhead[OL]{\thepage}      % page number on the left
-\fancyhead[OR]{\leftmark}     % current CHAPTER on the right
+\fancyhead[EL]{\small Section \rightmark}    % current SECTION on the left
+\fancyhead[ER]{\small \thepage}      % page number on the right
+\fancyhead[OL]{\small \thepage}      % page number on the left
+\fancyhead[OR]{\small Chapter \leftmark}     % current CHAPTER on the right
 \fancyfoot{}                  % no footers
 \renewcommand{\headrulewidth}{0.4pt}   % keep or adjust
 \fancypagestyle{plain}{        % redefine the 'plain' pagestyle
@@ -71,6 +70,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{listings}
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{tikz}

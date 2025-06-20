@@ -1,26 +1,26 @@
 # Fdb version 4
-["bibtex build/main"] 1750367560.4888 "build/main.aux" "build/main.bbl" "build/main" 1750367562.92169 0
-  "./references.bib" 1750336760.41931 6114 04cc9e82675cc1ec87629b5c8d4657a5 ""
+["bibtex build/main"] 1750434097.44997 "build/main.aux" "build/main.bbl" "build/main" 1750434407.32238 0
+  "./references.bib" 1750420278.98393 6381 2f7c5e0ace78d5323630a9005924e0d0 ""
   "/usr/local/texlive/2024/texmf-dist/bibtex/bst/biblatex/biblatex.bst" 1678141846 65484 b7949c47a88ed6dca66ebc7a04577312 ""
-  "build/main-blx.bib" 1750367562.28317 343 1611d3bac8f724313c9b8207b0d00714 "xelatex"
-  "build/main.aux" 1750367562.27622 23042 14da53e9e0773b503e3a44b057246a9e "xelatex"
+  "build/main-blx.bib" 1750434406.65748 343 1611d3bac8f724313c9b8207b0d00714 "xelatex"
+  "build/main.aux" 1750434406.64683 25935 0e0d536811fd30387f9d521b15e555d6 "xelatex"
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["makeindex build/main.idx"] 1750348695.81693 "build/main.idx" "build/main.ind" "build/main" 1750367562.92164 0
-  "build/main.idx" 1750367562.28393 2196 3b2c4854a3de135a0fa5244fe6378861 "xelatex"
+["makeindex build/main.idx"] 1750433464.79143 "build/main.idx" "build/main.ind" "build/main" 1750434407.32232 0
+  "build/main.idx" 1750434406.65852 2203 164ba09d4284bd88b2ee9927df16b886 "xelatex"
   (generated)
   "build/main.ilg"
   "build/main.ind"
   (rewritten before read)
-["xdvipdfmx"] 1750367562.5931 "build/main.xdv" "build/main.pdf" "build/main" 1750367562.92368 0
-  "build/main.xdv" 1750367562.28398 137260 d984e0e8aacd62ef7438b57fb46c926e "xelatex"
+["xdvipdfmx"] 1750434406.97541 "build/main.xdv" "build/main.pdf" "build/main" 1750434407.32448 0
+  "build/main.xdv" 1750434406.65861 156888 9899e4eb86b06b41c1b8be6a64372ba4 "xelatex"
   (generated)
   "build/main.pdf"
   (rewritten before read)
-["xelatex"] 1750367560.58533 "/Users/anton/Desktop/rational-concept-analysis/main.tex" "build/main.xdv" "main" 1750367562.92175 0
-  "/Users/anton/Desktop/rational-concept-analysis/main.tex" 1750348693.68909 997 4a293a84bc57499cc1bdf8bf31b98905 ""
+["xelatex"] 1750434404.88063 "/Users/anton/Desktop/rational-concept-analysis/main.tex" "build/main.xdv" "main" 1750434407.32244 0
+  "/Users/anton/Desktop/rational-concept-analysis/main.tex" 1750428230.1346 989 7298b2bfc7c2c047fec52b6c3f136a2c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1246382020 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -257,6 +257,7 @@
   "/usr/local/texlive/2024/texmf-dist/tex/latex/thmtools/thmtools.sty" 1683232183 1913 873bc7fbf18d7dd934dc3a6cc156472e ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/array.sty" 1698869629 12667 e4b5eb11e4b7239e6c8a52bbe074a6c6 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty" 1698869629 10214 547fd4d29642cb7c80bf54b49d447f01 ""
+  "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/tabularx.sty" 1698869629 7147 d45559f8a31b8c53ada0640516660003 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/tools/xspace.sty" 1686341992 4545 9f5ea23ab1c91476c42749893f790666 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/units/nicefrac.sty" 1137111039 4029 0462ee5ab265cf59dc15a41a3b883101 ""
   "/usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
@@ -265,20 +266,23 @@
   "/usr/local/texlive/2024/texmf-var/web2c/xetex/xelatex.fmt" 1736597300 10850178 a6cdf4aa6fdc87b142d7584d5e8d19d3 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "/usr/local/texlive/texmf-local/web2c/texmf.cnf" 1744122474.37654 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "build/main.aux" 1750367562.27622 23042 14da53e9e0773b503e3a44b057246a9e "xelatex"
-  "build/main.bbl" 1750367560.58232 10841 503749289e9d44fe867c58e59e4a165e "bibtex build/main"
-  "build/main.ind" 1750348695.8936 2309 abfeed4166b45d3a4be203b6f1339c53 "makeindex build/main.idx"
-  "build/main.out" 1750367562.28214 3005 3059351389deb66e7785a61a6c013928 "xelatex"
-  "build/main.run.xml" 1750367562.28386 2621 89089336b050790c73a0c5d24c23f5f6 "xelatex"
-  "chapters/Formal Concept Analysis.tex" 1750367431.89458 13768 7aa873f107f5c4f19984786b1d74f193 ""
-  "chapters/Mathematical Preliminaries.tex" 1750149914.19224 36897 826f3de99822473bff539411f3273213 ""
-  "chapters/Non-Monotonic Reasoning.tex" 1750367558.42285 3934 a21aceb4ea68b35c586df7be6d5c5493 ""
+  "build/main.aux" 1750434406.64683 25935 0e0d536811fd30387f9d521b15e555d6 "xelatex"
+  "build/main.bbl" 1750434097.54035 11585 946bae3f560d1ba86488f9fe315fda83 "bibtex build/main"
+  "build/main.ind" 1750433464.86975 2316 ec99f57e3eec86ad0b69c23ba6e763dd "makeindex build/main.idx"
+  "build/main.out" 1750434406.65575 4101 1d3e3bcb4d24da0fa7fa5960dd3ef7a4 "xelatex"
+  "build/main.run.xml" 1750434406.65841 2621 89089336b050790c73a0c5d24c23f5f6 "xelatex"
+  "build/main.toc" 1750434406.65857 2351 05bfbf9df057095ef2762643f3a5bfd5 "xelatex"
+  "chapters/Defeasible Reaosning in FCA.tex" 1745912173.50597 101 03e23d3b59f9d4ca23924bf4c1286df3 ""
+  "chapters/Formal Concept Analysis.tex" 1750425848.71135 13750 95fa4a7ba522a0b8890b1e55dc1b42bf ""
+  "chapters/Mathematical Preliminaries.tex" 1750426693.47909 36933 73dfe66d6c4469f1a011521b678d140d ""
+  "chapters/Non-Monotonic Reasoning.tex" 1750434404.8128 6686 9356dfd631ea655e12be91e4089941a3 ""
+  "chapters/Rational Concepts.tex" 1745912173.50668 61 060e9da0ff1b2449eb883e00acd7e785 ""
   "macros/fca.sty" 1749633157.64235 32453 a3fb8a5df377f37ccf694ca719ba7f5e ""
-  "macros/formal-concept-analysis.tex" 1745912946.07876 530 d23dc972136e2beb30fb3374ba745244 ""
-  "macros/general.tex" 1747665503.08547 113 7e1979bd24a986ad30d0d4fe20def910 ""
+  "macros/formal-concept-analysis.tex" 1750425521.29671 453 7be1b675f6dc2383b37e85c53a7ec50c ""
+  "macros/general.tex" 1750425961.32219 804 d5963fe8477454c9852aae248e8bba56 ""
   "macros/newdrawline.sty" 1749627437.47643 1453 cfae206191dd84c008b39c9afee80f80 ""
-  "macros/thesis.sty" 1750348291.4705 4294 e947237e6a7ab7b6bf57ab0d8e4326b7 ""
-  "main.tex" 1750348693.68909 997 4a293a84bc57499cc1bdf8bf31b98905 ""
+  "macros/thesis.sty" 1750433462.59146 4363 454b25344cbad5385ccc745987fe8a4a ""
+  "main.tex" 1750428230.1346 989 7298b2bfc7c2c047fec52b6c3f136a2c ""
   (generated)
   "build/main-blx.bib"
   "build/main.aux"
@@ -286,5 +290,6 @@
   "build/main.log"
   "build/main.out"
   "build/main.run.xml"
+  "build/main.toc"
   "build/main.xdv"
   (rewritten before read)

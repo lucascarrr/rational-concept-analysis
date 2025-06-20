@@ -1,49 +1,49 @@
-\indexentry{binary relation|hyperpage}{2}
-\indexentry{partial-order|hyperpage}{2}
-\indexentry{partial-order! strict partial-order|hyperpage}{3}
-\indexentry{Hasse diagrams|hyperpage}{3}
-\indexentry{maximum|hyperpage}{3}
-\indexentry{minimum|hyperpage}{3}
-\indexentry{maximal|hyperpage}{3}
-\indexentry{minimal|hyperpage}{3}
-\indexentry{map! order-preserving|hyperpage}{3}
-\indexentry{map! order-embedding|hyperpage}{3}
-\indexentry{map! order-isomorphism|hyperpage}{3}
-\indexentry{order-reversing map|hyperpage}{3}
-\indexentry{upper bound|hyperpage}{4}
-\indexentry{lower bound|hyperpage}{4}
-\indexentry{join|hyperpage}{4}
-\indexentry{meet|hyperpage}{4}
-\indexentry{syntax! propositional logic|hyperpage}{6}
-\indexentry{Atom|hyperpage}{6}
-\indexentry{Propositional atom|hyperpage}{6}
-\indexentry{Boolean operator|hyperpage}{6}
-\indexentry{Boolean operator! and|hyperpage}{6}
-\indexentry{Boolean operator! or|hyperpage}{6}
-\indexentry{Boolean operator! material implication|hyperpage}{6}
-\indexentry{Boolean operator! negation|hyperpage}{6}
-\indexentry{semantics! propositional logic|hyperpage}{6}
-\indexentry{valuations|hyperpage}{6}
-\indexentry{valuations|hyperpage}{7}
-\indexentry{satisfaction! propositional logic|hyperpage}{7}
-\indexentry{model|hyperpage}{7}
-\indexentry{Logical consequence! propositional logic|hyperpage}{7}
-\indexentry{object language|hyperpage}{7}
-\indexentry{metalanguage|hyperpage}{7}
-\indexentry{Deductive system|hyperpage}{8}
-\indexentry{Rule of inference|hyperpage}{8}
-\indexentry{Axiom|hyperpage}{8}
-\indexentry{Deductive system! Hilbert system|hyperpage}{9}
-\indexentry{Axiom scheme|hyperpage}{9}
-\indexentry{Rule of inference! \textit  {modus ponens}|hyperpage}{9}
-\indexentry{Rule of inference! deduction|hyperpage}{9}
-\indexentry{completeness ! propositional logic|hyperpage}{10}
-\indexentry{Genzten systems|hyperpage}{10}
-\indexentry{consequence relations|hyperpage}{10}
-\indexentry{extension|hyperpage}{11}
-\indexentry{intension|hyperpage}{11}
-\indexentry{formal context|hyperpage}{11}
-\indexentry{derivation operators|hyperpage}{12}
-\indexentry{closure operator|hyperpage}{12}
-\indexentry{galois connection|hyperpage}{13}
-\indexentry{formal concept|hyperpage}{13}
+\indexentry{binary relation|hyperpage}{4}
+\indexentry{partial-order|hyperpage}{4}
+\indexentry{partial-order! strict partial-order|hyperpage}{5}
+\indexentry{Hasse diagrams|hyperpage}{5}
+\indexentry{maximum|hyperpage}{5}
+\indexentry{minimum|hyperpage}{5}
+\indexentry{maximal|hyperpage}{5}
+\indexentry{minimal|hyperpage}{5}
+\indexentry{map! order-preserving|hyperpage}{5}
+\indexentry{map! order-embedding|hyperpage}{5}
+\indexentry{map! order-isomorphism|hyperpage}{5}
+\indexentry{order-reversing map|hyperpage}{5}
+\indexentry{upper bound|hyperpage}{6}
+\indexentry{lower bound|hyperpage}{6}
+\indexentry{join|hyperpage}{6}
+\indexentry{meet|hyperpage}{6}
+\indexentry{syntax! propositional logic|hyperpage}{8}
+\indexentry{Atom|hyperpage}{8}
+\indexentry{Propositional atom|hyperpage}{8}
+\indexentry{Boolean operator|hyperpage}{8}
+\indexentry{Boolean operator! and|hyperpage}{8}
+\indexentry{Boolean operator! or|hyperpage}{8}
+\indexentry{Boolean operator! material implication|hyperpage}{8}
+\indexentry{Boolean operator! negation|hyperpage}{8}
+\indexentry{semantics! propositional logic|hyperpage}{8}
+\indexentry{valuations|hyperpage}{8}
+\indexentry{valuations|hyperpage}{9}
+\indexentry{satisfaction! propositional logic|hyperpage}{9}
+\indexentry{model|hyperpage}{9}
+\indexentry{Logical consequence! propositional logic|hyperpage}{9}
+\indexentry{object language|hyperpage}{9}
+\indexentry{metalanguage|hyperpage}{9}
+\indexentry{Deductive system|hyperpage}{10}
+\indexentry{Rule of inference|hyperpage}{10}
+\indexentry{Axiom|hyperpage}{10}
+\indexentry{Deductive system! Hilbert system|hyperpage}{11}
+\indexentry{Axiom scheme|hyperpage}{11}
+\indexentry{Rule of inference! \textit  {modus ponens}|hyperpage}{11}
+\indexentry{Rule of inference! deduction|hyperpage}{12}
+\indexentry{completeness ! propositional logic|hyperpage}{12}
+\indexentry{Genzten systems|hyperpage}{12}
+\indexentry{consequence relations|hyperpage}{12}
+\indexentry{extension|hyperpage}{13}
+\indexentry{intension|hyperpage}{13}
+\indexentry{formal context|hyperpage}{13}
+\indexentry{derivation operators|hyperpage}{14}
+\indexentry{closure operator|hyperpage}{14}
+\indexentry{galois connection|hyperpage}{15}
+\indexentry{formal concept|hyperpage}{15}

@@ -1,11 +1,13 @@
-\chapter{Non-Monotonic Reasoning}
-\label{chapter:non-monotonic-reasoning}
+\chapter{Defeasible Reasoning}
+\label{chapter:defeasible-reasoning}
 
-The study of non-monotonic logic has benefitted from decades of interest, and several distinct formalisms. The broad aim of a non-monotonic system is to expand inferences, beyond the classical, to more credulous ones. A more \say{credulous} inference may be made by assuming something something as false when fails to be proven, assuming something by default, or by making a \textit{defeasible} inference, which one is willing to retract later on \cite{shohamSemanticApproach}. This work is interested in the latter formalism, as it benefits from a well developed model theory which lies in harmony with notions central to FCA.
+Non-monotonicity in logical systems has been the focus of study for decades, and several distinct formalisms have been developed. The motivation is to expand the inference power of logical systems, beyond the classical, to a more credulous one. This work is interested primarily in non-monotonic reasoning in the style of preferential semantics due to Shoham \cite{shohamSemanticApproach}, which benefits from a well developed model theory for which there is an intuitive analogue to notinos central to FCA. In particular, we are interested in the framework put forward by Kraus, Lehmann, and Magidor \cite{kraus1990nonmonotonic,lehmann1992what}, commonly initalised as the `KLM-framework'.
 
-\section{Background}
+In the proceeding, we provide a background on non-monotonic reasoning in general, before introducing the KLM framework. We assume all the same conventions introduced in \Cref{section:propositional-logic} for the technical discussions in this chapter.
+\section{Background on Non-monotonic Reasoning}
 \label{section:nmr-background}
 Near the end of the previous chapter, the matter of consequence was discussed in a very formal sense. It is perhaps helpful to distinguish this subject---classical consequence---from the common concept, as the former yields some surprising results which do not appear at all congruent with how a person, or otherwise intelligent agent should reason \cite{tarski1936consequence, kraus1990nonmonotonic}. For a demonstration of a result which may be \textit{surprising}, consider the following propositions:
+
 \begin{enumerate}
      \item $\texttt{human} \rightarrow \texttt{chronological time}$
      \item $\texttt{soldier} \rightarrow \texttt{human}$
@@ -20,7 +22,36 @@ And, by the principle of explosion, discussed in \Cref{subsection:logical-conseq
 
 This property of classical logic---that adding new information never results in retraction of pre-existing knowledge---is called monotonicity. Monotonicity requires that when we make a claim like \say{humans experience time chronologically}, we must be absolutely sure of ourselves, so as to never worry about needing to retract an inference. Of course, this is too strict a requirement as we cannot determine for all future, present, and past humans if this were the case. If we remain in the classical realm, it seems our only options are to abandon our original claim or risk explosion.
 
-At this point it is a good idea to provide some clarification on how we might formally approach this issue. Continuing with the same example---and continuing to allow ourselves to entertain the idea of experiencing non-chronological time---it would certainly be agreed that typically soldiers are human, and also that typically humans experience time chronologically. To resolve that Billy Pilgrim is a soldier, and therefore a human, who does not experience chronological time, we need only to point out that he is an atypical human. The next section will expand on this idea, describing formally what is known as a \textit{preferential} approach to reasoning.
+At this point it is a good idea to provide some clarification on how we might formally approach this issue. Continuing with the same example---and continuing to allow ourselves to entertain the idea of experiencing non-chronological time---it would certainly be agreed that typically soldiers are human, and also that typically humans experience time chronologically. To resolve that Billy Pilgrim is a soldier, and therefore a human, who does not experience chronological time, we need only to point out that he is an atypical human.
+
+To make the previous paragraph more formal, we remind the reader of the discussion held around \Cref{definition:logical-consequence}: A formula $\phi$ is a logical consequence of a set $\Gamma$ thereof if every model of $\Gamma$ is also a model of $\phi$. Put differently, there is no valuation (or, possible world) where $\Gamma$ is true and $\phi$ is false. It follows directly that $\phi$ remains a logical consequence of $\Gamma \cup \{\psi\}$, since $\Gamma$ is true in any world where $\Gamma \cup \{\psi\}$ is true.
+
+It was pointed out by Shoham \cite{shohamSemanticApproach} that we can restrict semantic consideration to a priveledged subset of models which are deemed ``preferable''; we call these selected models the ``minimal'' models (a choice which will make more sense as this chapter progresses).
 
 \section{Preferential Reasoning}
 \label{section:preferential-reasoning}
+The KLM framework for non-monotonic reasoning was initially described by a collection of consequence relations satisfying certain properties---frequently called the \textit{rationality postulates}---with each system in the collection being progressively stronger than its predecessor. A consequence relation in the KLM framework is denoted with a `$\twiddle$' rather than the usual `$\vdash$', which we call `twiddle'. Then, $\phi \twiddle \psi$ should be understood to say \say{if $\phi$, then typically also $\psi$}. Such a pair is called a \textit{conditional assertion}; as we may expect $\phi \twiddle \psi$ means $(\phi,\psi) \in \; \twiddle$ and $\phi \ntwiddle \psi$ means $(\phi, \psi) \not \in \; \twiddle$.
+
+We may, at times of potential confusion, use a subscript to disambiguate which consequence relation is being referred to, and so $\twiddle_C$ would refer to a cumulative relation, as defined below.
+
+\subsection{System C}
+\label{subsection:system-c}
+\textit{Cumulative} consequence relations (shortened to System C) represent the weakest of the systems in the KLM framework, and accordingly present a natural starting point \cite{kraus1990nonmonotonic}.
+
+\begin{definition}
+\label{definition:cumulative-consequence-relation}
+The consequence relation $\twiddle$ is a \emph{cumulative consequence relation} if and only if it satisfies the properties of \emph{Reflexivity, Left Logical Equivalence, Right Weakening, Cut} and \emph{Cautious Monotony}.
+\end{definition}
+
+\begin{align}
+\text{(Reflexivity)} & \quad \alpha \twiddle \alpha
+\end{align}
+
+
+\begin{align}
+\text{(Left Logical Equivalence)} & \quad \alpha \leftrightarrow \beta \twiddle \alpha
+\end{align}
+
+
+\subsection{System P}
+\label{subsection:system-P}

@@ -6,7 +6,7 @@
 \section{Basic Notions in Formal Concept Analysis}
 \label{section:basic-notions}
 
-The starting point in FCA is a structure called a \textit{formal context}, or simply a \textit{context}. A context represents the relational aspect between the extensional and intensional sets. 
+The starting point in FCA is a structure called a \textit{formal context}, or simply a \textit{context}. A context represents the relational aspect between the extensional and intensional sets.
 %
 \begin{definition}
 \label{definition:formal-context} \index{formal context}
@@ -15,15 +15,16 @@ The starting point in FCA is a structure called a \textit{formal context}, or si
 %
 We regard the set $G$ of objects as being the extensional dimension of the context, while the set $M$ of attributes is intensional. Although, there is no strict requirement around what these sets are made up of, or that they be distinct---it is perfectly fine to have a context where $G$ and $M$ are the same sets.
 
-It should be noted that, while the presence of an object–attribute pair $(g,m)$ in the incidence relation is interpreted as the object having the respective attribute, FCA is concerned with only \textit{positive} information, and so the absence of a pair in the relation is not usually interpreted to mean the object has the negation of the attribute. 
+It should be noted that, while the presence of an object–attribute pair $(g,m)$ in the incidence relation is interpreted as the object having the respective attribute, FCA is concerned with only \textit{positive} information, and so the absence of a pair in the relation is not usually interpreted to mean the object has the negation of the attribute.
 
-When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table like \Cref{context:formal-context-group-structures} where each object is represented by a row in the table, each attribute by a column, and each element in the incidence relation is marked with an `$\times$' at the appropriate position \cite[pp. 17]{ganter1999formal}. Given a context is presented in this form, it is easy to identify all the attributes that a particular object satisfies: one need only scan across the respective row and note where the marks appear. The resulting set of attributes is called the \textit{object's intent}. The dual notion of an \textit{attribute extent} can be found by traversing down a column in the table. 
+When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table like \Cref{context:formal-context-group-structures} where each object is represented by a row in the table, each attribute by a column, and each element in the incidence relation is marked with an `$\times$' at the appropriate position \cite[pp. 17]{ganter1999formal}. Given a context is presented in this form, it is easy to identify all the attributes that a particular object satisfies: one need only scan across the respective row and note where the marks appear. The resulting set of attributes is called the \textit{object's intent}. The dual notion of an \textit{attribute extent} can be found by traversing down a column in the table.
 \begin{example}
   \label{example:first-example-formal-context}
   Finite formal contexts of a reasonable size can be described entirely by a tabular representation. Each object corresponds to a row, and each attribute to a column.
 
   \begin{figure}[H]
     \centering
+    \small
     \begin{cxt}
          \cxtName{\textbf{\texttt{Algebraic Structures}}}
       \att{\texttt{closure}} \att{\texttt{associativity}} \att{\texttt{identity}} \att{\texttt{divisibility}} \att{\texttt{commutativity}}
@@ -46,7 +47,7 @@ When the cardinalities of $G$ and $M$ are small, contexts may be represented as 
 The efficacy of this approach obviously diminishes when we are interested in non-trivial contexts, or determining the intents or extents for sets of objects or attributes, respectively. We can instead formalise the procedure by defining \textit{derivation operators}:
 
 \begin{definition}
-     \label{definition:derivation-operators} \index{derivation operators} 
+     \label{definition:derivation-operators} \index{derivation operators}
   Given a formal context $\fcontext$, the \textit{derivation operators} are two order-reversing maps $(\cdot)^\uparrow : 2^G \to 2^M$ and $(\cdot)^\downarrow : 2^M \to 2^G$ where the order is given by subset inclusion. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
   \begin{align*}
        A^\uparrow & \coloneqq \{m \in M \mid \forall g \in A, \; (g,m) \in I\} \\
@@ -54,7 +55,7 @@ The efficacy of this approach obviously diminishes when we are interested in non
   \end{align*}
 \end{definition}
 
-It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^\uparrow$ and $B^\downarrow$ would become $A'$ and $B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity while maintaining pleasing notation. 
+It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^\uparrow$ and $B^\downarrow$ would become $A'$ and $B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity while maintaining pleasing notation.
 
 The derivation operators provide a clear way of describing, for a given set $A\subseteq G$ of objects, the set of attributes which every object in $A$ satisfies, denoted $A^\uparrow$. As an illustration, given the set of objects $\{\texttt{semigroup, monoid}\}$ from \Cref{context:formal-context-group-structures}, its derivation would be $\{\texttt{closure, associativity}\}$. It is quite easy to spot that this is just the intersection of the object intents of \texttt{semigroup} and \texttt{monoid}.
 
@@ -64,7 +65,7 @@ Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}
   & \text{(extensivity)}  & A \subseteq A^{\uparrow \downarrow} \\
   & \text{(idempotency)}  & A^{\uparrow \downarrow} = (A^{\uparrow \downarrow})^{\uparrow \downarrow}
 \end{align}
-for all $A, A_1 \subseteq G$. Thus, $(\cdot)^{\uparrow \downarrow}$ describes a closure operator on the powerset $2^G$ of objects. The dual notion holds for attributes, and $(\cdot)^{\downarrow \uparrow}$ describes a closure operator on $2^M$ \cite[pp. 18]{ganter1999formal}. 
+for all $A, A_1 \subseteq G$. Thus, $(\cdot)^{\uparrow \downarrow}$ describes a closure operator on the powerset $2^G$ of objects. The dual notion holds for attributes, and $(\cdot)^{\downarrow \uparrow}$ describes a closure operator on $2^M$ \cite[pp. 18]{ganter1999formal}.
 
 \begin{proposition}
   \label{proposition:properties-about-derivation-operators}
@@ -91,28 +92,28 @@ for all $A, A_1 \subseteq G$. Thus, $(\cdot)^{\uparrow \downarrow}$ describes a 
 
 The first point in \Cref{proposition:properties-about-derivation-operators} describes the process where as the size of a set of objects grows, the number of attributes that all objects in the set satisfy is reduced, and vice versa.
 
-Let us temporarily speak imprecisely and consider the fairly general concept of a `human'. The size of this concept's extension---those things which may be considered as instance of `human'---is quite large. Consider another concept, `optometrist'. The extension of this latter concept is, presumably, considerably smaller than the former (and, we can be reasonably sure it would constitute a strict subset). It is also quite clear that the intension---those properties we associate with optometrists---would be larger (a superset) than those associated with `human'. 
+Let us temporarily speak imprecisely and consider the fairly general concept of a `human'. The size of this concept's extension---those things which may be considered as instance of `human'---is quite large. Consider another concept, `optometrist'. The extension of this latter concept is, presumably, considerably smaller than the former (and, we can be reasonably sure it would constitute a strict subset). It is also quite clear that the intension---those properties we associate with optometrists---would be larger (a superset) than those associated with `human'.
 
-We have just, quite informally, described what constitutes a \textit{Galois connection} between the sets $(2^G, \subseteq)$ and $(2^M, \subseteq)$ induced by the two derivation operators. 
+We have just, quite informally, described what constitutes a \textit{Galois connection} between the sets $(2^G, \subseteq)$ and $(2^M, \subseteq)$ induced by the two derivation operators.
 
 \begin{definition}
   \label{definition:galois-connection} \index{galois connection}
   Given two partially ordered sets $\mathbf{X}$ and $\mathbf{Y}$, an \textit{antitone Galois connection} is a pair of functions $f:\mathbf{X}\!\to\!\mathbf{Y}$ and $g:\mathbf{Y}\!\to\!\mathbf{X}$ such that $y \preceq_Y f(x)$ if and only if $x \preceq_X g(y)$ for all $x\in X$ and $y\in Y$.
 \end{definition}
 
-With the above relationship between sets of objets and attributes in mind, it is appropriate to introduce a \textit{formal concept}. 
+With the above relationship between sets of objets and attributes in mind, it is appropriate to introduce a \textit{formal concept}.
 
 \begin{definition}
   \label{definition:formal-concept} \index{formal concept}
   A \textit{formal concept} of a formal context $\GMI$ is a pair $(A,B)$ of subsets $A \subseteq G$ and $B \subseteq M$ that satisfies $A^\uparrow = B$ and $B^\downarrow = A$. Then, we say that $A$ is the concept \textit{extent} and that $B$ is the \textit{intent}. We write $\B$ to denote the set of all concepts of $\fcontext$.
 \end{definition}
 
-We can prescribe a rather intuitive ordering over concepts induced by the \textit{subconcept–superconcept} relation. If $(A_0, B_0)$ and $(A_1, B_1)$ are two concepts in a context, then $(A_0, B_0)$ is a \textit{subconcept} of $(A_1, B_1)$ if and only if $A_0 \subseteq A_1$, equivalently if $B_1 \subseteq B_0$. Otherwise, $(A_0, B_0)$ is a \textit{superconcept} of $(A_1, B_1)$. We denote set of all concepts ordered in this way by $\CLGMI$, and call this set the \textit{concept lattice} of $\GMI$. 
+We can prescribe a rather intuitive ordering over concepts induced by the \textit{subconcept–superconcept} relation. If $(A_0, B_0)$ and $(A_1, B_1)$ are two concepts in a context, then $(A_0, B_0)$ is a \textit{subconcept} of $(A_1, B_1)$ if and only if $A_0 \subseteq A_1$, equivalently if $B_1 \subseteq B_0$. Otherwise, $(A_0, B_0)$ is a \textit{superconcept} of $(A_1, B_1)$. We denote set of all concepts ordered in this way by $\CLGMI$, and call this set the \textit{concept lattice} of $\GMI$.
 
 \subsection{Attribute Implications}
 \label{subsection:attribute-implications}
 
-In FCA, attribute implications represent dependencies that exist between attributes in a context. If $M$ is a non-empty set of attributes with $A, B \subseteq M$, then we denote an attribute implication over $M$ as $A \rightarrow B$. 
+In FCA, attribute implications represent dependencies that exist between attributes in a context. If $M$ is a non-empty set of attributes with $A, B \subseteq M$, then we denote an attribute implication over $M$ as $A \rightarrow B$.
 
 \begin{definition}
      \label{definition:attribute-implication}
@@ -122,7 +123,7 @@ In FCA, attribute implications represent dependencies that exist between attribu
 
 
 
-If we examine the context in \Cref{context:voting-records-small} it is apparent that every representative who voted in favour of the proposed crime bill also voted in favour of the immigration bill; we write this dependency as $\texttt{crime} \rightarrow \texttt{immigration}$. 
+If we examine the context in \Cref{context:voting-records-small} it is apparent that every representative who voted in favour of the proposed crime bill also voted in favour of the immigration bill; we write this dependency as $\texttt{crime} \rightarrow \texttt{immigration}$.
 
 
 
@@ -211,12 +212,8 @@ If we examine the context in \Cref{context:voting-records-small} it is apparent 
   \caption{The concept lattice associated with the formal context in \Cref{context:formal-context-group-structures}}
 \end{figure}
 
-
-
-
 \section{Contextual Attribute Logic}
 \label{section:contextual-attribute-logic}
 
-The logic that underlies FCA 
+The logic that underlies FCA
 \cite{ganter2025language, ganter1999contextual}
-

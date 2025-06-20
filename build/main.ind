@@ -15,7 +15,7 @@
 
   \indexspace
 
-  \item closure operator, \hyperpage{14}
+  \item closure operator, \hyperpage{12}
   \item completeness 
     \subitem  propositional logic, \hyperpage{10}
   \item consequence relations, \hyperpage{10}
@@ -24,20 +24,20 @@
 
   \item Deductive system, \hyperpage{8}
     \subitem  Hilbert system, \hyperpage{9}
-  \item derivation operators, \hyperpage{14}
+  \item derivation operators, \hyperpage{12}
 
   \indexspace
 
-  \item extension, \hyperpage{13}
+  \item extension, \hyperpage{11}
 
   \indexspace
 
-  \item formal concept, \hyperpage{15}
-  \item formal context, \hyperpage{13}
+  \item formal concept, \hyperpage{13}
+  \item formal context, \hyperpage{11}
 
   \indexspace
 
-  \item galois connection, \hyperpage{15}
+  \item galois connection, \hyperpage{13}
   \item Genzten systems, \hyperpage{10}
 
   \indexspace
@@ -46,17 +46,17 @@
 
   \indexspace
 
-  \item intension, \hyperpage{13}
+  \item intension, \hyperpage{11}
 
   \indexspace
 
-  \item join, \hyperpage{3}
+  \item join, \hyperpage{4}
 
   \indexspace
 
   \item Logical consequence
     \subitem  propositional logic, \hyperpage{7}
-  \item lower bound, \hyperpage{3}
+  \item lower bound, \hyperpage{4}
 
   \indexspace
 
@@ -66,7 +66,7 @@
     \subitem  order-preserving, \hyperpage{3}
   \item maximal, \hyperpage{3}
   \item maximum, \hyperpage{3}
-  \item meet, \hyperpage{3}
+  \item meet, \hyperpage{4}
   \item metalanguage, \hyperpage{7}
   \item minimal, \hyperpage{3}
   \item minimum, \hyperpage{3}
@@ -100,10 +100,10 @@
 
   \indexspace
 
-  \item upper bound, \hyperpage{3}
+  \item upper bound, \hyperpage{4}
 
   \indexspace
 
-  \item valuations, \hyperpage{6}
+  \item valuations, \hyperpage{6, 7}
 
 \end{theindex}

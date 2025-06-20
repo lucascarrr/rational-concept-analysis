@@ -10,10 +10,10 @@
 \indexentry{map! order-embedding|hyperpage}{3}
 \indexentry{map! order-isomorphism|hyperpage}{3}
 \indexentry{order-reversing map|hyperpage}{3}
-\indexentry{upper bound|hyperpage}{3}
-\indexentry{lower bound|hyperpage}{3}
-\indexentry{join|hyperpage}{3}
-\indexentry{meet|hyperpage}{3}
+\indexentry{upper bound|hyperpage}{4}
+\indexentry{lower bound|hyperpage}{4}
+\indexentry{join|hyperpage}{4}
+\indexentry{meet|hyperpage}{4}
 \indexentry{syntax! propositional logic|hyperpage}{6}
 \indexentry{Atom|hyperpage}{6}
 \indexentry{Propositional atom|hyperpage}{6}
@@ -24,7 +24,7 @@
 \indexentry{Boolean operator! negation|hyperpage}{6}
 \indexentry{semantics! propositional logic|hyperpage}{6}
 \indexentry{valuations|hyperpage}{6}
-\indexentry{valuations|hyperpage}{6}
+\indexentry{valuations|hyperpage}{7}
 \indexentry{satisfaction! propositional logic|hyperpage}{7}
 \indexentry{model|hyperpage}{7}
 \indexentry{Logical consequence! propositional logic|hyperpage}{7}
@@ -40,10 +40,10 @@
 \indexentry{completeness ! propositional logic|hyperpage}{10}
 \indexentry{Genzten systems|hyperpage}{10}
 \indexentry{consequence relations|hyperpage}{10}
-\indexentry{extension|hyperpage}{13}
-\indexentry{intension|hyperpage}{13}
-\indexentry{formal context|hyperpage}{13}
-\indexentry{derivation operators|hyperpage}{14}
-\indexentry{closure operator|hyperpage}{14}
-\indexentry{galois connection|hyperpage}{15}
-\indexentry{formal concept|hyperpage}{15}
+\indexentry{extension|hyperpage}{11}
+\indexentry{intension|hyperpage}{11}
+\indexentry{formal context|hyperpage}{11}
+\indexentry{derivation operators|hyperpage}{12}
+\indexentry{closure operator|hyperpage}{12}
+\indexentry{galois connection|hyperpage}{13}
+\indexentry{formal concept|hyperpage}{13}

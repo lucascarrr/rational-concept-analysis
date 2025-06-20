@@ -1,28 +1,26 @@
 \chapter{Non-Monotonic Reasoning}
 \label{chapter:non-monotonic-reasoning}
 
+The study of non-monotonic logic has benefitted from decades of interest, and several distinct formalisms. The broad aim of a non-monotonic system is to expand inferences, beyond the classical, to more credulous ones. A more \say{credulous} inference may be made by assuming something something as false when fails to be proven, assuming something by default, or by making a \textit{defeasible} inference, which one is willing to retract later on \cite{shohamSemanticApproach}. This work is interested in the latter formalism, as it benefits from a well developed model theory which lies in harmony with notions central to FCA.
+
 \section{Background}
 \label{section:nmr-background}
-Near the end of the previous chapter, the matter of consequence was discussed in a very formal sense. It is perhaps helpful to distinguish this subject---the matter of classical consequence---from the common concept, as the former yields some surprising results which do not appear at all congruent with how a person, or otherwise intelligent agent should reason \cite{turquette1957logic, kraus1990nonmonotonic}.
-
-For a demonstration of a result which may be \textit{surprising}, consider the following propositions: 
+Near the end of the previous chapter, the matter of consequence was discussed in a very formal sense. It is perhaps helpful to distinguish this subject---classical consequence---from the common concept, as the former yields some surprising results which do not appear at all congruent with how a person, or otherwise intelligent agent should reason \cite{tarski1936consequence, kraus1990nonmonotonic}. For a demonstration of a result which may be \textit{surprising}, consider the following propositions:
 \begin{enumerate}
      \item $\texttt{human} \rightarrow \texttt{chronological time}$
      \item $\texttt{soldier} \rightarrow \texttt{human}$
      \item $\texttt{billy pilgrim} \rightarrow \neg \texttt{chronological time}$
 \end{enumerate}
-If, upon knowing these propositions, we were to encounter an individual in fatigues we might find it sensible---by propositions 2 and 1---to infer that the individual experienced time chronologically. If we were to later learn that the individual was, in fact, Billy Pilgrim, given proposition 3, we should like to retract our prior inference, replacing it with the knowledge that the individual does not experience time chronologically. 
 
-This is not, however, what would happen: when we see the that the individual is a soldier, the possible worlds satisfying our knowledge are reduced to the single model: $\{\overline{b},c,h,s\}$ (where $b$: \texttt{billy pilgrim}, $c$: \texttt{chronological time}. $h$: \texttt{human}, and $s$: \texttt{soldier}). Should we later learn that the individual is indeed billy pilgrim, our theory becomes inconsistent. 
+Knowing these propositions, if we were to encounter an individual in fatigues we might find it sensible---by propositions 2 and 1---to infer that the individual experienced time chronologically. If we were to later learn that the individual was, in fact, Billy Pilgrim, given proposition 3, we should like to retract our prior inference, replacing it with the knowledge that the individual does not experience time chronologically.
+
+Such recourse is not, however, possible: When we see the that the individual is a soldier, the possible worlds satisfying our knowledge are reduced to the single model: $\{\overline{b},c,h,s\}$ (where $b$: \texttt{billy pilgrim}, $c$: \texttt{chronological time}. $h$: \texttt{human}, and $s$: \texttt{soldier}). Should we later learn that the individual is indeed Billy Pilgrim, the theory becomes inconsistent.
 %TODO: Add section in preliminaries about principle of explosion
-And, by the principle of explosion, discussed in \Cref{subsection:logical-consequence}, our theory now entails that the individual experiences time both chronologically and non-chronologically. 
+And, by the principle of explosion, discussed in \Cref{subsection:logical-consequence}, our theory now entails that the individual experiences time both chronologically and non-chronologically.
 
-This property of classical logic---that adding new information never results in retraction of pre-existing knowledge---monotonicity. A consequence being that, should we like to make a claim like \say{humans experience time chronologically}, we should be absolutely sure of ourselves, so as to never worry about needing to retract an inference. Of course, this is too strict a requirement as we cannot determine for all future, present, and past humans if this were the case. If we remain in the classical realm, our only option is to abandon our original claim. 
+This property of classical logic---that adding new information never results in retraction of pre-existing knowledge---is called monotonicity. Monotonicity requires that when we make a claim like \say{humans experience time chronologically}, we must be absolutely sure of ourselves, so as to never worry about needing to retract an inference. Of course, this is too strict a requirement as we cannot determine for all future, present, and past humans if this were the case. If we remain in the classical realm, it seems our only options are to abandon our original claim or risk explosion.
 
-It quite obvious that we would answer the question of whether this constitutes a reasonable response in the negative. For most humans do indeed experience time chronologically; Billy Pilgrim is merely an \textit{exceptional} human.
+At this point it is a good idea to provide some clarification on how we might formally approach this issue. Continuing with the same example---and continuing to allow ourselves to entertain the idea of experiencing non-chronological time---it would certainly be agreed that typically soldiers are human, and also that typically humans experience time chronologically. To resolve that Billy Pilgrim is a soldier, and therefore a human, who does not experience chronological time, we need only to point out that he is an atypical human. The next section will expand on this idea, describing formally what is known as a \textit{preferential} approach to reasoning.
 
-\section{Preferential Consequence}
-
-
-\section{Rational Consequence}
-
+\section{Preferential Reasoning}
+\label{section:preferential-reasoning}

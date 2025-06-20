@@ -5,7 +5,6 @@
 % --- Subfile support ---
 \usepackage{subfiles}
 
-
 \input{macros/formal-concept-analysis.tex}
 \input{macros/general.tex}
 \input{macros/fca.sty}
@@ -19,13 +18,8 @@
 % --- XeLaTeX / LuaLaTeX Required ---
 %\RequirePackage{fontspec}
 %\setmainfont{Georgia}
-%\setmonofont{Inconsolata}[Scale=0.85]
 \usepackage{stix2}
-%\usepackage{fourier}
-%\usepackage{libertinus}
-%\usepackage[scaled=0.75]{beramono}
-%\usepackage{unicode-math}
-%\setmathfont{STIX Two Math}  % Recommended math font with wide symbol support
+%\setmonofont{Inconsolata}[Scale=0.85]
 
 % --- Geometry and Spacing ---
 \usepackage[a4paper,margin=1in]{geometry}
@@ -47,6 +41,9 @@
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
+\usepackage{enumitem}
+\setlist[itemize]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
+\setlist[enumerate]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
 
 % --- Math and theorem environments ---
 \usepackage{amsmath,amsthm}     % Keep structural math packages
@@ -85,13 +82,12 @@
 \usepackage{url}
 \crefname{figure}{figure}{figures}
 \Crefname{figure}{Figure}{Figures}
-\crefname{subfigure}{sub-figure}{sub-figures}
-\Crefname{subfigure}{Sub-figure}{Sub-figures}
-\crefname{section}{\S}{\S}
-\Crefname{section}{\S}{\S}
-
-\crefname{subsection}{sub-section}{Sub-sections}
-\Crefname{subsection}{Sub-section}{Sub-sections}
+\crefname{subfigure}{subfigure}{subfigures}
+\Crefname{subfigure}{Subfigure}{Subfigures}
+\crefname{section}{section}{sections}
+\Crefname{section}{Section}{Sections}
+\crefname{subsection}{subsection}{Subsections}
+\Crefname{subsection}{Subsection}{Subsections}
 % --- Bibliography ---
 \usepackage{makeidx}
 \usepackage{csquotes}

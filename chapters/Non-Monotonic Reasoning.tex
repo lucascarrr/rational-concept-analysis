@@ -1,57 +1,153 @@
 \chapter{Defeasible Reasoning}
 \label{chapter:defeasible-reasoning}
 
-Non-monotonicity in logical systems has been the focus of study for decades, and several distinct formalisms have been developed. The motivation is to expand the inference power of logical systems, beyond the classical, to a more credulous one. This work is interested primarily in non-monotonic reasoning in the style of preferential semantics due to Shoham \cite{shohamSemanticApproach}, which benefits from a well developed model theory for which there is an intuitive analogue to notinos central to FCA. In particular, we are interested in the framework put forward by Kraus, Lehmann, and Magidor \cite{kraus1990nonmonotonic,lehmann1992what}, commonly initalised as the `KLM-framework'.
+Non-monotonicity in logical systems has been the focus of study for decades, and several distinct formalisms have been developed. The motivation is to expand the inference power beyond that of the classical, to a more credulous one. This work is primarily interested in non-monotonic reasoning following the preferential semantics introduced by Shoham \cite{shohamSemanticApproach}, for which there is a well-developed model theory which further benefits from an obvious analogue to notions central to FCA. In particular, we are interested in the framework put forward by Kraus, Lehmann, and Magidor \cite{kraus1990nonmonotonic,lehmann1992what}, frequently initialised to the `KLM framework'.
 
-In the proceeding, we provide a background on non-monotonic reasoning in general, before introducing the KLM framework. We assume all the same conventions introduced in \Cref{section:propositional-logic} for the technical discussions in this chapter.
+In the proceeding, we provide a background on non-monotonic reasoning in general, before introducing the KLM framework. We assume all the same conventions introduced in \Cref{section:propositional-logic} for the technical discussions which occur in this chapter.
+
 \section{Background on Non-monotonic Reasoning}
 \label{section:nmr-background}
-Near the end of the previous chapter, the matter of consequence was discussed in a very formal sense. It is perhaps helpful to distinguish this subject---classical consequence---from the common concept, as the former yields some surprising results which do not appear at all congruent with how a person, or otherwise intelligent agent should reason \cite{tarski1936consequence, kraus1990nonmonotonic}. For a demonstration of a result which may be \textit{surprising}, consider the following propositions:
-
+Near the end of the previous chapter, the matter of consequence was discussed in a very formal sense. It is perhaps helpful to distinguish this subject---classical consequence---from the common concept, as the former yields some surprising results which do not appear at all congruent with how a person, or otherwise intelligent agent should reason \cite{tarski1936consequence, kraus1990nonmonotonic}. For a demonstration of a result which may be \textit{surprising} in this way, consider the following propositions:
+\vspace{1em}
 \begin{enumerate}
      \item $\texttt{human} \rightarrow \texttt{chronological time}$
      \item $\texttt{soldier} \rightarrow \texttt{human}$
      \item $\texttt{billy pilgrim} \rightarrow \neg \texttt{chronological time}$
 \end{enumerate}
+\vspace{1em}
 
 Knowing these propositions, if we were to encounter an individual in fatigues we might find it sensible---by propositions 2 and 1---to infer that the individual experienced time chronologically. If we were to later learn that the individual was, in fact, Billy Pilgrim, given proposition 3, we should like to retract our prior inference, replacing it with the knowledge that the individual does not experience time chronologically.
 
-Such recourse is not, however, possible: When we see the that the individual is a soldier, the possible worlds satisfying our knowledge are reduced to the single model: $\{\overline{b},c,h,s\}$ (where $b$: \texttt{billy pilgrim}, $c$: \texttt{chronological time}. $h$: \texttt{human}, and $s$: \texttt{soldier}). Should we later learn that the individual is indeed Billy Pilgrim, the theory becomes inconsistent.
+Such recourse is not, as it stands, possible: When we see the that the individual is a soldier, the possible worlds satisfying our knowledge are reduced to the single model: $\{\overline{b},c,h,s\}$ (where $b$: \texttt{billy pilgrim}, $c$: \texttt{chronological time}. $h$: \texttt{human}, and $s$: \texttt{soldier}). Should we later learn that the individual is indeed Billy Pilgrim, the theory becomes inconsistent.
 %TODO: Add section in preliminaries about principle of explosion
-And, by the principle of explosion, discussed in \Cref{subsection:logical-consequence}, our theory now entails that the individual experiences time both chronologically and non-chronologically.
+And, by the principle of explosion, discussed in \Cref{subsection:logical-consequence}, our theory now entails that the individual experiences time both chronologically and non-chronologically; indeed our theory entails everything and is accordingly worthless.
 
-This property of classical logic---that adding new information never results in retraction of pre-existing knowledge---is called monotonicity. Monotonicity requires that when we make a claim like \say{humans experience time chronologically}, we must be absolutely sure of ourselves, so as to never worry about needing to retract an inference. Of course, this is too strict a requirement as we cannot determine for all future, present, and past humans if this were the case. If we remain in the classical realm, it seems our only options are to abandon our original claim or risk explosion.
+This property of classical logic---that adding new information never results in retraction of pre-existing knowledge---is called monotonicity. Monotonicity requires that when we make a claim like \say{humans experience time chronologically}, we must be absolutely sure of ourselves, so as to never worry about needing to retract an inference. This is, of course, too strict a requirement as we cannot determine for all future, present, and past humans if it were the case that they experienced time chronologically. If we remain in the classical realm, it seems our only options are to abandon our original claim or risk explosion.
 
-At this point it is a good idea to provide some clarification on how we might formally approach this issue. Continuing with the same example---and continuing to allow ourselves to entertain the idea of experiencing non-chronological time---it would certainly be agreed that typically soldiers are human, and also that typically humans experience time chronologically. To resolve that Billy Pilgrim is a soldier, and therefore a human, who does not experience chronological time, we need only to point out that he is an atypical human.
+At this point it is a good idea to provide some clarification on how we might begin to approach this issue. Continuing with the same example---and continuing to allow ourselves to entertain the possibility of experiencing non-chronological time---it would certainly be agreed that typically soldiers are human, and also that typically humans experience time chronologically. To resolve that Billy Pilgrim is a soldier, and therefore a human, who does not experience chronological time, we need only to point out that he is an atypical human.
 
 To make the previous paragraph more formal, we remind the reader of the discussion held around \Cref{definition:logical-consequence}: A formula $\phi$ is a logical consequence of a set $\Gamma$ thereof if every model of $\Gamma$ is also a model of $\phi$. Put differently, there is no valuation (or, possible world) where $\Gamma$ is true and $\phi$ is false. It follows directly that $\phi$ remains a logical consequence of $\Gamma \cup \{\psi\}$, since $\Gamma$ is true in any world where $\Gamma \cup \{\psi\}$ is true.
 
-It was pointed out by Shoham \cite{shohamSemanticApproach} that we can restrict semantic consideration to a priveledged subset of models which are deemed ``preferable''; we call these selected models the ``minimal'' models (a choice which will make more sense as this chapter progresses).
+It was pointed out by Shoham \cite{shohamSemanticApproach} that we may \say{bend the rules} and restrict semantic consideration to a privileged subset of models deemed ``preferable''. We call these selected models the ``minimal'' models---a choice that will become clearer as this chapter progresses.
 
-\section{Preferential Reasoning}
-\label{section:preferential-reasoning}
-The KLM framework for non-monotonic reasoning was initially described by a collection of consequence relations satisfying certain properties---frequently called the \textit{rationality postulates}---with each system in the collection being progressively stronger than its predecessor. A consequence relation in the KLM framework is denoted with a `$\twiddle$' rather than the usual `$\vdash$', which we call `twiddle'. Then, $\phi \twiddle \psi$ should be understood to say \say{if $\phi$, then typically also $\psi$}. Such a pair is called a \textit{conditional assertion}; as we may expect $\phi \twiddle \psi$ means $(\phi,\psi) \in \; \twiddle$ and $\phi \ntwiddle \psi$ means $(\phi, \psi) \not \in \; \twiddle$.
+% \section{Preferential Reasoning}
+% \label{section:preferential-reasoning}
+% In this work we are interested specifically in the KLM-style of non-monotonic reasoning, which will be introduced in the proceeding chapter. As a precursor, it is beneficial to discuss the semantic approach to non-monotonic reasoning put forward by Shoham \cite{shohamSemanticApproach}.
+
+% \begin{definition}
+% \label{definition:preferential-satisfaction-from-valuation}
+% Given a formula $\phi \in \mathcal{L}$ and a valuation $u \in \mathcal{U}$, then $u$ \emph{preferentially satisfies} $\phi$ (and we write $u \vDash_\sqsubseteq \phi $) if and only if there is no other interpretation $v \in \mathcal{U}$ where $v \vDash \phi$ and $v \sqsubset u$. Then $u$ is a \emph{preferred}, or \emph{minimal} model of $\phi$.
+% \end{definition}
+
+% \begin{definition}
+% \label{definition:preferential-satisfiability}
+% A formula $\phi \in \mathcal{L}$ is \emph{preferentially satisfiable} if it has a preferred model.
+% \end{definition}
+
+% From the two definitions above it may be obvious that every preferentially satisfiable formula is indeed classically satisfiable, while the converse is not true: To see why we need only consider an infinitely descending chain of valuations, and whether a tautology is preferentially satisfiable in such a structure.
+\section{Defeasible Reasoning in the KLM Framework}
+The KLM framework for non-monotonic reasoning was initially described by a collection of consequence relations satisfying certain axioms---frequently called the \textit{rationality postulates}---with each successive system being stronger than its predecessor. We borrow a nice story from Dov Gabbay \cite{gabbay1985theoreticalFoundations} which motivates why consequence relations are a good starting point for the study of a non-monotonic system.
+
+It begins by asking the reader to imagine a machine that does non-monotonic inference in some domain; the machine represents knowledge as formulae and so we pose queries of the form \say{Does $\psi$ non-monotonically follow from $\phi$?}. Something goes awry (suppose some coffee was spilled), calling into question whether the logic of the machine still functions correctly. Even worse, the interface, which tells us what real-world instance each formula maps to, is destroyed and so function cannot be evaluated based on the meaning of the formulae the machine reasons on. How might we then evaluate the machine's function?
+
+If we were interested in classical consequence, we would be well-equipped to assess the correctness of the machine by determining if it satisfied reflexivity, monotonicity, and cut (we point to \Cref{definition:consequence-relations} as a reminder). This is precisely the starting point that Kraus, Lehmann, and Magidor took up in \cite{kraus1990nonmonotonic}, suggesting that before getting to the semantics of a non-monotonic system, it is pertinent to formalise how exactly that system should behave.
+
+The argument put forward is that the rationality postulates characterise a sensible pattern of reasoning for a non-monotonic system. We use `$\twiddle$' (pronounced \say{twiddle}) instead of `$\vdash $', to denote a consequence relation in the KLM framework, and as we may expect $\phi \twiddle \psi$ means the same thing as $(\phi, \psi) \in \; \twiddle$, while $\phi \ntwiddle \psi$ means $(\phi, \psi) \not \in \; \twiddle$.
+
+An expression like $\phi \twiddle \psi$ is to be understood as saying \say{If $\phi$ holds, then $\psi$ is a typical consequence}, we call expressions of this nature \textit{conditional assertions}. The properties that a particular consequence relation satisfies are represented as rules of inference in the style of conditional assertions.
 
 We may, at times of potential confusion, use a subscript to disambiguate which consequence relation is being referred to, and so $\twiddle_C$ would refer to a cumulative relation, as defined below.
 
 \subsection{System C}
 \label{subsection:system-c}
-\textit{Cumulative} consequence relations (shortened to System C) represent the weakest of the systems in the KLM framework, and accordingly present a natural starting point \cite{kraus1990nonmonotonic}.
+\textit{Cumulative} consequence relations (shortened to `System C') \cite{kraus1990nonmonotonic} represent the weakest of the systems in the KLM framework, and so the notions introduced in here will carry through to each successive stronger system, making cumulative relations a helpful starting point.
 
 \begin{definition}
 \label{definition:cumulative-consequence-relation}
 The consequence relation $\twiddle$ is a \emph{cumulative consequence relation} if and only if it satisfies the properties of \emph{Reflexivity, Left Logical Equivalence, Right Weakening, Cut} and \emph{Cautious Monotony}.
 \end{definition}
-
+%
+The first axiom, \textit{Reflexivity}, is largely self justifying: It makes little sense to speak about a notion of consequence that does not satisfy this property.
 \begin{align}
-\text{(Reflexivity)} & \quad \alpha \twiddle \alpha
+\label{postulate:ref}
+\inferLeft{Reflexivity}{}{\phi \twiddle \phi}
 \end{align}
-
-
+The justification for \textit{Left Logical Equivalence} is a bit more opaque; the principle is that if two scenarios represent the same state of affairs, and in one of these scenarios it we typically expect some consequence, then we should expect the same in the other scenario.
+%
 \begin{align}
-\text{(Left Logical Equivalence)} & \quad \alpha \leftrightarrow \beta \twiddle \alpha
+\label{postulate:lle}
+\inferLeft{Left Logical Equivalence}{\vdash \phi \leftrightarrow \psi, \quad \phi \twiddle \gamma}{\psi \twiddle \gamma}
 \end{align}
+%
+\textit{Right Weakening} allows the preservation of classical consequence within the logic. It says that if it is always the case that $\psi$-worlds are also $\gamma$-worlds, and that in the presence of $\phi$ we typically expect $\psi$ also, then we should expect $\gamma$ as well.
+%
+\begin{align}
+\label{postulate:rw}
+\inferLeft{Right Weakning}{\vdash \psi \rightarrow \gamma, \quad  \phi \twiddle \psi}{\phi \twiddle \gamma}
+\end{align}
+%
+\begin{align}
+\label{postulate:cm}
+\inferLeft{Cautious Monotony}{\phi \twiddle \psi, \quad \phi \twiddle \gamma }{\phi \land \psi \twiddle \gamma}
+\end{align}
+%
+Certain other rules may derived from the presence of already discussed postulates. A version of \textit{Cut}
+%
+\begin{align}
+\label{postulate:cut}
+\inferLeft{Cut}{\phi \land \psi \twiddle \gamma, \quad \phi \twiddle \psi}{\phi \twiddle \gamma}
+\end{align}
+%
+The original version due to Gentzen \cite{Ben1993Mathematical} is presented as:
+%
+\begin{align}
+\inferLeft{Monotonic Cut}{\phi \land \psi \twiddle \gamma, \quad \alpha \twiddle \psi}{\phi \land \alpha \twiddle \gamma}
+\end{align}
+%
+The latter version implies monotonicity, as it requires that if $\psi$ is a typical consequence of $\alpha$, then it must remain a consequence of $\alpha \land \phi$: ergo, monotonicity. The former variation does not enforce this, and rather says \say{Suppose I have certain knowledge of $\phi$, and that if I were to assume $\psi$ I should expect to conclude $\gamma$. Then if I can show that infact $\psi$ was already an expected consequence of knowing $\phi$, I should expect that $\gamma$ follows from $\phi$}.
 
+The following Lemma is a helpful intuition pump, it is largely why the term \textit{cumulative} is used, as using the conclusion of a premise as another premise does not  \cite{gabbay1985theoreticalFoundations}
+%
+\begin{lemma}
+\label{lemma:cut-cautious}
+We can cover the properties of \emph{Cut} and \emph{Cautious Monotonicity} with the following principle: \say{If $\phi \twiddle \psi$, then the typical consequences of $\phi$ and $\phi \land \psi$ coincide}.
+\end{lemma}
+
+
+We will skip over any discussion of semantics for cumulative consequence relations, and rather opt to introduce these in the next section where we discuss preferential consequence relations.
 
 \subsection{System P}
 \label{subsection:system-P}
+
+The jump from cumulative to preferential consequence merely requires us to consider a single additional postulate, \textit{Or}:
+%
+\begin{align}
+\inferLeft{Or}{\phi \twiddle \gamma, \psi \twiddle \gamma}{\phi \lor \psi \twiddle \gamma}
+\end{align}
+The addition of \textit{Or}
+
+Or gives us deduction rule
+\begin{align}
+\inferLeft{S}{\phi \land \psi \twiddle \gamma}{\phi \twiddle \psi \rightarrow \gamma}
+\end{align}
+
+\begin{definition}
+\label{definition:preferential-relation}
+The consequence relation $\twiddle$ is a \emph{preferential consequence relation} if and only if it satisfies the properties of \emph{Reflexivity, Left Logical Equivalence, Right Weakening, Cut, Or,} and \emph{Cautious Monotony}.
+\end{definition}
+
+\begin{lemma}[\cite{shohamSemanticApproach}]
+     For $\phi, \psi \in \mathcal{L}$ and some valuation $u \in \mathcal{U}$, if $u \vdash \psi$ and $u \twiddle \phi$, then $u \twiddle \phi \land \psi$.
+\end{lemma}
+
+\subsubsection{Model theory}
+\begin{definition}
+\label{definition:preferential-interpretation}
+
+
+\end{definition}
+\subsection{Preferential Entailment}
+
+\section{Rational Closure}
+
+\subsection{Rational Consequence Relations}

@@ -77,13 +77,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/tools/calc.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/inputenc.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/fontenc.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmr10.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/babel/xebabel.def
@@ -112,10 +105,24 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.def
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.def
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.def
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.cfg
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.cfg
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/stix2.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/stix2.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/textcomp.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/inconsolata/inconsolata.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/inconsolata/inconsolata.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
@@ -164,6 +171,10 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/thmtools/thm-restate.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/thmtools/thm-restate.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/thmtools/thm-amsthm.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/thmtools/thm-amsthm.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/epigraph/epigraph.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/epigraph/epigraph.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/nextpage/nextpage.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/nextpage/nextpage.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption.sty
@@ -323,6 +334,7 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/url/url.sty
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
@@ -347,14 +359,6 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/cleveref/cleveref.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/cleveref/cleveref.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/makeidx.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/base/makeidx.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.sty
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.def
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.def
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.def
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.cfg
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.cfg
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/csquotes/csquotes.cfg
 OUTPUT build/main.idx
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/biblatex.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/biblatex.sty
@@ -407,6 +411,8 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/biblatex/blx-case-expl3.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lkproof/proof.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lkproof/proof.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/t1stix2.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/t1stix2.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/t1stix2.fd
@@ -427,6 +433,8 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/ls2stix2.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/upquote/upquote.sty
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/upquote/upquote.sty
 INPUT build/main.out
 INPUT build/main.out
 INPUT build/main.out
@@ -529,12 +537,12 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/stix2-math
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/stix2-mathtt.tfm
 OUTPUT build/main.toc
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text-bold.tfm
 INPUT ./chapters/Mathematical Preliminaries.tex
 INPUT ./chapters/Mathematical Preliminaries.tex
 INPUT chapters/Mathematical Preliminaries.tex
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text-bold.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/stix2-mathrm.tfm
@@ -580,29 +588,26 @@ INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/stix2-math
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/stix2-mathsf.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/stix2-mathsfit.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/stix2-mathtt.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt8.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt8.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/inconsolata/t1zi4.fd
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4r-0.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4r-0.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4r-0.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text-italic.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text-italic.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/ts1stix2.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/ts1stix2.fd
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/stix2-type1/ts1stix2.fd
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/ts1-stix2text.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtti10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtti10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtti10.tfm
 INPUT ./chapters/Formal Concept Analysis.tex
 INPUT ./chapters/Formal Concept Analysis.tex
 INPUT chapters/Formal Concept Analysis.tex
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt9.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4r-0.tfm
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/stix2-type1/t1-stix2text-bold.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtk10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtk10.tfm
-INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/lm/ec-lmtt8.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4b-0.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4b-0.tfm
+INPUT /usr/local/texlive/2024/texmf-dist/fonts/tfm/public/inconsolata/t1-zi4r-0.tfm
 INPUT ./chapters/Non-Monotonic Reasoning.tex
 INPUT ./chapters/Non-Monotonic Reasoning.tex
 INPUT chapters/Non-Monotonic Reasoning.tex

@@ -57,7 +57,7 @@ The efficacy of this approach obviously diminishes when we are interested in non
 
 It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^\uparrow$ and $B^\downarrow$ would become $A'$ and $B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity while maintaining pleasing notation.
 
-The derivation operators provide a clear way of describing, for a given set $A\subseteq G$ of objects, the set of attributes which every object in $A$ satisfies, denoted $A^\uparrow$. As an illustration, given the set of objects $\{\texttt{semigroup, monoid}\}$ from \Cref{context:formal-context-group-structures}, its derivation would be $\{\texttt{closure, associativity}\}$. It is quite easy to spot that this is just the intersection of the object intents of \texttt{semigroup} and \texttt{monoid}.
+The derivation operators provide a clear way of describing, for a given set $A\subseteq G$ of objects, the set of attributes which every object in $A$ satisfies, denoted $A^\uparrow$. As an illustration, given the set of objects from \Cref{context:formal-context-group-structures} $\{\texttt{semigroup, monoid}\}$, its' derivation would be $\{\texttt{closure, associativity}\}$. It is quite easy to spot that this is just the intersection of the object intents of \texttt{semigroup} and \texttt{monoid}.
 
 Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}$---which can rather cumbersomely be described as \say{the set of all objects which satisfy all the attributes satisfied by \texttt{semigroup} and \texttt{monoid}}---would yield the set $\{\texttt{semigroup, monoid, group, abelian group}\}$. In fact, this composition of derivation operators satisfies very specific properties, \index{closure operator}
 \begin{align}
@@ -213,5 +213,8 @@ If we examine the context in \Cref{context:voting-records-small} it is apparent 
 \section{Contextual Attribute Logic}
 \label{section:contextual-attribute-logic}
 
-The logic that underlies FCA
-\cite{ganter2025language, ganter1999contextual}
+The attribute logic that usually underlies any discussion on FCA is analagous to Horn logic. Attribute implications are quite easily shown to be analagous to propositional Horn clauses: If we consider the (attribute) implication $A \rightarrow B$, with $A, B \subseteq M$ it can be phrased, with respect to holding in a context $\GMI$, as \say{all objects which satisfy every attribute in $A$ also satisfy every attribute in $B$}. 
+
+The underlying logic we have just described for FCA can quite easily be shown to be analagous to propositional Horn logic. Horn rules are syntactically similar to material implications, and share the same `$\rightarrow$' operator. However, none of the premise nor conclusion of a Horn rule may be negative, or contain disjunction. They are not able to express what is \textit{not} a consequence of a premise. 
+
+

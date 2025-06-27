@@ -484,9 +484,9 @@ In the preceding sections the discussions on consequence---be they either semant
 \label{definition:consequence-relations}
 A \textit{consequence relation} $\vdash \; \subseteq \mathcal{L} \times \mathcal{L}$ is a binary relation over a formal language that satisfies
 \begin{align}
-     \text{(reflexivity)} \quad & \varphi \in \Gamma \text{ implies } \Gamma \vdash \varphi \\
-     \text{(monotonicity)} \quad & \Gamma \vdash \varphi \text{ and } \Gamma \subseteq \Psi \text{ imply } \Psi \vdash \varphi \\
-     \text{(cut)} \quad & \Gamma \vdash \varphi \text{ and } \Psi,\varphi \vdash \psi \text{ imply } \Gamma, \Psi \vdash \psi
+     \text{(Reflexivity)} \quad & \varphi \in \Gamma \text{ implies } \Gamma \vdash \varphi \\
+     \text{(Monotonicity)} \quad & \Gamma \vdash \varphi \text{ and } \Gamma \subseteq \Psi \text{ imply } \Psi \vdash \varphi \\
+     \text{(Cut)} \quad & \Gamma \vdash \Delta, \Psi \text{ and } \Psi, \Phi \vdash \Omega \text{ imply } \Gamma, \Phi \vdash \Delta, \Omega
 \end{align}
 \end{definition}
 

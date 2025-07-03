@@ -1,0 +1,7 @@
+1. I sometimes use "billy pilgrim" in monospace font (this is a proposition), then when I'm refer to a more general/verbose description of the scenario I use Billy Pilgrim without monospace font. I think this is fine, as the context is fairly clear. Just would like confirmation.
+2. Referencing [pp. X][9] or just [9].
+3. Should I have a glossary for symbols
+    a) Should I also have an index for defintions/theorems/lemmas?
+    b) Separate to the index for concepts (i.e. Partial Order pg 3)
+4. I am not trying to make inferences with available information; everything I have is implicit in the context and Delta. What the goal is to discover relationships that exist, and meaningfully describe my data.
+    This feels subtly different to entailment from a KB.

@@ -23,6 +23,8 @@
 %\ProvidesPackage{fca}[2006/09/01 v2.0 Formal Concept Analysis macros]%        %
 \RequirePackage{amssymb,epic,pict2e,color,ifthen,rotating,xspace,colortbl}%%
 \RequirePackage{macros/newdrawline}
+\newcounter{cxt}[section]
+\renewcommand{\thecxt}{\thesection.\arabic{cxt}}
 %                                                                             %
 %                                                                             %
 %                                                                             %
@@ -134,8 +136,12 @@ has been ignored}{}}}%
     \setboolean{@ttributes}{true}%
   \newcommand{\cxtn@me}{}}%
   %
-  \newenvironment{cxt}{\Reset@cxtDefaults}{\hline
-\end{tabular}}%
+  \newenvironment{cxt}{%
+    \refstepcounter{cxt}%  ← advances the counter and makes \label work
+    \Reset@cxtDefaults
+  }{%
+    \hline
+    \end{tabular}}%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                             %

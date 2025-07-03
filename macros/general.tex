@@ -1,6 +1,22 @@
-%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
 % General Notation
-%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\op}[1]{(#1)}
 \newcommand{\cons}{\mathcal{C}n}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Defeasible Symbols
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\twiddle}{\mathrel|\joinrel\sim}
+\newcommand{\ntwiddle}{\mathrel|\joinrel\not\sim}
+\newcommand{\miN}[2]{min_{#1} (#2)}
+\newcommand{\dentails}{\mid\hskip-0.40ex\approx}
+\newcommand{\ndentails}{\mid\hskip-0.40ex\not\approx}
+\newcommand{\pInterp}{\mathcal{P} = \langle S, l, \prec \rangle}
+\newcommand{\satStates}[1]{\llbracket {#1} \rrbracket}
+\newcommand{\pRelation}{\twiddle_{\tiny\mathcal{P}}}
+\newcommand{\ptwiddle}{\twiddle_{\mathcal{P}}}
+\newcommand{\nptwiddle}{\ntwiddle_{\mathcal{P}}}
+\newcommand{\rtwiddle}{\twiddle_{\mathcal{R}}}
+\newcommand{\nrtwiddle}{\ntwiddle_{\mathcal{R}}}

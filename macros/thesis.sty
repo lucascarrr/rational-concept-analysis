@@ -4,37 +4,34 @@
 
 % --- Subfile support ---
 \usepackage{subfiles}
-
-
 \input{macros/formal-concept-analysis.tex}
 \input{macros/general.tex}
 \input{macros/fca.sty}
+
 % --- Encoding and Language ---
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{microtype}
 \usepackage{dirtytalk}
+\usepackage{csquotes}
 
-% --- XeLaTeX / LuaLaTeX Required ---
-%\RequirePackage{fontspec}
-%\setmainfont{Georgia}
-\usepackage{stix2}
-%\setmonofont{Inconsolata}[Scale=0.85]
+% \RequirePackage{fontspec} % Ensure fontspec is loaded first
+\RequirePackage{stix2}    % This loads unicode-math and sets STIX Two fonts for math and text
+\usepackage[scaled=0.9]{inconsolata}   % or \usepackage[scale=0.85]{inconsolata}
 
 % --- Geometry and Spacing ---
 \usepackage[a4paper,margin=1in]{geometry}
 \usepackage{setspace}
 \setstretch{1.35}
 \RequirePackage{fancyhdr}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ : #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ : #1}}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[EL]{\rightmark}    % current SECTION on the left
-\fancyhead[ER]{\thepage}      % page number on the right
-\fancyhead[OL]{\thepage}      % page number on the left
-\fancyhead[OR]{\leftmark}     % current CHAPTER on the right
+\fancyhead[EL]{\small Section \rightmark}    % current SECTION on the left
+\fancyhead[ER]{\small \thepage}      % page number on the right
+\fancyhead[OL]{\small \thepage}      % page number on the left
+\fancyhead[OR]{\small Chapter \leftmark}     % current CHAPTER on the right
 \fancyfoot{}                  % no footers
 \renewcommand{\headrulewidth}{0.4pt}   % keep or adjust
 \fancypagestyle{plain}{        % redefine the 'plain' pagestyle
@@ -47,12 +44,13 @@
 \setlist[enumerate]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
 
 % --- Math and theorem environments ---
-\usepackage{amsmath,amsthm}     % Keep structural math packages
+\usepackage{amsmath,amsthm}
 \usepackage{amssymb}
-\usepackage{mathtools}          % For extensible math environments
-\usepackage{nicefrac}           % For inline fractions
+\usepackage{mathtools}
+\usepackage{nicefrac}
 \usepackage{thmtools}
-\everymath{\displaystyle}  % Optional — makes inline math match display math sizing CAN DELETE
+\usepackage{epigraph}
+\everymath{\displaystyle}
 \theoremstyle{definition}
 
 % --- Theorem declarations ---
@@ -72,10 +70,17 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
+\usepackage{tabularx}
 \usepackage{listings}
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
+
+% --- Colours ---
+\definecolor{light}{rgb}{0.77,0.1,0.541}
+\definecolor{blue}{rgb}{0.255,0.714,0.769}
+\definecolor{mediumblue}{rgb}{0.173,0.498,0.722}
+\definecolor{darkblue}{rgb}{0.145,0.204,0.580}
 
 % --- Hyperlinks ---
 \usepackage[hidelinks]{hyperref}
@@ -87,13 +92,14 @@
 \Crefname{subfigure}{Subfigure}{Subfigures}
 \crefname{section}{section}{sections}
 \Crefname{section}{Section}{Sections}
+\crefname{subsection}{subsection}{Subsections}
+\Crefname{subsection}{Subsection}{Subsections}
+\Crefname{cxt}{Formal Context}{Formal Contexts}
 
-\crefname{subsection}{sub-section}{Sub-sections}
-\Crefname{subsection}{Sub-section}{Sub-sections}
 % --- Bibliography ---
 \usepackage{makeidx}
-\usepackage{csquotes}
 \makeindex
+\usepackage{csquotes}
 \usepackage[
   backend=bibtex,
   style=ieee,
@@ -112,12 +118,12 @@
 
 % --- Miscellaneous tweaks ---
 \setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 
 % ------------------------------------------------------------------
 % Hilbert-style proof environment with header
 % ------------------------------------------------------------------
-
+\usepackage{proof}
 \newcounter{proofHstep}
 
 % \begin{proofH}[<heading>] … \end{proofH}
@@ -141,3 +147,22 @@
   }%
   \par
 }
+\newcommand{\inferLeft}[3]{
+\text{(#1)} \quad &
+\begin{array}{c}
+#2 \\
+\hline
+#3
+\end{array}
+}
+% \newcommand{\inferLeft}[3]{%
+%   \text{(#1)}\quad &%
+%   \begin{array}[b]{c}%
+%     #2\\\hline
+%     #3%
+%   \end{array}}
+
+% ------------------------------------------------------------------
+%  Useful
+% ------------------------------------------------------------------
+\newcommand{\pset}[1]{2^{#1}}

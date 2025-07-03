@@ -1,19 +1,19 @@
-\indexentry{binary relation|hyperpage}{5}
-\indexentry{partial-order|hyperpage}{5}
-\indexentry{partial-order! strict partial-order|hyperpage}{6}
-\indexentry{Hasse diagrams|hyperpage}{6}
-\indexentry{maximum|hyperpage}{6}
-\indexentry{minimum|hyperpage}{6}
-\indexentry{maximal|hyperpage}{6}
-\indexentry{minimal|hyperpage}{6}
-\indexentry{map! order-preserving|hyperpage}{6}
-\indexentry{map! order-embedding|hyperpage}{6}
-\indexentry{map! order-isomorphism|hyperpage}{6}
-\indexentry{order-reversing map|hyperpage}{6}
-\indexentry{upper bound|hyperpage}{7}
-\indexentry{lower bound|hyperpage}{7}
-\indexentry{join|hyperpage}{7}
-\indexentry{meet|hyperpage}{7}
+\indexentry{binary relation|hyperpage}{4}
+\indexentry{partial-order|hyperpage}{4}
+\indexentry{partial-order! strict partial-order|hyperpage}{5}
+\indexentry{Hasse diagrams|hyperpage}{5}
+\indexentry{maximum|hyperpage}{5}
+\indexentry{minimum|hyperpage}{5}
+\indexentry{maximal|hyperpage}{5}
+\indexentry{minimal|hyperpage}{5}
+\indexentry{map! order-preserving|hyperpage}{5}
+\indexentry{map! order-embedding|hyperpage}{5}
+\indexentry{map! order-isomorphism|hyperpage}{5}
+\indexentry{order-reversing map|hyperpage}{5}
+\indexentry{upper bound|hyperpage}{6}
+\indexentry{lower bound|hyperpage}{6}
+\indexentry{join|hyperpage}{6}
+\indexentry{meet|hyperpage}{6}
 \indexentry{syntax! propositional logic|hyperpage}{9}
 \indexentry{Atom|hyperpage}{9}
 \indexentry{Propositional atom|hyperpage}{9}
@@ -24,7 +24,7 @@
 \indexentry{Boolean operator! negation|hyperpage}{9}
 \indexentry{semantics! propositional logic|hyperpage}{9}
 \indexentry{valuations|hyperpage}{9}
-\indexentry{valuations|hyperpage}{10}
+\indexentry{valuations|hyperpage}{9}
 \indexentry{satisfaction! propositional logic|hyperpage}{10}
 \indexentry{model|hyperpage}{10}
 \indexentry{Logical consequence! propositional logic|hyperpage}{10}
@@ -36,7 +36,7 @@
 \indexentry{Deductive system! Hilbert system|hyperpage}{12}
 \indexentry{Axiom scheme|hyperpage}{12}
 \indexentry{Rule of inference! \textit  {modus ponens}|hyperpage}{12}
-\indexentry{Rule of inference! deduction|hyperpage}{13}
+\indexentry{Rule of inference! deduction|hyperpage}{12}
 \indexentry{completeness ! propositional logic|hyperpage}{13}
 \indexentry{Genzten systems|hyperpage}{13}
 \indexentry{consequence relations|hyperpage}{13}
@@ -44,6 +44,5 @@
 \indexentry{intension|hyperpage}{14}
 \indexentry{formal context|hyperpage}{14}
 \indexentry{derivation operators|hyperpage}{15}
-\indexentry{closure operator|hyperpage}{15}
-\indexentry{galois connection|hyperpage}{16}
-\indexentry{formal concept|hyperpage}{16}
+\indexentry{galois connection|hyperpage}{17}
+\indexentry{formal concept|hyperpage}{17}

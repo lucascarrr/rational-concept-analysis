@@ -285,9 +285,31 @@ The algebraic structure $(L, \vee, \wedge)$, where $L$ is a set and $\vee, \wedg
 
 Moving forward, we will no longer maintain a rigid distinction between these two perspectives on lattices; rather, we will tacitly adopt whichever viewpoint best suits the surrounding context. Lattices are central to Formal Concept Analysis, and will be revisited in \Cref{chapter:formal-concept-analysis}.
 
-\subsection{Closure Operators}
-\label{subsection:closure-operators}
-[this section needs to be completed]
+\section{Closure Systems \& Galois Connections}
+\label{section:closure-systems}
+
+
+
+\begin{definition}
+\label{definition:closure-system}
+	Given a set $X$, a \emph{closure system} on $X$ is a set of subsets containing $X$ that is closed under intersection. That is, $Y \subseteq \pset{X}$ is a closure system on $X$ if $X \subseteq Y$ and $Z \subseteq Y$ implies $\bigcap Z \in Y$.
+\end{definition}
+
+\begin{definition}
+\label{definition:closure-operator}
+	A \emph{closure operator} on a set $X$ is a function $\bullet \colon \pset{X} \to \pset{X}$, assigning each subset of $X$ to its' closure $\bullet X \subseteq X$, that satisfies:
+	\begin{align}
+    \text{(Monotony)} \quad & X \subseteq Y \text{ implies } \bullet X \subseteq \bullet Y \\
+    \text{(Extensivity)} \quad & X \subseteq \bullet X \\
+    \text{(Idempotency)} \quad & \bullet X = \bullet \bullet X
+  \end{align}
+\end{definition}
+
+
+\begin{theorem}
+\label{theorem:closures}
+	If $\mathcal{C}$ is a closure system on $X$ then $\bullet X \mapsto \pset{X}$
+\end{theorem}
 
 \section{Propositional Logic}
 \label{section:propositional-logic}

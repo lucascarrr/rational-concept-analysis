@@ -287,18 +287,19 @@ Moving forward, we will no longer maintain a rigid distinction between these two
 
 \section{Closure Systems \& Galois Connections}
 \label{section:closure-systems}
-When studying a collection of certain \textit{things} that satisfy a certain property, it is often beneficial to know if the collection considers every item satisfying the specified properties. We aliken this to the more formal notion of \textit{closure} and \textit{closed sets}.
+
+When studying a collection of elements that satisfy a certain property, it is often beneficial to know if the collection considers every item satisfying the specified properties. We aliken this to the more formal notion of \textit{closure} and \textit{closed sets}.
 
 \begin{definition}
 \label{definition:closed-set}
-	A subset $S$ of $X$ is \textit{closed} with respect to an operation $\mathsf{f}$ if and only if the application of $f$ to elements of $S$ always results in an element of $S$. Formally, $\mathsf{f}(S) = S$
+	A subset $X$ of $S$ is \textit{closed} under an operation $\mathsf{f}$ if and only if the application of $\mathsf{f}$ to elements of $X$ always results in an element of $X$.
 \end{definition}
 
-Closely related is the notion of \textit{closure operators}
-%
+We can otherwise view this condition as stating that a subset is closed if it is a superset of its image; using the same sets from above we say that $X$ is closed under $\mathsf{f}$ if $\mathsf{f}[X] \subseteq X$. This suggests that we may find the closure of $X$ by adding to $X$ the result performing the operation on each element. We would, however, need to ensure that for any new element $x$ added to $X$, the result of $\mathsf{f}(x)$ were also included.
+
 \begin{definition}
 \label{definition:closure-operator}
-	A \emph{closure operator} on a set $S$ is a function $\mathsf{cl} \colon \pset{S} \to \pset{S}$ that satisfies the following properties for all $X,Y \subseteq S$.
+	A \emph{closure operator} on a set $S$ is a function $\mathsf{cl} \colon \pset{S} \to \pset{S}$ assigning each subset of $S$ to its closure; $\mathsf{cl}$ satisfies the following properties for all $X,Y \subseteq S$.
 	\vspace{-1em}
 	\begin{align}
     \text{(Monotony)} \quad & X \subseteq Y \text{ implies } \mathsf{cl}(X) \subseteq \mathsf{cl} (Y) \\
@@ -306,18 +307,30 @@ Closely related is the notion of \textit{closure operators}
     \text{(Idempotency)} \quad & \mathsf{cl} (X) = \mathsf{cl}(\mathsf{cl}(X))
     \vspace{-1em}
   \end{align}
-
-  The subsets $X \subseteq S$ where $X = \mathsf{cl}(X)$ are called \textit{closed} subsets of $S$ with respect to $\mathsf{cl}$.
 \end{definition}
-%
-More generally, we say that a set $S$ is closed with respect to an operation $\mathsf{f}$ if applying $\mathsf{f}$ to members of $S$ always produces another member of $S$. A simple example is that the the natural numbers are closed under multiplication, but not division, as the product of two natural numbers is always another natural number, while the quotient is not.
 
 \begin{definition}
 \label{definition:closure-system}
-Given a set $S$, a \emph{closure system} on $S$ is a set of subsets $\mathcal{C} \subseteq \pset{S}$ that is closed under intersection. In other words, if $X \subseteq \mathcal{C}$ then $\bigcap X \in \mathcal{C}$.
+A \emph{closure system} on a set $S$ is a set of sets $\mathcal{C} \subseteq \pset{S}$ such that $S \in \mathcal{C}$ and if $\mathcal{D} \subseteq \mathcal{C}$ then $\bigcap \mathcal{D} \in \mathcal{C}$.
 \end{definition}
 
-Given a set $X$ the closure of $X$ can be constructed by taking $\bigcap \{Y \in \pset{S} \mid X \subseteq Y \}$
+In other words, $\mathcal{C}$ is closed under taking arbitrary intersections. It is perhaps a suprising result that if $X$ and $Y$ are closed under some operation $\mathsf{f}$, then their intersection $X \cap Y$ is also closed under $\mathsf{f}$.
+
+\begin{theorem}
+\label{theorem:relation-closure-operator-systems}
+	If $\mathcal{C}$ is a closure system on $S$, then $\mathsf{f} : \pset{S} \to \pset{S}$
+	where \[\mathsf{f}(Y) \mapsto \bigcap \{D \in \mathcal{C} \mid Y \subseteq D\}\] defines a closure operator on $S$. Dually, the set
+	\[\{\mathsf{X} \mid X \subseteq S\}\]
+	defines a closure system on $S$.
+\end{theorem}
+
+
+\begin{example}
+Let $S$ be the partially ordered set shown in FIGURE, and let $\mathcal{D}$ be the set of all downsets in $S$. That is, $\mathcal{D}$ is the set of all subsets $X \subseteq S$ where if $x,y \in S$, $x \in X$ and $y \preceq x$, then $y \in X$, and so
+\[\mathcal{D} \coloneq \{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c,d\}\} \]
+
+Quite clearly $\mathcal{D}$ is a closure system on $S$, and so we can define a closure operator $\mathsf{d}: \pset{S} \to \mathcal{D}$ as \[\mathsf{d}(X) = \bigcap \{Y \in \mathcal{D} \mid X \subseteq Y\}\]
+\end{example}
 
 \begin{definition}
 \label{definition:Galois-connection}

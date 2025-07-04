@@ -219,6 +219,7 @@ Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the fo
 From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partial order $\preceq$ on $L$ by construction of the relation $\{(x, x \vee y) \mid x,y \in L \}$ \cite[pp. 173]{bergman2015invitation}. The structure $(L, \vee)$ is called an algebraic \textit{join semilattice}, and $\preceq$ its \textit{underlying partial order}. The relation can equivalently be described as \say{$x \preceq y$ if and only if $x \vee y = y$} \cite[pp.173]{bergman2015invitation}.
 %
 \begin{example}
+\label{example:power-set-lattice}
      Consider the set $S = \{1,2,3\}$ and the union operation $\cup$. From $(S, \cup)$ we can induce the order relation characterised by the set $\{(X, X \cup Y) \mid X,Y \subseteq S \}$ (frequently, this kind of ordering is called the \textit{set inclusion order}). From the Hasse diagram in \Cref{figure:set-inclusion-order} representing this order, we observe that the $\cup$ binary relation corresponds to the $\vee$ described in \Cref{definition:lattice}.
 %
 \begin{figure}[H]
@@ -252,6 +253,8 @@ From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partia
   \end{tikzpicture}
   \caption{The underlying order of $(S, \cup)$}
   \label{figure:set-inclusion-order}
+
+  We may call the above lattice the powerset lattice of $S$.
 \end{figure}
 \end{example}
 
@@ -268,8 +271,6 @@ Compatibility (which is sometimes also called \textit{absorption}) is satisfied 
      \label{definition:algebraic-lattice}
 The algebraic structure $(L, \vee, \wedge)$, where $L$ is a set and $\vee, \wedge$ are two binary operations on $L$, is a \emph{lattice} if both binary operations satisfy \textit{idempotence, commutativity,} and \textit{associativity} as well well as \textit{absorbtion}.
 \end{definition}
-
-
 
 \begin{lemma}[The Connecting Lemma]
   \label{lemma:the-connecting-lemma}
@@ -288,14 +289,16 @@ Moving forward, we will no longer maintain a rigid distinction between these two
 \section{Closure Systems \& Galois Connections}
 \label{section:closure-systems}
 
-When studying a collection of elements that satisfy a certain property, it is often beneficial to know if the collection considers every item satisfying the specified properties. We aliken this to the more formal notion of \textit{closure} and \textit{closed sets}.
+We frequently encounter collections of elements that satisfy certain properties. A fundamental question arises: Does our collection include all elements that possess the specified characteristics? We aliken this to the more formal notion of \textit{closure} and \textit{closed sets}.
 
 \begin{definition}
 \label{definition:closed-set}
 	A subset $X$ of $S$ is \textit{closed} under an operation $\mathsf{f}$ if and only if the application of $\mathsf{f}$ to elements of $X$ always results in an element of $X$.
 \end{definition}
 
-We can otherwise view this condition as stating that a subset is closed if it is a superset of its image; using the same sets from above we say that $X$ is closed under $\mathsf{f}$ if $\mathsf{f}[X] \subseteq X$. This suggests that we may find the closure of $X$ by adding to $X$ the result performing the operation on each element. We would, however, need to ensure that for any new element $x$ added to $X$, the result of $\mathsf{f}(x)$ were also included.
+This condition can be expressed equivalently as stating that $X$ is closed under $\mathsf{f}$ when $\mathsf{f}[X] \subseteq X$, where $\mathsf{f}[X]$ denotes the image of $X$ under $\mathsf{f}$. This formulation suggests a natural approach to finding the closure of any subset: systematically add all elements that result from applying the operation to existing elements, continuing this process until no new elements are generated.
+
+We can generalise this process by the introduction of closure operators,
 
 \begin{definition}
 \label{definition:closure-operator}
@@ -309,27 +312,34 @@ We can otherwise view this condition as stating that a subset is closed if it is
   \end{align}
 \end{definition}
 
+These properties capture essential characteristics of closure: monotony ensures that larger sets have larger closures, extensivity guarantees that closure always expands or preserves the original set, and idempotency confirms that taking the closure of a closed set produces no additional elements.
+
+While closure operators provide a functional approach to closure, we can alternatively characterize collections of closed sets directly through closure systems.
+
 \begin{definition}
 \label{definition:closure-system}
 A \emph{closure system} on a set $S$ is a set of sets $\mathcal{C} \subseteq \pset{S}$ such that $S \in \mathcal{C}$ and if $\mathcal{D} \subseteq \mathcal{C}$ then $\bigcap \mathcal{D} \in \mathcal{C}$.
 \end{definition}
 
-In other words, $\mathcal{C}$ is closed under taking arbitrary intersections. It is perhaps a suprising result that if $X$ and $Y$ are closed under some operation $\mathsf{f}$, then their intersection $X \cap Y$ is also closed under $\mathsf{f}$.
+In other words, a closure system $\mathcal{C}$ of a set $S$ is a subset of the powerset of $S$, such that the intersections of any elements of $\mathcal{C}$ (which are all closed sets) is closed themself. From \Cref{example:power-set-lattice}, we know that under the inclusion order, the powerset forms a complete lattice; from the previous sentence it follows that a closure system on $S$ is a meet subsemilattice of $\pset{S}$.
+% In essence, closure systems are collections of sets that remain closed under arbitrary intersections. This property reflects a fundamental principle: if multiple sets each satisfy a closure property, their intersection also satisfies that property. This seemingly abstract condition has profound implications for the structure of closed sets in mathematical systems
 
 \begin{theorem}
 \label{theorem:relation-closure-operator-systems}
 	If $\mathcal{C}$ is a closure system on $S$, then $\mathsf{f} : \pset{S} \to \pset{S}$
 	where \[\mathsf{f}(Y) \mapsto \bigcap \{D \in \mathcal{C} \mid Y \subseteq D\}\] defines a closure operator on $S$. Dually, the set
-	\[\{\mathsf{X} \mid X \subseteq S\}\]
+	\[\{\mathsf{cl}(X) \mid X \subseteq S\}\]
 	defines a closure system on $S$.
 \end{theorem}
 
-
 \begin{example}
-Let $S$ be the partially ordered set shown in FIGURE, and let $\mathcal{D}$ be the set of all downsets in $S$. That is, $\mathcal{D}$ is the set of all subsets $X \subseteq S$ where if $x,y \in S$, $x \in X$ and $y \preceq x$, then $y \in X$, and so
-\[\mathcal{D} \coloneq \{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c,d\}\} \]
-
-Quite clearly $\mathcal{D}$ is a closure system on $S$, and so we can define a closure operator $\mathsf{d}: \pset{S} \to \mathcal{D}$ as \[\mathsf{d}(X) = \bigcap \{Y \in \mathcal{D} \mid X \subseteq Y\}\]
+Consider the partially ordered set $S = {a, b, c, d}$ with the ordering $a \preceq b \preceq d$ and $a \preceq c \preceq d$. Let $\mathcal{D}$ denote the collection of all downsets in $S$, where a downset is a subset $X \subseteq S$ such that if $x \in X$ and $y \preceq x$, then $y \in X$.
+The complete collection of downsets is:
+\[\mathcal{D} = \big\{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c,d\}\big\}\]
+We can verify that $\mathcal{D}$ forms a closure system: it contains $S = {a,b,c,d}$ and remains closed under arbitrary intersections. For instance, ${a,b,d} \cap {a,c} = {a}$, which belongs to $\mathcal{D}$.
+The corresponding closure operator $\mathsf{d}: \mathcal{P}(S) \to \mathcal{D}$ is defined by:
+\[\mathsf{d}(X) = \bigcap {Y \in \mathcal{D} \mid X \subseteq Y}\]
+For example, $\mathsf{d}({b,c}) = {a,b,c,d}$ because the smallest downset containing both $b$ and $c$ must include all elements below them in the ordering, ultimately encompassing the entire set.
 \end{example}
 
 \begin{definition}

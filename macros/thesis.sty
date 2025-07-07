@@ -40,12 +40,12 @@
   \renewcommand{\footrulewidth}{0pt}
 }
 \usepackage{enumitem}
-\setlist[itemize]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
-\setlist[enumerate]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
-\setlength{\abovedisplayskip}{6pt}
-\setlength{\belowdisplayskip}{6pt}
-\setlength{\abovedisplayshortskip}{4pt}
-\setlength{\belowdisplayshortskip}{4pt}
+% \setlist[itemize]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
+% \setlist[enumerate]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
+% \setlength{\abovedisplayskip}{6pt}
+% \setlength{\belowdisplayskip}{6pt}
+% \setlength{\abovedisplayshortskip}{4pt}
+% \setlength{\belowdisplayshortskip}{4pt}
 
 % --- Math and theorem environments ---
 \usepackage{amsmath,amsthm}
@@ -79,6 +79,7 @@
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
+\usetikzlibrary{calc,fit,shapes.geometric}
 
 % --- Colours ---
 \definecolor{light}{rgb}{0.77,0.1,0.541}
@@ -169,4 +170,4 @@
 % ------------------------------------------------------------------
 %  Useful
 % ------------------------------------------------------------------
-\newcommand{\pset}[1]{2^{#1}}
+\newcommand{\pset}[1]{\mathfrak{P}({#1})}

@@ -220,7 +220,7 @@ From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partia
 %
 \begin{example}
 \label{example:power-set-lattice}
-     Consider the set $S = \{1,2,3\}$ and the union operation $\cup$. From $(S, \cup)$ we can induce the order relation characterised by the set $\{(X, X \cup Y) \mid X,Y \subseteq S \}$ (frequently, this kind of ordering is called the \textit{set inclusion order}). From the Hasse diagram in \Cref{figure:set-inclusion-order} representing this order, we observe that the $\cup$ binary relation corresponds to the $\vee$ described in \Cref{definition:lattice}.
+     Consider the set $S = \{1,2,3\}$ and the union operation $\cup$. From $(\pset{S}, \cup)$ we can induce the order relation characterised by the set $\{(X, X \cup Y) \mid X,Y \subseteq S \}$ (frequently, this kind of ordering is called the \textit{set inclusion order}). From the Hasse diagram in \Cref{figure:set-inclusion-order} representing this order, we observe that the $\cup$ binary relation corresponds to the $\vee$ described in \Cref{definition:lattice}.
 %
 \begin{figure}[H]
   \centering
@@ -251,7 +251,7 @@ From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partia
      \draw (2) -- (23);
      \draw (3) -- (13);
   \end{tikzpicture}
-  \caption{The underlying order of $(S, \cup)$}
+  \caption{The underlying order of $(\pset{S}, \cup)$}
   \label{figure:set-inclusion-order}
 
   We may call the above lattice the powerset lattice of $S$.
@@ -286,48 +286,45 @@ The algebraic structure $(L, \vee, \wedge)$, where $L$ is a set and $\vee, \wedg
 
 Moving forward, we will no longer maintain a rigid distinction between these two perspectives on lattices; rather, we will tacitly adopt whichever viewpoint best suits the surrounding context. Lattices are central to Formal Concept Analysis, and will be revisited in \Cref{chapter:formal-concept-analysis}.
 
-\section{Closure Systems \& Galois Connections}
+\section{Closures \& Galois Connections}
 \label{section:closure-systems}
 
 We frequently encounter collections of elements that satisfy certain properties. A fundamental question arises: Does our collection include all elements that possess the specified characteristics? We aliken this to the more formal notion of \textit{closure} and \textit{closed sets}.
+
+\subsection{Closure Systems}
 
 \begin{definition}
 \label{definition:closed-set}
 	A subset $X$ of $S$ is \textit{closed} under an operation $\mathsf{f}$ if and only if the application of $\mathsf{f}$ to elements of $X$ always results in an element of $X$.
 \end{definition}
 
-This condition can be expressed equivalently as stating that $X$ is closed under $\mathsf{f}$ when $\mathsf{f}[X] \subseteq X$, where $\mathsf{f}[X]$ denotes the image of $X$ under $\mathsf{f}$. This formulation suggests a natural approach to finding the closure of any subset: systematically add all elements that result from applying the operation to existing elements, continuing this process until no new elements are generated.
+This condition can be expressed equivalently by stating that $X$ is closed under $\mathsf{f}$ when $\mathsf{f}[X] \subseteq X$, where $\mathsf{f}[X]$ denotes the image of $X$ under $\mathsf{f}$. This formulation suggests that a natural approach to finding the closure of any subset: systematically add all elements that result from applying the operation to existing elements in the set, continuing this process until no new elements are generated.
 
-We can generalise this process by the introduction of closure operators,
+In some cases---consider the singleton subset of natural numbers $\{1\}$ with the operation `\textit{add $2$}'---this process may never find such a fixedpoint, and so it is be useful to generalise the idea to that of a closure operator.
 
 \begin{definition}
 \label{definition:closure-operator}
 	A \emph{closure operator} on a set $S$ is a function $\mathsf{cl} \colon \pset{S} \to \pset{S}$ assigning each subset of $S$ to its closure; $\mathsf{cl}$ satisfies the following properties for all $X,Y \subseteq S$.
-	\vspace{-1em}
 	\begin{align}
     \text{(Monotony)} \quad & X \subseteq Y \text{ implies } \mathsf{cl}(X) \subseteq \mathsf{cl} (Y) \\
     \text{(Extensivity)} \quad & X \subseteq \mathsf{cl} (X) \\
     \text{(Idempotency)} \quad & \mathsf{cl} (X) = \mathsf{cl}(\mathsf{cl}(X))
-    \vspace{-1em}
   \end{align}
 \end{definition}
 
-These properties capture essential characteristics of closure: monotony ensures that larger sets have larger closures, extensivity guarantees that closure always expands or preserves the original set, and idempotency confirms that taking the closure of a closed set produces no additional elements.
-
-While closure operators provide a functional approach to closure, we can alternatively characterize collections of closed sets directly through closure systems.
-
 \begin{definition}
 \label{definition:closure-system}
-A \emph{closure system} on a set $S$ is a set of sets $\mathcal{C} \subseteq \pset{S}$ such that $S \in \mathcal{C}$ and if $\mathcal{D} \subseteq \mathcal{C}$ then $\bigcap \mathcal{D} \in \mathcal{C}$.
+A \emph{closure system} on a set $S$ is a family of subsets $\mathcal{C} \subseteq \pset{S}$ containing the set $S$ itself and the intersection of any subsets of $\mathcal{C}$, and so if $\mathcal{D} \subseteq \mathcal{C}$ then $\bigcap \mathcal{D} \in \mathcal{C}$.
 \end{definition}
 
-In other words, a closure system $\mathcal{C}$ of a set $S$ is a subset of the powerset of $S$, such that the intersections of any elements of $\mathcal{C}$ (which are all closed sets) is closed themself. From \Cref{example:power-set-lattice}, we know that under the inclusion order, the powerset forms a complete lattice; from the previous sentence it follows that a closure system on $S$ is a meet subsemilattice of $\pset{S}$.
-% In essence, closure systems are collections of sets that remain closed under arbitrary intersections. This property reflects a fundamental principle: if multiple sets each satisfy a closure property, their intersection also satisfies that property. This seemingly abstract condition has profound implications for the structure of closed sets in mathematical systems
+From \Cref{example:power-set-lattice}, we know that under the inclusion order, the powerset forms a complete lattice; from the previous sentence it follows that a closure system on $S$ is a meet subsemilattice of $\pset{S}$.
+
+Apart from their nomenclature, it is not obvious how closure operators and closure systems are related, the following theorem shows that they are indeed \textit{cryptomorphic} \cite{CASPARD2003241}.
 
 \begin{theorem}
 \label{theorem:relation-closure-operator-systems}
 	If $\mathcal{C}$ is a closure system on $S$, then $\mathsf{f} : \pset{S} \to \pset{S}$
-	where \[\mathsf{f}(Y) \mapsto \bigcap \{D \in \mathcal{C} \mid Y \subseteq D\}\] defines a closure operator on $S$. Dually, the set
+	where \[\mathsf{f}(Y) \mapsto\nobreak \bigcap \{D \in \mathcal{C} \mid Y \subseteq D\}\] defines a closure operator on $S$. Dually, the set
 	\[\{\mathsf{cl}(X) \mid X \subseteq S\}\]
 	defines a closure system on $S$.
 \end{theorem}
@@ -335,12 +332,31 @@ In other words, a closure system $\mathcal{C}$ of a set $S$ is a subset of the p
 \begin{example}
 Consider the partially ordered set $S = {a, b, c, d}$ with the ordering $a \preceq b \preceq d$ and $a \preceq c \preceq d$. Let $\mathcal{D}$ denote the collection of all downsets in $S$, where a downset is a subset $X \subseteq S$ such that if $x \in X$ and $y \preceq x$, then $y \in X$.
 The complete collection of downsets is:
+
 \[\mathcal{D} = \big\{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c,d\}\big\}\]
-We can verify that $\mathcal{D}$ forms a closure system: it contains $S = {a,b,c,d}$ and remains closed under arbitrary intersections. For instance, ${a,b,d} \cap {a,c} = {a}$, which belongs to $\mathcal{D}$.
-The corresponding closure operator $\mathsf{d}: \mathcal{P}(S) \to \mathcal{D}$ is defined by:
+
+We can verify that $\mathcal{D}$ forms a closure system: it contains $S = {a,b,c,d}$ and remains closed under arbitrary intersections. For instance, ${a,b,d} \cap {a,c} = {a}$, which belongs to $\mathcal{D}$. The corresponding closure operator $\mathsf{d}: \mathcal{P}(S) \to \mathcal{D}$ is defined by:
+
 \[\mathsf{d}(X) = \bigcap {Y \in \mathcal{D} \mid X \subseteq Y}\]
+
 For example, $\mathsf{d}({b,c}) = {a,b,c,d}$ because the smallest downset containing both $b$ and $c$ must include all elements below them in the ordering, ultimately encompassing the entire set.
 \end{example}
+
+\begin{theorem}
+\label{theorem:closure-systems-lattices}
+	Let $\mathsf{cl}$ be a closure operator on the set $S$. Then the closure system given by $\{X \subseteq S \mid X = \mathsf{cl}(X) = X \}$ forms a complete lattice under the inclusion order, where meets and joins are given by
+	\[
+	\underset{i \in I} \bigwedge X_i = \underset{i \in I} \bigcap X_i,
+	\]
+\[
+	\underset{i \in I} \bigvee X_i = \mathsf{cl}(\underset{i \in I} \bigcup X_i).
+	\]
+\end{theorem}
+
+\subsection{Galois Connections}
+\label{subsection:galois-connections}
+
+Galois connections are connected to closure operators in a significant way:
 
 \begin{definition}
 \label{definition:Galois-connection}
@@ -358,30 +374,75 @@ Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps $\mathsf{f} \c
 \centering
 \begin{tikzpicture}[
     every node/.style={
-      circle,
-     fill=black,
-      text=black,
-      inner sep=0pt,          % no extra padding
-      minimum size=2mm,       % ← choose one diameter for all nodes
-      font=\scriptsize   % smaller label size → smaller overall node
+    circle,
+    fill=black,
+    text=black,
+    inner sep=0pt,
+    minimum size=2mm,
+    font=\scriptsize
     }]
+    \node (0) at (0,-2) {};
+    \node (1) at (-1,-1) {};
+    \node (2) at (-1.5, -0.5) {};
+    \node (3) at (-2,0) {};
+    \node (4) at (-1,1) {};
+    \node (5) at (-1,2) {};
+    \node (6) at (0,0) {};
+    \node (7) at (-1,0) {};
+    \node (8) at (1,-1) {};
+    \draw (0) -- (1) -- (2) -- (3) -- (4) -- (6) -- (1) -- (0) -- (8) -- (6) -- (4) -- (5) -- (1);
 
-   \node (1) at (-1,-1) {};
-   \node (2) at (-2,0) {};
-   \node (3) at (0,0) {};
-   \node (4) at (-1,1) {};
-   \draw (1) -- (2) -- (4) -- (3) -- (1);
+    \node (A) at (4,-1) {};
+    \node (B) at (3,0) {};
+    \node (C) at (5,0) {};
+    \node (D) at (4, 1) {};
+    \draw (A) -- (B) -- (D) -- (C) -- (A);
 
-   \node (5) at (4,-0.5) {};
-   \node (6) at (4,0.5) {};
-   \node (7) at (5, -0.5) {};
-   \node (8) at (5, 0.5) {};
-   \draw (5) -- (6);
-   \draw (7) -- (8);
+    \draw[darkblue, dotted, line width=0.8pt] (-1.2,-1.2) to[out=90,in=90] (1.2,-1.2) to[out=270,in=0] (0,-2.2) to[out=180,in=270] (-1.2,-1.2);
+    \draw[darkblue, dotted,-stealth,line width=0.8pt] (0.7,-0.4) to[out=45,in=180] (3.7,1);
 
-   \draw[color=red, ->, dotted] (6)to[out=350,in=-100] (1);
-   \draw[color=red, ->, dotted] (5)to[out=350,in=-100] (4);
+    \draw[darkblue, dotted, line width=0.8pt] (-1.3,0) to[out=90,in=180] (-0.5,0.3) to[out=0,in=90] (0.3,0) to[out=270,in=0] (-0.5,-0.3) to[out=180,in=270] (-1.3,0);
+    \draw[darkblue, dotted, -stealth, line width=0.8pt] (-0.2,0.5) to[out=45,in=90] (5,0.4);
+
+    \draw[darkblue, dotted, line width=0.8pt] (-1,2.3) to[out=0,in=90] (-0.7,1.5) to[out=270,in=0] (-1,0.8) to[out=180,in=270] (-1.3,1.5) to[out=90,in=180] (-1,2.3);
+    \draw[darkblue, dotted, -stealth, line width=0.8pt] (-1.5,1.5) to[out=180,in=90] (-3,-0.5) to[out=270,in=180] (0,-3) to[out=0,in=180] (2,-3) to[out=0,in=270] (4,-1.3);
+
+    \draw[darkblue, dotted, line width=0.8pt] (-2.2,0.2) to[out=45,in=135] (-1.6,-0.1) to[out=315,in=45] (-1.3,-0.7) to[out=225,in=315] (-1.9,-0.4) to[out=135, in=225] (-2.2, 0.2);
+    \draw[darkblue, dotted, -stealth, line width=0.8pt] (-2.1, -0.5) to[out=270,in=180] (0,-2.6) to[out=0,in=180] (1.5, -2.6) to[out=0,in=270] (3,-0.3);
 \end{tikzpicture}
+
+\begin{tikzpicture}[
+    every node/.style={
+    circle,
+    fill=black,
+    text=black,
+    inner sep=0pt,
+    minimum size=2mm,
+    font=\scriptsize
+    }]
+    \node (0) at (0,-2) {};
+    \node (1) at (-1,-1) {};
+    \node (2) at (-1.5, -0.5) {};
+    \node (3) at (-2,0) {};
+    \node (4) at (-1,1) {};
+    \node (5) at (-1,2) {};
+    \node (6) at (0,0) {};
+    \node (7) at (-1,0) {};
+    \node (8) at (1,-1) {};
+    \draw (0) -- (1) -- (2) -- (3) -- (4) -- (6) -- (1) -- (0) -- (8) -- (6) -- (4) -- (5) -- (1);
+
+    \node (A) at (4,-1) {};
+    \node (B) at (3,0) {};
+    \node (C) at (5,0) {};
+    \node (D) at (4, 1) {};
+    \draw (A) -- (B) -- (D) -- (C) -- (A);
+
+    \draw[red, dotted,-stealth,line width=0.8pt] (A) to[out=180,in=0] (4);
+    \draw[red, dotted,-stealth,line width=0.8pt] (B) to[out=180,in=0] (7);
+    \draw[red, dotted,-stealth,line width=0.8pt] (C) to[out=90,in=90] (3);
+    \draw[red, dotted,-stealth,line width=0.8pt] (D) to[out=0,in=270] (0);
+\end{tikzpicture}
+\caption{A Galois connection}
 \end{figure}
 
 

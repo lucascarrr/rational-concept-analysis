@@ -165,9 +165,7 @@ The derivation of \texttt{groupoid} yields $\{\texttt{associativity,identity,clo
 To begin, the object intent $\texttt{groupoid}^\uparrow$ is determined, which yields the set $\{\texttt{associativity,identity,closure}\}$. From \Cref{proposition:properties-about-derivation-operators} this set is closed, and represents a concept intent. The concept extent is determined by application of a derivation operator to the concept intent.
 \end{example}
 
-A direct consequence of \Cref{proposition:properties-about-derivation-operators} is that
-
-The set of all concepts has a natural ordering to it, explained as the \textit{subconcept--superconcept} relation: If $(A_0, B_0)$ and $(A_1, B_1)$ are two concepts in a context, then $(A_0, B_0)$ is a \textit{subconcept} of $(A_1, B_1)$ if and only if $A_0 \subseteq A_1$, equivalently if $B_1 \subseteq B_0$. Otherwise, $(A_0, B_0)$ is a \textit{superconcept} of $(A_1, B_1)$. We denote set of all concepts ordered in this way by $\CLGMI$, and call this set the \textit{concept lattice} of $\GMI$.
+The set of all concepts has a natural ordering induced on it by the \textit{subconcept--superconcept} relation. If $(A_0,B_0)$ and $(A_1,B_1)$ are two concepts, then $(A_0,B_0)$ is a \textit{subconcept} of $(A_1, B_1)$ and $(A_1, B_1)$ is a superconcept of $(A_0,B_0)$ if and only if $A_0 \subseteq A_1$. Equivalently if $B_1 \subseteq B_0$. We denote set of all concepts ordered in this way by $\CLGMI$, and call this set the \textit{concept lattice} of $\GMI$.
 
 Intuitively, one concept is a subconcept of another, if every instance of the first concept is also an instance of the second. From the Galois connection, this is equivalently, albeit less intuitively, explained by every attribute of the second concept being included in the first.
 

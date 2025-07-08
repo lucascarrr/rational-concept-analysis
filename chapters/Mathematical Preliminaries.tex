@@ -299,10 +299,10 @@ We frequently encounter collections of elements that satisfy certain properties.
 
 \begin{definition}
 \label{definition:closed-set}
-	A subset $X$ of $S$ is \textit{closed} under an operation $\mathsf{f}$ if and only if the application of $\mathsf{f}$ to elements of $X$ always results in an element of $X$.
+	A subset $X$ of $S$ is \textit{closed} under an operation $\varphi$ if and only if the application of $\varphi$ to elements of $X$ always results in an element of $X$.
 \end{definition}
 
-This condition can be expressed equivalently by stating that $X$ is closed under $\mathsf{f}$ when $\mathsf{f}[X] \subseteq X$, where $\mathsf{f}[X]$ denotes the image of $X$ under $\mathsf{f}$. This formulation suggests that a natural approach to finding the closure of any subset: systematically add all elements that result from applying the operation to existing elements in the set, continuing this process until no new elements are generated.
+This condition can be expressed equivalently by stating that $X$ is closed under $\varphi$ when $\varphi[X] \subseteq X$, where $\varphi[X]$ denotes the image of $X$ under $\varphi$. This formulation suggests that a natural approach to finding the closure of any subset: systematically add all elements that result from applying the operation to existing elements in the set, continuing this process until no new elements are generated.
 
 In some cases---consider the singleton subset of natural numbers $\{1\}$ with the operation `\textit{add $2$}'---this process may never find such a fixedpoint, and so it is be useful to generalise the idea to that of a closure operator.
 
@@ -312,7 +312,7 @@ In some cases---consider the singleton subset of natural numbers $\{1\}$ with th
 	\begin{align}
     \text{(Monotony)} \quad & X \subseteq Y \text{ implies } \mathsf{cl}(X) \subseteq \mathsf{cl} (Y) \\
     \text{(Extensivity)} \quad & X \subseteq \mathsf{cl} (X) \\
-    \text{(Idempotency)} \quad & \mathsf{cl} (X) = \mathsf{cl}(\mathsf{cl}(X))
+    \text{(Idempotency)} \quad & \mathsf{cl} (X) = \mathsf{cl}\big(\mathsf{cl}(X)\big)
   \end{align}
 \end{definition}
 
@@ -327,8 +327,8 @@ Apart from their nomenclature, it is not obvious how closure operators and closu
 
 \begin{theorem}
 \label{theorem:relation-closure-operator-systems}
-	If $\mathcal{C}$ is a closure system on $S$, then $\mathsf{f} : \pset{S} \to \pset{S}$
-	where \[\mathsf{f}(Y) \mapsto\nobreak \bigcap \{D \in \mathcal{C} \mid Y \subseteq D\}\] defines a closure operator on $S$. Dually, the set
+	If $\mathcal{C}$ is a closure system on $S$, then $\varphi : \pset{S} \to \pset{S}$
+	where \[\varphi(Y) \mapsto\nobreak \bigcap \{D \in \mathcal{C} \mid Y \subseteq D\}\] defines a closure operator on $S$. Dually, the set
 	\[\{\mathsf{cl}(X) \mid X \subseteq S\}\]
 	defines a closure system on $S$.
 \end{theorem}
@@ -338,9 +338,9 @@ Consider the partially ordered set $S = \{a, b, c, d\}$ where the order is given
 %
 \[\mathcal{D} = \big\{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c,d\}\big\}\]
 
-We can verify that $\mathcal{D}$ forms a closure system: it contains $S$ and remains closed under arbitrary intersections. For instance, $\{a,b,d\} \cap \{a,c\} = \{a\}$, which itself is a member of $\mathcal{D}$. We can then induce the closure operator $\mathsf{g} \colon \pset{S} \to \mathcal{D}$ as
+We can verify that $\mathcal{D}$ forms a closure system: it contains $S$ and remains closed under arbitrary intersections. For instance, $\{a,b,d\} \cap \{a,c\} = \{a\}$, which itself is a member of $\mathcal{D}$. We can then induce the closure operator $\psi \colon \pset{S} \to \mathcal{D}$ as
 %
-\[\mathsf{g}(X) = \bigcap \{Y \in \mathcal{D} \mid X \subseteq Y\}\]
+\[\psi(X) = \bigcap \{Y \in \mathcal{D} \mid X \subseteq Y\}\]
 \end{example}
 
 \begin{theorem}
@@ -361,20 +361,29 @@ Galois connections are a generalisation of \textit{The Fundemental Theorem of Ga
 
 \begin{definition}
 \label{definition:Galois-connection-1}
-Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps $\mathsf{f} \colon \pset{\mathbf{X}} \to \pset{\mathbf{Y}}$ and $\mathsf{g} \colon \pset{\mathbf{Y}} \to \pset{\mathbf{X}}$ constitute a \emph{Galois connection} between $\mathbf{X}$ and $\mathbf{Y}$ if and only if they satisfy
+Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps $\varphi \colon \mathbf{X} \to \mathbf{Y}$ and $\psi \colon \mathbf{Y} \to \mathbf{X}$ constitute a \emph{Galois connection} between $\mathbf{X}$ and $\mathbf{Y}$ if and only if they satisfy
 \begin{align}
-    \quad & x \preceq_X x' \Rightarrow \mathsf{f}(x') \preceq_Y \mathsf{f}(x) \label{equation:ord_galois-1} \\
-    \quad & y \preceq_Y y' \Rightarrow \mathsf{g}(y') \preceq_X \mathsf{g}(y) \label{equation:ord-galois-2} \\
-    \quad & x \preceq_X \mathsf{g}(\mathsf{f}(x)) \text{ and } y \preceq_Y \mathsf{f}(\mathsf{g}(y)) \label{equation:ord-galois-3}
+    \quad & x \preceq_X x' \Rightarrow \varphi (x') \preceq_Y \varphi (x) \label{equation:ord_galois-1} \\
+    \quad & y \preceq_Y y' \Rightarrow \psi (y') \preceq_X \psi (y) \label{equation:ord-galois-2} \\
+    \quad & x \preceq_X \psi \big(\varphi (x)\big) \text{ and } y \preceq_Y \varphi \big(\psi (y)\big) \label{equation:ord-galois-3}
  \end{align}
-
- We say that such a pair of maps are \emph{dually adjoint} to eachother.
+ for all $x \in \mathbf{X}$ and $y \in \mathbf{Y}$.
 \end{definition}
 
 \begin{proposition}
 \label{proposition:fundemental-galois}
-
+The same pair $(\varphi, \psi)$ of maps where $\varphi \colon \mathbf{X} \to \mathbf{Y}$ and $\psi \colon \mathbf{Y} \to \mathbf{X}$ constitute a Galois connection if and only if
+\begin{align}
+    \quad & x \preceq_X \psi (y) \Longleftrightarrow y \preceq_Y \varphi (x) \label{equation:ord-galois-4}
+ \end{align}
 \end{proposition}
+
+\begin{proposition}
+\label{proposition:galois-connections-closure-operators}
+	Let the maps $\varphi \colon \mathbf{X} \to \mathbf{Y}$ and $\psi \colon \mathbf{Y} \to \mathbf{X}$ constitute a Galois connection. Then $A \mapsto \psi \varphi A$ and $B \mapsto \varphi \psi B$ are closure operators on $\mathbf{X}$ and $\mathbf{Y}$, respectively.
+\end{proposition}
+
+
 
 \begin{figure}[H]
 \centering

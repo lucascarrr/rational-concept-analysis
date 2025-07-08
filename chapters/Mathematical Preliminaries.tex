@@ -55,8 +55,8 @@ We can visually describe ordered sets through the use of \textit{Hasse} diagrams
         circle,
         %fill=black,
         text=black,
-        inner sep=1.2pt,   % controls how tight the circle hugs the letter
-        font=\small  % smaller label size → smaller overall node
+        inner sep=1.2pt,
+        font=\small
       }]
       \node (w) at (0,1) {$w$};
       \node (y) at (-1,0) {$x$};
@@ -78,8 +78,8 @@ We can visually describe ordered sets through the use of \textit{Hasse} diagrams
         circle,
         %fill=black,
         text=black,
-        inner sep=1.2pt,   % controls how tight the circle hugs the letter
-        font=\small   % smaller label size → smaller overall node
+        inner sep=1.2pt,
+        font=\small
       }]
       \node (y) at (-1,0) {$\phi$};
       \node (z) at (1,0) {$\psi$};
@@ -101,9 +101,8 @@ More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to
 
 \begin{definition}
   \label{definition:order-maps}
-
-     \index{map! order-preserving} \index{map! order-embedding} \index{map! order-isomorphism}
-  Let $\mathbf{X}$ and $\mathbf{Y}$ be ordered sets with a mapping $\varphi : \mathbf{X} \to \mathbf{Y}$. We call $\varphi$ an \textit{order-preserving} (or, isotone) map if $x \preceq_X y$ implies $\varphi(x) \preceq_Y \varphi(y)$. It is an \textit{order-embedding} if it is injective, and $x \preceq_X y$ if and only if $\varphi(x) \preceq_Y \varphi(y)$ for all $x,y \in X$. Finally, $\varphi$ is an \textit{order-isomorphism} if it is an order-embedding that is also \textit{surjective}. The dual notion to an order-preserving map is an \textit{order-reversing} (or, antitone) map. \index{order-reversing map}
+     \index{map!order-preserving} \index{map!isotone} \index{map!order-embedding} \index{map!order-isomorphism} \index{map!order-reversing} \index{map!antitone} \index{isomorphism!order} \index{dually isomorphic} \index{order-anti-isomorphic}
+  Let $\mathbf{X}$ and $\mathbf{Y}$ be ordered sets with a mapping $\varphi : \mathbf{X} \to \mathbf{Y}$. We call $\varphi$ an \textit{order-preserving} (or, isotone) map if $x \preceq_X y$ implies $\varphi(x) \preceq_Y \varphi(y)$. It is an \textit{order-embedding} if it is injective, and $x \preceq_X y$ if and only if $\varphi(x) \preceq_Y \varphi(y)$ for all $x,y \in \mathbf{X}$. Finally, $\varphi$ is an \textit{order-isomorphism}, or just \textit{isomorphism}, if it is an order-embedding that is also \textit{surjective}. The dual notion to an order-preserving map is an \textit{order-reversing} (or, antitone) map. We say that two orders are \textit{dually isomorphic}, or \textit{order-anti-isomorphic}, if there is an order-reversing bijection between them.
 \end{definition}
 
 \subsection{Lattice Theory}
@@ -211,9 +210,9 @@ Lattices can also be considered from an algebraic perspective; although, as we w
 Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the following properties for all $x,y,z \in L$,
 %
 \begin{align}
-  \text{(idempotence)} & \quad x \vee x = x \label{eq:idempotence} \\
-  \text{(commutativity)} & \quad x \vee y = y \vee x \label{eq:commutativity} \\
-  \text{(associativity)} & \quad (x \vee y) \vee z = x \vee (y \vee z) \label{eq:associativity}
+  \text{(Idempotence)} & \quad x \vee x = x \label{eq:idempotence} \\
+  \text{(Commutativity)} & \quad x \vee y = y \vee x \label{eq:commutativity} \\
+  \text{(Associativity)} & \quad (x \vee y) \vee z = x \vee (y \vee z) \label{eq:associativity}
 \end{align}
 %
 From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partial order $\preceq$ on $L$ by construction of the relation $\{(x, x \vee y) \mid x,y \in L \}$ \cite[pp. 173]{bergman2015invitation}. The structure $(L, \vee)$ is called an algebraic \textit{join semilattice}, and $\preceq$ its \textit{underlying partial order}. The relation can equivalently be described as \say{$x \preceq y$ if and only if $x \vee y = y$} \cite[pp.173]{bergman2015invitation}.
@@ -262,7 +261,7 @@ If we instead consider the structure $(L, \wedge)$ where $\wedge$ is a different
 
 It is an obvious next step to wonder how these two algebraic structures fit together: fix a set non-empty set $L$ with the two binary operations, $\vee$ and $\wedge$, introduced in the prior paragraphs. We have already seen that the underlying order of the join semilattice can be described as $x \preceq y$ if and only if $x \vee y = y$, while the underlying order of the meet semilattice is described by $x \preceq y$ if and only if $x \wedge y = x$. These two partial orders are \textit{compatible} under the following condition:
 \begin{align}
-     \text{(compatibility)} & \quad x \vee (x \wedge y) = x & \text{(resp.)}  & \quad x \wedge (x \vee y) = x
+     \text{(Compatibility)} & \quad x \vee (x \wedge y) = x & \text{(resp.)}  & \quad x \wedge (x \vee y) = x
 \end{align}
 %
 Compatibility (which is sometimes also called \textit{absorption}) is satisfied when the underlying orders of both semilattices refer to the same partial order. The property can be rewritten as $x \vee y = y$ if and only if $x \wedge y = x$. The formal definition of an algebraic lattice is given below:
@@ -283,6 +282,11 @@ The algebraic structure $(L, \vee, \wedge)$, where $L$ is a set and $\vee, \wedg
     \item $x \wedge y = x$.
   \end{enumerate}
 \end{lemma}
+
+\begin{theorem}
+\label{theorem:powerset-lattice}
+	Theorem that the powerset of any set with the induced order is a complete lattice
+\end{theorem}
 
 Moving forward, we will no longer maintain a rigid distinction between these two perspectives on lattices; rather, we will tacitly adopt whichever viewpoint best suits the surrounding context. Lattices are central to Formal Concept Analysis, and will be revisited in \Cref{chapter:formal-concept-analysis}.
 
@@ -330,16 +334,13 @@ Apart from their nomenclature, it is not obvious how closure operators and closu
 \end{theorem}
 
 \begin{example}
-Consider the partially ordered set $S = {a, b, c, d}$ with the ordering $a \preceq b \preceq d$ and $a \preceq c \preceq d$. Let $\mathcal{D}$ denote the collection of all downsets in $S$, where a downset is a subset $X \subseteq S$ such that if $x \in X$ and $y \preceq x$, then $y \in X$.
-The complete collection of downsets is:
-
+Consider the partially ordered set $S = \{a, b, c, d\}$ where the order is given by $a \preceq b \preceq d$ and $a \preceq c \preceq d$. Let $\mathcal{D}$ denote the collection of all downsets in $S$, where a downset is a subset $X \subseteq S$ such that if $x \in X$ and $y \preceq x$, then $y \in X$. Then we have
+%
 \[\mathcal{D} = \big\{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c,d\}\big\}\]
 
-We can verify that $\mathcal{D}$ forms a closure system: it contains $S = {a,b,c,d}$ and remains closed under arbitrary intersections. For instance, ${a,b,d} \cap {a,c} = {a}$, which belongs to $\mathcal{D}$. The corresponding closure operator $\mathsf{d}: \mathcal{P}(S) \to \mathcal{D}$ is defined by:
-
-\[\mathsf{d}(X) = \bigcap {Y \in \mathcal{D} \mid X \subseteq Y}\]
-
-For example, $\mathsf{d}({b,c}) = {a,b,c,d}$ because the smallest downset containing both $b$ and $c$ must include all elements below them in the ordering, ultimately encompassing the entire set.
+We can verify that $\mathcal{D}$ forms a closure system: it contains $S$ and remains closed under arbitrary intersections. For instance, $\{a,b,d\} \cap \{a,c\} = \{a\}$, which itself is a member of $\mathcal{D}$. We can then induce the closure operator $\mathsf{g} \colon \pset{S} \to \mathcal{D}$ as
+%
+\[\mathsf{g}(X) = \bigcap \{Y \in \mathcal{D} \mid X \subseteq Y\}\]
 \end{example}
 
 \begin{theorem}
@@ -356,19 +357,24 @@ For example, $\mathsf{d}({b,c}) = {a,b,c,d}$ because the smallest downset contai
 \subsection{Galois Connections}
 \label{subsection:galois-connections}
 
-Galois connections are connected to closure operators in a significant way:
+Galois connections are a generalisation of \textit{The Fundemental Theorem of Galois Theory} (see \cite[pp. 205]{bergman2015invitation}), and are useful ways of describing correspondence between two sets and with a relation. We will spend a bit of time describing Galois connections, as they are fundemental to FCA, and closely related to ideas around closures.
 
 \begin{definition}
-\label{definition:Galois-connection}
+\label{definition:Galois-connection-1}
 Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps $\mathsf{f} \colon \pset{\mathbf{X}} \to \pset{\mathbf{Y}}$ and $\mathsf{g} \colon \pset{\mathbf{Y}} \to \pset{\mathbf{X}}$ constitute a \emph{Galois connection} between $\mathbf{X}$ and $\mathbf{Y}$ if and only if they satisfy
 \begin{align}
-    \quad & x \preceq_X x' \Rightarrow \mathsf{f}(x') \preceq_Y \mathsf{f}(x) \\
-    \quad & y \preceq_Y y' \Rightarrow \mathsf{g}(y') \preceq_X \mathsf{g}(y) \\
-    \quad & x \preceq_X \mathsf{g}(\mathsf{f}(x)) \text{ and } y \preceq_Y \mathsf{f}(\mathsf{g}(y))
+    \quad & x \preceq_X x' \Rightarrow \mathsf{f}(x') \preceq_Y \mathsf{f}(x) \label{equation:ord_galois-1} \\
+    \quad & y \preceq_Y y' \Rightarrow \mathsf{g}(y') \preceq_X \mathsf{g}(y) \label{equation:ord-galois-2} \\
+    \quad & x \preceq_X \mathsf{g}(\mathsf{f}(x)) \text{ and } y \preceq_Y \mathsf{f}(\mathsf{g}(y)) \label{equation:ord-galois-3}
  \end{align}
 
  We say that such a pair of maps are \emph{dually adjoint} to eachother.
 \end{definition}
+
+\begin{proposition}
+\label{proposition:fundemental-galois}
+
+\end{proposition}
 
 \begin{figure}[H]
 \centering
@@ -398,17 +404,17 @@ Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps $\mathsf{f} \c
     \node (D) at (4, 1) {};
     \draw (A) -- (B) -- (D) -- (C) -- (A);
 
-    \draw[darkblue, dotted, line width=0.8pt] (-1.2,-1.2) to[out=90,in=90] (1.2,-1.2) to[out=270,in=0] (0,-2.2) to[out=180,in=270] (-1.2,-1.2);
-    \draw[darkblue, dotted,-stealth,line width=0.8pt] (0.7,-0.4) to[out=45,in=180] (3.7,1);
+    \draw[blue, dotted, line width=0.8pt] (-1.2,-1.2) to[out=90,in=90] (1.2,-1.2) to[out=270,in=0] (0,-2.2) to[out=180,in=270] (-1.2,-1.2);
+    \draw[blue, dotted,-stealth,line width=0.8pt] (0.7,-0.4) to[out=45,in=180] (3.7,1);
 
-    \draw[darkblue, dotted, line width=0.8pt] (-1.3,0) to[out=90,in=180] (-0.5,0.3) to[out=0,in=90] (0.3,0) to[out=270,in=0] (-0.5,-0.3) to[out=180,in=270] (-1.3,0);
-    \draw[darkblue, dotted, -stealth, line width=0.8pt] (-0.2,0.5) to[out=45,in=90] (5,0.4);
+    \draw[blue, dotted, line width=0.8pt] (-1.3,0) to[out=90,in=180] (-0.5,0.3) to[out=0,in=90] (0.3,0) to[out=270,in=0] (-0.5,-0.3) to[out=180,in=270] (-1.3,0);
+    \draw[blue, dotted, -stealth, line width=0.8pt] (-0.2,0.5) to[out=45,in=90] (5,0.4);
 
-    \draw[darkblue, dotted, line width=0.8pt] (-1,2.3) to[out=0,in=90] (-0.7,1.5) to[out=270,in=0] (-1,0.8) to[out=180,in=270] (-1.3,1.5) to[out=90,in=180] (-1,2.3);
-    \draw[darkblue, dotted, -stealth, line width=0.8pt] (-1.5,1.5) to[out=180,in=90] (-3,-0.5) to[out=270,in=180] (0,-3) to[out=0,in=180] (2,-3) to[out=0,in=270] (4,-1.3);
+    \draw[blue, dotted, line width=0.8pt] (-1,2.3) to[out=0,in=90] (-0.7,1.5) to[out=270,in=0] (-1,0.8) to[out=180,in=270] (-1.3,1.5) to[out=90,in=180] (-1,2.3);
+    \draw[blue, dotted, -stealth, line width=0.8pt] (-1.5,1.5) to[out=180,in=90] (-3,-0.5) to[out=270,in=180] (0,-3) to[out=0,in=180] (2,-3) to[out=0,in=270] (4,-1.3);
 
-    \draw[darkblue, dotted, line width=0.8pt] (-2.2,0.2) to[out=45,in=135] (-1.6,-0.1) to[out=315,in=45] (-1.3,-0.7) to[out=225,in=315] (-1.9,-0.4) to[out=135, in=225] (-2.2, 0.2);
-    \draw[darkblue, dotted, -stealth, line width=0.8pt] (-2.1, -0.5) to[out=270,in=180] (0,-2.6) to[out=0,in=180] (1.5, -2.6) to[out=0,in=270] (3,-0.3);
+    \draw[blue, dotted, line width=0.8pt] (-2.2,0.2) to[out=45,in=135] (-1.6,-0.1) to[out=315,in=45] (-1.3,-0.7) to[out=225,in=315] (-1.9,-0.4) to[out=135, in=225] (-2.2, 0.2);
+    \draw[blue, dotted, -stealth, line width=0.8pt] (-2.1, -0.5) to[out=270,in=180] (0,-2.6) to[out=0,in=180] (1.5, -2.6) to[out=0,in=270] (3,-0.3);
 \end{tikzpicture}
 
 \begin{tikzpicture}[
@@ -437,16 +443,13 @@ Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps $\mathsf{f} \c
     \node (D) at (4, 1) {};
     \draw (A) -- (B) -- (D) -- (C) -- (A);
 
-    \draw[red, dotted,-stealth,line width=0.8pt] (A) to[out=180,in=0] (4);
-    \draw[red, dotted,-stealth,line width=0.8pt] (B) to[out=180,in=0] (7);
-    \draw[red, dotted,-stealth,line width=0.8pt] (C) to[out=90,in=90] (3);
-    \draw[red, dotted,-stealth,line width=0.8pt] (D) to[out=0,in=270] (0);
+    \draw[green, dotted,-stealth,line width=0.8pt] (3.8,-1) to[out=180,in=0] (-0.8,2);
+    \draw[green, dotted,-stealth,line width=0.8pt] (3.8,1) to[out=180,in=0] (-1,1);
+    \draw[green, dotted, line width=0.8pt] (2.8,0) to[out=90,in=180] (4,0.4) to[out=0,in=90] (5.2, 0) to[out=270,in=0] (4,-0.4) to[out=180,in=270] (2.8,0);
+    \draw[green, dotted, -stealth, line width=0.8pt] (2.6, 0) to[out=180, in=0] (-0.8, 1);
 \end{tikzpicture}
 \caption{A Galois connection}
 \end{figure}
-
-
-
 
 \section{Propositional Logic}
 \label{section:propositional-logic}
@@ -543,9 +546,9 @@ which are indeed all models of $\texttt{b} \rightarrow \texttt{s}$, and so we an
 A \textit{theory} (also called a \textit{deductive system}, but we avoid this terminology) is a set of formulae $\Gamma$ that equals its closure $\cons_X (\Gamma)$. The study of such operators is useful in its ability to reveal properties about the respective notion of consequence. For instance, it was observed by Tarski \cite[p. 84]{tarski1936operator} that $\cons$ satisfies the following properties:
 %
 \begin{align}
-     \text{(inclusion)} & \quad \Gamma \subseteq \cons (\Gamma) \\
-     \text{(idempotency)} & \quad  \cons (\Gamma) = \cons (\cons (\Gamma)) \\
-     \text{(monotonicity)} & \quad \Gamma \subseteq \Gamma' \Rightarrow \cons (\Gamma) \subseteq \cons (\Gamma')
+     \text{(Inclusion)} & \quad \Gamma \subseteq \cons (\Gamma) \\
+     \text{(Idempotency)} & \quad  \cons (\Gamma) = \cons (\cons (\Gamma)) \\
+     \text{(Monotonicity)} & \quad \Gamma \subseteq \Gamma' \Rightarrow \cons (\Gamma) \subseteq \cons (\Gamma')
 \end{align}
 
 \textit{Inclusion} is a relatively easy property to justify: all that is required is that the consequences of some information includes at least that starting information. \textit{Idempotency} requires that the supposed set of all consequences is in fact the set of \textit{all} consequences.

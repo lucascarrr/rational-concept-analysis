@@ -1,26 +1,26 @@
 \chapter{Formal Concept Analysis}
 \label{chapter:formal-concept-analysis}
 
-\FCA (henceforth initialised to FCA) is an approach to reasoning about \textit{concepts} and corresponding \textit{conceptual structures} in terms of lattice theory. At the foundation of FCA is a philosophical viewpoint, tracing back to Aristotle, which describes concepts as a unit consisting of two parts, the dual between \textit{extension}: those things that exist as an instance of the concept; and \textit{intension}: the properties which give meaning to the concept \cite[p. 1]{WILLE1992493} \cite[p. 414]{DUQUENNE1999407}. As we will discuss in the following section, this perspective on concepts can be modelled quite elegantly by relations on sets of extensional and intensional elements. \index{extension} \index{intension}
+\FCA (henceforth initialised to FCA) is an approach to reasoning about \textit{concepts} and corresponding \textit{conceptual structures} in terms of lattice theory. At the foundation of FCA is a philosophical viewpoint, tracing back to Aristotle, which describes concepts as a unit consisting of two parts: the \textit{extension}, which refers to what one might refer to as instantiations of the concept, and the \textit{intension}, which refers to the meaning we ascribe to a concept by virtue of its properties \cite{ganter1999formal, WILLE1992493, DUQUENNE1999407}.
 
 \section{Basic Notions in Formal Concept Analysis}
 \label{section:basic-notions}
 
-The starting point in FCA is a structure called a \textit{formal context}, or simply a \textit{context}. A context represents the relational aspect between the extensional and intensional sets.
+The starting point in FCA is almost always a structure called a \textit{formal context}, or simply a \textit{context}. A context describes a universe of discourse, as well as the underlying structural relationships that conceptual reasoning is based on.
 %
 \begin{definition}
 \label{definition:formal-context} \index{formal context}
-  A \textit{formal context} $\GMI$ is a triple comprised of a set of objects $G$, a set of attributes $M$, and a binary relation $I \subseteq G \times M$ referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we might say that \say{object $g$ \textit{has} the attribute $m$}.
+  A \textit{formal context} $\GMI$ is a triple comprised of a set $G$ of objects , a set $M$ of attributes, and a binary relation $I \subseteq G \times M$ referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we might say that \say{Object $g$ \textit{has} the attribute $m$}.
 \end{definition}
-%
-We regard the set $G$ of objects as being the extensional dimension of the context, while the set $M$ of attributes is intensional. Although, there is no strict requirement around what these sets are made up of, or that they be distinct---it is perfectly fine to have a context where $G$ and $M$ are the same sets.
 
-It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is interpreted as the object having the respective attribute, FCA is concerned with only \textit{positive} information, and so the absence of a pair in the relation is not usually interpreted to mean the object has the negation of the attribute.
+We regard the set of objects as being the extensional dimension of the context, while the set of attributes is intensional. However, this is largely convention; there is no strict requirement around what these sets are made up of, or that they be distinct. It is perfectly acceptable to have a context such as $(G,G,I)$ where the objects and attributes are the same set. \textcolor{red}{Perhaps add an intuition for what this context represents.}
 
-When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table like \Cref{context:formal-context-group-structures} where each object is represented by a row in the table, each attribute by a column, and each element in the incidence relation is marked with an `$\times$' at the appropriate position \cite[pp. 17]{ganter1999formal}. Given a context is presented in this form, it is easy to identify all the attributes that a particular object satisfies: one need only scan across the respective row and note where the marks appear. The resulting set of attributes is called the \textit{object's intent}. The dual notion of an \textit{attribute extent} can be found by traversing down a column in the table.
+It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is interpreted as the object having the respective attribute, FCA is concerned with only \textit{positive} information, and so the absence of a pair in the relation is not usually interpreted to mean the object has the negation of the attribute. We will discuss the troubling matter of negative attributes in \Cref{section:contextual-attribute-logic}.
+
+When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table such as in \Cref{context:formal-context-group-structures}. Each object is represented by a row in the table, each attribute by a column, and each element in the incidence relation is marked with an `$\times$' at the appropriate position \cite[pp. 17]{ganter1999formal}. Given a context that is presented in this form, it is quite trivial to identify all the attributes that a particular object satisfies: one need only scan across the respective row and note where the marks appear. The resulting set of attributes is called the \textit{object's intent}. The dual notion of an \textit{attribute extent} can be found by traversing down a column in the table.
 \begin{example}
   \label{example:first-example-formal-context}
-  Finite formal contexts of a reasonable size can be described entirely by a tabular representation. Each object corresponds to a row, and each attribute to a column.
+  Finite formal contexts of a reasonable size can be described entirely by a tabular representation. Each object corresponds to a row, and each attribute to a column in the table.
 
   \begin{figure}[H]
     \centering
@@ -45,107 +45,43 @@ When the cardinalities of $G$ and $M$ are small, contexts may be represented as 
   \end{figure}
 \end{example}
 
-The efficacy of this approach obviously diminishes when we are interested in non-trivial contexts, or determining the intents or extents for sets of objects or attributes, respectively. We can instead formalise the procedure by defining \textit{derivation operators}:
+This approach to determining object extents and attribute intents becomes impractical when considering non-trivial contexts, or large sets of objects and attributes. The procedure can be formally described by the \textit{derivation operators}: \footnote{It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^\uparrow$ and $B^\downarrow$ would become $A'$ and $B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity while maintaining pleasing notation. In cases where a derivation operator is applied to a singleton of objects $\{g\}$ (\textit{resp.} attributes $\{m\}$) we omit the parenthesis and write $g^\uparrow$ (\textit{resp.} $m^\downarrow$)}
 
 \begin{definition}
      \label{definition:derivation-operators} \index{derivation operators}
-  Given a formal context $\GMI$, the \textit{derivation operators} are two order-reversing maps $(\cdot)^\uparrow : \pset{G} \to \pset{M}$ and $(\cdot)^\downarrow : \pset{M} \to \pset{G}$ where the order is given by subset inclusion. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
+  Given a context $\GMI$, the \textit{derivation operators} are two maps $(\cdot)^\uparrow : \pset{G} \to \pset{M}$ and $(\cdot)^\downarrow : \pset{M} \to \pset{G}$. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
   \begin{align*}
        A^\uparrow & \coloneqq \{m \in M \mid \forall g \in A, \; (g,m) \in I\} \\
        B^\downarrow & \coloneqq \{g \in G \mid \forall m \in B, \; (g,m) \in I\}
   \end{align*}
 \end{definition}
 
-It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^\uparrow$ and $B^\downarrow$ would become $A'$ and $B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity while maintaining pleasing notation. In cases where a derivation operator is applied to a singleton of objects $\{g\}$ (\textit{resp.} attributes $\{m\}$) we omit the parenthesis and write $g^\uparrow$ (\textit{resp.} $m^\downarrow$).
-
-The derivation operators provide a clear way of describing, for a given set $A\subseteq G$ of objects, the set of attributes which every object in $A$ satisfies, denoted $A^\uparrow$. As an illustration, given the set of objects from \Cref{context:formal-context-group-structures} $\{\texttt{semigroup, monoid}\}$, its' derivation would be $\{\texttt{closure, associativity}\}$. It is quite easy to spot that this is just the intersection of the object intents of \texttt{semigroup} and \texttt{monoid}.
-
-\subsection{Galois Connections}
-The derivation operators introduced in \Cref{definition:derivation-operators} are not unique to FCA, and in fact constitute a \textit{Galois connection} between the set of objects and attributes of a formal context. Galois connections are a generalisation of \textit{The Fundemental Theorem of Galois Theory} (see \cite[pp. 205]{bergman2015invitation}), and are useful ways of describing correspondence between two sets and with a relation. We will spend a bit of time describing Galois connections, as they are fundemental to FCA, and closely related to ideas around closures.
+The derivation operators offer a clear way to identify, for a given set $A \subseteq G$ of objects, the set $A^\uparrow$ of attributes which are common to each object in $A$. For example, the derivation of the set $\{\texttt{semigroup,monoid}\}$ of objects from \Cref{context:formal-context-group-structures} would be $\{\texttt{closure,associativity}\}$. In fact, we have already explored a more general perspective on the derivation operators in \Cref{section:closure-systems} through the notion of closure operators and Galois connections.
 
 \begin{proposition}
-\label{proposition:properties-derivation-operators}
-	We recall \Cref{definition:derivation-operators}, but imagine that the sets $G$ and $M$ are any arbitrary set, and $I$ is any relation on $G \times M$. Then, for $X, X_1 \subseteq G$ and $Y, Y_1 \subseteq M$ we have
-	\begin{equation}
-    \begin{aligned}
-    \label{equation:galois-1}
-    & \quad X \subseteq X_1 \Rightarrow X_1^\uparrow \subseteq X^\uparrow \qquad & \textit{(resp.)} & \qquad Y \subseteq Y_1 \Rightarrow Y_1^\downarrow \subseteq Y^\downarrow \\
-    \end{aligned}
-    \end{equation}
-    %
-    \begin{equation}
-    \begin{aligned}
-    & \quad X \subseteq X^{\uparrow \downarrow} \qquad & \textit{(resp.)} & \qquad Y \subseteq Y^{\downarrow \uparrow} \\
-    \end{aligned}
-    \end{equation}
-    %
-    \begin{equation}
-    \label{equation:galois-3}
-    \begin{aligned}
-    & \quad X^\uparrow = X^{\uparrow \downarrow \uparrow} \qquad & \textit{(resp.)} & \qquad Y^\downarrow = Y^{\downarrow \uparrow \downarrow} \\
-     \end{aligned}
-    \end{equation}
-\end{proposition}
-
-\clearpage
-
-As presented, these derivation operators are not unique to FCA; they are simply an instantiation of operators from Galois connections. Galois connections appear frequently, and are a generelatisation of \textit{The Fundemental Theorem of Galois Theory} (see \cite[pp. 205]{bergman2015invitation}). They are used to express a correspondence between two sets and a relation, and are closely related to ideas around closure systems.
-
-
-
-
-
-
-
-
-
-
-
-Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}$---which can rather cumbersomely be described as \say{The set of all objects which satisfy all the attributes satisfied by \texttt{semigroup} and \texttt{monoid}}---would yield the set $\{\texttt{semigroup, monoid, group, abelian group}\}$. In fact, this composition of derivation operators satisfies very specific properties.
-%
+\label{proposition:derivation-operators-galois}
+Let $\GMI$ be a formal context and consider the subsets $X,X_1 \subseteq G$ of objects (\textit{resp.} $Y,Y_1 \subseteq M$ of attributes) then
 \begin{align}
-  & \text{(monotonicity)} & A \subseteq A_1 \textit{ implies } A^{\uparrow \downarrow} \subseteq A_1^{\uparrow \downarrow} \\
-  & \text{(extensivity)}  & A \subseteq A^{\uparrow \downarrow} \\
-  & \text{(idempotency)}  & A^{\uparrow \downarrow} = (A^{\uparrow \downarrow})^{\uparrow \downarrow}
+    & X \subseteq X_1 \Rightarrow X_1^\uparrow \subseteq X^\uparrow & \textit{(resp.)} & \qquad Y \subseteq Y_1 \Rightarrow Y_1^\downarrow \subseteq Y^\downarrow \label{equation:galois-1} \\
+    & X \subseteq X^{\uparrow \downarrow} & \textit{(resp.)} & \qquad Y \subseteq Y^{\downarrow \uparrow} \label{equation:galois-2} \\
+    & X^\uparrow = X^{\uparrow \downarrow \uparrow}  & \textit{(resp.)} & \qquad  Y^\downarrow = Y^{\downarrow \uparrow \downarrow} \label{equation:galois-3} \\
+    & X \subseteq Y^\downarrow \Longleftrightarrow X^\uparrow \supseteq Y & \label{equation:galois-4}
 \end{align}
-for all $A, A_1 \subseteq G$.  Operators of this kind have already been discussed in \Cref{section:closure-systems}. Thus, $(\cdot)^{\uparrow \downarrow}$ describes a closure operator on the powerset $\pset{G}$ of objects. The dual notion holds for attributes, and $(\cdot)^{\downarrow \uparrow}$ describes a closure operator on $\pset{M}$ \cite[pp. 18]{ganter1999formal}.
-
-\begin{proposition}
-  \label{proposition:properties-about-derivation-operators}
-  Let $\GMI$ be a formal context with subsets $A_0, A_1, A_2 \subseteq G$ and $B_0, B_1, B_2 \subseteq M$ of attributes. Then,
-% A_0 \subseteq A_1 \Longrightarrow A_1^\uparrow \subseteq A_0^\uparrow
-%  \qquad &\text{(resp.)}\quad
-% B_0 \subseteq B_1 \Longrightarrow B_1^\downarrow \subseteq B_0^\downarrow \\
-% A_0 \subseteq A_0^{\uparrow\downarrow}
-%  \qquad &\text{(resp.)}\quad
-% B_0 \subseteq B_0^{\downarrow\uparrow}\\
-% A_0^\uparrow = A_0^{\uparrow\downarrow\uparrow}
-%  \qquad &\text{(resp.)}\quad
-% B_0^\downarrow = B_0^{\downarrow\uparrow\downarrow}
-%
-
-%
-
-%
-
-%
-\begin{equation}
-\begin{aligned}
-& \quad A_0 \subseteq B_0^\downarrow \quad \Longleftrightarrow B_0 \subseteq A_0^\uparrow \quad \Longleftrightarrow A_0 \times B_0 \subseteq I
- \end{aligned}
-\end{equation}
 \end{proposition}
 
-\Cref{equation:galois-1} describes the process where, as the size of a set of objects grows, the size of the set of attributes satisfied by this set of objects is reduced. The dual holds with respect to sets of attributes.
+If we consider the powersets $\pset{G}$ and $\pset{M}$ with their usual inclusion orders, the \Cref{equation:galois-1,equation:galois-2,equation:galois-3} are merely rephrasings of \Cref{equation:ord_galois-1,equation:ord-galois-2,equation:ord-galois-3}; and \Cref{equation:galois-4} rephrases \Cref{proposition:fundemental-galois}, and so, the derivation operators form a Galois connection between the powersets $\pset{G}$ and $\pset{M}$. We remind the reader of \Cref{theorem:powerset-lattice}, from which it it follows that $\pset{G}$ and $\pset{M}$ are both complete lattices.
 
-Let us temporarily speak imprecisely and consider the fairly general concept of a `human'. The size of this concept's extension---those things which may be considered instances of `human'---is quite large. Consider another concept, that of an `optometrist'; presumably, the latter concept's extension is contained within that of the former. While the intension---those properties we associate with an optometrist---would certainly be larger than, and more precisely a superset of, those associated with the concept of `human'.
+Let us now consider some intution for why Galois connections appear when modelling concepts as the dual between extension and intension.
 
-We have, quite informally, described what constitutes a \textit{Galois connection} between the sets $(\pset{G}, \subseteq)$ and $(\pset{M}, \subseteq)$ induced by the two derivation operators.
+We have not yet formally defined concepts, but consider (under some common notion) the concept of a `human'. The size of this concept's extension---those things which may be considered instances of `human'---is quite large. Consider another concept, that of an `optometrist'. Presumably, the extension of the latter concept is contained within that of the former. While the intension---those properties we associate with an optometrist---would certainly be larger than, and more precisely a superset of, those associated with the concept of `human' (we hold the implicit view that only humans may be optemetrists). If we consider the shared properties of the extension of human, we should expect that it will at least contain `human'. Finally, once we have carefully amassed all the properties common to this extension, we should not expect any other extensional object we have not already considered to satisfy each of these properties, for it would then satisfy `human' and been included in our first consideration. \textcolor{red}{Perhaps this is a bit too basic, I can rephrase the intuition more technically and directly related to a context.}
 
-\begin{definition}
-  \label{definition:galois-connection} \index{galois connection}
-  Given two partially ordered sets $\mathbf{X}$ and $\mathbf{Y}$, an \textit{antitone Galois connection} is a pair of functions $f:\mathbf{X}\!\to\!\mathbf{Y}$ and $g:\mathbf{Y}\!\to\!\mathbf{X}$ such that $y \preceq_Y f(x)$ if and only if $x \preceq_X g(y)$ for all $x\in X$ and $y\in Y$.
-\end{definition}
+
+
+From \Cref{proposition:derivation-operators-galois} we can describe two closure operators $(\cdot)^{\uparrow \downarrow}$ and $(\cdot)^{\downarrow \uparrow}$ on the powersets $\pset{G}$ and $\pset{M}$, respectively.
+
+
+
+Of course, these two functions can be composed; and so, $A^{\uparrow \downarrow}$---which can rather cumbersomely be described as \say{The set of all objects which satisfy all the attributes satisfied by \texttt{semigroup} and \texttt{monoid}}---would yield the set $\{\texttt{semigroup, monoid, group, abelian group}\}$. In fact, this composition of derivation operators satisfies very specific properties.%
 
 With the above relationship between sets of objets and attributes in mind, it is appropriate to introduce a \textit{formal concept}.
 
@@ -157,12 +93,12 @@ With the above relationship between sets of objets and attributes in mind, it is
 \begin{example}
 \label{example:formal-concept}
 If we consider the \texttt{groupoid} object from \Cref{context:formal-context-group-structures}, we can derive the concept:
-%
+
 \[\big(\{\texttt{groupoid,group,abelian group}\}, \{\texttt{associativity,identity,closure}\} \big)\]
 
-The derivation of \texttt{groupoid} yields $\{\texttt{associativity,identity,closure}\}$, by \Cref{equation:galois-3} this set is closed under its Galois connection, and forms a concept intent.
+% The derivation of \texttt{groupoid} yields $\{\texttt{associativity,identity,closure}\}$, by \Cref{equation:galois-3} this set is closed under its Galois connection, and forms a concept intent.
 
-To begin, the object intent $\texttt{groupoid}^\uparrow$ is determined, which yields the set $\{\texttt{associativity,identity,closure}\}$. From \Cref{proposition:properties-about-derivation-operators} this set is closed, and represents a concept intent. The concept extent is determined by application of a derivation operator to the concept intent.
+% To begin, the object intent $\texttt{groupoid}^\uparrow$ is determined, which yields the set $\{\texttt{associativity,identity,closure}\}$. From \Cref{proposition:properties-about-derivation-operators} this set is closed, and represents a concept intent. The concept extent is determined by application of a derivation operator to the concept intent.
 \end{example}
 
 The set of all concepts has a natural ordering induced on it by the \textit{subconcept--superconcept} relation. If $(A_0,B_0)$ and $(A_1,B_1)$ are two concepts, then $(A_0,B_0)$ is a \textit{subconcept} of $(A_1, B_1)$ and $(A_1, B_1)$ is a superconcept of $(A_0,B_0)$ if and only if $A_0 \subseteq A_1$. Equivalently if $B_1 \subseteq B_0$. We denote set of all concepts ordered in this way by $\CLGMI$, and call this set the \textit{concept lattice} of $\GMI$.

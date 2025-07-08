@@ -16,8 +16,8 @@
 \usepackage{csquotes}
 
 % \RequirePackage{fontspec} % Ensure fontspec is loaded first
-\RequirePackage{stix2}    % This loads unicode-math and sets STIX Two fonts for math and text
-\usepackage[scaled=0.9]{inconsolata}   % or \usepackage[scale=0.85]{inconsolata}
+\RequirePackage{stix2}
+\usepackage[scaled=0.9]{inconsolata}
 
 % --- Geometry and Spacing ---
 \usepackage[a4paper,margin=1in]{geometry}
@@ -60,7 +60,7 @@
 % --- Theorem declarations ---
 \usepackage{etoolbox}
 \declaretheorem[style=plain]{theorem}
-\newtheorem{example}{Example}
+\declaretheorem[style=plain]{example}
 \AtEndEnvironment{example}{\par\addvspace{\baselineskip}}
 \declaretheorem[style=definition]{definition}
 \declaretheorem[style=remark]{remark}
@@ -82,8 +82,8 @@
 \usetikzlibrary{calc,fit,shapes.geometric}
 
 % --- Colours ---
-\definecolor{light}{rgb}{0.77,0.1,0.541}
-\definecolor{blue}{rgb}{0.255,0.714,0.769}
+\definecolor{blue}{HTML}{0000A4}
+\definecolor{green}{HTML}{025C5D}
 \definecolor{mediumblue}{rgb}{0.173,0.498,0.722}
 \definecolor{darkblue}{rgb}{0.145,0.204,0.580}
 

@@ -92,8 +92,9 @@ systems form a complete lattice where, recounting \Cref{theorem:closure-systems-
    & \underset{i \in I}\bigwedge B_{i}= \underset{i \in I}\bigcap B_{i}\quad \text{ and }\quad\underset{i \in I}\bigvee B_{i}= \big( \underset{i \in I}\bigcup B_{i}\big)^{\downarrow \uparrow} & \quad B\subseteq \mathcal{M}
 \end{align*}
 
-It follows \Cref{proposition:galois-connections-closure-operators} (and \Cref{figure:two-lattices} provides some visual intuition) that the closure systems induced by the derivation operators are dually
-isomorphic to one another, and so each closed set of objects in $\mathcal{G}$ maps to a closed set of attributes in $\mathcal{M}$ and vice verse.
+We recall the discussion at the end of \Cref{subsection:galois-connections} where it was shown that a pair of mappings that form a Galois connection are dually isomorphic when their domains are restricted
+to the associated closure systems. With the aid of \Cref{figure:two-lattices}, we note this correspondence between the lattices of closure systems $\mathcal{G}$ and $\mathcal{M}$.
+
 \vspace{-5em}
 \begin{figure}[H]
   \centering
@@ -215,9 +216,10 @@ isomorphic to one another, and so each closed set of objects in $\mathcal{G}$ ma
     \draw[red, dotted, stealth-stealth, line width=0.8pt] (16,-0.5) to[out=90, in=270] (4,-0.5);
     \draw[red, dotted, stealth-stealth, line width=0.8pt] (-4,-0.5) to[out=270, in=90] (8,-0.5);
     \draw[red, dotted, stealth-stealth, line width=0.8pt] (0,4.5) to[out=90, in=270] (12,-5.5);
+    \draw[blue, dotted, stealth-stealth, line width=0.8pt] (0,-2.5) to[out=270, in=90] (12,1.5);
   \end{tikzpicture}
   \vspace{-6em}
-  \caption{The lattices for the closure systems $\mathcal{G}$ and $\mathcal{M}$, respectively. We partially demonstrate the dual isomorphism between these structures. We read set inclusion from below.}
+  \caption{The lattices induced by the closure systems $\mathcal{G}$ and $\mathcal{M}$}
   \label{figure:two-lattices}
 \end{figure}
 
@@ -230,8 +232,11 @@ satisfy closure, associativity, and have an identity element. It is completely o
 concept's extension is that of a `group': a set equipped with a binary operation satisfying all the properties of a monoid alongside the additional property of divisibility.
 
 Now let us consider the concept derived from a `group'; we have just shown that a group is a subclass of monoid, so it should follow that the extension of a group must be a subset of the extension of a
-monoid, but what of the intension? Suppose the intension of the concept of a monoid were not a subset of that of a group, then monoids would have to satisfy some property that groups did not. This is a
-problem, as it suggests we should not have considered a group to be a subclass of a monoid.
+monoid. What of the intension? Suppose the intension of the concept of a monoid were not a subset of that of a group, then monoids would have to satisfy some property that groups did not. This is a problem,
+as it suggests we should not have considered a group to be a subclass of a monoid.
+
+\textcolor{red}{Insert closing paragraph}
+\vspace{6em}
 
 It is finally an appropriate time to define what is meant by \textit{formal concept}:
 
@@ -240,27 +245,20 @@ It is finally an appropriate time to define what is meant by \textit{formal conc
   $A^{\uparrow}= B$ and $B^{\downarrow}= A$. We call $A$ the \emph{concept extent} and $B$ the \emph{concept intent}. We write $\BGMI$ to denote the set of all concepts of $\GMI$.
 \end{definition}
 
-Concepts are thus pairs of closed sets, where each set represents either the extensional or intensional perspective on the concept. In case it is not clear from the definition of formal concepts why
-the concept extents and concept intents are necessarily closed, consider the following remark:
+A concept is then a pair of closed sets, where each set represents either the extensional or intensional perspective on the concept. Indeed, the extension and intension are related by virtue of being the
+inverses of one another under the derivation operators.
 
-\begin{remark}
-  We have established that the two closure operators $(\cdot)^{\uparrow \downarrow}$ and $(\cdot)^{\downarrow \uparrow}$ form a Galois connection, inducing the closure systems $\mathcal{G}$ and
-  $\mathcal{M}$, respectively. It is (perhaps) not immediately obvious that, in fact, the image of the single operator $(\cdot)^{\uparrow}\colon \pset{G}\to \pset{M}$ coincides precisely with the set
-  $\mathcal{M}$, and the image of $(\cdot)^{\downarrow}\colon \pset{M}\to \pset{G}$ similarly coincides with $\mathcal{G}$. This is a direct result of \Cref{equation:galois-3}, since any element in the
-  derivation operators co-domain will be a closed set.
-\end{remark}
+One pleasing consequence of this definition is that, for any set $A\subseteq G$ of objects, the set $A^{\uparrow}$ will always be a concept intent, and may furthermore lead to the construction of
+$(A^{\uparrow \downarrow}, A^{\uparrow})$ which is always a concept. The same idea holds so that for a set $B \subseteq M$ of attributes, $B^{\downarrow}$ is always a concept extent. We are even more fortunate
+in that we have already described and discussed the structure of the collection of all concept intents (or extents)! These are merely the closure systems $\mathcal{G}$ and $\mathcal{M}$.
 
-One pleasing result stemming from this point is that, for any set $A\subseteq G$ of objects, the set $A^{\uparrow}$ will always be a concept intent, and may furthermore lead to the construction of $(A^{\uparrow
-\downarrow}, A^{\uparrow})$ which is always a concept. The same idea holds so that for a set $B \subseteq M$ of attributes, $B^{\downarrow}$ is always a concept extent. We are even more fortunate in
-that we have already described and discussed the structure of the collection of all concept intents (or extents)! These are merely the closure systems $\mathcal{G}$ and $\mathcal{M}$.
-
-To clarify the earlier example of the concept of a `monoid', consider that the derivation $\{\texttt{monoid}\}^{\uparrow}$ yields the set of attributes $\{\texttt{closure,associativity,identity}\}$. In
-turn, the derivation of this attribute set yields the set of objects $\{\texttt{monoid,group,abelian group}\}$. We know by properties of the Galois connection (specifically, \Cref{equation:galois-3})
-that these two derived sets are closed with respect to the closure systems $\mathcal{M}$ and $\mathcal{G}$, and so
+To make these ideas concrete, we reconsider the previous discussion where we (informally) described the concept of a monoid. It follows that $\{\texttt{monoid}\}^{\uparrow}$ yields the intent
+$\{\texttt{closure,associativity,identity}\}$. In turn, the derivation of the intent results in the set $\{\texttt{monoid,group,abelian group}\}$ is the concept extent, and so
 \[
   \big(\{\texttt{monoid,group,abelian group}\}, \{\texttt{closure,associativity,identity}\}\big)
 \]
-is a formal concept of \Cref{cxt:grouplikes}.
+is a formal concept of \Cref{cxt:grouplikes}. We can find this concept by noticing the elements in \Cref{figure:two-lattices} connected by the blue dotted line. A much better idea is to consider a single
+lattice which is the \textit{composition} of these two lattices, shown in \Cref{figure:concept-lattice-group-likes}.
 
 \begin{figure}[H]
   \centering
@@ -357,14 +355,38 @@ We write $\CLGMI$ to denote the set of concepts equipped with this partial order
   \end{align*}
 \end{theorem}
 
+\section{Attribute Implications}
+\label{section:attribute-implications}
+
+In FCA, attribute implications represent dependencies that exist between attributes in a context. If $M$ is a non-empty set of attributes with $A, B \subseteq M$, then we denote an attribute implication
+over $M$ as $A \rightarrow B$.
+
+\begin{definition}
+  \label{definition:attribute-implication} Let $M$ be a non-empty set of attributes, then an \emph{attribute implication} over $M$ is a
+\end{definition}
+
+If we examine the context in \Cref{context:voting-records-small} it is apparent that every representative who voted in favour of the proposed crime bill also voted in favour of the immigration bill; we
+write this dependency as $\texttt{crime }\rightarrow \texttt{immigration}$.
+
+\begin{figure}[H]
+  \centering
+  \begin{cxt}
+    \cxtName{\textbf{\texttt{Congressional Voting Records}}} \atr{\texttt{mx-missile}} \atr{\texttt{crime}} \atr{\texttt{immigration}} \atr{\texttt{satellite ban}} \atr{\texttt{education}} \atr{\texttt{republican}}
+    \atr{\texttt{democrat}} \obj{.xx.xx.}{\texttt{Representative 1}} \obj{......x}{\texttt{Representative 4}} \obj{.x..xx.}{\texttt{Representative 9}} \obj{..x.x.x}{\texttt{Representative 17}}
+  \end{cxt}
+  \caption{A context describing a portion of congressional voting records for 1984}
+  \label{context:voting-records-small}
+\end{figure}
+
 \section{Contextual Attribute Logic}
 \label{section:contextual-attribute-logic}
 
 The attribute logic that usually underlies any discussion on FCA is analogous to Horn logic. Attribute implications are quite easily shown to be analogous to propositional Horn clauses: If we consider
 the (attribute) implication $A \rightarrow B$, with $A, B \subseteq M$ it can be phrased, with respect to holding in a context $\GMI$, as \say{all objects which satisfy every attribute in $A$ also satisfy every attribute in $B$}.
 
-The underlying logic we have just described for FCA can quite easily be shown to be analogous to propositional Horn logic. Horn rules are syntactically similar to material implications, and share the
-same `$\rightarrow$' operator. However, none of the premise nor conclusion of a Horn rule may be negative, or contain disjunction. They are not able to express what is \textit{not} a consequence of a premise.
+The underlying logic we have just described for FCA can quite easily be shown to be analogous to propositional Horn logic. Horn rules are syntactically similar to material implications, and share the same
+`$\rightarrow$' operator. However, none of the premise nor conclusion of a Horn rule may be negative, or contain disjunction. They are not able to express what is \textit{not} a consequence of a
+premise.
 
 waerawer the (attribute) implication $A \rightarrow B$, with $A, B \subseteq M$ it can be phrased, with respect to holding in a context $\GMI$, as \say{all objects which satisfy every attribute in $A$ also satisfy every attribute in $B$}.
 waerawer the (attribute) implication $A \rightarrow B$, with $A, B \subseteq M$ it can be phrased, with respect to holding in a context $\GMI$, as \say{all objects which satisfy every attribute in $A$ also satisfy every attribute in $B$}.

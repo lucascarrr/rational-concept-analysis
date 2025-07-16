@@ -114,7 +114,17 @@
 \usepackage[
   backend=bibtex,
   style=ieee,
-  citestyle=numeric
+  citestyle=numeric,
+  sorting=nyt,
+  maxcitenames=2,
+  maxbibnames=99,
+  giveninits=true,
+  uniquename=init,
+  uniquelist=false,
+  doi=false,
+  url=false,
+  isbn=false,
+  dashed=false
 ]{biblatex}
 \addbibresource{references.bib}
 
@@ -177,3 +187,6 @@
 %  Useful
 % ------------------------------------------------------------------
 \newcommand{\pset}[1]{\mathfrak{P}({#1})}
+\newcommand{\tiff}{\quad \text{if and only if}\quad}
+\newcommand{\tand}{\quad \text{and} \quad}
+\newcommand{\timpl}{\quad \text{implies} \quad}

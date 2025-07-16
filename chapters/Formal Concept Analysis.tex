@@ -12,17 +12,18 @@ The starting point in FCA is almost always a structure called a \textit{formal c
 relationship that exists between elements in this universe.
 %
 \begin{definition}
-  \label{definition:formal-context} \index{formal context} A \textit{formal context} $\GMI$ is a triple comprised of a set $G$ of objects , a set $M$ of attributes, and a binary relation $I \subseteq G
-  \times M$ referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we might say that \say{Object $g$ \textit{has} the attribute $m$}.
+  \index{formal context} \label{definition:formal-context} A formal context $\context = \GMI$ is a triple comprised of a set $G$ of objects , a set $M$ of attributes, and a binary relation
+  $I \subseteq G \times M$ referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we may say \say{The object $g$ \textit{has} the attribute $m$}.
 \end{definition}
 
 We regard the set of objects as being the extensional dimension of the context, while the set of attributes is intensional. However, this is largely convention; there is no strict requirement around what
 these sets are made up of, or even that they be distinct. It is perfectly acceptable to have a context where the objects and attributes are the same set; for example, the context $(\mathbb{N}, \mathbb{N}
-, \texttt{divides})$ which describes the division relationship between natural numbers.
+, \texttt{divides})$ which describes the division relationship between natural numbers. The choice of what constitutes an object or an attribute depends entirely on the desired interpretation and
+purpose of the analysis. Thus, the distinction between extensional and intensional dimensions is largely for matters of intuition, rather than a strict requirement.
 
-It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is interpreted as the object having the respective attribute, FCA is concerned with only
-\textit{positive} information, and so the absence of a pair in the relation is not usually interpreted to mean the object has the negation of the attribute. We will discuss the rather troubling matter
-of negation and negative attributes in \Cref{section:contextual-attribute-logic}.
+It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is interpreted as the object satisfying the respective attribute, FCA is concerned only with
+\textit{positive} information, and so the absence of a pair in the relation is not usually interpreted to mean that the object has the negation of the attribute. We will discuss, in more depth, the rather
+troubling matter of negation and negative attributes in \Cref{section:contextual-attribute-logic}.
 
 When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table such as in \Cref{cxt:grouplikes}. Each object is represented by a row in the table, each attribute by a
 column, and each pair in the incidence relation is marked with an `$\times$' at the appropriate position \cite[pp. 17]{ganter1999formal}. Given a context that is presented in this form, it is quite a trivial
@@ -41,13 +42,16 @@ intent}. The dual notion of an \textit{attribute extent} can be found by travers
   \label{context:formal-context-group-structures}
 \end{figure}
 
-This approach to determining object extents and attribute intents becomes impractical when considering non-trivial contexts, or large sets of objects and attributes. The procedure can be formally described
-by the \textit{derivation operators}: \footnote{It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^{\uparrow}$ and $B^{\downarrow}$
+Using this approach, we can see that the intent of $\texttt{magma}$ is the singleton $\{\texttt{closure}\}$, while the extent of \texttt{closure} is the set
+$\{\texttt{magma,semigroup,monoid,group,ableian group,loop,quasigroup}\}$.
+
+This approach to determining object extents and attribute intents becomes impractical when considering non-trivial contexts, or large sets of objects and attributes. The procedure can be formally
+described by the \textit{derivation operators}: \footnote{It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^{\uparrow}$ and $B^{\downarrow}$
 would become $A'$ and $B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity while maintaining pleasing notation. In cases where a derivation
 operator is applied to a singleton of objects $\{g\}$ (\textit{resp.} attributes $\{m\}$) we omit the parenthesis and write $g^{\uparrow}$ (\textit{resp.} $m^{\downarrow}$)}
 
 \begin{definition}
-  \label{definition:derivation-operators} \index{derivation operators} Given a context $\GMI$, the \textit{derivation operators} are two maps $(\cdot)^{\uparrow}: \pset{G}\to \pset{M}$ and $(\cdot )^{\downarrow}
+  \index{derivation operators} \label{definition:derivation-operators} Given a context $\GMI$, the \textit{derivation operators} are two maps $(\cdot)^{\uparrow}: \pset{G}\to \pset{M}$ and $(\cdot )^{\downarrow}
   : \pset{M}\to \pset{G}$. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
   \begin{align*}
     A^{\uparrow}   & \coloneqq \{m \in M \mid \forall g \in A, \; (g,m) \in I\} \\
@@ -55,9 +59,15 @@ operator is applied to a singleton of objects $\{g\}$ (\textit{resp.} attributes
   \end{align*}
 \end{definition}
 
-The derivation operators describe a mapping from a subset $A \subseteq G$ of objects in a context to the corresponding subset of attributes that each (and every) object in $A$ related to. The dual
-notion holds for starting with a subset of attributes. As an example, we might wish to determine the set of attributes satisfied by the objects $\{\texttt{group,groupoid,abelian group}\}$. Application
-of the $(\cdot)^{\uparrow}$ derivation operator to this set yields $\{\texttt{associativity,identity,divisibility}\}$.
+The derivation operators describe a mapping from a subset $A \subseteq G$ of objects in a context to the corresponding subset of attributes that each (and every) object in $A$ related to. The dual notion
+holds for starting with a subset of attributes. As an example, we might wish to determine the set of attributes satisfied by the objects $\{\texttt{group,groupoid,abelian group}\}$. Application of the
+$(\cdot)^{\uparrow}$ derivation operator to this set yields $\{\texttt{associativity,identity,divisibility}\}$.
+
+To offer another perspective on the derivation operators, obvserve that the derivation of a set $A\subseteq G$ of objects is the intersection of each object intent, and so we have
+\begin{align*}
+  A^{\uparrow}= \bigcap \{a^{\uparrow}\mid a \in A\}     & \qquad A \subseteq G  \\
+  B^{\downarrow}= \bigcap \{b^{\downarrow}\mid b \in B\} & \qquad B \subseteq M.
+\end{align*}
 
 In fact, we have already explored a more general perspective on the derivation operators in \Cref{section:closure-systems} through the notion of closure operators and Galois connections. The proposition
 below recontextualises properties of Galois connections in FCA.
@@ -65,35 +75,25 @@ below recontextualises properties of Galois connections in FCA.
 \begin{proposition}
   \label{proposition:derivation-operators-galois} Let $\GMI$ be a formal context and consider the subsets $X,X_{1}\subseteq G$ of objects (\textit{resp.} $Y,Y_{1}\subseteq M$ of attributes) then
   \begin{align}
-     & X \subseteq X_{1}\Rightarrow X_{1}^{\uparrow}\subseteq X^{\uparrow}   & \textit{(resp.)}         & \qquad Y \subseteq Y_{1}\Rightarrow Y_{1}^{\downarrow}\subseteq Y^{\downarrow}\label{equation:galois-1} \\
-     & X \subseteq X^{\uparrow \downarrow}                                   & \textit{(resp.)}         & \qquad Y \subseteq Y^{\downarrow \uparrow}\label{equation:galois-2}                                     \\
-     & X^{\uparrow}= X^{\uparrow \downarrow \uparrow}                        & \textit{(resp.)}         & \qquad Y^{\downarrow}= Y^{\downarrow \uparrow \downarrow}\label{equation:galois-3}                      \\
-     & X \subseteq Y^{\downarrow}\Longleftrightarrow X^{\uparrow}\supseteq Y & \label{equation:galois-4}
+     & X \subseteq X_{1}\Rightarrow X_{1}^{\uparrow}\subseteq X^{\uparrow} & \textit{(resp.)}         & \qquad Y \subseteq Y_{1}\Rightarrow Y_{1}^{\downarrow}\subseteq Y^{\downarrow}\label{equation:galois-1} \\
+     & X \subseteq X^{\uparrow \downarrow}                                 & \textit{(resp.)}         & \qquad Y \subseteq Y^{\downarrow \uparrow}\label{equation:galois-2}                                     \\
+     & X^{\uparrow}= X^{\uparrow \downarrow \uparrow}                      & \textit{(resp.)}         & \qquad Y^{\downarrow}= Y^{\downarrow \uparrow \downarrow}\label{equation:galois-3}                      \\
+     & X \subseteq Y^{\downarrow}\tiff X^{\uparrow}\supseteq Y             & \label{equation:galois-4}
   \end{align}
 \end{proposition}
 
 If we consider the powerset lattices of $\pset{G}$ and $\pset{M}$ under their usual inclusion orders, then the derivation operators constitute a Galois connection on these sets:
 \Cref{equation:galois-1,equation:galois-2,equation:galois-3} are just a rephrasing of \Cref{equation:ord_galois-1,equation:ord-galois-2,equation:ord-galois-3}; while \Cref{equation:galois-4} rephrases
-\Cref{proposition:fundamental-galois}. Mirroring the `discussion` on Galois connections, we obtain the closure systems $\mathcal{G}$ and $\mathcal{M}$ on $G$ and $M$, respectively. Each of these closure
-systems form a complete lattice, where meets and joins are given by
+\Cref{proposition:fundamental-galois}. Mirroring the `discussion' on Galois connections, we obtain the closure systems $\mathcal{G}$ and $\mathcal{M}$ on $G$ and $M$, respectively. Each of these closure
+systems form a complete lattice where, recounting \Cref{theorem:closure-systems-lattices}, meets and joins are given by:
 %
 \begin{align*}
    & \underset{i \in I}\bigwedge A_{i}= \underset{i \in I}\bigcap A_{i}\quad \text{ and }\quad \underset{i \in I}\bigvee A_{i}= \big(\underset{i \in I}\bigcup A_{i}\big)^{\uparrow \downarrow} & \quad A\subseteq \mathcal{G} \\
    & \underset{i \in I}\bigwedge B_{i}= \underset{i \in I}\bigcap B_{i}\quad \text{ and }\quad\underset{i \in I}\bigvee B_{i}= \big( \underset{i \in I}\bigcup B_{i}\big)^{\downarrow \uparrow} & \quad B\subseteq \mathcal{M}
 \end{align*}
 
-Earlier, it was claimed that Galois connections are particularly interesting when the closure systems they induce are themselves interesting; and, future discussion of an example of such interesting
-closure systems was promised. Let us now give such an example, and in doing so provide some intution for why Galois connections are a useful way of modelling concepts, to be introduced immediately after!
-
-Consider the concept derived from the algebraic structure of a `monoid'; that is, a set equipped with a binary operation that satisfies the properties of closure, associativity, and that has an identity
-element. It would be ideal to include in the extension of this concept all those algebraic structures that fall under the subclass of monoids; that is, nothing more and nothing less than those
-structures that satisfy closure, associativity, and have an identity element. It is completely obvious to point out that monoids should be included in this extension. Another structure which would be
-included in this concept's extension is that of a `group': a set equipped with a binary operation satisfying all the properties of a monoid alongside the additional property of divisibility.
-
-Now let us consider the concept derived from a `group'; we have just shown that a group is a subclass of monoid, so it should follow that the extension of a group must be a subset of the extension of a
-monoid, but what of the intension? Suppose the intension of the concept of a monoid were not a subset of that of a group, then monoids would have to satisfy some property that groups did not. This is a
-problem, as it suggests we should not have considered a group to be a subclass of a monoid.
-
+It follows \Cref{proposition:galois-connections-closure-operators} (and \Cref{figure:two-lattices} provides some visual intuition) that the closure systems induced by the derivation operators are dually
+isomorphic to one another, and so each closed set of objects in $\mathcal{G}$ maps to a closed set of attributes in $\mathcal{M}$ and vice verse.
 \vspace{-5em}
 \begin{figure}[H]
   \centering
@@ -216,31 +216,51 @@ problem, as it suggests we should not have considered a group to be a subclass o
     \draw[red, dotted, stealth-stealth, line width=0.8pt] (-4,-0.5) to[out=270, in=90] (8,-0.5);
     \draw[red, dotted, stealth-stealth, line width=0.8pt] (0,4.5) to[out=90, in=270] (12,-5.5);
   \end{tikzpicture}
-  \vspace{-8em}
+  \vspace{-6em}
   \caption{The lattices for the closure systems $\mathcal{G}$ and $\mathcal{M}$, respectively. We partially demonstrate the dual isomorphism between these structures. We read set inclusion from below.}
   \label{figure:two-lattices}
 \end{figure}
 
-It follows \Cref{proposition:galois-connections-closure-operators} (and \Cref{figure:two-lattices} provides some visual intuition) that the closure systems induced by the derivation operators are dually
-isomorphic to one another. It is now an appropriate time to define what is meant by \textit{concept}
+Earlier, it was claimed that Galois connections are particularly interesting when the closure systems they induce are themselves interesting; and, future discussion of an example of such interesting closure
+systems was promised. Let us now give such an example, and in doing so provide some intution for why Galois connections are a useful way of modelling concepts, to be introduced immediately afterwards!
+
+Consider the concept derived from the algebraic structure of a `monoid': a set equipped with a binary operation that satisfies the properties of closure, associativity, and that has an identity element.
+It would be ideal to include in the extension of this concept all those algebraic structures that fall under the subclass of monoids; that is, nothing more and nothing less than those structures that
+satisfy closure, associativity, and have an identity element. It is completely obvious to point out that monoids should be included in this extension. Another structure which would be included in this
+concept's extension is that of a `group': a set equipped with a binary operation satisfying all the properties of a monoid alongside the additional property of divisibility.
+
+Now let us consider the concept derived from a `group'; we have just shown that a group is a subclass of monoid, so it should follow that the extension of a group must be a subset of the extension of a
+monoid, but what of the intension? Suppose the intension of the concept of a monoid were not a subset of that of a group, then monoids would have to satisfy some property that groups did not. This is a
+problem, as it suggests we should not have considered a group to be a subclass of a monoid.
+
+It is finally an appropriate time to define what is meant by \textit{formal concept}:
 
 \begin{definition}
-  \label{definition:formal-concept} \index{formal concept} A \emph{formal concept} of a context $\GMI$ is a pair $(A,B)$ where $A \subseteq G$ and $B\subseteq M$ where $A^{\uparrow}= B$ and
-  $B^{\downarrow}= A$. We call $A$ the \emph{concept extent} and $B$ the \emph{concept intent}. We write $\BGMI$ to denote the set of all concepts of $\GMI$.
+  \index{formal concept} \index{lattice! concept lattice} \label{definition:formal-concept} A \emph{formal concept} of a context $\GMI$ is a pair $(A,B)$ where $A \subseteq G$ and $B\subseteq M$ where
+  $A^{\uparrow}= B$ and $B^{\downarrow}= A$. We call $A$ the \emph{concept extent} and $B$ the \emph{concept intent}. We write $\BGMI$ to denote the set of all concepts of $\GMI$.
 \end{definition}
 
-To clarify the prior example of the concept of a monoid, consider the derivation $\{\texttt{monoid}\}^{\uparrow}$ yields the set of attributes $\{\texttt{closure,associativity,identity}\}$. The derivation
-of this attribute set in turn yields the set of objects $\{\texttt{monoid,group,abelian group}\}$. We know by properties of the Galois connection that these two derived sets are closed with respect to
-the closure systems $\mathcal{M}$ and $\mathcal{G}$, and so
+Concepts are thus pairs of closed sets, where each set represents either the extensional or intensional perspective on the concept. In case it is not clear from the definition of formal concepts why
+the concept extents and concept intents are necessarily closed, consider the following remark:
+
+\begin{remark}
+  We have established that the two closure operators $(\cdot)^{\uparrow \downarrow}$ and $(\cdot)^{\downarrow \uparrow}$ form a Galois connection, inducing the closure systems $\mathcal{G}$ and
+  $\mathcal{M}$, respectively. It is (perhaps) not immediately obvious that, in fact, the image of the single operator $(\cdot)^{\uparrow}\colon \pset{G}\to \pset{M}$ coincides precisely with the set
+  $\mathcal{M}$, and the image of $(\cdot)^{\downarrow}\colon \pset{M}\to \pset{G}$ similarly coincides with $\mathcal{G}$. This is a direct result of \Cref{equation:galois-3}, since any element in the
+  derivation operators co-domain will be a closed set.
+\end{remark}
+
+One pleasing result stemming from this point is that, for any set $A\subseteq G$ of objects, the set $A^{\uparrow}$ will always be a concept intent, and may furthermore lead to the construction of $(A^{\uparrow
+\downarrow}, A^{\uparrow})$ which is always a concept. The same idea holds so that for a set $B \subseteq M$ of attributes, $B^{\downarrow}$ is always a concept extent. We are even more fortunate in
+that we have already described and discussed the structure of the collection of all concept intents (or extents)! These are merely the closure systems $\mathcal{G}$ and $\mathcal{M}$.
+
+To clarify the earlier example of the concept of a `monoid', consider that the derivation $\{\texttt{monoid}\}^{\uparrow}$ yields the set of attributes $\{\texttt{closure,associativity,identity}\}$. In
+turn, the derivation of this attribute set yields the set of objects $\{\texttt{monoid,group,abelian group}\}$. We know by properties of the Galois connection (specifically, \Cref{equation:galois-3})
+that these two derived sets are closed with respect to the closure systems $\mathcal{M}$ and $\mathcal{G}$, and so
 \[
   \big(\{\texttt{monoid,group,abelian group}\}, \{\texttt{closure,associativity,identity}\}\big)
 \]
 is a formal concept of \Cref{cxt:grouplikes}.
-
-\textcolor{red}{I want to express that concepts are pairs of closed sets with respect to $\mathcal{G}$ and $\mathcal{M}$ closure systems. This gives the intuition that we can join the two lattices constructed
-by these closure systems into a single lattice, the concept lattice. Then, because the concept lattice is isomorphic to the lattice of $\mathcal{G}$ and (thus) dually isomorphic to the lattice of
-$\mathcal{M}$, meets in the concept lattice are equivalent to meets (intersections) in $\mathcal{G}$ and equivalent to the closure of unions in $\mathcal{M}$; while joins in the concept lattice are
-equivalent to meets (intersections) in the lattice $\mathcal{M}$ or the closure of unions in $\mathcal{G}$.}
 
 \begin{figure}[H]
   \centering
@@ -346,6 +366,9 @@ the (attribute) implication $A \rightarrow B$, with $A, B \subseteq M$ it can be
 The underlying logic we have just described for FCA can quite easily be shown to be analogous to propositional Horn logic. Horn rules are syntactically similar to material implications, and share the
 same `$\rightarrow$' operator. However, none of the premise nor conclusion of a Horn rule may be negative, or contain disjunction. They are not able to express what is \textit{not} a consequence of a premise.
 
+waerawer the (attribute) implication $A \rightarrow B$, with $A, B \subseteq M$ it can be phrased, with respect to holding in a context $\GMI$, as \say{all objects which satisfy every attribute in $A$ also satisfy every attribute in $B$}.
+waerawer the (attribute) implication $A \rightarrow B$, with $A, B \subseteq M$ it can be phrased, with respect to holding in a context $\GMI$, as \say{all objects which satisfy every attribute in $A$ also satisfy every attribute in $B$}.
+
 % \begin{lemma}
 %   \label{lemma:surjective-operators} Let $\GMI$ be a context with $(\uparrow, \downarrow)$ as the usual derivation operators. The closure systems
 %   \[
@@ -401,7 +424,7 @@ same `$\rightarrow$' operator. However, none of the premise nor conclusion of a 
 %     \big(\{\texttt{groupoid,group,abelian group}\}, \{\texttt{associativity,identity,closure }\} \big)
 %   \]
 
-%   % The derivation of \texttt{groupoid} yields $\{\texttt{associativity,identity,closure}\}$, by \Cref{equation:galois-3} this set is closed under its Galois connection, and forms a concept intent.
+%   % The derivation of \texttt{groupoid} yields $\{\texttt{associativity,identity,closure}\}$, by \Cref{equation:galois-3} this set is closed under its Galois connection, and formsc a concept intent.
 
 %   % To begin, the object intent $\texttt{groupoid}^\uparrow$ is determined, which yields the set $\{\texttt{associativity,identity,closure}\}$. From \Cref{proposition:properties-about-derivation-operators} this set is closed, and represents a concept intent. The concept extent is determined by application of a derivation operator to the concept intent.
 % \end{example}

@@ -32,18 +32,18 @@
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter\ : #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ : #1}}
 \pagestyle{fancy}
-\fancyhf{}
-\fancyhead[EL]{\small Section \rightmark}    % current SECTION on the left
-\fancyhead[ER]{\small \thepage}      % page number on the right
-\fancyhead[OL]{\small \thepage}      % page number on the left
-\fancyhead[OR]{\small Chapter \leftmark}     % current CHAPTER on the right
-\fancyfoot{}                  % no footers
-\renewcommand{\headrulewidth}{0.4pt}   % keep or adjust
-\fancypagestyle{plain}{        % redefine the 'plain' pagestyle
-  \fancyhf{}                   % clear header and footer
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
+% \fancyhf{}
+% \fancyhead[EL]{\textit{\small Section \rightmark}}    % current SECTION on the left
+% \fancyhead[ER]{\textit{\small \thepage}}      % page number on the right
+% \fancyhead[OL]{\textit{\small \thepage}}      % page number on the left
+% \fancyhead[OR]{\textit{\small Chapter \leftmark}}     % current CHAPTER on the right
+% \fancyfoot{}                  % no footers
+% \renewcommand{\headrulewidth}{0.4pt}   % keep or adjust
+% \fancypagestyle{plain}{        % redefine the 'plain' pagestyle
+%   \fancyhf{}                   % clear header and footer
+%   \renewcommand{\headrulewidth}{0pt}
+%   \renewcommand{\footrulewidth}{0pt}
+% }
 \usepackage{enumitem}
 % \setlist[itemize]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
 % \setlist[enumerate]{itemsep=0pt,parsep=0pt,topsep=0pt,partopsep=0pt}
@@ -115,7 +115,6 @@
   backend=bibtex,
   style=ieee,
   citestyle=numeric,
-  sorting=nyt,
   maxcitenames=2,
   maxbibnames=99,
   giveninits=true,

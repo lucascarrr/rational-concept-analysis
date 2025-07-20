@@ -1,3 +1,8 @@
 [default]
 locale = "en"
-extend-ignore-re = ["\\bWille\\b", "WILLE1992493", "montanna"]
+extend-ignore-re = [
+    "\\bWille\\b",
+    "WILLE1992493",
+    "montanna",
+    "Wille_Restructuring",
+]

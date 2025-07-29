@@ -593,34 +593,34 @@ function that assigns a truth value to each atom in the set $\mathcal{P}$ of ato
 \end{definition}
 
 Given a set of atoms $\mathcal{P}= \{p,q,r\}$, we write $\mathcal{U}$ to denote the set of all possible valuations. A valuation $u \in \mathcal{U}$
-\textit{satisfies} an atom $p \in \mathcal{P}$ if $u$ maps $p$ to \textit{true}, and so we write $u \Vdash p$. Otherwise, we write
-$u \nVdash p$ to indicate that $u$ does not satisfy $p$ (in this context, meaning $u$ maps $p$ to \textit{false})
+\textit{satisfies} an atom $p \in \mathcal{P}$ if $u$ maps $p$ to \textit{true}, and so we write $u \vDash p$. Otherwise, we write
+$u \nvDash p$ to indicate that $u$ does not satisfy $p$ (in this context, meaning $u$ maps $p$ to \textit{false})
 \cite[p. 16]{Ben1993Mathematical}. We might represent the valuation that maps $p$ and $q$ to true but $r$ to false by $\{p,q,\overline{r}\}$.
 
 This satisfaction relation can be extended beyond propositional atoms to include more complex formulae, as described in
 \Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$ \index{satisfaction! propositional logic}
 
 \begin{itemize}
-  \item $u \Vdash \neg \phi$ if and only if $u \nVdash \phi$ \hfill (negation)
+  \item $u \vDash \neg \phi$ if and only if $u \nvDash \phi$ \hfill (negation)
 
-  \item $u \Vdash \phi \vee \psi$ if and only if $u \Vdash \phi$ or $u \Vdash \psi$ \hfill (disjunction)
+  \item $u \vDash \phi \vee \psi$ if and only if $u \vDash \phi$ or $u \vDash \psi$ \hfill (disjunction)
 
-  \item $u \Vdash \phi \wedge \psi$ if and only if $u \Vdash \phi$ and $u \Vdash \psi$ \hfill (conjunction)
+  \item $u \vDash \phi \wedge \psi$ if and only if $u \vDash \phi$ and $u \vDash \psi$ \hfill (conjunction)
 
-  \item $u \Vdash \phi \rightarrow \psi$ if and only if $u \Vdash \neg \phi$ or $u \Vdash \psi$ \hfill (material implication)
+  \item $u \vDash \phi \rightarrow \psi$ if and only if $u \vDash \neg \phi$ or $u \vDash \psi$ \hfill (material implication)
 
-  \item $u \Vdash \phi \leftrightarrow \psi$ if and only if $u \Vdash \phi \rightarrow \psi$ and $u \Vdash \psi \rightarrow \phi$ \hfill (material
+  \item $u \vDash \phi \leftrightarrow \psi$ if and only if $u \vDash \phi \rightarrow \psi$ and $u \vDash \psi \rightarrow \phi$ \hfill (material
     equivalence)
 \end{itemize}
 
 \begin{definition}
   \label{definition:model} \index{model} For a valuation $u \in \mathcal{U}$ and formula $\phi \in \mathcal{L}$ we call $u$ a \textit{model}
   of $\phi$ if and only if $u$ satisfies $\phi$. The set of all models of $\phi$ is constructed by $\hat{\phi}\coloneqq \{u \in \mathcal{U}\mid
-  u \Vdash \phi \}$.
+  u \vDash \phi \}$.
 \end{definition}
 
 Satisfiability can be extended to sets of of formulae so that a valuation $u \in \mathcal{U}$ \textit{satisfies} the set $\Phi \coloneqq \{\phi
-_{0}, \ldots , \phi_{n}\}$ when $u \Vdash \phi_{i}$ for all $0 \leq i \leq n$, and we write $u \Vdash \Phi$. If no such valuation exists then
+_{0}, \ldots , \phi_{n}\}$ when $u \vDash \phi_{i}$ for all $0 \leq i \leq n$, and we write $u \vDash \Phi$. If no such valuation exists then
 $\Phi$ is unsatisfiable \cite[p. 31]{Ben1993Mathematical}.
 
 \begin{definition}
@@ -755,7 +755,7 @@ the so called \textit{deduction theorem}, which facilitates the construction of 
 that the hypothesis be an axiom. \index{Rule of inference! deduction theorem}
 %
 \begin{align}
-  \text{(Deduction Theorem)}\quad & \frac{\Delta \cup \phi \vdash \psi}{\Delta \vdash \phi \rightarrow \psi}
+  \label{axiom:deduction-theorem}\text{(Deduction Theorem)}\quad & \frac{\Delta \cup \phi \vdash \psi}{\Delta \vdash \phi \rightarrow \psi}
 \end{align}
 %
 As an illustration, the proof in \Cref{proof:transitivity} can be restated using the \textit{transitivity} derived rule:

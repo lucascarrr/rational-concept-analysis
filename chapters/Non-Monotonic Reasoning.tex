@@ -180,6 +180,10 @@ cumulative relations
 \begin{align}
   \label{postulate:trans}\inferLeft{Transitivity}{\phi \twiddle \psi, \quad \psi \twiddle \gamma}{\phi \twiddle \gamma}
 \end{align}
+Transitivity, in \Cref{proof:transitivity}, was shown to be quite useful as a derived rule of a Hilbert system; but, for our purposes, it will
+not do. Consider the example at the beginning of this chapter, where the topic of whether we should infer that Billy Pilgrim experiences chronological
+time. Transitivity requires that we infer he does: Billy Pilgrim is a soldier, soldiers are human, and humans experience time chronologically.
+But this is precisely the inference we do not want, and so transitivity must be abandoned.
 %
 \begin{align}
   \label{postulate:contra}\inferLeft{Contraposition}{\phi \twiddle \psi}{\neg \psi \twiddle \neg \phi}
@@ -204,17 +208,22 @@ we discuss preferential consequence relations.
 \subsection{Preferential Reasoning}
 \label{subsection:system-P}
 
-A \textit{preferential consequence relation}, or \textit{System P}, inherits all postulates from cumulative consequence relations, with the addition
-of the \textit{Or} postulate,
+We, quite quickly, move on from cumulative to \textit{preferential consequence relations}, or \textit{system P}. The reason being that
+system P is strictly stronger than system C, and includes in its' axiomatisation something analogous to the more significant part of the
+deduction theorem, as well as disjunction. The semantics of system P, to be outlined in \Cref{subsubsection:preferential-interpretations},
+are similar to the approach which was proposed by Shoham in \cite{shohamSemanticApproach}.
+
+Fortunately, the definition of a preferential consequence relation is almost identical to that of cumulative one, with only the addition of
+the \textit{Or} postulate.
 
 \begin{definition}
   \label{definition:preferential-relation} The consequence relation $\twiddle$ is a \emph{preferential consequence relation} if and only if
   it satisfies the properties of \emph{Reflexivity, Left Logical Equivalence, Right Weakening, Cut, Or,} and \emph{Cumulative Monotonicity}.
 \end{definition}
 
-As a justification for \textit{Or}, consider that \textit{If Billy were abducted by aliens, normally he would be traumatised}, but also \textit{If
-Billy witnessed the fire-bombing of Dresden, normally he would be traumatised}. If we know that at least one of these events happened we should
-be allowed to conclude that Billy were traumatised, since either of them would normally allow this inference.
+As a justification for \textit{Or}, consider that \textit{If Billy were abducted by aliens, normally he would be traumatised}, but also
+\textit{If Billy witnessed the fire-bombing of Dresden, normally he would be traumatised}. If we know that at least one of these events
+happened we should be allowed to conclude that Billy were traumatised, since either of them would normally allow this inference.
 
 \begin{align}
   \inferLeft{Or}{\phi \twiddle \gamma, \quad \psi \twiddle \gamma}{\phi \lor \psi \twiddle \gamma}
@@ -234,15 +243,16 @@ The derived rule \textit{S} is analogous to the deduction theorem (cf. \Cref{axi
 \end{lemma}
 
 \subsubsection{Preferential Interpretations}
+\label{subsubsection:preferential-interpretations}
 
 In this account of the semantics of system P, our aim is to construct
 
-In this account of the semantics of preferential systems, it is our aim to construct more-or-less full correspondence between the tools we
-have available in the model theory of propositional logic, and the model theory of preferential systems. Accordingly, it will be helpful to recall
-some basic terminology from \Cref{section:propositional-logic}: A \textit{model} of a formula $\phi$ (set of formulae) is a valuation $v$ that
-satisfies it, and we write $v \vDash \phi$. A formula $\phi$ is \textit{satisfiable} if it has a model, and \textit{valid} if every possible
-valuation is a model of $\phi$. A formula $\psi$ is a logical consequence of another $\phi$ if all models of $\phi$ are additionally models of
-$\psi$, and we write $\phi \vDash \psi$.
+In this account of the semantics of preferential systems, it is our aim to construct more-or-less full correspondence between the tools we have
+available in the model theory of propositional logic, and the model theory of preferential systems. Accordingly, it will be helpful to
+recall some basic terminology from \Cref{section:propositional-logic}: A \textit{model} of a formula $\phi$ (set of formulae) is a valuation
+$v$ that satisfies it, and we write $v \vDash \phi$. A formula $\phi$ is \textit{satisfiable} if it has a model, and \textit{valid} if every
+possible valuation is a model of $\phi$. A formula $\psi$ is a logical consequence of another $\phi$ if all models of $\phi$ are
+additionally models of $\psi$, and we write $\phi \vDash \psi$.
 
 A semantics for preferential systems can be constructed by equipping the set of all valuations $\mathcal{U}$ with a preference relation, and
 then restricting ones consideration from all models of a formula to only those \textit{preferred} models.
@@ -369,8 +379,8 @@ then restricting ones consideration from all models of a formula to only those \
 
 \subsection{Preferential Entailment}
 
-RE iT not being nmr We are willing to accept these credulous inferences precisely because they may be retracted we may withdraw previous inferences
-under learning new facts.
+RE iT not being nmr We are willing to accept these credulous inferences precisely because they may be retracted we may withdraw previous
+inferences under learning new facts.
 
 \section{Rational Closure}
 

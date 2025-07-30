@@ -245,44 +245,90 @@ The derived rule \textit{S} is analogous to the deduction theorem (cf. \Cref{axi
 \subsubsection{Preferential Interpretations}
 \label{subsubsection:preferential-interpretations}
 
-In this account of the semantics of system P, our aim is to construct
+The semantics of system P provided by Kraus, Lehmann, and Magidor \cite{kraus1990nonmonotonic} are based on the \textit{preference logics} proposed
+by Shoham \cite{shohamSemanticApproach}. The fundamental idea is that valuations, or \textit{worlds}, can be ordered by a \textit{preference
+relation}, so that one world being preferred to another is a normative claim that we should consider deductions which hold in the preferred world
+plausible.
 
-In this account of the semantics of preferential systems, it is our aim to construct more-or-less full correspondence between the tools we have
-available in the model theory of propositional logic, and the model theory of preferential systems. Accordingly, it will be helpful to
-recall some basic terminology from \Cref{section:propositional-logic}: A \textit{model} of a formula $\phi$ (set of formulae) is a valuation
-$v$ that satisfies it, and we write $v \vDash \phi$. A formula $\phi$ is \textit{satisfiable} if it has a model, and \textit{valid} if every
-possible valuation is a model of $\phi$. A formula $\psi$ is a logical consequence of another $\phi$ if all models of $\phi$ are
-additionally models of $\psi$, and we write $\phi \vDash \psi$.
+It will be useful to recall some definitions from propositional logic: a valuation $u \in \mathcal{U}$ is a \textit{model} of a formula $\phi
+\in \mathcal{L}$ if it satisfies $\phi$, $\phi$ is \textit{satisfiable} if it has a model. Another formula $\psi$ is a \textit{logical
+consequence} of $\phi$ if the models of $\phi$ are a subset of the models of $\psi$.
 
-A semantics for preferential systems can be constructed by equipping the set of all valuations $\mathcal{U}$ with a preference relation, and
-then restricting ones consideration from all models of a formula to only those \textit{preferred} models.
+We now introduce analogous definitions for these ideas in preference logic. The first change is that we regard satisfaction as a property
+relative to a \textit{preferential interpretation}, the latter being defined as
 
 \begin{definition}
-  \label{definition:preferential-interpretation} A \emph{preferential interpretation} $W$ is a triple $(S, l, \prec)$ where $S$ is a set of
-  \emph{states}, $l: S \mapsto \mathcal{U}$ is a function mapping states to valuations, and $\prec$ is a strict partial-order on $S$.
+  \label{definition:preferential-interpretation} A \emph{preferential interpretation} $\Pin$ is a triple where $S$ is a set of \emph{states},
+  $l: S \to \mathcal{U}$ is a function mapping states to valuations, and $\prec$ is a strict partial-order on $S$.
 \end{definition}
 
-\begin{definition}
-  \label{definition:state-satisfaction} In a preferential interpretation $W$, we say that a state $s \in S$ \emph{satisfies} a formula $\phi
-  \in \mathcal{L}$ if and only if the valuation $l(s) \vDash \phi$. For brevity, we write $s \VDash \phi$, and denote the set of all states
-  satisfying $\phi$ by $\hat{\phi}$.
-\end{definition}
+We can then define the notion of satisfaction, relative to a preferential interpretation, as:
 
 \begin{definition}
-  \label{definition:state-minimal} Given a preferential interpretation $W$ and formula $\phi \in \mathcal{L}$, we write $\hat{\phi}$ to
-  denote the set $\{s \VDash \phi \mid s \in S\}$ of all states that satisfy $\phi$. We write $\underline{\hat{\phi}}$ to denote the set $\{s
-  \in \hat{\phi}\mid \nexists s' \in \hat{\phi}\text{ such that }s' \prec s \}$ of $\prec$-\textit{minimal} states.
+  \label{definition:state-satisfaction} In a preferential interpretation $\pin$, we say that a state $s \in S$ \emph{satisfies} a formula $\phi
+  \in \mathcal{L}$ if and only if the valuation $l(s) \vDash \phi$. In this case, we write $\pin, s \vDash \phi$, and use $\hat{\phi}$ to
+  denote the set $\{s \in S \mid \pin,s \vDash \phi \}$.
+\end{definition}
+
+We are, of course, more interested in the kind of satisfaction not possible in classical propositional logic, the notion of \textit{preferential
+satisfaction}. We first allow consideration to be restricted to the preferred worlds, and so we have
+
+\begin{definition}
+  \label{definition:state-minimal}
+
+  Given a preferential interpretation $\Pin$ and some $\phi \in \mathcal{L}$, we write $\underline{\hat{\phi}}$ to denote the set $\{s \in \hat
+  {\phi}\mid \nexists s' \in \hat{\phi}\text{ such that }s' \prec s \}$, which is the set of \textit{preferred states} which satisfy $\phi$ relative
+  to $\pin$. We may also call this the set of \textit{minimal states} satisfying $\phi$.
+\end{definition}
+
+Then,
+
+\begin{definition}
+  \label{definition:preferentially-satisfiable} A formula $\phi \in \mathcal{L}$ is \emph{preferentially satisfiable} if and only if there
+  exists a preferential interpretation $\pin$ such that for every state $s \in \underline{\hat{\phi}}$ it holds that $\pin, s \vDash \phi$.
+\end{definition}
+
+It is obvious from this definition that a formula which is preferentially satisfiable will also be satisfiable in the classical sense; the converse
+is not always true. To make this clear, we suggest another reading of what it means for a preferential interpretation to satisfy a formula.
+A formula $\phi$ is satisfied by a preferential interpretation $W$ if there is some state $s \in S$ such that $l(s) \vDash \phi$ and there
+is no $s' \in S$ where $s' \prec s$.
+
+The culprit is the existence of infinitely descending chains in the preference relation on states. Consequently, it is often required that
+the preference relation satisfy the following condition,
+
+\begin{definition}
+  \label{definition:smoothness} A preferential interpretation $\Pin$ satisfies the \textit{smoothness condition} if and only if each non-empty
+  subset $T \subseteq S$ has a $\prec$-minimal state.
+\end{definition}
+
+A preferential interpretation that satisfies the smoothness condition is called \textit{well-founded}, or \textit{bounded}
+\cite{shohamSemanticApproach,lehmann1992what}. Of course, every preferential interpretation with a finite set of states is well-founded. We then
+remark that the, under the assumption of well-foundeness, a formula is (classically) satisfiable if and only if it is preferentially satisfiable.
+
+As a matter of intuition, the enforcing the smoothness condition on a preference relation seems completely agreeable: It makes little sense,
+when the express aim is to restrict consideration to a subset of the most preferred worlds, to order an infinite collection of worlds in terms
+of how preferreable they are, and not have a starting point describing the \say{most preferable} worlds.
+
+\begin{definition}
+  \label{definition:preferential-satisfaction} A preferential interpretation $\pin$ \emph{satisfies} a defeasible conditional
+  $\phi \twiddle \psi$ if and only if the $\prec$-\emph{minimal} states which satisfy $\phi$ also satisfy $\psi$, equivalently if
+  $W \vDash_{P}\phi \twiddle \psi$ if $\underline{\hat{\phi}}\subseteq \hat{\psi}$.
 \end{definition}
 
 \begin{example}
   \label{example:preferential-interpretation}
 
-  Consider a knowledge base $\{h \twiddle c, \; s \twiddle h, \; b \rightarrow \neg c\}$ telling us that \say{Normally, humans experience chronological time},
-  \say{Normally, soldiers are human}, and \say{Billy Pilgrim experiences non-chronological time}.
+  Consider the knowledge base
+  \[
+    \Delta = \big\{h \twiddle c, \; s \twiddle h, \; b \rightarrow \neg c \; \big\}
+  \]
 
-  \Cref{figure:preferential-interpretation} demonstrates a possible preferential interpretation of the knowledge base: each set represents
-  the set of all states which witness the propositional atoms, and so a state in the green shaded area corresponds to one that satisfies $b,s
-  ,h$ but not $c$.
+  containing both defeasible conditionals, as well as classical propositional formulae. The knowledge base encodes the setting where \say{Humans normally experience time chronologically},
+  \say{Soldiers are normally human}, and \say{Billy Pilgrim experiences non-chronological time.}
+
+  There are many preferential interpretations which may satisfy $\Delta$, one of these is depicted below: Each set contains the states which
+  map to a valuation that satisfies the respective propositional atom. The shaded area of a set represents the minimal states for that set, and
+  so the green shading represents the set $\hat{s}$.
 
   \begin{figure}[H]
     \centering
@@ -321,51 +367,36 @@ then restricting ones consideration from all models of a formula to only those \
         \node (soldier) at (7.25,4) [] {$s$};
 
         % % shape 4: BILLY
-        % \filldraw[rounded corners=5pt, fill=green, fill opacity=0] (3,4.25) -- (4.5,4.25) -- (4.5,3.75) -- (3,3.75) -- cycle;
-        % \node (billy) at (2.75,4.25) [] {$b$};
+        \filldraw[rounded corners=5pt, fill=green, fill opacity=0] (3.25,5.25) -- (4.5,5.25) -- (4.5,3.75) -- (3.25,3.75) -- cycle;
+        \node (billy) at (3,5) [] {$b$};
 
-        % % % overlap of shape 1 & shape 2: dots
-        % \begin{scope}
-        %   \clip[rounded corners=5pt] (0.5,5) rectangle (4.5,1.75);
-        %   \clip[rounded corners=5pt] (1.5,3.25) -- (3,3.25) -- (3,1.75) -- (6.5,1.75) -- (6.5,0.25) -- (1.5,0.25) -- cycle;
-        %   \fill[pattern=dots, pattern color=red] (0,0) rectangle (10,6);
-        % \end{scope}
+        %  Minimal Human
+        \begin{scope}
+          \clip[rounded corners=10pt] (1.5,4) rectangle (3,3);
+          \fill[pattern=dots, pattern color=blue] (0,0) rectangle (10,6);
+        \end{scope}
 
-        % \begin{scope}
-        %   % clip to human rectangle
-        %   \clip[rounded corners=5pt] (0.5,5) rectangle (5,2.5);
-        %   % clip to soldier L-shape
-        %   \clip[rounded corners=5pt] (3.75,3) -- (3.75,4.5) -- (8,4.5) -- (8,1) -- (5.5,1) -- (5.5,3) -- cycle;
-        %   % fill their intersection with blue dots
-        %   \fill[pattern=dots, pattern color=blue] (0,0) rectangle (10,6);
-        % \end{scope}
+        %  Minimal Soldier
+        \begin{scope}
+          \clip[rounded corners=10pt] (4,4.5) rectangle (5,3);
+          \fill[pattern=north west lines, pattern color=green] (0,0) rectangle (10,6);
+        \end{scope}
 
-        % % overlap of BILLY and SOLDIER: green hatch
-        % \begin{scope}
-        %   % clip to BILLY’s tiny rectangle
-        %   \clip[rounded corners=5pt] (3,4.25) -- (4.5,4.25) -- (4.5,3.75) -- (3,3.75) -- cycle;
-        %   % clip to SOLDIER’s L–shape
-        %   \clip[rounded corners=5pt] (3.75,3) -- (3.75,4.5) -- (8,4.5) -- (8,1) -- (5.5,1) -- (5.5,3) -- cycle;
-        %   % fill their intersection with green lines
-        %   \fill[pattern=north east lines, pattern color=green] (0,0) rectangle (10,6);
-        % \end{scope}
+        %  Minimal Billy
+        \begin{scope}
+          \clip[rounded corners=5pt] (4,4.5) rectangle (4.5,3.75);
+          \fill[pattern=north east lines, pattern color=red] (0,0) rectangle (10,6);
+        \end{scope}
       \end{scope}
     \end{tikzpicture}
     \caption{A preferential interpretation}
     \label{figure:preferential-interpretation}
   \end{figure}
+  It is quite obvious to spot an illustration of \Cref{lemma:cut-cautious}, $b \twiddle s$ and so all the typical consequences of $b$ and
+  $b \land s$ coincide. This clearly holds, as they are precisely the same set of states.
 \end{example}
 
-\begin{definition}
-  \label{definition:preferential-satisfaction} A preferential interpretation $W$ \emph{satisfies} a defeasible conditional
-  $\phi \twiddle \psi$ if and only if the $\prec$-\emph{minimal} states which satisfy $\phi$ also satisfy $\psi$, equivalently if
-  $W \vDash_{P}\phi \twiddle \psi$ if $\underline{\hat{\phi}}\subseteq \hat{\psi}$.
-\end{definition}
-
-\begin{definition}
-  \label{definition:preferentially-satisfiable} A formula $\phi \in \mathcal{L}$ is \emph{preferentially satisfiable} if and only if there
-  exists a preferential interpretation $W$ such that $W\vDash_{P}\phi$
-\end{definition}
+\textcolor{red}{States are a technical point, give example of why we need them}
 
 \begin{theorem}[Soundness]
   \label{theorem:soundness-preferential} If $W$ is a preferential interpretation which defines the consequence relation $\twiddle_{W}$, then

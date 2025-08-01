@@ -65,49 +65,31 @@ It was pointed out by Shoham \cite{shohamSemanticApproach} that we may \say{bend
 to a privileged subset of models deemed ``preferable''. We call these selected models the ``minimal'' models---a choice
 that will become clearer as this chapter progresses.
 
-% \section{Preferential Reasoning}
-% \label{section:preferential-reasoning}
-% In this work we are interested specifically in the KLM-style of non-monotonic reasoning, which will be introduced in the proceeding chapter. As a precursor, it is beneficial to discuss the semantic approach to non-monotonic reasoning put forward by Shoham \cite{shohamSemanticApproach}.
-
-% \begin{definition}
-% \label{definition:preferential-satisfaction-from-valuation}
-% Given a formula $\phi \in \mathcal{L}$ and a valuation $u \in \mathcal{U}$, then $u$ \emph{preferentially satisfies} $\phi$ (and we write $u \vDash_\sqsubseteq \phi $) if and only if there is no other interpretation $v \in \mathcal{U}$ where $v \vDash \phi$ and $v \sqsubset u$. Then $u$ is a \emph{preferred}, or \emph{minimal} model of $\phi$.
-% \end{definition}
-
-% \begin{definition}
-% \label{definition:preferential-satisfiability}
-% A formula $\phi \in \mathcal{L}$ is \emph{preferentially satisfiable} if it has a preferred model.
-% \end{definition}
-
-% From the two definitions above it may be obvious that every preferentially satisfiable formula is indeed classically satisfiable, while the converse is not true: To see why we need only consider an infinitely descending chain of valuations, and whether a tautology is preferentially satisfiable in such a structure.
 \section{The KLM Framework}
-The KLM framework for non-monotonic reasoning was initially described by a collection of consequence relations satisfying
-certain axioms---frequently called the \textit{rationality postulates}---with each successive system being stronger than
-its predecessor. We borrow a nice story from Dov Gabbay \cite{gabbay1985theoreticalFoundations} which motivates why consequence
-relations are a good starting point for the study of a non-monotonic system.
+The KLM framework for non-monotonic reasoning was initially described by a collection of consequence relations
+satisfying certain axioms---frequently called the \textit{rationality postulates}---with each successive system being stronger
+than its predecessor. We borrow a nice story from Dov Gabbay \cite{gabbay1985theoreticalFoundations} which motivates why
+consequence relations are a good starting point for the study of a non-monotonic system.
 
-Paraphrasing, he begins by asking the reader to imagine a machine that does non-monotonic inference in some domain. The machine
-represents knowledge as formulae and so we pose queries of the form \say{Does $\psi$ non-monotonically follow from $\phi$?}.
-Something goes awry (suppose some coffee was spilled), calling into question whether the logic of the machine still
-functions correctly. Even worse, the interface, which tells us what real-world instance each formula maps to, is
-destroyed and so function cannot be evaluated based on the meaning of the formulae the machine reasons on. How might we then
-evaluate the machine's function?
+Paraphrasing, he begins by asking the reader to imagine a machine that does non-monotonic inference in some domain. The
+machine represents knowledge as formulae and so we pose queries of the form \say{Does $\psi$ non-monotonically follow from $\phi$?}.
+Something goes awry (suppose some coffee was spilled), calling into question whether the logic of the machine still functions
+correctly. Even worse, the interface, which tells us what real-world instance each formula maps to, is destroyed and so function
+cannot be evaluated based on the meaning of the formulae the machine reasons on. How might we then evaluate the machine's
+function?
 
-If we were interested in classical consequence, we would be well-equipped to assess the correctness of the machine by
-determining if it satisfied reflexivity, monotonicity, and cut (we point to \Cref{definition:consequence-relations} as a
-reminder). This is precisely the starting point that Kraus, Lehmann, and Magidor took up in \cite{kraus1990nonmonotonic},
-suggesting that before getting to the semantics of a non-monotonic system, it is a good idea to formalise axiomatise the
-system as a consequence relation satisfying certain properties.
+If we were interested in classical consequence, we would be well-equipped to assess the correctness of the machine by determining
+if it satisfied reflexivity, monotonicity, and cut (we point to \Cref{definition:consequence-relations} as a reminder).
+This is precisely the starting point that Kraus, Lehmann, and Magidor took up in \cite{kraus1990nonmonotonic}, suggesting
+that before getting to the semantics of a non-monotonic system, it is a good idea to formalise axiomatise the system as
+a consequence relation satisfying certain properties.
 
 The rationality postulates are precisely this axiomatisation, characterising a sensible pattern of reasoning for non-monotonic
-systems. We use `$\twiddle$' (pronounced ``twiddle'') instead of `$\vdash$' to denote a non-monotonic consequence relation.
-As we may expect, $\phi \twiddle \psi$ has the same meaning as $(\phi, \psi) \in \; \twiddle$, and $\phi \ntwiddle \psi$
-as $(\phi, \psi)\not \in \; \twiddle$. We may, at times of potential confusion, use a subscript to disambiguate which consequence
-relation is being referred to, and so $\twiddle_{C}$ would refer to a cumulative relation, as defined below.
-
-% An expression like $\phi \twiddle \psi$ is to be understood as saying \say{If $\phi$ holds, then $\psi$ is a typical consequence}, we call
-% expressions of this nature \textit{conditional assertions}. The properties that a particular consequence relation satisfies are represented
-% as rules of inference in the style of conditional assertions.
+systems. We use `$\twiddle$' (pronounced ``twiddle'') instead of `$\vdash$' to denote a non-monotonic consequence
+relation. As we may expect, $\phi \twiddle \psi$ has the same meaning as $(\phi, \psi) \in \; \twiddle$, and $\phi \ntwiddle
+\psi$ as $(\phi, \psi)\not \in \; \twiddle$. We may, at times of potential confusion, use a subscript to disambiguate
+which consequence relation is being referred to, and so $\twiddle_{C}$ would refer to a cumulative relation, as defined
+below.
 
 \subsection{Cumulative Reasoning}
 \label{subsection:system-c} \index{non-monotonic reasoning! system C}
@@ -318,14 +300,14 @@ condition,
 \textcolor{red}{Maybe this is too strong, we need only that every $\phi \in \Lang$ have a set of models $\hat{\phi}$ that
 satisfy the smoothness condition}
 
-A preferential interpretation that satisfies the smoothness condition is called \textit{well-founded}, or \textit{bounded}
-\cite{shohamSemanticApproach,lehmann1992what}. Of course, every preferential interpretation where the set of states is finite
-is well-founded.
+A preferential interpretation that satisfies the smoothness condition is called \textit{well-founded} \cite{lehmann1992what},
+or \textit{bounded} \cite{shohamSemanticApproach}. Of course, every preferential interpretation where the set of states is
+finite is well-founded.
 
-As a matter of intuition, the enforcing the smoothness condition on a preference relation seems completely agreeable: It
-makes little sense, when the express aim is to restrict consideration to a subset of the most preferred worlds, to order
-an infinite collection of worlds in terms of how preferreable they are, and not have a starting point describing the
-\say{most preferable} worlds.
+As a matter of intuition, enforcing the smoothness condition on a preference relation seems entirely agreeable: It makes
+little sense, when the express aim is to restrict consideration to a subset of the most preferred worlds, to order an infinite
+collection of worlds in terms of how preferreable they are and not have a starting point describing the \say{most preferable}
+worlds. \textcolor{red}{Add a bit more here}
 
 We then remark that the, under the assumption of well-foundeness, a (classical) formula is satisfiable in a preferential
 interpretation if and only if it is classically satisfiable (i.e., it has a model). We are, however, more interested in
@@ -345,8 +327,8 @@ Then,
 	\label{definition:preferentially-satisfiable}
 
 	A defeasible formula $\phi \twiddle \psi \in \Lang$ is \emph{satisfied} by a preferential interpretation $\Pin$ if and
-	only if the every minimal state $s \in \underline{\hat{\phi}}$ which satisfies $\phi$ also satisfies $\psi$. In this
-	case we write $\pin \VDash \phi \twiddle \psi$ and say that $\pin$ is a \emph{preferential model} of $\phi \twiddle \psi$.
+	only if the every minimal state $s \in \underline{\hat{\phi}}$ also satisfies $\psi$. In this case we write
+	$\pin \VDash \phi \twiddle \psi$ and say that $\pin$ is a \emph{preferential model} of $\phi \twiddle \psi$.
 \end{definition}
 
 \begin{example}
@@ -367,85 +349,46 @@ Then,
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}
-			% outer frame
 			% \draw[help lines] (0,0) grid (8,6);
-			\draw[rounded corners=5pt] (0,0) rectangle (8,6);
+			\draw[rounded corners=10pt, line width=0.2mm] (0,0) rectangle (8,6);
+			\draw[rounded corners=10pt, line width=0.2mm] (1,6) -- (1,3) -- (5,3) -- (5,6);
+			\node (human) at (0.75,5.5) [] {$\hat{h}$};
+			\draw[rounded corners=10pt, line width=0.2mm]
+				(1.5,4.5) --
+				(4.5,4.5) --
+				(4.5,2) --
+				(6,2) --
+				(6,0.5) --
+				(1.5,0.5) --
+				cycle;
+			\node (time) at (1.25,2.5) [] {$\hat{c}$};
+			\draw[rounded corners=10pt, line width=0.2mm] (4,6) -- (4,4) -- (7,4) -- (7,6);
+			\node (s) at (7.25, 5.5) [] {$\hat{s}$};
 
-			% translate all three shapes at once
-			\begin{scope}[shift={(-0.25,0)}]
-				% shape 1: HUMANS
-				% \filldraw[rounded corners=5pt, fill=blue, fill opacity=0] (1,6) rectangle (5,3);
-				\node (human) at (0.75,5.25) [] {$h$};
-				\draw[rounded corners=5pt] (1,6) -- (1,3) -- (5,3) -- (5,6);
-
-				% % shape 2: CHRONOLOGICAL
-				\filldraw[rounded corners=5pt, fill=red, fill opacity=0]
-					(1.5,4) --
-					(3,4) --
-					(3,2) --
-					(7.5,2) --
-					(7.5,0.5) --
-					(1.5,0.5) --
-					cycle;
-				%   (1.5,3.25) --
-				%   (3,3.25) --
-				%   (3,1.75) --
-				%   (6.5,1.75) --
-				%   (6.5,0.25) --
-				%   (1.5,0.25) --
-				%   cycle;
-				\node (chronological) at (1.25,2.25) [] {$c$};
-
-				% % shape 3: SOLDIER
-				\filldraw[rounded corners=5pt, fill=green, fill opacity=0] (4,4.5) -- (7,4.5) -- (7,1.5) -- (4,1.5) -- cycle;
-				%   (3.75,3) --
-				%   (3.75,4.5) --
-				%   (8,4.5) --
-				%   (8,1) --
-				%   (5.5,1) --
-				%   (5.5,3) --
-				%   cycle;
-				\node (soldier) at (7.25,4) [] {$s$};
-
-				% % shape 4: BILLY
-				\filldraw[rounded corners=5pt, fill=green, fill opacity=0]
-					(3.25,5.25) --
-					(4.5,5.25) --
-					(4.5,3.75) --
-					(3.25,3.75) --
-					cycle;
-				\node (billy) at (3,5) [] {$b$};
-
-				%  Minimal Human
-				\begin{scope}
-					\clip[rounded corners=0pt] (1.78,4) rectangle (2.45,3.25);
-					\fill[pattern=dots, pattern color=blue] (0,0) rectangle (10,6);
-				\end{scope}
-
-				%  Minimal Soldier
-				\begin{scope}
-					\clip[rounded corners=0pt] (4.25,4.25) rectangle (4.75,3.5);
-					\fill[pattern=dots, pattern color=green] (0,0) rectangle (10,6);
-				\end{scope}
-
-				%  Minimal Billy
-				\begin{scope}
-					\clip[rounded corners=5pt] (4,4.5) rectangle (4.5,3.75);
-					\fill[pattern=north east lines, pattern color=red] (0,0) rectangle (10,6);
-				\end{scope}
-			\end{scope}
+			% minimal human
+			\draw[rounded corners=10pt, line width=0.1mm] (2,3) -- (2,4) -- (3,4) -- (3,3);
+			\node (minH) at (3.25,3.5) [] {$\underline{\hat{h}}$};
+			% minimal soldier
+			\draw[rounded corners=10pt, line width=0.1mm] (5,5.25) -- (4.25,5.25) -- (4.25,4.25) -- (5,4.25);
+			\node (minS) at (5.25,5) [] {$\underline{\hat{s}}$};
+			% minimal time
+			\draw[rounded corners=10pt, line width=0.1mm] (3,0.5) -- (3,1.25) -- (4,1.25) -- (4,0.5);
+			\node (minC) at (4.25,1) [] {$\underline{\hat{c}}$};
 		\end{tikzpicture}
 		\caption{A preferential interpretation}
 		\label{figure:preferential-interpretation}
 	\end{figure}
-	It is quite obvious to spot an illustration of \Cref{lemma:cut-cautious}, $b \twiddle s$ and so all the typical
-	consequences of $b$ and $b \land s$ coincide. This clearly holds, as they are precisely the same set of states.
+
+	\Cref{lemma:cut-cautious}, $b \twiddle s$ and so all the typical consequences of $b$ and $b \land s$ coincide. This
+	clearly holds, as they are precisely the same set of states.
 \end{example}
+
 \begin{theorem}[Soundness]
 	\label{theorem:soundness-preferential}
 
 	If $W$ is a preferential interpretation which defines the consequence relation $\twiddle_{W}$, then $\twiddle_{W}$ satisfies
-	\textit{Reflexivity, Left Logical Equivalence, Right Weakening, Or,} and \textit{Cautious Monotony}.
+	\textit{Reflexivity, Left Logical Equivalence, Right Weakening, Or,} and \textit{Cautious Monotony} and can accordingly
+	be considered a preferential consequence relation.
 \end{theorem}
 
 \begin{theorem}[Completeness]
@@ -455,24 +398,43 @@ Then,
 	the consequence relation $\twiddle_{W}$ such that $\twiddle_{P}$ is precisely $\twiddle_{W}$.
 \end{theorem}
 
-The decision to construct a preference relation on states rather than valuations directly, and then map states to
-valuations, may seem arbitrary, and it would be ideal to do away with this layer of obfuscation. Certainly, Shoham
-\cite{shohamSemanticApproach} makes no such distinction. Kraus et al. \cite{kraus1990nonmonotonic} make the point that
-there are preferential consequence relations with corresponding preferential interpretations which contain duplicate
-states, which cannot be represented by another preferential interpretation without these duplicates.
+The decision to construct a preference relation on states rather than valuations directly, and then map states to valuations,
+may seem arbitrary, and it would be ideal to do away with this layer of obfuscation. Certainly, Shoham \cite{shohamSemanticApproach}
+makes no such distinction. Kraus et al. \cite{kraus1990nonmonotonic} make the point that there are preferential consequence
+relations with corresponding preferential interpretations which contain duplicate states, which cannot be represented by
+another preferential interpretation without these duplicates.
 
 \begin{example}
-	Consider the more fine-grained depiction of the preferential interpretation in \Cref{figure:preferential-interpretation}
-	in the style of a Hasse diagram:
+	Consider the more fine-grained depiction of the preferential interpretation in \Cref{figure:preferential-interpretation},
+	its quite clear to spot that the preferential interpretation is a model of the conditional $s \twiddle h$ since the
+	minimal $s$-states all satisfy $h$. The interpretation is not, however, a model of $s \twiddle c$. If the duplicate
+	states were removed, it would be.
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+			% \draw[help lines] (0,0) grid (8,6);
+			\draw[rounded corners=10pt, line width=0.2mm] (0,0) rectangle (8,6);
+			\draw[rounded corners=10pt, line width=0.2mm] (1.5, 6) -- (1.5,2) -- (6.5,2) -- (6.5,6);
+			\draw[rounded corners=10pt, line width=0.2mm] (4,6) -- (4,0.5) -- (0,0.5);
+			\draw[rounded corners=10pt, line width=0.2mm] (0,3) -- (3,3) -- (3,0);
+
+			\node (h) at (3.25, 1) [] {$\hat{h}$};
+			\node (s) at (6.75, 5.5) [] {$\hat{s}$};
+
+			\node[fill=none] (1) at (2.1,4.75) [] {\small$\{h,s,\overline{c}\}$};
+			\node[fill=none] (2) at (3.25,4.75) [] {\small$\{h,s,\overline{c}\}$};
+			\node[fill=none] (3) at (2.1,2.5) [] {\small$\{h,s,c\}$};
+
+			\draw[line width=0.2mm] (1) -- (3);
+		\end{tikzpicture}
+	\end{figure}
+	By soundness
 \end{example}
-
-
-
 
 \subsection{Preferential Entailment}
 
-RE iT not being nmr We are willing to accept these credulous inferences precisely because they may be retracted we may withdraw
-previous inferences under learning new facts.
+RE iT not being nmr We are willing to accept these credulous inferences precisely because they may be retracted we may
+withdraw previous inferences under learning new facts.
 
 \section{Rational Closure}
 

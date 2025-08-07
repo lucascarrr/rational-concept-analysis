@@ -482,20 +482,60 @@ monotony}.
 	\inferLeft{Rational Monotony}{\phi \twiddle \psi, \quad \phi \ntwiddle \neg \gamma}{\phi \land \gamma \twiddle \psi}
 \end{align}
 
-The pattern of reasoning described by rational monotony is perhaps the most controversial of the KLM postulates. From
-the perspective of knowing $\phi$ it is normal to conclude that $\psi$, but it is not necessarily normal to conclude $\neg
-\gamma$---this latter clause is not saying it is normal to conclude $\gamma$. Rational monotony requires that should we
-then move to a scenario where $\phi$ and $\gamma$ hold, all the inferences that were plausible when we knew only that $\phi$
-held should remain.
+Rational monotony is the most controversial of the KLM postulates. The pattern of reasoning it describes is that if, from
+the perspective of knowing $\phi$, it is normal to conclude $\psi$ but not to conclude $\neg \gamma$, then moving to a scenario
+where $\phi$ and $\gamma$ hold should not result in the retraction of any inferences that were plausible from the original
+perspective.
+
+Stalnaker \cite{Stalnaker1994,sep-logic-nonmonotonic-Stanford} provides an argument against the acceptance of rational monotony.
+The objection is that rational monotony commits us to make inferences when the more reasonable position is to be
+undecided. Paraphrasing, we are asked to consider three composers: \textit{Verdi}, who is believed to be Italian, and
+\textit{Satie} and \textit{Bizet}, who are believed to be French. If it were learned that Verdi and Bizet were
+compatriots, then it seems reasonable that the conclusion that either of them are French or Italian is indeterminate.
+What is reasonable, however, is to maintain the belief that Satie is French.
+\begin{align}
+	Compatriots(Bizet, Verdi) \twiddle French(Satie)
+\end{align}
+The argument proceeds by considering that Verdi and Satie may too be compatriots. Since Verdi's nationality is now
+unknown, we are no longer equipped to reject the plausibility of the new compatriotship, and so
+\begin{align}
+	Compatriots(Bizet, Verdi) \ntwiddle \neg Compatriots(Verdi,Satie)
+\end{align}
+The two conditions of rational monotony have been met, and so the following inference should continue to hold
+\begin{align}
+	Compatriots(Bizet, Verdi) \land Compatriots(Verdi,Satie) \twiddle French(Satie)
+\end{align}
+The issue, as Stalnaker sees it, is that we are then forced to conclude that all three composers are French, when in
+fact we should have no intution for whether they are French or Italian.
+
+He has, unfortunately, missed a subtle bias in this formulation of the problem. Instead of being unable to reject that Verdi
+and Satie may have been compatriots, we could instead think of our epistemic position as being unable to reject that
+they are not compatriots. Or,
+\begin{align}
+	Compatriots(Bizet,Verdi) \ntwiddle \neg (\neg Compatriots(Verdi,Satie))
+\end{align}
+Then, we arrive at the following, where we conclude that Verdi and Bizet are Italian, while Satie is French.
+\begin{align}
+	Compatriots(Bizet, Verdi) \land \neg(Compatriots(Verdi,Satie)) \twiddle French(Satie)
+\end{align}
+
+Rational monotony represents a significantly stronger form of monotonicity than cautious monotony. Under cautious
+monotony, monotonicity is restricted to the case where new information was already expected. Rational monotony goes
+further, allowing monotonic behaviour when the new information was merely not contradictory \cite{sep-logic-nonmonotonic-Stanford}.
+That is, cautious monotony is phrased as ``From the presence of these beliefs, we plausibly infer the following.'' While
+rational monotony can be phrased as ``From the presence of this belief, and the absence of this belief, we may infer the
+following.''
+
+\textcolor{red}{How do we make a decision on rational monotonicity. How does it resolve}
 
 Consider the following example of a university where it is normal (\textit{expected, typical}) for students to graduate.
-Alice is a normal student and so she will graduate, but is also widely regarded as being quite a clever student. Bob is another
-student who, despite being clever, is known by his professors to be unprecedentedly lazy. As a result of failing to
-appear for his final examinations, Bob will not graduate.
+Alice and Charlie are normal students and so they will graduate, Alice is also widely regarded as being quite a clever
+student. Bob is a third student who, despite being clever, is known by his professors to be unprecedentedly lazy. As a
+result of failing to appear for his final examinations, Bob will not graduate.
 
-Rational monotony would require that normal students who are also clever will graduate, and so there should always be a
-clever student who is explicitly preferred (in the preference relation) to Bob. Preferential interpretations do not commit
-us to this idea,
+Since it is not expected that normal students are not clever, rational monotony would require that clever students
+normally will graduate.\footnote{As per the previous argument, we should also conclude that student who are not clever normally
+graduate.} Preferential interpretations do not commit us to this idea,
 
 \begin{figure}[H]
 	\centering
@@ -539,8 +579,9 @@ us to this idea,
 	while \textit{b} does.}
 \end{figure}
 
-It is quite easy to spot the culprit: The preference relation does not impose strong enough restrictions on how incomparable
-objects should be treated.
+It is quite easy to spot the culprit: The preference relation does not impose strong enough restrictions on how
+incomparable objects should be treated. Bob---who is not considered a normal student---is infact considered a normal,
+clever student.
 
 \begin{definition}
 	\label{definition:modular-order} \index{partial-order! modular}
@@ -549,10 +590,10 @@ objects should be treated.
 	x$ then also $z \prec y$.
 \end{definition}
 
-Under a modular partial order, incomparability can be considered an equivalence relation on the respective set where incomparable
-elements fall into equivalence classes \cite{GinsberCounterfactuals,lehmann1992what}. We now introduce \textit{ranked
-interpretations} as a structure which assigns to each of these equivalence classes a rank describing the preference relation
-on worlds.
+Under a modular partial order, incomparability can be considered an equivalence relation on the respective set where
+incomparable elements fall into equivalence classes \cite{GinsberCounterfactuals,lehmann1992what}. We now introduce \textit{ranked
+interpretations} as a structure which assigns to each of these equivalence classes a rank describing the preference
+relation on worlds.
 
 \begin{definition}
 	\label{definition:ranked-interpretation}
@@ -560,10 +601,9 @@ on worlds.
 	A \emph{ranked interpretation} is a preferential interpretation $\Pin$ where the preference relation $\prec$ is \emph{modular}.
 \end{definition}
 
-One consequence, in terms of the way they are represented, is that ranked interpretations can be visualised as a
-stratification of states, rather than Hasse diagrams. The preferential interpretation in \Cref{subfigure:rational}, which
-has a modular preference relation and can accordingly be considered a ranked interpretation, can be visualised as the
-following structure:
+One consequence, in terms of the way they are represented, is that ranked interpretations can be visualised as a stratification
+of states, rather than Hasse diagrams. The preferential interpretation in \Cref{subfigure:rational}, which has a modular
+preference relation and can accordingly be considered a ranked interpretation, can be visualised as the following structure:
 
 \begin{figure}[H]
 	\centering
@@ -591,15 +631,15 @@ following structure:
 The
 
 \clearpage
-The reasoning pattern described by rational monotony is the most controversial of the KLM postulates We can understand rational
-monotony as describing a pattern of reasoning where, under normal circumstances, the presence of $\phi$ means the presence
-of $\psi$ and not necessarily the presence of $\neg \gamma$ (there is at least one normal $\phi$-states where $\gamma$
-holds). Then, assuming that $\gamma$ does indeed hold should not result in the withdrawal of any plausible inferences that
-were made from $\phi$.
+The reasoning pattern described by rational monotony is the most controversial of the KLM postulates We can understand
+rational monotony as describing a pattern of reasoning where, under normal circumstances, the presence of $\phi$ means
+the presence of $\psi$ and not necessarily the presence of $\neg \gamma$ (there is at least one normal $\phi$-states where
+$\gamma$ holds). Then, assuming that $\gamma$ does indeed hold should not result in the withdrawal of any plausible
+inferences that were made from $\phi$.
 
-The question that requires consideration is whether, from this description, it should be possible for Bob to be considered
-as a typical, clever student; or, must we concretely hold the view that Alice is a more typical clever student than Bob?
-A preferential interpretation does not commit us to either view, we show below two preferential interpretations
+The question that requires consideration is whether, from this description, it should be possible for Bob to be
+considered as a typical, clever student; or, must we concretely hold the view that Alice is a more typical clever student
+than Bob? A preferential interpretation does not commit us to either view, we show below two preferential interpretations
 entertaining both perspectives
 
 \textcolor{red}{Smoothness is always satisfied by ranked models with a finite language}
@@ -612,17 +652,18 @@ entertaining both perspectives
 	Monotony}.
 \end{definition}
 
-Rational consequence relations quite clearly satisfy all the conditions of preferential consequence relations. The reason
-that certain preferential interpretations fail to satisfy rational monotony is due to what is permitted in their preference
-relations. \Cref{subfigure:not-rational} is a model of $s \twiddle g$, and it does not satisfy $s \twiddle \neg c$.
+Rational consequence relations quite clearly satisfy all the conditions of preferential consequence relations. The
+reason that certain preferential interpretations fail to satisfy rational monotony is due to what is permitted in their
+preference relations. \Cref{subfigure:not-rational} is a model of $s \twiddle g$, and it does not satisfy
+$s \twiddle \neg c$.
 
-Because of the need for states, we have this defect which prevents rational monotonicity from being satisfied. If we really
-want rational monotony, we have to have a modular order.
+Because of the need for states, we have this defect which prevents rational monotonicity from being satisfied. If we
+really want rational monotony, we have to have a modular order.
 
 \subsection{Preferential Entailment}
 
-RE iT not being nmr We are willing to accept these credulous inferences precisely because they may be retracted we may withdraw
-previous inferences under learning new facts.
+RE iT not being nmr We are willing to accept these credulous inferences precisely because they may be retracted we may
+withdraw previous inferences under learning new facts.
 
 \section{Rational Closure}
 

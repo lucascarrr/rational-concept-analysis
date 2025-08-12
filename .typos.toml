@@ -5,4 +5,5 @@ extend-ignore-re = [
     "WILLE1992493",
     "montanna",
     "Wille_Restructuring",
+    "Wille2005",
 ]

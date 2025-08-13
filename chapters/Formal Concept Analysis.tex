@@ -1,10 +1,10 @@
 \chapter{Formal Concept Analysis}
 \label{chapter:formal-concept-analysis}
 
-\FCA (FCA) \cite{Wille_Restructuring,WILLE1992493,ganter1999formal} is an approach to reasoning about \textit{concepts}
-and corresponding \textit{conceptual structures} in terms of lattice theory and sets. It was first proposed by Wille in his
-monograph \textit{Restructuring Lattice Theory} \cite{Wille_Restructuring}, which was an attempt to reestablish a connection
-between the theory and practice of lattices.
+\FCA (FCA) \cite{Wille_Restructuring,WILLE1992493,ganter1999formal} is an approach to reasoning about \textit{concepts} and
+corresponding \textit{conceptual structures} in terms of lattice theory and sets. It was first proposed by Wille in his monograph
+\textit{Restructuring Lattice Theory} \cite{Wille_Restructuring}, which was an attempt to reestablish a connection between
+the theory and practice of lattices.
 
 A core aspect of FCA’s foundation is the mathematisation of the philosophical view of concepts, in which a they are
 understood as a unit comprising two parts: the \textit{extension}, which is the collection of things said to be instances
@@ -31,12 +31,13 @@ underlying structural relationship that exists between elements in this universe
 	relation. For an object-attribute pair $(g,m) \in I$ we may say \say{The object $g$ \textit{has} the attribute $m$}.
 \end{definition}
 
-We regard the set of objects as being the extensional dimension of the context, while the set of attributes is
-intensional. However, the distinction between the extensional and intensional dimensions of the context is largely a
-matter of convention, or when introducing a FCA a means of improving intuition. There is no strict requirement around
-what these sets are made up of, or even that they be distinct, and so it is perfectly acceptable to have a context where
-the objects and attributes are the same set; for example, the context $(\mathbb{N}, \mathbb{N}, \texttt{divides })$
-which describes the division relationship between natural numbers.
+We consider the set of objects $G$ (from the German \textit{Gegenstände}) as the extensional dimension of the context, whereas
+the set of attributes $M$ (from the German \textit{Merkmale}) represents the intensional dimension. However, the
+distinction between the extensional and intensional dimensions of the context is largely a matter of convention, or when
+introducing a FCA a means of improving intuition. There is no strict requirement around what these sets are made up of, or
+even that they be distinct, and so it is perfectly acceptable to have a context where the objects and attributes are the
+same set; for example, the context $(\mathbb{N}, \mathbb{N}, \texttt{divides })$ which describes the division
+relationship between natural numbers.
 
 It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is
 interpreted as the object satisfying the respective attribute, FCA is concerned only with \textit{positive} information,
@@ -46,10 +47,10 @@ We will discuss, in more depth, the rather troubling matter of negation and nega
 
 When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table such as in \Cref{cxt:grouplikes}.
 Each object is represented by a row in the table, each attribute by a column, and each pair in the incidence relation is
-marked with an `$\times$' at the appropriate position \cite[pp. 17]{ganter1999formal}. Given a context presented in this
-form, it is a trivial task to identify all the attributes that a particular object satisfies: One need only scan across the
-respective row and note where the marks appear. The resulting set of attributes is called the \textit{object's intent}.
-The dual notion of an \textit{attribute extent} can be found by traversing down a column in the table.
+marked with an `$\times$' at the appropriate position \cite{ganter1999formal}. Given a context presented in this form,
+it is a trivial task to identify all the attributes that a particular object satisfies: One need only scan across the respective
+row and note where the marks appear. The resulting set of attributes is called the \textit{object's intent}. The dual
+notion of an \textit{attribute extent} can be found by traversing down a column in the table.
 
 \begin{figure}[H]
 	\centering
@@ -308,16 +309,23 @@ these are the closure systems $\mathcal{G}$ and $\mathcal{M}$ and their correspo
 
 To make this idea concrete, we reconsider the previous discussion where we (informally) described the concept of a monoid.
 It follows that the derivation $\{\texttt{monoid }\}^{\uparrow}$ yields the intent
-$\{\texttt{closure,associativity,identity }\}$. In turn, the derivation of the concept intent results in the set
-$\{\texttt{monoid,group,abelian group}\}$, which is the concept extent, and so
+\[
+	\{\texttt{closure,associativity,identity}\}.
+\]
+%
+In turn, the derivation of the concept intent results in the set
+\[
+	\{\texttt{monoid,group,abelian group}\},
+\]which is the concept extent, and so
 \[
 	\big(\{\texttt{monoid,group,abelian group}\}, \{\texttt{closure,associativity,identity }\}\big)
 \]
 is a formal concept of \Cref{cxt:grouplikes}.
 
-The union of concept extents (intents) is not guaranteed to yield another concept extent (intent), whereas the intersection
-of concept extents (intents) will always result in another concept extent (intent). That is to say, the closure systems $\mathcal{G}$
-and $\mathcal{M}$ are not closed under taking arbitrary unions, while they are under arbitrary intersections.
+The union of concept extents (intents) is not guaranteed to yield another concept extent (intent), whereas the
+intersection of concept extents (intents) will always result in another concept extent (intent). That is to say, the
+closure systems $\mathcal{G}$ and $\mathcal{M}$ are not closed under taking arbitrary unions, while they are under arbitrary
+intersections.
 
 \begin{proposition}
 	\label{proposition:intersection-union-concepts} Let $T$ be an indexing set, then for every $t \in T$
@@ -327,12 +335,12 @@ and $\mathcal{M}$ are not closed under taking arbitrary unions, while they are u
 	\]
 \end{proposition}
 
-If we examine the lattices in \Cref{figure:two-lattices}, we observe that the two derivation operators map to and from
-the concept intent and extent (shown by the dotted blue arrows). This observation suggests a more consolidated perspective:
-The two lattices can be unified into a single structure where elements of the lattice are precisely the pairs $(A,B)$
-where $A \in \mathcal{G}$ and $B \in \mathcal{M}$ and also $A^{\uparrow}= B$ and $B^{\downarrow}= A$. In other words,
-the lattice of concepts. We appropriately call this structure the \textit{concept lattice} of a formal context, and write
-$\CLGMI$ to refer to the set of all concepts equipped with this structure.
+If we examine the lattices in \Cref{figure:two-lattices}, we observe that the two derivation operators map to and from the
+concept intent and extent (shown by the dotted blue arrows). This observation suggests a more consolidated perspective: The
+two lattices can be unified into a single structure where elements of the lattice are precisely the pairs $(A,B)$ where $A
+\in \mathcal{G}$ and $B \in \mathcal{M}$ and also $A^{\uparrow}= B$ and $B^{\downarrow}= A$. In other words, the lattice
+of concepts. We appropriately call this structure the \textit{concept lattice} of a formal context, and write $\CLGMI$
+to refer to the set of all concepts equipped with this structure.
 
 \begin{figure}[H]
 	\centering
@@ -460,8 +468,8 @@ $\CLGMI$ to refer to the set of all concepts equipped with this structure.
 	$C$ contains those attributes labelled at nodes where there is a strictly upwards path from $C$.
 \end{remark}
 
-The concept lattice is isomorphic to the closure system $\mathcal{G}$ of objects, and dually isomorphic to the closure
-system $\mathcal{M}$ of attributes. We now consider the first part of the fundamental result in FCA.
+The concept lattice is isomorphic to the closure system $\mathcal{G}$ of objects, and dually isomorphic to the closure system
+$\mathcal{M}$ of attributes. We now consider the first part of the fundamental result in FCA.
 
 \begin{theorem}[The Basic Theorem of Concept Lattices: Part one]
 	\label{theorem:basic-theorem-part1} The concept lattice $\CLGMI$ of a formal context is a complete lattice in which meets
@@ -472,27 +480,28 @@ system $\mathcal{M}$ of attributes. We now consider the first part of the fundam
 	\end{align*}
 \end{theorem}
 
-Part one of the basic theorem describes how we might find the meet and join of concepts in the concept lattice. To make this
-clear, recall the isomorphism between $\mathcal{G}$ and $\CLGMI$, which tells us that
+Part one of the basic theorem describes how we might find the meet and join of concepts in the concept lattice. To make
+this clear, recall the isomorphism between $\mathcal{G}$ and $\CLGMI$, which tells us that
 \[
 	A_{0}\wedge A_{1}\cong (A_{0},B_{0}) \wedge (A_{1},B_{1})
 \]
 for any $A_{0},A_{1}\in \mathcal{G}$ where $(A_{i},B_{i})$ is the concept with extent $A_{i}$.
 
-The isomorphism between the concept lattice $\CLGMI$ and the lattice corresponding to the closure system $\mathcal{G}$ means
-that the meet of any two concepts can be found by considering the concept formed by the meet of their extensions with respect
-to $\mathcal{G}$. Of course, since $\mathcal{G}$ is a closure system, the meet operation on this lattice corresponds to
-taking the intersection of these extensions (and $\mathcal{G}$ is closed under arbitrary intersections). As there is a dual
-isomorphism between $\CLGMI$ and $\mathcal{M}$, we can equivalently discover the meet of two concepts by considering the
-join operation on the concept intensions with respect to the lattice of $\mathcal{M}$. This corresponds to taking the closure
-of the union of concept intensions (cf. \Cref{theorem:closure-systems-lattices} for a reminder of why).
+The isomorphism between the concept lattice $\CLGMI$ and the lattice corresponding to the closure system $\mathcal{G}$
+means that the meet of any two concepts can be found by considering the concept formed by the meet of their extensions
+with respect to $\mathcal{G}$. Of course, since $\mathcal{G}$ is a closure system, the meet operation on this lattice corresponds
+to taking the intersection of these extensions (and $\mathcal{G}$ is closed under arbitrary intersections). As there is
+a dual isomorphism between $\CLGMI$ and $\mathcal{M}$, we can equivalently discover the meet of two concepts by considering
+the join operation on the concept intensions with respect to the lattice of $\mathcal{M}$. This corresponds to taking
+the closure of the union of concept intensions (cf. \Cref{theorem:closure-systems-lattices} for a reminder of why).
 
-The join of two concepts---again, due to the dual isomorphism---corresponds to the meet operation on the concept extensions
-with respect to the lattice of $\mathcal{M}$ and can thus be found by taking the intersection of their intensions, under
-which $\mathcal{M}$ is closed. Or, by the join operation on $\mathcal{G}$, which corresponds to the closure of the union
-of extensions.
+The join of two concepts---again, due to the dual isomorphism---corresponds to the meet operation on the concept
+extensions with respect to the lattice of $\mathcal{M}$ and can thus be found by taking the intersection of their
+intensions, under which $\mathcal{M}$ is closed. Or, by the join operation on $\mathcal{G}$, which corresponds to the
+closure of the union of extensions.
 
-For another perspective, consider that each $A_{t}$ is equivalent to $B_{t}^{\downarrow}$. By \Cref{proposition:intersection-union-concepts}
+For another perspective, consider that each $A_{t}$ is equivalent to $B_{t}^{\downarrow}$. By
+\Cref{proposition:intersection-union-concepts}
 \begin{align*}
 	 & \underset{t \in T}\bigwedge (A_{t}, B_{t}) = \Big( \underset{t \in T}\bigcap A_{t}, \; \big(\underset{t \in T}\bigcup B_{t}\big)^{\downarrow \uparrow}\Big)
 \end{align*}
@@ -500,18 +509,51 @@ can be restated as
 \begin{align*}
 	 & \underset{t \in T}\bigwedge (A_{t}, B_{t}) = \Big(\big(\underset{t \in T}\bigcup B_{t}\big)^{\downarrow}, \; \big(\underset{t \in T}\bigcup B_{t}\big)^{\downarrow \uparrow}\Big)
 \end{align*}
-We may arrive at the concept lattice in another way, by considering the rather natural order on concepts which arises
-from the \textit{subconcept--superconcept} relation. We had, earlier, discussed that `group' is a subclass of `monoid', and
-so the extension of the associated concept of a group should be a subset of that of a monoid. In line with this, we say that
-a concept $(A_{0},B_{0})$ is a subconcept of another $(A_{1},B_{1})$ if and only if $A_{0}\subseteq A_{1}$. Dually, $(A_{1}
-,B_{1})$ is a superconcept of $(A_{0},B_{0})$ if and only if $B_{1}\subseteq B_{0}$. In this case we write
-$(A_{0},B_{0}) \leq (A_{1},B_{1})$. When considering the set of concepts $\BGMI$ with the relation defined by $\leq$,
-the resulting structure is the same concept lattice $\CLGMI$ from before. As an illustration, consider the two selected
-concepts in \Cref{figure:concept-lattice-group-likes}.
+We may arrive at the concept lattice in another way, by considering the rather natural order on concepts which arises from
+the \textit{subconcept--superconcept} relation. We had, earlier, discussed that `group' is a subclass of `monoid', and
+so the extension of the associated concept of a group should be a subset of that of a monoid. In line with this, we say
+that a concept $(A_{0},B_{0})$ is a subconcept of another $(A_{1},B_{1})$ if and only if $A_{0}\subseteq A_{1}$. Dually,
+$(A_{1},B_{1})$ is a superconcept of $(A_{0},B_{0})$ if and only if $B_{1}\subseteq B_{0}$. In this case we write $(A_{0}
+,B_{0}) \leq (A_{1},B_{1})$. When considering the set of concepts $\BGMI$ with the relation defined by $\leq$, the resulting
+structure is the same concept lattice $\CLGMI$ from before. As an illustration, consider the two selected concepts in \Cref{figure:concept-lattice-group-likes}.
 
 % \subsection{Weaker Concepts}
 % \label{subsection:weaker-concepts} \textcolor{red}{I was going to introduce existing ideas in FCA about ``protoconcepts''; but I think maybe
 % this should be done right before we discuss typical concepts. }
+
+\section{Attribute Logic}
+\label{section:attribute-logic}
+
+This section is concerned with the discussion of \textit{Contextual Attribute Logic(s)} \cite{ganter2025language} which
+lie under Wille's \textit{Contextual Logic} \shortcite{Dau2005}.
+
+\section{Attribute Implications}
+\label{section:attribute-implications}
+
+There is another side to FCA, wh
+
+Attribute implications in FCA are a way of representing dependencies that exist between (sets of) attributes in a context.
+\begin{definition}
+	\label{definition:attribute-implication} Let $M$ be a non-empty set of attributes, then an \emph{attribute implication}
+	is an expression of the form
+	\[
+		A \rightarrow B
+	\]
+	where $A,B \subseteq M$. We call $A$ the \emph{antecedent} and $B$ the \emph{consequent} of the implication.
+\end{definition}
+The semantics of attribute implications will be familiar to anyone who has seen material implications, and so
+\begin{definition}
+	\label{definition:attribute-implication-semantics} Let $M$ be a non-empty set of attributes, and $A,B,C \subseteq M$
+	three subsets. Then we say that $C$ \emph{respects} the implication $A \rightarrow B$ if and only if $B \subseteq C$
+	or $A \not \subseteq C$, and we write $C \vDash A \rightarrow B$.
+\end{definition}
+Considering the context in \Cref{figure:voting-records}, an example of an attribute implication is$\texttt{crime}\rightarrow
+\texttt{immigration }$. If we examine the context in \Cref{figure:voting-records}it is apparent that every representative
+who voted in favour of the proposed c rime bill also voted in favour of the immigration bill; we write this dependency
+as$\texttt{crime }\rightarrow \texttt{immigration }$.
+
+When discussing implications between singleton sets of attributes, we may choose to omit the brackets and write$A \rightarrow
+m$in lieu of$A \rightarrow \{m\}$.
 
 \section{Contextual Attribute Logic}
 \label{section:contextual-attribute-logic}
@@ -632,310 +674,3 @@ compound attributes as per this second definition.
 In general, to determine if two compound attributes $\varphi$ and $\psi$ are globally equivalent we need only consider a
 single context which has an object for each combination of normal attributes. We call such a context the \textit{test
 context}, and write $(\pset{M},M,\in)$.
-
-\section{Attribute Implications}
-\label{section:attribute-implications}Attribute implications in FCA are a way of representing dependencies that exist between
-(sets of) attri butes in a context.
-\begin{definition}
-	\label{definition:attribute-implication} Let $M$ be a non-empty set of attributes, then an \emph{attribute implication}
-	is an expression of the form
-	\[
-		A \rightarrow B
-	\]
-	where $A,B \subseteq M$. We call $A$ the \emph{antecedent} and $B$ the \emph{consequent} of the implication.
-\end{definition}
-The semantics of attribute implications will be familiar to anyone who has seen material implications, and so
-\begin{definition}
-	\label{definition:attribute-implication-semantics} Let $M$ be a non-empty set of attributes, and $A,B,C \subseteq M$
-	three subsets. Then we say that $C$ \emph{respects} the implication $A \rightarrow B$ if and only if $B \subseteq C$
-	or $A \not \subseteq C$, and we write $C \vDash A \rightarrow B$.
-\end{definition}
-Considering the context in \Cref{figure:voting-records}, an example of an attribute implication is$\texttt{crime}\rightarrow
-\texttt{immigration }$. If we examine the context in \Cref{figure:voting-records}it is apparent that every representative
-who voted in favour of the proposed c rime bill also voted in favour of the immigration bill; we write this dependency
-as$\texttt{crime }\rightarrow \texttt{immigration }$.
-
-When discussing implications between singleton sets of attributes, we may choose to omit the brackets and write$A \rightarrow
-m$in lieu of$A \rightarrow \{m\}$.
-
-% \begin{lemma}
-%   \label{lemma:surjective-operators} Let $\GMI$ be a context with $(\uparrow, \downarrow)$ as the usual derivation operators. The closure systems
-%   \[
-%     \mathcal{G}\;=\; \{\,A\subseteq G \mid A^{\uparrow\downarrow}=A\,\}, \qquad \mathcal{M}\;=\; \{\,B\subseteq M \mid B^{\downarrow\uparrow}=B\,\}
-%   \]
-%   Then
-%   \[
-%     \mathcal{M}\;=\; \{\,A^{\uparrow}\mid A\subseteq G\,\}, \qquad \mathcal{G}\;=\; \{\,B^{\downarrow}\mid B\subseteq M\,\},
-%   \]
-%   and so $(\cdot)^{\uparrow}$ and $(\cdot)^{\downarrow}$ are surjective onto $\mathcal{M}$ and $\mathcal{G}$, respectively.
-% \end{lemma}
-
-% \begin{proof}
-%   \label{proof:surjective-operators} We prove the statement for $(\cdot)^{\uparrow}$; the dual argument follows by swapping $G$ with $M$ and $\uparrow$ with $\downarrow$. Let $B \in \mathcal{M}$, then
-%   by definition $B = B^{\downarrow \uparrow}$. Let some $A \subseteq G$ so that $A = B^{\downarrow}$.
-% \end{proof}
-
-% % To make formal the earlier example, $\big(\{\texttt{monoid,group,abelian group}\}, \{\texttt{closure,associativity,identity}\} \big)$ is a concept of the context in \Cref{cxt:grouplikes}.
-% \textcolor{red}{I want to say something about how each operator is a map onto the closure system for its codomain. The next paragraph follows from this remark}
-
-% From the Galois connection, for every subset $A\subseteq G$ of objects, the derivation $A^{\uparrow}$ of the subset is precisely a concept intent, and so $(A^{\uparrow \downarrow}, A^{\uparrow})$ always
-% describes a concept. If this is not immediately obvious, consider that the derivation operator $(\cdot)^{\uparrow}\colon \pset{G}\to \pset{M}$ is onto the closure system $\mathcal{M}$, and can be
-% described by
-% %
-% \begin{align*}
-%   A^{\uparrow}= \bigcap \; \{g^{\uparrow}\mid g \in A \}
-% \end{align*}
-
-% Each object $g \in A$ is mapped to its object intent $g^{\uparrow}$ for which $g^{\uparrow}\in \mathcal{M}$, since $\mathcal{M}$ is closed under arbitrary intersections it follows that
-% $A^{\uparrow}\in \mathcal{M}$, and so $A^{\uparrow}$ is closed.
-
-% \clearpage
-% Since $(\uparrow, \downarrow)$ constitute a Galois connection on the powersets $\pset{G}$ and $\pset{M}$, we can find two closure systems on $G$ and $M$, respectively.
-
-% From \Cref{proposition:derivation-operators-galois} we can describe two closure operators $(\cdot)^{\uparrow \downarrow}$ and $(\cdot)^{\downarrow \uparrow}$ on the powersets $\pset{G}$ and $\pset{M}$,
-% respectively.
-
-% And so, $A^{\uparrow \downarrow}$---which can rather cumbersomely be described as \say{The set of all objects which satisfy all the attributes satisfied by \texttt{semigroup} and \texttt{monoid}}---would
-% yield the set $\{\texttt{semigroup, monoid, group, abelian group}\}$. In fact, this composition of derivation operators satisfies very specific properties.%
-
-% With the above relationship between sets of objects and attributes in mind, it is appropriate to introduce a \textit{formal concept}.
-
-% It is no coincidence, as we will see later on, that this corresponds to taking the intersection of each object's intent, and so we have equivalently for a set of objects $A \subseteq G$
-
-% \begin{align*}
-%   A^{\uparrow}= \bigcap \{g^{\uparrow}\mid g \in A \} \quad \textit{(resp.)}\quad B^{\downarrow}= \bigcap \{m^{\downarrow}\mid m \in B\}
-% \end{align*}
-
-% \begin{example}
-%   \label{example:formal-concept} If we consider the \texttt{groupoid} object from \Cref{cxt:grouplikes}, we can derive the concept:
-
-%   \[
-%     \big(\{\texttt{groupoid,group,abelian group}\}, \{\texttt{associativity,identity,closure }\} \big)
-%   \]
-
-%   % The derivation of \texttt{groupoid} yields $\{\texttt{associativity,identity,closure}\}$, by \Cref{equation:galois-3} this set is closed under its Galois connection, and formsc a concept intent.
-
-%   % To begin, the object intent $\texttt{groupoid}^\uparrow$ is determined, which yields the set $\{\texttt{associativity,identity,closure}\}$. From \Cref{proposition:properties-about-derivation-operators} this set is closed, and represents a concept intent. The concept extent is determined by application of a derivation operator to the concept intent.
-% \end{example}
-
-% The set of all concepts has a natural ordering induced on it by the \textit{subconcept--superconcept} relation. If $(A_{0},B_{0})$ and $(A_{1},B_{1})$ are two concepts, then $(A_{0},B_{0})$ is a
-% \textit{subconcept} of $(A_{1}, B_{1})$ and $(A_{1}, B_{1})$ is a superconcept of $(A_{0},B_{0})$ if and only if $A_{0}\subseteq A_{1}$. Equivalently if $B_{1}\subseteq B_{0}$. We denote set of all concepts
-% ordered in this way by $\CLGMI$, and call this set the \textit{concept lattice} of $\GMI$.
-
-% Intuitively, one concept is a subconcept of another, if every instance of the first concept is also an instance of the second. From the Galois connection, this is equivalently, albeit less intuitively,
-% explained by every attribute of the second concept being included in the first.
-
-% We can prescribe a rather intuitive ordering over concepts induced by the \textit{subconcept–superconcept} relation.
-% \begin{figure}[H]
-%   \centering
-%   \begin{tikzpicture}[scale=0.8, every node/.style={circle, fill=black, inner sep=0.5pt,minimum size=0mm}]
-%     \node (a1) at (0,3) [label=above:{\scriptsize $\top$}] {w};
-%     % \node[draw=none, fill=none] at (0,3.5) {\tiny Top};
-
-%     \node (b1) at (-3,1) [label=above:{\scriptsize \texttt{associativity}}] {};
-%     \draw (a1) -- (b1);
-
-%     \node (b2) at (-1,1) [label=above:{\scriptsize \texttt{identity}}] {z};
-%     \draw (a1) -- (b2);
-
-%     \node (b3) at (1,1) [label=above:{\scriptsize \texttt{closure}}, label=below:{\scriptsize \texttt{magma}}] {};
-%     \draw (a1) -- (b3);
-
-%     \node (b4) at (3,1) [label=above:{\scriptsize \texttt{inverse}}] {};
-%     \draw (a1) -- (b4);
-
-%     \node (c1) at (-4,-1) [label=below:{\scriptsize \texttt{category}}] {};
-%     \draw (c1) -- (b1);
-%     \draw (c1) -- (b2);
-
-%     \node (c2) at (-2,-1) [label=below:{\scriptsize \texttt{semigroup}}] {};
-%     \draw (c2) -- (b1);
-%     \draw (c2) -- (b3);
-
-%     \node (c3) at (0,-1) {};
-%     \draw (c3) -- (b2);
-%     \draw (c3) -- (b3);
-
-%     \node (c4) at (2,-1) {};
-%     \draw (c4) -- (b2);
-%     \draw (c4) -- (b4);
-
-%     \node (c5) at (4,-1) [label=below:{\scriptsize \texttt{quasigroup}}] {};
-%     \draw (c5) -- (b3);
-%     \draw (c5) -- (b4);
-
-%     \node (d1) at (-2,-3) [label=below:{\scriptsize \texttt{monoid}}] {};
-%     \draw (d1) -- (c1);
-%     \draw (d1) -- (c2);
-%     \draw (d1) -- (c3);
-
-%     \node (d2) at (0,-3) [label=below:{\scriptsize \texttt{groupoid}}] {};
-%     \draw (d2) -- (c1);
-%     \draw (d2) -- (c3);
-
-%     \node (d3) at (2,-3) [label=below:{\scriptsize \texttt{loop}}] {};
-%     \draw (d3) -- (c3);
-%     \draw (d3) -- (c4);
-%     \draw (d3) -- (c5);
-
-%     \node (e1) at (0,-5) [label=below:{\scriptsize \texttt{group}}] {};
-%     \draw (e1) -- (d1);
-%     \draw (e1) -- (d2);
-%     \draw (e1) -- (d3);
-
-%     \node (f1) at (0,-7) [label=above:{\scriptsize \texttt{commutativity}}, label=below:{\scriptsize \texttt{abelian group}}] {};
-%     \draw (f1) -- (e1);
-%   \end{tikzpicture}
-%   \caption{The concept lattice associated with the formal context in \Cref{cxt:grouplikes}}
-% \end{figure}
-
-% \subsection{Attribute Implications}
-% \label{subsection:attribute-implications}
-
-% In FCA, attribute implications represent dependencies that exist between attributes in a context. If $M$ is a non-empty set of attributes with $A, B \subseteq M$, then we denote an attribute
-% implication over $M$ as $A \rightarrow B$.
-
-% \begin{definition}
-%   \label{definition:attribute-implication} Let $M$ be a non-empty set of attributes, then an \emph{attribute implication} over $M$ is a
-% \end{definition}
-
-% If we examine the context in \Cref{context:voting-records-small} it is apparent that every representative who voted in favour of the proposed crime bill also voted in favour of the immigration bill;
-% we write this dependency as $\texttt{crime }\rightarrow \texttt{immigration}$.
-
-% \begin{figure}[H]
-%   \centering
-%   \begin{cxt}
-%     \cxtName{\textbf{\texttt{Congressional Voting Records}}} \atr{\texttt{mx-missile}} \atr{\texttt{crime}} \atr{\texttt{immigration}} \atr{\texttt{satellite ban}} \atr{\texttt{education}} \atr{\texttt{republican}}
-%     \atr{\texttt{democrat}} \obj{.xx.xx.}{\texttt{Representative 1}} \obj{......x}{\texttt{Representative 4}} \obj{.x..xx.}{\texttt{Representative 9}} \obj{..x.x.x}{\texttt{Representative 17}}
-%   \end{cxt}
-%   \caption{A context describing a portion of congressional voting records for 1984}
-%   \label{context:voting-records-small}
-% \end{figure}
-
-% \clearpage
-
-% \begin{figure}[H]
-%   \centering
-%   \small
-%   \begin{cxt}
-%     \label{cxt:people} \cxtName{\textbf{\texttt{Characters}}} \att{\texttt{human}} \att{\texttt{tralfamadorian}} \att{\texttt{linear time}} \att{\texttt{soldier}} \att{\texttt{optometrist}} \att{\texttt{pacifist}}
-%     \obj{x..xxx}{\texttt{Billy Pilgrim}} \obj{x.xx..}{\texttt{Edgar Derby}} \obj{x....x}{\texttt{Montana Wildhack}} \obj{.x....}{\texttt{Zookeeper}}\obj{x.xx..}{\texttt{Paul Lazzaro}} \obj{x.x.x.}{\texttt{Lionel Merble}}
-%     \obj{.x.x..}{\texttt{Test Pilot}}
-%   \end{cxt}
-%   \caption{A formal context showing necessary properties of group-like structures.}
-% \end{figure}
-
-% \begin{figure}[H]
-%   \centering
-%   \begin{tikzpicture}[scale=0.6, every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=0mm}]
-%     \node (a1) at (0,4) [label=left:{\scriptsize \texttt{G}}] {w};
-
-%     \node (b1) at (-2,2) [label=left:{\scriptsize \texttt{}}] {};
-%     \draw (a1) -- (b1);
-
-%     \node (b2) at (0,2) [label=left:{\scriptsize \texttt{}}] {z};
-%     \draw (a1) -- (b2);
-
-%     \node (b3) at (2,2) [label=right:{\scriptsize \texttt{zookeeper}}] {};
-%     \draw (a1) -- (b3);
-
-%     \node (c1) at (-4,0) [label=left:{\scriptsize \texttt{montanna}}] {};
-%     \draw (c1) -- (b1);
-
-%     \node (c2) at (-2,0) [label=left:{\scriptsize \texttt{}}] {};
-%     \draw (c2) -- (b1);
-%     \draw (c2) -- (b2);
-
-%     \node (c3) at (-0,0) [label=left:{\scriptsize \texttt{}}] {};
-%     \draw (c3) -- (b1);
-
-%     \node (c4) at (2,0) [label=right:{\scriptsize \texttt{}}] {};
-%     \draw (c4) -- (b1);
-
-%     \node (c5) at (4,0) [label=right:{\scriptsize \texttt{quasigroup}}] {};
-%     \draw (c5) -- (b2);
-%     \draw (c5) -- (b3);
-
-%     \node (d1) at (-2,-2) [label=left:{\scriptsize \texttt{edgar,paul}}] {};
-%     \draw (d1) -- (c2);
-%     \draw (d1) -- (c4);
-
-%     \node (d2) at (1,-2) [label=right:{\scriptsize \texttt{lionel}}] {};
-%     \draw (d2) -- (c3);
-%     \draw (d2) -- (c4);
-
-%     \node (e1) at (-3,-4) [label=right:{\scriptsize \texttt{billy}}] {};
-%     \draw (e1) -- (c1);
-%     \draw (e1) -- (c2);
-%     \draw (e1) -- (c3);
-
-%     \node (f1) at (0,-5) [label=left:{\scriptsize $\emptyset$}] {};
-%     \draw (f1) -- (e1);
-%     \draw (f1) -- (d1);
-%     \draw (f1) -- (d2);
-%     \draw (f1) -- (c5);
-
-%     \begin{scope}[shift={(12,0)}]
-%       \node (ra1) at (0,-5) [label=left:{\scriptsize $\emptyset$}] {w};
-
-%       \node (rb1) at (-3,-3) [label=left:{\scriptsize \texttt{associativity}}] {};
-%       \draw (ra1) -- (rb1);
-
-%       \node (rb2) at (-1,-3) [label=left:{\scriptsize \texttt{identity}}] {z};
-%       \draw (ra1) -- (rb2);
-
-%       \node (rb3) at (1,-3) [label=right:{\scriptsize \texttt{closure}}] {};
-%       \draw (ra1) -- (rb3);
-
-%       \node (rb4) at (3,-3) [label=right:{\scriptsize \texttt{inverse}}] {};
-%       \draw (ra1) -- (rb4);
-
-%       \node (rc1) at (-4,-1) [label=left:{\scriptsize \texttt{}}] {};
-%       \draw (rc1) -- (rb1);
-%       \draw (rc1) -- (rb2);
-
-%       \node (rc2) at (-2,-1) [label=left:{\scriptsize \texttt{}}] {};
-%       \draw (rc2) -- (rb1);
-%       \draw (rc2) -- (rb3);
-
-%       \node (rc3) at (0,-1) [label=left:{\scriptsize \texttt{}}] {};
-%       \draw (rc3) -- (rb2);
-%       \draw (rc3) -- (rb4);
-
-%       \node (rc4) at (2,-1) [label=right:{\scriptsize \texttt{}}] {};
-%       \draw (rc4) -- (rb2);
-%       \draw (rc4) -- (rb3);
-
-%       \node (rc5) at (4,-1) [label=right:{\scriptsize \texttt{}}] {};
-%       \draw (rc5) -- (rb3);
-%       \draw (rc5) -- (rb4);
-
-%       \node (rd1) at (-2,1) [label=left:{\scriptsize \texttt{}}] {};
-%       \draw (rd1) -- (rc1);
-%       \draw (rd1) -- (rc3);
-
-%       \node (rd2) at (0,1) [label=right:{\scriptsize \texttt{}}] {};
-%       \draw (rd2) -- (rc1);
-%       \draw (rd2) -- (rc2);
-%       \draw (rd2) -- (rc4);
-
-%       \node (rd3) at (2,1) [label=right:{\scriptsize \texttt{}}] {};
-%       \draw (rd3) -- (rc3);
-%       \draw (rd3) -- (rc4);
-%       \draw (rd3) -- (rc5);
-
-%       \node (re1) at (0,3) [label=right:{\scriptsize \texttt{commutativity}}] {};
-%       \draw (re1) -- (rd1);
-%       \draw (re1) -- (rd2);
-%       \draw (re1) -- (rd3);
-
-%       \node (rf1) at (0,4) [label=left:{\scriptsize \texttt{M}}] {};
-%       \draw (rf1) -- (re1);
-%     \end{scope}
-%     \draw[red, dotted, stealth-stealth, line width=0.8pt] (12,4.5) to[out=90, in=270] (0,-5.5);
-%     \draw[red, dotted, stealth-stealth, line width=0.8pt] (16,-0.5) to[out=90, in=270] (4,-0.5);
-%     \draw[red, dotted, stealth-stealth, line width=0.8pt] (-4,-0.5) to[out=270, in=90] (8,-0.5);
-%     \draw[red, dotted, stealth-stealth, line width=0.8pt] (0,4.5) to[out=90, in=270] (12,-5.5);
-%   \end{tikzpicture}
-%   \caption{The lattices for the closure systems $\mathcal{G}$ and $\mathcal{M}$, respectively. We partially demonstrate the dual isomorphism between these structures.}
-% \end{figure}

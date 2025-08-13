@@ -59,7 +59,7 @@ To make the previous paragraph more formal, we remind the reader of the discussi
 A formula $\phi$ is a logical consequence of a set $\Gamma$ thereof if every model of $\Gamma$ is also a model of $\phi$.
 Put differently, there is no valuation (or, possible world) where $\Gamma$ is true and $\phi$ is false. It follows
 directly that $\phi$ remains a logical consequence of $\Gamma \cup \{\psi\}$, since $\Gamma$ is true in any world where $\Gamma
-\cup \{\psi\}$ is true. It was pointed out by Shoham \cite{shohamSemanticApproach} that we may \say{bend the rules} and restrict
+\cup \{\psi\}$ is true. It was pointed out in \cite{shohamSemanticApproach} that we may \say{bend the rules} and restrict
 semantic consideration to a privileged subset of models deemed ``preferable''. We call these selected models the \textit{minimal
 models}---the reasons for this name should become clearer as the chapter progresses.
 
@@ -68,19 +68,19 @@ models}---the reasons for this name should become clearer as the chapter progres
 
 The KLM framework for non-monotonic reasoning was initially described by a collection of consequence relations
 satisfying certain axioms---frequently called the \textit{rationality postulates}, thought to describe a reasonable
-account of non-monotonic consequence. We borrow a nice story from Dov Gabbay \cite{gabbay1985theoreticalFoundations} which
+account of non-monotonic consequence. We borrow a nice story from \cite{gabbay1985theoreticalFoundations}, in which he
 motivates why consequence relations are a good starting point for the study of non-monotonic systems.
 
-Paraphrasing, he begins by asking the reader to imagine a machine that does non-monotonic inference in some domain. The machine
-represents knowledge as formulae and so we pose queries of the form \say{Does $\psi$ non-monotonically follow from $\phi$?}.
-Something goes awry (suppose some coffee was spilled), calling into question whether the logic of the machine still
-functions correctly. Even worse, the interface, which tells us what real-world instance each formula maps to, is
-destroyed and so function cannot be evaluated based on the meaning of the formulae the machine reasons on. How might we then
-evaluate the machine's function?
+Paraphrasing, he begins by asking the reader to imagine a machine that does non-monotonic inference in some domain. The
+machine represents knowledge as formulae and so we pose queries of the form \say{Does $\psi$ non-monotonically follow from $\phi$?}.
+Something goes awry (suppose some coffee was spilled), calling into question whether the logic of the machine still functions
+correctly. Even worse, the interface, which tells us what real-world instance each formula maps to, is destroyed and so function
+cannot be evaluated based on the meaning of the formulae the machine reasons on. How might we then evaluate the machine's
+function?
 
-If we were interested in classical consequence, we would be well-equipped to assess the correctness of the machine by
-determining if it satisfied reflexivity, monotonicity, and cut (we point to \Cref{definition:consequence-relations} as a
-reminder). This is precisely the starting point that Kraus, Lehmann, and Magidor took up in \cite{kraus1990nonmonotonic},
+If we were interested in classical consequence, we would be well-equipped to assess the correctness of the machine by determining
+if it satisfied reflexivity, monotonicity, and cut (we point to \Cref{definition:consequence-relations} as a reminder).
+This is precisely the starting point that Kraus, Lehmann, and Magidor took up in \shortcite{kraus1990nonmonotonic},
 suggesting that before getting to the semantics of a non-monotonic system, it is a good idea to formalise axiomatise the
 system as a consequence relation satisfying certain properties.
 
@@ -143,10 +143,10 @@ conjunction is also expected. This postulate fails in probabilistic systems, suc
 	\label{postulate:and}\inferLeft{And}{\phi \twiddle \psi, \quad \phi \twiddle \gamma}{\phi \twiddle \psi \land \gamma}
 \end{align}
 %
-\textit{Cautious Monotony} (which has also be called \textit{Cumulative Monotony} by Makinson \cite{makinson2003bridges},
-and \textit{Restricted Monotony} by Gabbay \cite{gabbay1985theoreticalFoundations}) corresponds to the notion that if we
-are in an epistemic state $\phi$ where one expectation, among others, is that $\psi$ holds. Learning that $\psi$ indeed holds
-should not alter the epistemic state in such a way that the \textit{other} expectations are abandoned, and so the new state,
+\textit{Cautious Monotony} (which has also be called \textit{Cumulative Monotony} by \cite{makinson2003bridges}, and
+\textit{Restricted Monotony} by \cite{gabbay1985theoreticalFoundations}) corresponds to the notion that if we are in an
+epistemic state $\phi$ where one expectation, among others, is that $\psi$ holds. Learning that $\psi$ indeed holds should
+not alter the epistemic state in such a way that the \textit{other} expectations are abandoned, and so the new state,
 $\phi \land \psi$, we should expect everything that was expected when all we knew was $\phi$. In other words, we reason monotonically
 with respect to expected information.
 %
@@ -262,8 +262,8 @@ It is necessary to stress the distinction between states in a preferential inter
 that the mapping from states to valuations be injective, and so the same valuation may appear many times in the
 preference relation under distinct states. A corollary is that, given a finite set of valuations, the set of states may be
 infinite. In turn, it is often required that the preference relation of a preferential interpretation satisfy the \textit{smoothness}
-condition (which has also been called \textit{bounded} by Shoham \cite{shohamSemanticApproach}, or \textit{stoppering}
-by Makinson \cite{makinson2003bridges}):
+condition (which has also been called \textit{bounded} in \cite{shohamSemanticApproach}, or \textit{stoppering}
+\cite{makinson2003bridges}):
 
 \begin{definition}
 	\label{definition:smoothness} \index{binary relation! smoothness}
@@ -573,18 +573,18 @@ At a university, it might be normal for students to graduate. At the same time, 
 that it is normal for students to be exceptionally clever. It seems completely appropriate to maintain our belief that
 it is normal for students, who are not exceptionally clever, to graduate.
 
-Stalnaker \cite{Stalnaker1994,sep-logic-nonmonotonic-Stanford}, and separately Ginsberg \cite{GinsberCounterfactuals},
-provide an argument against accepting rational monotony. The objection is that rational monotony commits us to make inferences
-when the more reasonable position is to remain undecided. Paraphrasing, we are asked to consider three composers:
-\textit{Verdi}, who is believed to be Italian, and \textit{Satie} and \textit{Bizet}, who are believed to be French. If it
-were learned that Verdi and Bizet were compatriots, then it seems reasonable that the conclusion that either of them are
-French or Italian is indeterminate. What is reasonable, however, is to maintain the belief that Satie is French.\footnote{We
+Stalnaker \cite{Stalnaker1994,sep-logic-nonmonotonic-Stanford}, and separately Ginsberg \shortcite{GinsberCounterfactuals},
+provide an argument against accepting rational monotony. The objection is that rational monotony commits us to make
+inferences when the more reasonable position is to remain undecided. Paraphrasing, we are asked to consider three
+composers: \textit{Verdi}, who is believed to be Italian, and \textit{Satie} and \textit{Bizet}, who are believed to be French.
+If it were learned that Verdi and Bizet were compatriots, then it seems reasonable that the conclusion that either of them
+are French or Italian is indeterminate. What is reasonable, however, is to maintain the belief that Satie is French.\footnote{We
 will use some syntax from predicate logic, this is merely an aid to make Stalnaker's example clearer.}
 \begin{align}
 	\texttt{Compatriots(Bizet, Verdi)}\twiddle \texttt{French(Satie)}
 \end{align}
-The argument proceeds by considering that Verdi and Satie may too be compatriots. Since Verdi's nationality is now
-unknown, we are no longer equipped to reject the plausibility of the new compatriotship, and so
+The argument proceeds by considering that Verdi and Satie may too be compatriots. Since Verdi's nationality is now unknown,
+we are no longer equipped to reject the plausibility of the new compatriotship, and so
 \begin{align}
 	\texttt{Compatriots(Bizet, Verdi)}\ntwiddle \neg \texttt{Compatriots(Verdi,Satie)}
 \end{align}
@@ -593,25 +593,25 @@ The two conditions of rational monotony have been met, and so the following infe
 	\texttt{Compatriots(Bizet, Verdi)}\land \texttt{Compatriots(Verdi,Satie)}\twiddle \texttt{French(Satie)}
 \end{align}
 
-The issue, as Stalnaker sees it, is that rational monotony forces the inference Satie is still French, and by their compatriotship,
-so are Bizet and Verdi. The ``correct'' thing to do in this scenario is to remain uncertain about which nationality they
-all share.
+The issue, as Stalnaker sees it, is that rational monotony forces the inference Satie is still French, and by their
+compatriotship, so are Bizet and Verdi. The ``correct'' thing to do in this scenario is to remain uncertain about which
+nationality they all share.
 
-However, the result Stalnaker objects to is dependent his particular construction of this problem, rather than being intrinsic
-to rational monotony. The second condition for rational monotony, that $\phi \ntwiddle \neg \gamma$, makes no
-requirement about the syntactic structure of $\gamma$ outside of it being a formula in the language. In the example,
-Stalnaker could just as easily have written
+However, the result Stalnaker objects to is dependent his particular construction of this problem, rather than being
+intrinsic to rational monotony. The second condition for rational monotony, that $\phi \ntwiddle \neg \gamma$, makes no requirement
+about the syntactic structure of $\gamma$ outside of it being a formula in the language. In the example, Stalnaker could
+just as easily have written
 \begin{align}
 	\texttt{Compatriots(Bizet,Verdi)}\ntwiddle \neg (\neg \texttt{Compatriots(Verdi,Satie))}
 \end{align}
-meaning that it is not expected that Verdi and Satie are compatriots, to which we can apply an instance of rational monotony,
-from which we are not forced to believe that all three composers are French.
+meaning that it is not expected that Verdi and Satie are compatriots, to which we can apply an instance of rational
+monotony, from which we are not forced to believe that all three composers are French.
 \begin{align}
 	\texttt{Compatriots(Bizet, Verdi)}\land \neg(\texttt{Compatriots(Verdi,Satie))}\twiddle \texttt{French(Satie)}
 \end{align}
 
-There is another objection to rational monotony, which will be considered later on. For now, we accept it as a valid property
-of non-monotonic reasoning, and thus introduce \textit{rational relations}.
+There is another objection to rational monotony, which will be considered later on. For now, we accept it as a valid
+property of non-monotonic reasoning, and thus introduce \textit{rational relations}.
 %
 \begin{definition}
 	\label{definition:rational-relation}
@@ -627,11 +627,11 @@ Quite evidently, they are a particular kind of preferential relation.
 \label{subsection:ranked-interpretations}
 
 From the knowledge that rational relations are a particular kind of preferential relation, it seems a reasonable jump to
-think that the semantics we give to rational relations may be a particular kind of preferential interpretation. Before discussing
-this jump, a useful exercise is to recognise how preferential interpretations may fail to satisfy rational monotony.
+think that the semantics we give to rational relations may be a particular kind of preferential interpretation. Before
+discussing this jump, a useful exercise is to recognise how preferential interpretations may fail to satisfy rational monotony.
 
-Consider the two preferential interpretations shown in \Cref{figure:two-preferential-models}, which model the scenario which
-was discussed in the example near the end of the last subsection.
+Consider the two preferential interpretations shown in \Cref{figure:two-preferential-models}, which model the scenario
+which was discussed in the example near the end of the last subsection.
 
 \begin{example}
 	\label{example:university}
@@ -687,15 +687,15 @@ was discussed in the example near the end of the last subsection.
 	$\texttt{student}\land \neg \texttt{clever}\twiddle \texttt{graduate}$ be satisfied, which is not the case in \Cref{subfigure:not-rational}.
 \end{example}
 %
-Fortunately, the culprit is quite easy to spot. Bob, who is not under consideration in the context of normal students, appears
-when we discuss normal students who are not clever. In isolation, this seems acceptable: if all the normal students were
-also clever, then we would be fine accepting the appearance of a normal, non-clever student who was not a normal student.
-However, we have explicitly ruled out this line of argument---by the second antecedent of rational monotony---as Alice
-is a normal student who is also not clever.
+Fortunately, the culprit is quite easy to spot. Bob, who is not under consideration in the context of normal students,
+appears when we discuss normal students who are not clever. In isolation, this seems acceptable: if all the normal students
+were also clever, then we would be fine accepting the appearance of a normal, non-clever student who was not a normal student.
+However, we have explicitly ruled out this line of argument---by the second antecedent of rational monotony---as Alice is
+a normal student who is also not clever.
 
 In order to ensure rational monotony, it is required that the preference relation commit to Alice being preferred to Bob;
-more generally, all normal students should be explicitly preferred to non-normal students. This notion is formalised by
-the following property called \textit{modualarity}:
+more generally, all normal students should be explicitly preferred to non-normal students. This notion is formalised by the
+following property called \textit{modualarity}:
 
 \begin{definition}
 	\label{definition:modular-order} \index{partial-order! modular}
@@ -704,16 +704,20 @@ the following property called \textit{modualarity}:
 	x$ then also $z \prec y$.
 \end{definition}
 
-A \textit{modular} partial order can be regarded as partitioning the set of states into equivalence classes and defining
-over the equivalence relation. Then, all members of an equivalence class are considered to have the same degree of typicality,
-but are also comparable to any element not in their partition \cite{GinsberCounterfactuals}. We now introduce \textit{ranked
-interpretations}:
+One perspective on \textit{modular} partial orders is that they partition the set of states into equivalence classes of
+preference, so that all states in the same class are incomparable to one another \cite{GinsberCounterfactuals}. Then, if
+the preference relation is defined as the equivalence relation itself, such that one state is preferred to another if
+the class it belongs to is preferred to the other's, we get a modular order.
 
 \begin{definition}
 	\label{definition:ranked-interpretation}
 
 	A \emph{ranked interpretation} is a preferential interpretation $\Pin$ where the preference relation $\prec$ is \emph{modular}.
 \end{definition}
+
+A somewhat superficial result of ranked interpretations is that they admit a new representation as a stratified
+equivalence relation, depicted in \Cref{figure:ranked-interpretation-representation}. Each strata, or \textit{rank}, has
+an associated ordinal.
 
 \begin{lemma}
 	\label{lemma:modular-ranking-function}
@@ -722,10 +726,6 @@ interpretations}:
 	with $\Omega$ being a totally ordered set for which the strict order is denoted $<$, such that if $x \prec y$ then $\mathsf{r}
 	(x) < \mathsf{r}(y)$ for any $x,y \in X$.
 \end{lemma}
-
-The modular structure of the preference relation enables their representation as a stratified system of equivalence
-classes, otherwise, \textit{ranks}. Elements within the same rank are treated as equally preferred. The preference relation
-can be encoded by assigning each rank an ordinal, usually the natural numbers are used.
 
 \begin{figure}[H]
 	\centering
@@ -740,17 +740,18 @@ can be encoded by assigning each rank an ordinal, usually the natural numbers ar
 		\node[fill=none] (bob) at (2.5,1.5) [] {$\{c,s\}$};
 	\end{tikzpicture}
 	\caption{A depiction of a ranked interpretation}
+	\label{figure:ranked-interpretation-representation}
 \end{figure}
 
 A second, less superficial, departure is that \Cref{lemma:states-preferential} does not hold in the context of ranked interpretations
 and rational consequence relations. This follows directly from modularity, as the en pessant style arguments, discussed
 earlier, are avoided by modularity. This allows the elements which populate the ranks of a ranked interpretation to be
-valuations directly, rather than states. The definition of a ranked interpretation can then be drastically simplified:
+valuations directly, rather than states.
 
 \begin{definition}
 	\label{definition:ranked-interpretation-real}
 
-	A \emph{ranked interpretation} is a function $\mathsf{r}\colon \mathcal{U}\to \mathbb{N}$ ranks.
+	A \emph{ranked interpretation} is a function $\mathsf{r}\colon \mathcal{U}\to \mathbb{N}$
 \end{definition}
 
 \textcolor{red}{Talk about smoothness with ranked models}

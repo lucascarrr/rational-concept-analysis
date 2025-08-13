@@ -149,51 +149,6 @@
 \def\@up#1{\leavevmode\raise.2ex\hbox{#1}}
 \makeatother
 
-
-% % --- OLD BIBLATEX CITATION STYLE (COMMENTED OUT) ---
-% \usepackage[
-%   backend=bibtex,
-%   style=authoryear,
-%   citestyle=authoryear,
-%   sorting=nyt,
-%   maxnames=2,
-%   giveninits=true,
-%   labeldateparts=false,
-% ]{biblatex}
-% \addbibresource{references.bib}
-%
-% % Switch () to [] everywhere
-% \renewcommand{\mkbibparens}[1]{[#1]}
-%
-% % Add comma between author and year
-% \renewcommand*{\nameyeardelim}{\addcomma\space}
-%
-% % Your existing commands
-% \let\shortcite\citeyear
-% \DeclareRobustCommand{\citeauthor}[1]{\textcite{#1}}
-% \DeclareRobustCommand{\citeyear}[1]{\citeyearpar{#1}}
-% \let\cite\parencite
-%
-% % Add labels to bibliography entries with proper wrapping
-% \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}\addspace}
-% \defbibenvironment{bibliography}
-%   {\list
-%      {\printtext[labelnumberwidth]{%
-%         \printnames{labelname}%
-%         \setunit{\printdelim{nameyeardelim}}%
-%         \addcomma
-%         \printfield{labelyear}%
-%         \printfield{extrayear}}}
-%      {\setlength{\labelwidth}{0pt}%
-%       \setlength{\leftmargin}{0pt}%
-%       \setlength{\itemindent}{0pt}%
-%       \setlength{\labelsep}{\biblabelsep}%
-%       \setlength{\itemsep}{\bibitemsep}%
-%       \setlength{\parsep}{\bibparsep}}%
-%       \renewcommand*{\makelabel}[1]{##1\hfill}}
-%   {\endlist}
-%   {\item}
-
 % --- Custom commands for metadata ---
 \newcommand{\thetitle}{}
 \newcommand{\theauthor}{}

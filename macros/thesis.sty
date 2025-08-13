@@ -117,96 +117,51 @@
 \usepackage{makeidx}
 \makeindex
 \usepackage{csquotes}
+\usepackage{makeidx}
+\makeindex
+\usepackage{csquotes}
+\usepackage[
+  backend=bibtex,
+  style=authoryear,
+  citestyle=authoryear,
+  sorting=nyt,
+  maxnames=2,
+  giveninits=true,
+  labeldateparts=false,
+]{biblatex}
+\addbibresource{references.bib}
 
-% \usepackage[
-%   backend=bibtex,
-%   style=alphabetic,
-%   citestyle=authoryear,
-%   sorting=nyt,
-%   maxnames=2,
-%   giveninits=true,
-%   labeldateparts=true
-% ]{biblatex}
-% \addbibresource{references.bib}
+% Switch () to [] everywhere
+\renewcommand{\mkbibparens}[1]{[#1]}
 
-% % Switch () to [] everywhere
-% \renewcommand{\mkbibparens}[1]{[#1]}
+% Add comma between author and year
+\renewcommand*{\nameyeardelim}{\addcomma\space}
 
-% % Add comma between author and year
-% \renewcommand*{\nameyeardelim}{\addcomma\space}
+% Your existing commands
+\let\shortcite\citeyear
+\DeclareRobustCommand{\citeauthor}[1]{\textcite{#1}}
+\DeclareRobustCommand{\citeyear}[1]{\citeyearpar{#1}}
+\let\cite\parencite
 
-% % Your existing commands
-% \let\shortcite\citeyear
-% \DeclareRobustCommand{\citeauthor}[1]{\textcite{#1}}
-% \DeclareRobustCommand{\citeyear}[1]{\citeyearpar{#1}}
-% \let\cite\parencite
-
-% % Add labels to bibliography entries with proper wrapping
-% \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}\addspace}
-% \defbibenvironment{bibliography}
-%   {\list
-%      {\printtext[labelnumberwidth]{%
-%         \printnames{labelname}%
-%         \addcomma
-%         \setunit{\printdelim{nameyeardelim}}%
-%         \printfield{labelyear}%
-%         \printfield{extrayear}}}
-%      {\setlength{\labelwidth}{0pt}%
-%       \setlength{\leftmargin}{0pt}%
-%       \setlength{\itemindent}{0pt}%
-%       \setlength{\labelsep}{\biblabelsep}%
-%       \setlength{\itemsep}{\bibitemsep}%
-%       \setlength{\parsep}{\bibparsep}}%
-%       \renewcommand*{\makelabel}[1]{##1\hfill}}
-%   {\endlist}
-%   {\item}
-%
-
-\makeatletter
-\def\leftcite{\@up[}\def\rightcite{\@up]}
-
-\def\cite{\def\citeauthoryear##1##2{\def\@thisauthor{##1}%
-             \ifx \@lastauthor \@thisauthor \relax \else##1, \fi ##2}\@icite}
-\def\shortcite{\def\citeauthoryear##1##2{##2}\@icite}
-
-\def\citeauthor{\def\citeauthoryear##1##2{##1}\@nbcite}
-\def\citeyear{\def\citeauthoryear##1##2{##2}\@nbcite}
-
-% internal macro for citations with [] and with breaks between citations
-% used in \cite and \shortcite
-\def\@icite{\leavevmode\def\@citeseppen{-1000}%
- \def\@cite##1##2{\leftcite\nobreak\hskip 0in{##1\if@tempswa , ##2\fi}\rightcite}%
- \@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
-% internal macro for citations without [] and with no breaks
-% used in \citeauthor and \citeyear
-\def\@nbcite{\leavevmode\def\@citeseppen{1000}%
- \def\@cite##1##2{{##1\if@tempswa , ##2\fi}}%
- \@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
-
-% don't box citations, separate with ; and a space
-% also, make the penalty between citations a parameter,
-% it may be a good place to break
-\def\@citex[#1]#2{%
-  \def\@lastauthor{}\def\@citea{}%
-  \@cite{\@for\@citeb:=#2\do
-    {\@citea\def\@citea{;\penalty\@citeseppen\ }%
-     \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
-     \@ifundefined{b@\@citeb}{\def\@thisauthor{}{\bf ?}\@warning
-       {Citation `\@citeb' on page \thepage \space undefined}}%
-     {\csname b@\@citeb\endcsname}\let\@lastauthor\@thisauthor}}{#1}}
-
-% raise the brackets in bibliography labels
-\def\@biblabel#1{\def\citeauthoryear##1##2{##1, ##2}\@up{[}#1\@up{]}\hfill}
-
-\def\@up#1{\leavevmode\raise.2ex\hbox{#1}}
-\makeatother
-
-
-
-
-%
-%
-
+% Add labels to bibliography entries with proper wrapping
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}\addspace}
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{%
+        \printnames{labelname}%
+        \setunit{\printdelim{nameyeardelim}}%
+        \addcomma
+        \printfield{labelyear}%
+        \printfield{extrayear}}}
+     {\setlength{\labelwidth}{0pt}%
+      \setlength{\leftmargin}{0pt}%
+      \setlength{\itemindent}{0pt}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+      \renewcommand*{\makelabel}[1]{##1\hfill}}
+  {\endlist}
+  {\item}
 
 % --- Custom commands for metadata ---
 \newcommand{\thetitle}{}

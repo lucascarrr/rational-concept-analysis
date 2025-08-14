@@ -61,6 +61,20 @@
 \everymath{\displaystyle}
 \theoremstyle{definition}
 
+\let\origbigvee\bigvee
+\renewcommand{\bigvee}{\textstyle\mathop{\origbigvee}}
+
+\let\origbigwedge\bigwedge
+\renewcommand{\bigwedge}{\textstyle\mathop{\origbigwedge}}
+
+\let\origbigcup\bigcup
+\renewcommand{\bigcup}{\textstyle\mathop{\origbigcup}}
+
+\let\origbigcap\bigcap
+\renewcommand{\bigcap}{\textstyle\mathop{\origbigcap}}
+% \renewcommand{\underset}[2]{\mathrel{\mathop{#2}\limits_{\scriptscriptstyle #1}}}
+
+
 % --- Theorem declarations ---
 \usepackage{etoolbox}
 \declaretheorem[style=plain]{theorem}

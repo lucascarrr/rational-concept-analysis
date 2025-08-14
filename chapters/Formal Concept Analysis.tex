@@ -544,7 +544,7 @@ The first point is describe the process by which attributes may construct (conte
 constructs are called \textit{compound attributes}.
 
 \begin{definition}
-	\label{definition:compound-attributes}
+	\label{definition:compound-attributes} \index{compound attributes}
 
 	Let $M$ be a set of attributes (as we might find in a formal context). The set $\mathcal{M}$ of \emph{compound
 	attributes} over $M$ is defined by
@@ -561,7 +561,7 @@ constructs are called \textit{compound attributes}.
 We may construct arbitrarily complex compound attributes by repeated application of this definition. The semantics of
 compound attributes are defined extensionally by a formal context.
 \begin{definition}
-	\label{definition:compound-attributes-semantics}
+	\label{definition:compound-attributes-semantics} \index{semantics!compound attributes}
 
 	In a formal context $\GMI$ the extension of each compound attribute $\varphi \in \mathcal{M}$ is written
 	$\varphi^{\vDash}$ and defined inductively as follows:
@@ -595,6 +595,8 @@ name suggests, the equivalence is not a local property of the formal context whi
 	would share the same extension in any possible context.
 \end{definition}
 
+To 
+
 We provide the following example to consolidate these ideas.
 
 \begin{example}
@@ -619,6 +621,9 @@ We provide the following example to consolidate these ideas.
 	Tralfamadorians were not violent. If we consider a third compound attribute $\neg \psi$---the negation of $\neg \texttt
 	{violent}$---we would find that it is globally equivalent to the attribute \texttt{violent}.
 \end{example}
+
+
+
 \clearpage
 
 \section{Attribute Implications}

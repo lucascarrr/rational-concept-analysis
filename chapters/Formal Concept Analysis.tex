@@ -17,7 +17,7 @@ of the concept, and the \textit{intension}, which contains those properties used
 Without any formal introduction to this this topic, one can readily grasp the concept of a `person'. We can point to many
 sense-making properties of this concept: \textit{mortal}, \textit{warm-blooded}, \textit{mammalian}, and so on. Listing some
 of the instances included in the extension of this concept is not particularly challenging either---for example, \textit{the
-author of this work}, or \textit{the reader}. What is also clear is that exhaustively specifying a list of either the
+author of this work}, or \textit{the reader}. What is also clear is that exhaustively detailing a list of either the
 intension or extension is likely to be a challenging task, even when these lists are finite, although finiteness need
 not be a property.
 
@@ -33,24 +33,23 @@ underlying structural relationship that exists between elements in this universe
 
 We consider the set of objects $G$ (from the German \textit{Gegenstände}) as the extensional dimension of the context, whereas
 the set of attributes $M$ (from the German \textit{Merkmale}) represents the intensional dimension. However, the
-distinction between the extensional and intensional dimensions of the context is largely a matter of convention, or when
-introducing a FCA a means of improving intuition. There is no strict requirement around what these sets are made up of, or
+distinction between the extensional and intensional dimensions of the context is largely a matter of convention, or a means of improving intuition when one is first introduced to FCA. There is no strict requirement around what these sets are made up of, or
 even that they be distinct, and so it is perfectly acceptable to have a context where the objects and attributes are the
 same set; for example, the context $(\mathbb{N}, \mathbb{N}, \texttt{divides })$ which describes the division
 relationship between natural numbers.
 
 It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is
-interpreted as the object satisfying the respective attribute, FCA is concerned only with \textit{positive} information,
-and so the absence of a pair in the relation is not usually interpreted to mean that the object has the negation of the attribute.
+interpreted as the object satisfying the respective attribute, FCA is concerned only with \textit{positive} information.
+The absence of an object-attribute pair from the relation is not usually interpreted to mean that the object has the negation of the attribute.
 We will discuss, in more depth, the rather troubling matter of negation and negative attributes in
 \Cref{section:attribute-logic}.
 
-When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table such as in \Cref{cxt:grouplikes}.
+When the cardinality of $G$ and $M$ is small, contexts may be represented as a cross-table such as in \Cref{context:formal-context-group-structures}.
 Each object is represented by a row in the table, each attribute by a column, and each pair in the incidence relation is
 marked with an `$\times$' at the appropriate position \cite{ganter1999formal}. Given a context presented in this form,
-it is a trivial task to identify all the attributes that a particular object satisfies: One need only scan across the respective
+it is a trivial task to identify all the attributes that a particular object satisfies. One need only scan across the respective
 row and note where the marks appear. The resulting set of attributes is called the \textit{object's intent}. The dual
-notion of an \textit{attribute extent} can be found by traversing down a column in the table.
+notion of an \textit{attribute's extent} can be found by traversing down a column in the table.
 
 \begin{figure}[H]
 	\centering
@@ -519,6 +518,7 @@ $(A_{0},B_{0}) \leq (A_{1},B_{1})$. When considering the set of concepts $\BGMI$
 the resulting structure is the same concept lattice $\CLGMI$ from before. As an illustration, consider the two selected
 concepts in \Cref{figure:concept-lattice-group-likes}.
 
+\textcolor{red}{I think it is worth mentioning some discussion on how, as a result of the basic theorem, formal concept analysis is just a restructuring of lattice theory. I.e., it makes work on complete lattices more accessible. Worthwhile in terms of motivations behind formal concept analysis. Restructuring also relates to attribute logic, so this is a good place to do it. }
 % \subsection{Weaker Concepts}
 % \label{subsection:weaker-concepts} \textcolor{red}{I was going to introduce existing ideas in FCA about ``protoconcepts''; but I think maybe
 % this should be done right before we discuss typical concepts. }

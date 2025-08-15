@@ -43,7 +43,7 @@ It should be noted that, while the presence of an object--attribute pair $(g,m)$
 interpreted as the object satisfying the respective attribute, FCA is concerned only with \textit{positive} information,
 and so the absence of a pair in the relation is not usually interpreted to mean that the object has the negation of the attribute.
 We will discuss, in more depth, the rather troubling matter of negation and negative attributes in
-\Cref{section:contextual-attribute-logic}.
+\Cref{section:attribute-logic}.
 
 When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table such as in \Cref{cxt:grouplikes}.
 Each object is represented by a row in the table, each attribute by a column, and each pair in the incidence relation is
@@ -534,56 +534,60 @@ attributes as \textit{signs}. The extent of some attribute $m$ may then be inter
 The purpose of attribute logic is to investigate the relationships between the attributes of a formal context. On the
 surface, much of the machinery of attribute logic has been discussed in mathematical logic, and in light of
 \Cref{section:propositional-logic} may be familiar to the reader. It is better to resist the impulse to regard what we are
-doing here as propositional logic by another name, and to think, instead of the truth of propositions, of the meaning of
-attributes and the objects they describe \cite{ganter2025language}.
+doing here as propositional logic by another name and, instead of the truth of propositions, to think of the meaning of attributes
+and the objects they describe \cite{ganter2025language}.
 
 \subsection{Compound Attributes}
 \label{subsection:compound-attributes}
 
-The first point is describe the process by which attributes may construct (contextual) logical expressions. These
-constructs are called \textit{compound attributes}.
+The first point is to describe the process by which attributes may construct (contextual) logical expressions. These constructs
+are called \textit{compound attributes}. In harmony with the notational choices we made in the discussion on propositional
+logic, we denote ``normal'' attributes with lower case letters in the Latin alphabet, and compound attributes with lower
+case Greek letters.
 
 \begin{definition}
 	\label{definition:compound-attributes} \index{compound attributes}
 
-	Let $M$ be a set of attributes (as we might find in a formal context). The set $\mathcal{M}$ of \emph{compound
-	attributes} over $M$ is defined by
-	\begin{itemize}
-		\item Every \textit{atomic} attribute $m \in M$ is a compound attribute
+	Let $M$ be a set of attributes (as we might find in a formal context). A compound attribute is constructed by iterative
+	application of the following: \setlist{nolistsep}
+	\begin{itemize}[itemsep=-0em]
+		\item An \textit{atomic} attribute $m\in M$ is a compound attribute
 
-		\item If $\varphi \in \mathcal{M}$ is a compound attribute, then so is $\neg \varphi$
+		\item If $\varphi \in \Ca{M}$ is a compound attribute, then so is $\neg \varphi$
 
-		\item If $\Gamma \subseteq \mathcal{M}$ is a set of compound attributes, then $\bigwedge \Gamma$ is a compound
-			attribute
+		\item If $\Gamma \subseteq \Ca{M}$ is a set of compound attributes, then $\bigwedge \Gamma$ is a compound attribute
 	\end{itemize}
+	We write $\Ca{M}$ to denote the set of all compound attributes over the attribute set $M$.
 \end{definition}
-%
-We may construct arbitrarily complex compound attributes by repeated application of this definition. The semantics of
-compound attributes are defined extensionally by a formal context.
+
+The definition allows for arbitrarily complex compound attributes to be constructed. The semantics of these are given by
+their extension, relative to a formal context.
+
 \begin{definition}
 	\label{definition:compound-attributes-semantics} \index{semantics!compound attributes}
 
-	In a formal context $\GMI$ the extension of each compound attribute $\varphi \in \mathcal{M}$ is written
-	$\varphi^{\vDash}$ and defined inductively as follows:
-	\begin{itemize}
+	In a formal context $\GMI$, the extension of each compound attribute $\varphi \in \Ca{M}$ is written $\varphi^{\vDash}$
+	and defined inductively as follows: \setlist{nolistsep}
+	\begin{itemize}[itemsep=-0em]
 		\item If $\varphi$ is an atomic attribute (i.e., $\varphi \in M$) then $\varphi^{\vDash}\coloneq \varphi^{\downarrow}$
 
-		\item If $\varphi$ is the negation of another compound attribute $\gamma \in \mathcal{M}$ then $\varphi^{\vDash}\coloneq
-			G \setminus \gamma^{\vDash}$
+		\item If $\varphi$ is the negation of another compound attribute $\gamma \in \Ca{M}$ then $\varphi^{\vDash}\coloneq G
+			\setminus \gamma^{\vDash}$
 
 		\item If $\varphi$ is the result of a conjunction of a set of compound attributes $\bigwedge \Gamma$ then $\varphi^{\vDash}
 			\coloneq \underset{\gamma \in \Gamma}\bigcap \gamma^{\vDash}$
 	\end{itemize}
-	For an object $g\in G$ and compound attribute $\varphi \in \mathcal{M}$ we write $g \vDash \varphi$ if and only if $g$
-	is in the extension of $\varphi$, and we say $g$ \emph{satisfies} $\varphi$.
+	For an object $g\in G$ and compound attribute $\varphi \in \Ca{M}$, we write $g \vDash \varphi$ if and only if $g$ is
+	in the extension of $\varphi$ and we say $g$ \emph{satisfies} $\varphi$, otherwise $g \nvDash \varphi$.
 \end{definition}
 
-One might be surprised at the omission of certain compound attributes we might expect. In particular, the disjunct of a
-set of compound attributes $\bigvee \Gamma$ where the extension, $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$, is the
-union of all extensions of compound attributes in the set. A disjunctive compound attribute such as this is only syntactic
-sugar, and is \textit{equivalent} to the compound attribute $\neg \bigwedge \Gamma$ defined with existing notation.
+Other kinds of compound attributes which express useful intution, in particular the disjunction of compound attributes, have
+an equivalent construction using only \Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes,
+then the disjunction of its elements $\bigvee \Gamma$ then its' extension $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$
+is the union of all extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge
+\Gamma$.
 
-The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some more discussion on equivalence
+The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion on equivalence
 in attribute logic. The kind of equivalence we have spoken of is more aptly called \textit{global equivalence}. As the
 name suggests, the equivalence is not a local property of the formal context which gives semantics to compound attributes.
 
@@ -594,10 +598,6 @@ name suggests, the equivalence is not a local property of the formal context whi
 	formal context if and only if they share the same extension. They are \textit{globally equivalent} if and only if they
 	would share the same extension in any possible context.
 \end{definition}
-
-To 
-
-We provide the following example to consolidate these ideas.
 
 \begin{example}
 	From the formal context described below we may construct two compound attributes $\varphi \coloneqq \bigwedge \{\texttt
@@ -610,7 +610,7 @@ We provide the following example to consolidate these ideas.
 			\label{cxt:slaughterhouse5} \cxtName{\textbf{\texttt{Slaughterhouse 5}}} \atr{\texttt{human}} \atr{\texttt{unstuck}}
 			\atr{\texttt{soldier}} \atr{\texttt{pacifist}} \atr{\texttt{traumatized}} \atr{\texttt{violent}}\atr{\textcolor{gray!70}{$\varphi$}}\atr{\textcolor{gray!70}{$\psi$}}
 
-			\obj{xxxxx.xx}{\texttt{Billy Pilgrim}} \obj{x.x..x..}{\texttt{Roland Weary}} \obj{x.x..x..}{\texttt{Edgar Derby}} \obj{x.x..x..}{\texttt{Paul Lazzaro}}
+			\obj{xxxxx.xx}{\texttt{Billy Pilgrim}} \obj{x.x..x..}{\texttt{Roland Weary}} \obj{x..x...x}{\texttt{Mary O'Hare}} \obj{x.x..x..}{\texttt{Paul Lazzaro}}
 			\obj{.x.x.x..}{\texttt{Tralfamadorians}}
 		\end{cxt}
 		% \caption{A context describing characters and some of their qualities, from Slaughterhouse 5}
@@ -618,60 +618,95 @@ We provide the following example to consolidate these ideas.
 	%
 	Each of these compound attributes have the extension consisting solely of $\{\texttt{Billy Pilgrim}\}$, and so at
 	least they are locally equivalent. It may come as no surprise that their equivalence is not global: suppose
-	Tralfamadorians were not violent. If we consider a third compound attribute $\neg \psi$---the negation of $\neg \texttt
-	{violent}$---we would find that it is globally equivalent to the attribute \texttt{violent}.
+	Tralfamadorians were not violent. If we consider a third compound attribute, $\neg \neg \texttt{violent}$, we would find
+	that it is globally equivalent to the attribute \texttt{violent}.
 \end{example}
 
+A somewhat blunt approach to determining if two compound attributes, over a set $M$ of attributes, are globally equivalent
+is to test for extensional equivalence in the formal context $(\pset{M}, M, \ni)$, such a context is called the \textit{test
+context} over $M$.
 
+\subsection{Implication Logic}
+\label{subsection:implication-logic}
+
+When restricting ourselves to a small fragment of attribute logic, many interesting results in FCA can be found. The
+fragment is analogous to the study of propositional Horn logic, and benefits from the same computational simplicity.
+That is, we consider the subset of compound attributes which are constructed using the first and last points in \Cref{definition:compound-attributes},
+i.e. we do not admit negation.
+
+For ease, it is sufficient to refer to only subsets of the attribute set, and so the elements of our language are these subsets.
+
+\begin{definition}
+	\label{definition:implication}
+
+	An \emph{implication} over the attribute set $M$ is a pair $(A,B)$ of sets where $A,B \subseteq M$. The implication
+	may be represented in the form $A \rightarrow B$, and we call $A$ the \emph{antecedent} and $B$ the \emph{consequent}.
+\end{definition}
+
+Implications provide a compact way of describing a correspondence that may exist between (sets of) attributes. In the above,
+the implication is true when those things with attributes $A$ also have the attributes $B$.
+
+\begin{definition}
+	\label{definition:implication-respect} Another set of attributes $C \subseteq M$ \emph{respects} an implication
+	$A\rightarrow B$ if either $B \subseteq C$ or $A \not \subseteq A$, in which case we write $C \vDash A \rightarrow B$.
+	If $\mathcal{T}$ is a set of implications, $C$ respets $\mathcal{T}$ if it respects every implication in $\mathcal{T}$.
+\end{definition}
+
+This notion of satisfaction can be extended to a formal context, which can be viewed as a set of attributes.
+
+\begin{definition}
+	\label{definition:implication-respect-context}
+
+	A formal context $\context = \GMI$ \emph{respects} an implication $A \rightarrow B$ over $M$ if and only if the intent
+	$g^{\uparrow}$ of each object $g \in G$ respects the implication. $\context$ respects a set of implications in the
+	same way as before.
+\end{definition}
+
+From another perspective, a context respects an implication when every object that satisfies all attributes of the
+antecedent (i.e. the extension of $A$) also satisfies all of the consequent. This scenario is captured more concisely by
+$A^{\downarrow}\subseteq B^{\downarrow}$, where $A$ and $B$ are the antecedent and consequent, respectively. By the Galois
+connection, this is equivalent to $B \subseteq A^{\downarrow \uparrow}$.
+
+\textcolor{red}{The rest of this subsection is quite straightforward, I will do it later. Remaining things include: semantic
+consequence, armstrong axioms, closure system of implications => context, DQ-basis}
+
+\subsection{Clause Logic}
+\label{subsection:clause-logic}
+
+The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may
+represent them, up to global equivalence, as \textit{clauses}:
+\begin{definition}
+	\label{definition:clauses}
+
+	A \emph{clause} $(A,S)$, where $A,S \subseteq M$, represents a compound attribute that is globally equivalent to the compound
+	attribute $\bigvee S \cup \{\neg a \mid a \in A\}$.
+\end{definition}
+
+The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in $S$
+or fail to satisfy at least one attribute in $A$. Formally,
+\[
+	(A,S)^{\vDash}= \{ g \in G \mid \exists s \in S,\; g\vDash s \} \;\cup\; \{ g \in G \mid \exists a \in A,\; g \nvDash a
+	\}
+\]
+Clauses are called \textit{disjoint} when $A \cap S$ is the emptyset. The following definition is helpful to describe the
+set of all clauses which are satisfied by a context:
+%
+\begin{definition}
+	\label{definition:all-extensional}
+
+	A compound attribute $\varphi \in \Ca{M}$ is \emph{all-extensional} in a context $\GMI$ if and only if $\varphi^{\vDash}
+	= G$. In other words, if the extension of the attribute is the complete set of objects.
+\end{definition}
+
+A disjoint clause $(A,S)$ is called \textit{full} when also $A \cup S$ is the entire attribute set $M$.
+\begin{proposition}
+	\label{proposition:clause-up-to-equivalence}
+
+	If $\varphi \in \Ca{M}$ is a compound attribute then there exists a clause $(A,S)$ with $A,S \subseteq M$ that is
+	globally equivalent to $\varphi$
+\end{proposition}
 
 \clearpage
-
-\section{Attribute Implications}
-\label{section:attribute-implications}There is another side to FCA, wh Attribute implications in FCA are a way of repres
-enting dependencies that exist between (sets of) attributes in a context.
-\begin{definition}
-	\label{definition:attribute-implication} Let $M$ be a non-empty set of attributes, then an \emph{attribute implication}
-	is an expression of the form
-	\[
-		A \rightarrow B
-	\]
-	where $A,B \subseteq M$. We call $A$ the \emph{antecedent} and $B$ the \emph{consequent} of the implication.
-\end{definition}
-The semantics of attribute implications will be familiar to anyone who has seen material implications, and so
-\begin{definition}
-	\label{definition:attribute-implication-semantics} Let $M$ be a non-empty set of attributes, and $A,B,C \subseteq M$
-	three subsets. Then we say that $C$ \emph{respects} the implication $A \rightarrow B$ if and only if $B \subseteq C$
-	or $A \not \subseteq C$, and we write $C \vDash A \rightarrow B$.
-\end{definition}
-Considering the context in \Cref{figure:voting-records}, an example of an attribute implication is$\texttt{crime}\rightarrow
-\texttt{immigration }$. If we examine the context in \Cref{figure:voting-records}it is apparent that every representative
-who voted in favour of the proposed c rime bill also voted in favour of the immigration bill; we write this dependency
-as$\texttt{crime }\rightarrow \texttt{immigration }$. When discussing implications between singleton sets of attributes,
-we may choose t o omit the brackets and write$A \rightarrow m$in lieu of$A \rightarrow \{m\}$.
-\section{Contextual Attribute Logic}
-\label{section:contextual-attribute-logic}In addition to the set of attributes$M$of a formal context, consideration can b
-e expanded to the idea of \textit{compound attributes}. The additional expressivity enabled by compound attributes is aki
-n to that which formulae give to propositional atoms. Compound attributes are constructed by defining rules for
-combinati ons of ``normal'' attributes, in almost complete analogy to propositional atoms constructing formulae under the
-Boolean c onnectives. There is, however, a meaningful distinction between the perspectives that one should adopt when
-considering either attribute or propositional logic. Where propositional atoms and their constructed formulae are viewed
-in terms of truth, it is more helpful to consider compound attributes as descriptors of objects
-\cite{ganter2024formal,ganter2025language}. With this perspective in mind, we introduce compound attributes inductively
-as: We distinguish between compound and ``normal'' attributes by using lowercase Greek letters for compound attributes,
-and lowercase Latin letters for attributes. The semantics of compound attributes are defined relative to a given formal context,
-and the respective derivation operators, and so we have: It is clear that this definition allows for the constr uction
-of an infinite number of compound attributes, which is unhelpful. Things can be made simpler with the introductio n of
-\textit{extensional}and \textit{global equivalence}. Two compound attributes$\varphi, \gamma \in \mathcal{M}$are ext
-ensionally equivalent with respect to a context$\GMI$if their extensions are the same. If$\varphi^{\Vdash}= \gamma^{\Vdash}$.
-There is a global equivalence between$\varphi$and$\gamma$if they are extensionally equivalent in any possible context wit
-h the attribute set$M$. Disjunction may appear to be missing from this definition, but this is merely a syntactic omiss
-ion. The construction of a compound attribute of the form$\bigvee \Gamma$with the extension$\underset{\gamma \in \Gamma}\bigcup
-\gamma^{\Vdash}$is equivalent to$\neg \underset{\gamma \in \Gamma}\bigwedge \neg \gamma$. In propositional logic, we mi
-ght construct a formula by taking the conjunction operation over a set of formulae. It is, however, a requirement that t
-his set be finite. Compound attributes do not have this requirement, and so when we write$\bigwedge \Gamma$, it is perfectly
-possible for$\Gamma$to be infinite. Later on in \Cref{chapter:defeasible-reasoning-in-fca}, we rely on this finitenes s property
-holding in compound attributes, and so we offer a new inductive definition. In future, when we speak about com pound
-attributes it can be assumed that we mean compound attributes as per this second definition.
 \begin{definition}
 	\label{definition:compound-attributes-2} Let $M$ be a set of attributes, then the language of (finite) compound
 	attributes is inductively as
@@ -718,6 +753,3 @@ attributes it can be assumed that we mean compound attributes as per this second
 	context, not only those which align with background assumptions about the nature of the attributes. For an example of
 	global equivalence, consider $\texttt{democrat}$ and $\neg \neg \texttt{democrat }$.
 \end{example}
-In general, to determine if two compound attributes$\varphi$and$\psi$are globally equivalent we need only consider a sin
-gle context which has an object for each combination of normal attributes. We call such a context the \textit{test
-context}, and write$(\pset{M},M,\in)$.

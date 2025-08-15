@@ -33,6 +33,26 @@
 \setlength{\parskip}{0.3em}
 \setlength{\parindent}{15pt}
 
+\usepackage{titlesec}
+
+% % Reduce size without using \large/\Large
+% \titleformat{\chapter}[display]
+%   {\normalfont\bfseries\fontsize{1.8\baselineskip}{1.1\baselineskip}\selectfont}
+%   {\chaptername\ \thechapter}{1em}{}
+
+\titleformat{\section}
+  {\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
+  {\thesection}{1em}{}
+
+% \titleformat{\subsection}
+%   {\normalfont\bfseries\fontsize{0.85\baselineskip}{1.05\baselineskip}\selectfont}
+%   {\thesubsection}{1em}{}
+
+% % Optional: adjust vertical spacing before/after
+% \titlespacing*{\chapter}{0pt}{-5pt}{15pt}
+% \titlespacing*{\section}{0pt}{*1}{*0.5}
+% \titlespacing*{\subsection}{0pt}{*0.8}{*0.3}
+
 \RequirePackage{fancyhdr}
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter\ : #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ : #1}}
@@ -224,3 +244,4 @@
 \newcommand{\lang}{\mathcal{L}}
 \newcommand{\Lang}{\mathcal{L}_+}
 \newcommand{\Cn}[1]{\mathcal{C}n_{#1}}
+\newcommand{\Ca}[1]{C(#1)}

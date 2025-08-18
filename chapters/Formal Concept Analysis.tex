@@ -76,9 +76,10 @@ or large sets of objects and attributes. The procedure can be formally described
 % the parenthesis and write $g^{\uparrow}$ (\textit{resp.} $m^{\downarrow}$)}
 
 \begin{definition}
-	\index{derivation operators} \label{definition:derivation-operators} Given a context $\GMI$, the \textit{derivation
-	operators} are two maps $(\cdot)^{\uparrow}: \pset{G}\to \pset{M}$ and $(\cdot )^{\downarrow}: \pset{M}\to \pset{G}$.
-	Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
+	\index{derivation operators} \label{definition:derivation-operators} \index{attribute!extent} \index{object!intent}
+
+	Given a context $\GMI$, the \textit{derivation operators} are two maps $(\cdot)^{\uparrow}: \pset{G}\to \pset{M}$ and
+	$(\cdot )^{\downarrow}: \pset{M}\to \pset{G}$. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
 	\begin{align*}
 		A^{\uparrow}   & \coloneqq \{m \in M \mid \forall g \in A, \; (g,m) \in I\} \\
 		B^{\downarrow} & \coloneqq \{g \in G \mid \forall m \in B, \; (g,m) \in I\}
@@ -89,7 +90,7 @@ The derivation operators describe a mapping from a subset $A \subseteq G$ of obj
 of attributes that each (and every) object in $A$ related to. The dual notion holds for starting with a subset of
 attributes. As an example, we might wish to determine the set of attributes satisfied by the objects
 $\{\texttt{group,groupoid,abelian group}\}$. Application of the $(\cdot)^{\uparrow}$ derivation operator to this set yields
-$\{\texttt{associativity,identity,inverse }\}$.
+$\{\texttt{associativity,identity,inverse}\}$.
 
 To offer another perspective on the derivation operators, obvserve that the derivation of a set $A\subseteq G$ of
 objects is the intersection of each object intent, and so we have
@@ -106,9 +107,9 @@ Galois connections in the setting of FCA.
 	\label{proposition:derivation-operators-galois} Let $\GMI$ be a formal context and consider the subsets $X,X_{1}\subseteq
 	G$ of objects (\textit{resp.} $Y,Y_{1}\subseteq M$ of attributes) then
 	\begin{align}
-		 & X \subseteq X_{1}\Rightarrow X_{1}^{\uparrow}\subseteq X^{\uparrow} & \textit{(resp.)}         & \qquad Y \subseteq Y_{1}\Rightarrow Y_{1}^{\downarrow}\subseteq Y^{\downarrow}\label{equation:galois-1} \\
-		 & X \subseteq X^{\uparrow \downarrow}                                 & \textit{(resp.)}         & \qquad Y \subseteq Y^{\downarrow \uparrow}\label{equation:galois-2}                                     \\
-		 & X^{\uparrow}= X^{\uparrow \downarrow \uparrow}                      & \textit{(resp.)}         & \qquad Y^{\downarrow}= Y^{\downarrow \uparrow \downarrow}\label{equation:galois-3}                      \\
+		 & X \subseteq X_{1}\Rightarrow X_{1}^{\uparrow}\subseteq X^{\uparrow} & \textit{(\textit{resp.})} & \qquad Y \subseteq Y_{1}\Rightarrow Y_{1}^{\downarrow}\subseteq Y^{\downarrow}\label{equation:galois-1} \\
+		 & X \subseteq X^{\uparrow \downarrow}                                 & \textit{(\textit{resp.})} & \qquad Y \subseteq Y^{\downarrow \uparrow}\label{equation:galois-2}                                     \\
+		 & X^{\uparrow}= X^{\uparrow \downarrow \uparrow}                      & \textit{(\textit{resp.})} & \qquad Y^{\downarrow}= Y^{\downarrow \uparrow \downarrow}\label{equation:galois-3}                      \\
 		 & X \subseteq Y^{\downarrow}\tiff X^{\uparrow}\supseteq Y             & \label{equation:galois-4}
 	\end{align}
 \end{proposition}
@@ -124,6 +125,16 @@ systems form a complete lattice where, recounting \Cref{theorem:closure-systems-
 	 & \underset{i \in I}\bigwedge A_{i}= \underset{i \in I}\bigcap A_{i}\quad \text{ and }\quad \underset{i \in I}\bigvee A_{i}= \big(\underset{i \in I}\bigcup A_{i}\big)^{\uparrow \downarrow} & \quad A\subseteq \mathcal{G} \\
 	 & \underset{i \in I}\bigwedge B_{i}= \underset{i \in I}\bigcap B_{i}\quad \text{ and }\quad\underset{i \in I}\bigvee B_{i}= \big( \underset{i \in I}\bigcup B_{i}\big)^{\downarrow \uparrow} & \quad B\subseteq \mathcal{M}
 \end{align*}
+
+For a set of objects $A \subseteq G$, it follows directly from \Cref{equation:galois-3} that $A^{\uparrow}$ is a member of
+the closure system on $\mathcal{M}$.
+
+\begin{corollary}
+	\label{corollary:derivation-closure-systems}
+
+	Given a context $\GMI$ the derivation of a set of objects $A \subseteq G$ (\textit{resp.} attributes $B \subseteq M$) is
+	always a member of the closure system $\mathcal{M}$ (\textit{resp.} $\mathcal{G}$).
+\end{corollary}
 
 We recall the discussion at the end of \Cref{subsection:galois-connections} where it was shown that a pair of mappings
 that form a Galois connection are dually isomorphic when their domains are restricted to the associated closure systems.
@@ -292,22 +303,17 @@ With this in mind, it is finally an appropriate time to define what is meant by 
 	denote the set of all concepts of $\GMI$.
 \end{definition}
 
-A concept is then a pair of closed sets, where each set represents either the extensional or intensional perspective on
-the concept. Indeed, the extension and intension are related by virtue of being the inverses of one another under the
-derivation operators, and so there is a degree of redundancy in this definition since knowing the concept extension is sufficient
-to learning the concept intension and vice verse \cite{ganter2016conceptual}. Yet, we persevere with this redundancy as it
-offers a unifying perspective.
+A concept is a pair of closed sets, each representing either the extensional or intensional perspective. Indeed, there
+is some degree of redundancy in this definition, as the extension may fully define the intension and vice verse \cite{ganter2016conceptual}.
+However, this redundancy is beneficial for ones' intuition, and so we persevere with it.
 
-One pleasing consequence of the definition of a formal concept is that, for any set $A\subseteq G$ of objects, the set $A
-^{\uparrow}$ will always be a concept intent, and facilitates the construction of
-$(A^{\uparrow \downarrow}, A^{\uparrow})$ which is similarly always a concept; in general, the set $A$ is a concept
-extent if it is equal to its' closure $A^{\uparrow \downarrow}$. The dual perspective holds, and so for a set $B \subseteq
-M$ of attributes, $B^{\downarrow}$ is always a concept extent. We are even more fortunate in that we have already extensively
-discussed the collection(s) of closed sets of objects and attributes and what structure they might have: of course,
-these are the closure systems $\mathcal{G}$ and $\mathcal{M}$ and their corresponding lattice structure.
+A pleasing result of the definition of concepts is that, for any set $A \subseteq G$ of objects, the derivation $A^{\uparrow}$
+will always define a concept intent (the intent of the concept constructed by $(A^{\uparrow \downarrow}, A^{\uparrow})$).
+For the same reason, the derivation of any set of attributes $B \subseteq M$ will always be a concept extent. In fact, this
+is fact is merely a rephrasing of \Cref{corollary:derivation-closure-systems} within the perspective of concepts.
 
-To make this idea concrete, we reconsider the previous discussion where we (informally) described the concept of a monoid.
-It follows that the derivation $\{\texttt{monoid }\}^{\uparrow}$ yields the intent
+To make this idea concrete, we reconsider the previous discussion where we (informally) described the concept of a
+monoid. It follows that the derivation $\{\texttt{monoid}\}^{\uparrow}$ yields the concept intent:
 \[
 	\{\texttt{closure,associativity,identity}\}.
 \]
@@ -317,14 +323,14 @@ In turn, the derivation of the concept intent results in the set
 	\{\texttt{monoid,group,abelian group}\},
 \]which is the concept extent, and so
 \[
-	\big(\{\texttt{monoid,group,abelian group}\}, \{\texttt{closure,associativity,identity }\}\big)
+	\big(\{\texttt{monoid,group,abelian group}\}, \{\texttt{closure,associativity,identity}\}\big)
 \]
 is a formal concept of \Cref{cxt:grouplikes}.
 
-The union of concept extents (intents) is not guaranteed to yield another concept extent (intent), whereas the
-intersection of concept extents (intents) will always result in another concept extent (intent). That is to say, the
-closure systems $\mathcal{G}$ and $\mathcal{M}$ are not closed under taking arbitrary unions, while they are under arbitrary
-intersections.
+The union of concept extents (\textit{resp.}\ intents) does not in general yield another concept extent (\textit{resp.}\ intent),
+whereas the intersection of concept extents (\textit{resp.}\ intents) always yields a concept extent (\textit{resp.}\ intent).
+Equivalently, the closure systems $\mathcal{G}$ and $\mathcal{M}$ are not closed under arbitrary unions, but they are closed
+under arbitrary intersections.
 
 \begin{proposition}
 	\label{proposition:intersection-union-concepts} Let $T$ be an indexing set, then for every $t \in T$
@@ -343,129 +349,73 @@ to refer to the set of all concepts equipped with this structure.
 
 \begin{figure}[H]
 	\centering
-	\begin{tikzpicture}[scale=0.8, every node/.style={circle,fill=black,inner sep=0.5pt,minimum size=3mm}]
-		%––––– row 1 –––––
-		\node (a1) at (0,4) [label={[anchor=south,yshift=0mm]above:{\scriptsize\texttt{G}}}] {};
+	\unitlength 1.75mm
+	\begin{diagram}
+		{40}{60} %
 
-		%––––– row 2 –––––
-		\node (b1)
-			at
-			(-3,2)
-			[
-				label={[anchor=south,yshift=-4.5mm]above:{\scriptsize\texttt{associativity}}},
-				label={[anchor=north,yshift=4.5mm,text depth=0pt]below:{\scriptsize\strut\texttt{semicategory}}}
-			]
-			{};
-		\draw (a1) -- (b1);
+		% Row 1
+		\Node{1}{20}{60}
+		% \leftObjbox{1}{1}{1}{G}
 
-		\node (b2) at (-1,2) [label={[anchor=south,yshift=-2mm]above:{\scriptsize\texttt{identity}}}] {};
-		\draw (a1) -- (b2);
+		% Row 2 (properties)
+		\Node{2}{5}{50} \leftAttbox{2}{1}{1}{associativity} \leftObjbox{2}{1}{1}{semicategory} \Edge{1}{2}
 
-		\node (b3)
-			at
-			(1,2)
-			[
-				label={[anchor=south,yshift=-1mm]above:{\scriptsize\texttt{closure}}},
-				label={[anchor=north,yshift=1mm,text depth=0pt]below:{\scriptsize\strut\texttt{magma}}}
-			]
-			{};
-		\draw (a1) -- (b3);
+		\Node{3}{15}{50} \leftAttbox{3}{1}{1}{identity} \Edge{1}{3}
 
-		\node[fill=none]
-			(eg)
-			at
-			(6,-8)
-			[
-				label={[anchor=south,yshift=-4mm]above:{\scriptsize $\big(\{\texttt{monoid,group,abelian group}\},\{\texttt{associative,identity,closure}\}\big)$ }}
-			]
-			{};
-		\draw[green, dotted, stealth-, line width=0.8pt] (6,-3.7) to[out=90, in=315] (0.3,-2.2);
+		\Node{4}{25}{50} \leftAttbox{4}{1}{1}{closure} \leftObjbox{4}{1}{1}{magma} \Edge{1}{4}
 
-		\node[fill=none]
-			(eg1)
-			at
-			(-6,-9)
-			[
-				label={[anchor=south,yshift=-4mm]above:{\scriptsize $\big(\{\texttt{group,abelian group}\},\{\texttt{associative,identity,closure,inverse}\}\big)$ }}
-			]
-			{};
-		\draw[green, dotted, stealth-, line width=0.8pt] (-6,-4.7) to[out=90, in=225] (-0.3,-4.3);
+		\Node{5}{35}{50} \leftAttbox{5}{1}{1}{inverse} \Edge{1}{5}
 
-		\node (b4) at (3,2) [label={[anchor=south,yshift=-4mm]above:{\scriptsize\texttt{inverse}}}] {};
-		\draw (a1) -- (b4);
+		% Row 3 (structures)
+		\Node{6}{0}{40} \leftObjbox{6}{1}{1}{category} \Edge{6}{2} \Edge{6}{3}
 
-		\node (c1)
-			at
-			(-4,0)
-			[label={[anchor=north,yshift=3mm,text depth=0pt]below:{\scriptsize\strut\texttt{category}}}]
-			{};
-		\draw (c1) -- (b1);
-		\draw (c1) -- (b2);
+		\Node{7}{10}{40} \leftObjbox{7}{1}{1}{semigroup} \Edge{7}{2} \Edge{7}{4}
 
-		\node (c2)
-			at
-			(-2,0)
-			[label={[anchor=north,yshift=3mm,text depth=0pt]below:{\scriptsize\strut\texttt{semigroup}}}]
-			{};
-		\draw (c2) -- (b1);
-		\draw (c2) -- (b3);
+		\Node{8}{20}{40} \Edge{8}{3} \Edge{8}{5}
 
-		\node (c3) at (0,0) {};
-		\draw (c3) -- (b2);
-		\draw (c3) -- (b4);
+		\Node{9}{30}{40} \Edge{9}{3} \Edge{9}{4}
 
-		\node (c4) at (2,0) {};
-		\draw (c4) -- (b2);
-		\draw (c4) -- (b3);
+		\Node{10}{40}{40} \rightObjbox{10}{1}{1}{quasigroup} \Edge{10}{4} \Edge{10}{5}
 
-		\node (c5)
-			at
-			(4,0)
-			[label={[anchor=north,yshift=4mm,text depth=0pt]below:{\scriptsize\strut\texttt{quasigroup}}}]
-			{};
-		\draw (c5) -- (b3);
-		\draw (c5) -- (b4);
+		% Row 4
+		\Node{11}{10}{30} \leftObjbox{11}{1}{1}{groupoid} \Edge{11}{6} \Edge{11}{8}
 
-		\node (d1) at (-2,-2) [label={[anchor=south,yshift=-7mm]below:{\scriptsize\texttt{groupoid}}}] {};
-		\draw (d1) -- (c1);
-		\draw (d1) -- (c3);
+		\Node{12}{20}{30} \leftObjbox{12}{1}{1}{monoid} \Edge{12}{6} \Edge{12}{7} \Edge{12}{9}
 
-		\node (d2) at (0,-2) [label={[anchor=south,yshift=-6mm]below:{\scriptsize\texttt{monoid}}}] {};
-		\draw (d2) -- (c1);
-		\draw (d2) -- (c2);
-		\draw (d2) -- (c4);
+		\Node{13}{30}{30} \rightObjbox{13}{1}{1}{loop} \Edge{13}{8} \Edge{13}{9} \Edge{13}{10}
 
-		\node (d3) at (2,-2) [label={[anchor=south,yshift=-5mm]below:{\scriptsize\texttt{loop}}}] {};
-		\draw (d3) -- (c3);
-		\draw (d3) -- (c4);
-		\draw (d3) -- (c5);
+		% Row 5
+		\Node{14}{20}{20} \leftObjbox{14}{1}{1}{group} \Edge{14}{11} \Edge{14}{12} \Edge{14}{13}
 
-		\node (e1) at (0,-4) [label={[anchor=south,yshift=-6mm]below:{\scriptsize\texttt{group}}}] {};
-		\draw (e1) -- (d1);
-		\draw (e1) -- (d2);
-		\draw (e1) -- (d3);
-
-		\node (f1)
-			at
-			(0,-6)
-			[
-				label={[anchor=south,yshift=-6mm]above:{\scriptsize\texttt{commutativity}}},
-				label={[anchor=north,yshift=6mm,text depth=0pt]below:{\scriptsize\strut\texttt{abelian group}}}
-			]
-			{};
-		\draw (f1) -- (e1);
-	\end{tikzpicture}
-	\vspace{-6em}
+		% Row 6
+		\Node{15}{20}{10} \leftAttbox{15}{1}{1}{commutativity} \leftObjbox{15}{1}{1}{abelian group} \Edge{15}{14}
+	\end{diagram}
+	% \vspace{-6em}
 	\caption{The concept lattice corresponding to \Cref{cxt:grouplikes}}
 	\label{figure:concept-lattice-group-likes}
 \end{figure}
 
-\begin{remark}
-	Reading a concept lattice requires a small amount of getting used to: The labels above a node in the diagram
-	correspond to attributes, while objects are labelled below a node. Each node represents a concept $C \in \BGMI$. The extension
-	of $C$ contains all objects attached to nodes which have a (strictly) downwards path from $C$, while the intension of
-	$C$ contains those attributes labelled at nodes where there is a strictly upwards path from $C$.
-\end{remark}
+Reading a concept lattice requires a small amount of getting used to: The labels above a node in the diagram correspond
+to attributes, while objects are labelled below a node. Each node represents a concept $C \in \BGMI$. The labelled nodes
+in the concept lattice diagram correspond to either \textit{object} or \textit{attribute concepts}.
+
+\begin{definition}
+	\label{definition:object-attribute-concepts} \index{attribute!concept}
+
+	Given a context $\context = \GMI$, the \emph{object concepts} are defined for each object $g \in G$ as
+	\[
+		\gamma g \coloneqq \big(g^{\uparrow \downarrow}, g^{\uparrow}\big),
+	\]
+	and the \emph{attribute concepts} as
+	\[
+		\mu m \coloneqq \big(\mu^{\downarrow}, \mu^{\downarrow \uparrow}\big)
+	\]
+	for each $m \in M$.
+\end{definition}
+
+Given a node in the diagram for a concept lattice, the extension of the concept is given by all those objects labelled at
+nodes for which there is a (strictly) downward path from the respective node. The concept intent is given by the
+labelled attributes with a strictly upward path.
 
 The concept lattice is isomorphic to the closure system $\mathcal{G}$ of objects, and dually isomorphic to the closure system
 $\mathcal{M}$ of attributes. We now consider the first part of the fundamental result in FCA.
@@ -546,7 +496,7 @@ logic, we denote ``normal'' attributes with lower case letters in the Latin alph
 case Greek letters.
 
 \begin{definition}
-	\label{definition:compound-attributes} \index{compound attributes}
+	\label{definition:compound-attributes} \index{attribute!compound}
 
 	Let $M$ be a set of attributes (as we might find in a formal context). A compound attribute is constructed by iterative
 	application of the following: \setlist{nolistsep}
@@ -611,9 +561,10 @@ name suggests, the equivalence is not a local property of the formal context whi
 			\atr{\texttt{soldier}} \atr{\texttt{pacifist}} \atr{\texttt{traumatized}} \atr{\texttt{violent}}\atr{\textcolor{gray!70}{$\varphi$}}\atr{\textcolor{gray!70}{$\psi$}}
 
 			\obj{xxxxx.xx}{\texttt{Billy Pilgrim}} \obj{x.x..x..}{\texttt{Roland Weary}} \obj{x..x...x}{\texttt{Mary O'Hare}} \obj{x.x..x..}{\texttt{Paul Lazzaro}}
-			\obj{.x.x.x..}{\texttt{Tralfamadorians}}
+			\obj{.x...x..}{\texttt{Tralfamadorians}}
 		\end{cxt}
-		% \caption{A context describing characters and some of their qualities, from Slaughterhouse 5}
+		\caption{A context describing characters and some of their qualities, from Slaughterhouse 5}
+		\label{figure:context-slaughterhouse5}
 	\end{figure}
 	%
 	Each of these compound attributes have the extension consisting solely of $\{\texttt{Billy Pilgrim}\}$, and so at
@@ -629,12 +580,8 @@ context} over $M$.
 \subsection{Implication Logic}
 \label{subsection:implication-logic}
 
-When restricting ourselves to a small fragment of attribute logic, many interesting results in FCA can be found. The
-fragment is analogous to the study of propositional Horn logic, and benefits from the same computational simplicity.
-That is, we consider the subset of compound attributes which are constructed using the first and last points in \Cref{definition:compound-attributes},
-i.e. we do not admit negation.
-
-For ease, it is sufficient to refer to only subsets of the attribute set, and so the elements of our language are these subsets.
+It is often enough to study a restriction of attribute logic, which limits the expressivity in a way that is analogous to
+propositional Horn logic. Much of the interest in this restriction has to do with FCA-style \textit{implications}:
 
 \begin{definition}
 	\label{definition:implication}
@@ -643,29 +590,80 @@ For ease, it is sufficient to refer to only subsets of the attribute set, and so
 	may be represented in the form $A \rightarrow B$, and we call $A$ the \emph{antecedent} and $B$ the \emph{consequent}.
 \end{definition}
 
-Implications provide a compact way of describing a correspondence that may exist between (sets of) attributes. In the above,
-the implication is true when those things with attributes $A$ also have the attributes $B$.
+The semantics of implications are defined with respect to sets of attributes, and by extension formal contexts. As such,
+there is an obvious analogue between valuations as discussed in propositional logic, and sets of attributes.
 
 \begin{definition}
-	\label{definition:implication-respect} Another set of attributes $C \subseteq M$ \emph{respects} an implication
-	$A\rightarrow B$ if either $B \subseteq C$ or $A \not \subseteq A$, in which case we write $C \vDash A \rightarrow B$.
-	If $\mathcal{T}$ is a set of implications, $C$ respets $\mathcal{T}$ if it respects every implication in $\mathcal{T}$.
-\end{definition}
+	\label{definition:implication-respect}
 
-This notion of satisfaction can be extended to a formal context, which can be viewed as a set of attributes.
+	A set of attributes $C \subseteq M$ \emph{respects} an implication $A\rightarrow B$ if either $B \subseteq C$ or $A \not
+	\subseteq A$, in which case we write $C \vDash A \rightarrow B$. If $\mathcal{T}$ is a set of implications, $C$
+	respects $\mathcal{T}$ if it respects every implication in $\mathcal{T}$.
+\end{definition}
 
 \begin{definition}
 	\label{definition:implication-respect-context}
 
 	A formal context $\context = \GMI$ \emph{respects} an implication $A \rightarrow B$ over $M$ if and only if the intent
-	$g^{\uparrow}$ of each object $g \in G$ respects the implication. $\context$ respects a set of implications in the
-	same way as before.
+	$g^{\uparrow}$ of each object $g \in G$ respects the implication, in which case we write
+	$\context \vDash A \rightarrow B$. A context respects a set of implications in the same way as before.
 \end{definition}
 
-From another perspective, a context respects an implication when every object that satisfies all attributes of the
-antecedent (i.e. the extension of $A$) also satisfies all of the consequent. This scenario is captured more concisely by
-$A^{\downarrow}\subseteq B^{\downarrow}$, where $A$ and $B$ are the antecedent and consequent, respectively. By the Galois
-connection, this is equivalent to $B \subseteq A^{\downarrow \uparrow}$.
+The definition for when a context respects an implication admits a considerably more concise representation; it is equivalent
+to the expression that $A^{\downarrow}\subseteq B^{\downarrow}$, or that \say{All those objects satisfying (all) attributes in $A$ also satisfy (all) attributes in $B$.}
+Recalling \Cref{corollary:derivation-closure-systems}, which asserts that both $A^{\downarrow}$ and $B^{\downarrow}$ are
+concept extents, we have the following:
+
+\begin{proposition}
+	\label{proposition:implication-concepts}
+
+	The implication $A \rightarrow B$ is respected by a context $\GMI$ if and only if the concept generated by the
+	antecedent is a subconcept of the one generated by the consequence. Formally, if
+	$(A^{\downarrow}, A^{\downarrow \uparrow}) \leq (B^{\downarrow}, B^{\downarrow \uparrow})$ holds.
+\end{proposition}
+
+\Cref{proposition:implication-concepts} suggests that the concept lattice may be used to determine whether an
+implication holds in its' respective context.
+
+\begin{example}
+	The implication $\{\texttt{traumatized}\}\rightarrow \{\texttt{human,soldier}\}$ holds as the concept derived from the
+	antecedent, is a subconcept of both $\mu \texttt{human}$ and $\mu \texttt{soldier}$.
+
+	\begin{figure}[H]
+		\centering
+		{\unitlength 1.75mm
+
+		\begin{diagram}{40}{50} %
+		\Node{1}{20}{50}
+
+		\Node{2}{10}{40} \leftAttbox{2}{1}{1}{unstuck}
+
+		\Node{3}{20}{40} \leftAttbox{3}{1}{1}{violent}
+
+		\Node{4}{30}{40} \rightAttbox{4}{1}{1}{human}
+
+		\Node{5}{5}{30} \leftObjbox{5}{1}{1}{Tralfmadorians}
+
+		\Node{6}{20}{30} \leftAttbox{6}{1}{1}{pacifist} \leftObjbox{6}{1}{1}{Mary O'Hare}
+
+		\Node{7}{35}{30} \rightAttbox{7}{1}{1}{soldier}
+
+		\Node{8}{30}{20} \rightObjbox{8}{1}{1}{Paul Lazzaro \\ Roland Weary}
+
+		\Node{9}{20}{10} \leftAttbox{9}{1}{1}{traumatised} \leftObjbox{9}{1}{1}{Billy Pilgrim}
+
+		\Node{10}{20}{0}
+
+		\Edge{1}{2} \Edge{1}{3} \Edge{1}{4}
+
+		\Edge{2}{5} \Edge{2}{9} \Edge{3}{5} \Edge{3}{8}
+
+		\Edge{4}{6} \Edge{4}{7}
+
+		\Edge{5}{10} \Edge{6}{9} \Edge{7}{8} \Edge{8}{10} \Edge{7}{9} \Edge{9}{10}\end{diagram} }
+		\caption{The concept lattice of the context in \Cref{figure:context-slaughterhouse5}}
+	\end{figure}
+\end{example}
 
 \textcolor{red}{The rest of this subsection is quite straightforward, I will do it later. Remaining things include: semantic
 consequence, armstrong axioms, closure system of implications => context, DQ-basis}

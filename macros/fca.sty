@@ -268,14 +268,14 @@ has been ignored}{}}}%
 %                                                                             %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\fca@Defaults}{%   Do not change this line!                       %
-  \newcommand{\ObjectLabelStyle}{\small\baselineskip6pt\rm}%                    %
-  \newcommand{\AttributeLabelStyle}{\small\baselineskip6pt\it}%                 %
+  \newcommand{\ObjectLabelStyle}{\small\baselineskip6pt}%                    %
+  \newcommand{\AttributeLabelStyle}{\small\baselineskip6pt\ttfamily}%                 %
 \newcommand{\LabelBoxWidth}{40mm}}%                                           %
 \newboolean{fca@dots}\setboolean{fca@dots}{true}%                             %
 \newcommand{\diagramXoffset}{0}%                                              %
 \newcommand{\diagramYoffset}{0}%                                              %
-\newcommand{\fca@edgethickness}{.8pt}%                                         %
-\newcommand{\fca@nodethickness}{1pt}%                                         %
+\newcommand{\fca@edgethickness}{.5pt}%                                         %
+\newcommand{\fca@nodethickness}{.5pt}%                                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                             %
 %     Changing the default values                                             %
@@ -284,7 +284,7 @@ has been ignored}{}}}%
 \newcommand{\NodeThickness}[1]{\def\fca@nodethickness{#1}}%                   %
 \newcommand{\EdgeThickness}[1]{\def\fca@edgethickness{#1}}%                   %
 \newcommand{\Numbers}{\setboolean{fca@CircledNumbers}{true}%
-\addtocounter{fca@CircleDiameter}{2}}%
+\addtocounter{fca@CircleDiameter}{1}}%
 \newcommand{\CircleSize}[1]{\setcounter{fca@CircleDiameter}{#1}}%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -499,13 +499,13 @@ has been ignored}{}}}%
 %
 \def\fca@ResetDefaults{\setcounter{fca@minNode}{60}%
   \setcounter{fca@maxNode}{0}%
-  \setcounter{fca@CircleDiameter}{4}%
+  \setcounter{fca@CircleDiameter}{2}%
   \setboolean{fca@CircledNumbers}{false}%
 \fca@Defaults}%
 %
 \def\fca@circle{{%
     \linethickness{\fca@nodethickness}%
-    \color{white}{\circle*{\value{fca@CircleDiameter}}}%
+    \color{black}{\circle*{\value{fca@CircleDiameter}}}%
 \color{black}{\circle{\value{fca@CircleDiameter}}}}}%
 %
 \def\fca@DrawCircles{\setcounter{fca@runNode}{\value{fca@minNode}}%

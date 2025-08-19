@@ -1,25 +1,35 @@
 % thesis.sty – Custom style for Master's thesis
+% Lucas — UCT Computational Logic
+% ------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{macros/thesis}[2025/03/30 Master's Thesis Style]
 
-% --- Subfile support ---
-\usepackage{subfiles}
+% ------------------------------------------------------------------
+% Subfile support and local macros
+% ------------------------------------------------------------------
+\usepackage{subfiles} % allows splitting thesis into subfiles
 \input{macros/formal-concept-analysis.tex}
 \input{macros/general.tex}
 \input{macros/fca.sty}
 
-% --- Encoding and Language ---
-% \usepackage[utf8]{inputenc}
+% ------------------------------------------------------------------
+% Encoding and Language
+% ------------------------------------------------------------------
 \usepackage[english]{babel}
-\usepackage{microtype}
-\usepackage{dirtytalk}
-\usepackage{csquotes}
+\usepackage{microtype}     % typographic refinements
+\usepackage{dirtytalk}     % for quotations: \say{...}
+\usepackage{csquotes}      % recommended for quotes and biblatex
 
+% ------------------------------------------------------------------
+% Fonts
+% ------------------------------------------------------------------
 \usepackage{mathtools}
-\RequirePackage{stix2}
-\usepackage[scaled=0.9]{inconsolata}
+\RequirePackage{stix2}               % main text + math font
+\usepackage[scaled=0.9]{inconsolata} % monospaced font for code
 
-% --- Geometry and Spacing ---
+% ------------------------------------------------------------------
+% Page Geometry and Spacing
+% ------------------------------------------------------------------
 \usepackage{geometry}
 \geometry{
  a4paper,
@@ -27,76 +37,65 @@
  right=1in,
  top=1in,
  headsep=0.25in,
- }
+}
 \usepackage{setspace}
-\setstretch{1.25}
-\setlength{\parskip}{0.3em}
-\setlength{\parindent}{15pt}
+\setstretch{1.25}            % line spacing
+\setlength{\parskip}{0.3em}  % paragraph spacing
+\setlength{\parindent}{15pt} % paragraph indentation
 
+% ------------------------------------------------------------------
+% Section and chapter formatting
+% ------------------------------------------------------------------
 \usepackage{titlesec}
 
-% % Reduce size without using \large/\Large
-% \titleformat{\chapter}[display]
-%   {\normalfont\bfseries\fontsize{1.8\baselineskip}{1.1\baselineskip}\selectfont}
-%   {\chaptername\ \thechapter}{1em}{}
-
+% Example: make section headings slightly smaller
 \titleformat{\section}
   {\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
   {\thesection}{1em}{}
 
-% \titleformat{\subsection}
-%   {\normalfont\bfseries\fontsize{0.85\baselineskip}{1.05\baselineskip}\selectfont}
-%   {\thesubsection}{1em}{}
-
-% % Optional: adjust vertical spacing before/after
-% \titlespacing*{\chapter}{0pt}{-5pt}{15pt}
-% \titlespacing*{\section}{0pt}{*1}{*0.5}
-% \titlespacing*{\subsection}{0pt}{*0.8}{*0.3}
-
+% ------------------------------------------------------------------
+% Headers and footers
+% ------------------------------------------------------------------
 \RequirePackage{fancyhdr}
 \renewcommand{\chaptermark}[1]{\markboth{\thechapter\ : #1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ : #1}}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[EL]{\textit{\small Section \rightmark}}    % current SECTION on the left
-\fancyhead[ER]{\textit{\small \thepage}}      % page number on the right
-\fancyhead[OL]{\textit{\small \thepage}}      % page number on the left
-\fancyhead[OR]{\textit{\small Chapter \leftmark}}     % current CHAPTER on the right
-\fancyfoot{}                  % no footers
-\renewcommand{\headrulewidth}{0.4pt}   % keep or adjust
-\fancypagestyle{plain}{        % redefine the 'plain' pagestyle
-  \fancyhf{}                   % clear header and footer
+\fancyhead[EL]{\textit{\small Section \rightmark}}    % section name (even, left)
+\fancyhead[ER]{\textit{\small \thepage}}              % page number (even, right)
+\fancyhead[OL]{\textit{\small \thepage}}              % page number (odd, left)
+\fancyhead[OR]{\textit{\small Chapter \leftmark}}     % chapter name (odd, right)
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{        % plain pages (e.g., chapter openings)
+  \fancyhf{}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
+
+% ------------------------------------------------------------------
+% Lists
+% ------------------------------------------------------------------
 \usepackage{enumitem}
 
-% --- Math and theorem environments ---
-\usepackage{amsmath,amsthm}
-\usepackage{amssymb}
-\usepackage{mathtools}
-\usepackage{nicefrac}
+% ------------------------------------------------------------------
+% Math and theorem environments
+% ------------------------------------------------------------------
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{thmtools}
 \usepackage{epigraph}
-\everymath{\displaystyle}
-\theoremstyle{definition}
+\everymath{\displaystyle} % force displaystyle in inline math
 
+% redefine large operators to be less vertically inflated
 \let\origbigvee\bigvee
 \renewcommand{\bigvee}{\textstyle\mathop{\origbigvee}}
-
 \let\origbigwedge\bigwedge
 \renewcommand{\bigwedge}{\textstyle\mathop{\origbigwedge}}
-
 \let\origbigcup\bigcup
 \renewcommand{\bigcup}{\textstyle\mathop{\origbigcup}}
-
 \let\origbigcap\bigcap
 \renewcommand{\bigcap}{\textstyle\mathop{\origbigcap}}
-% \renewcommand{\underset}[2]{\mathrel{\mathop{#2}\limits_{\scriptscriptstyle #1}}}
 
-
-% --- Theorem declarations ---
-\usepackage{etoolbox}
+% Theorem declarations
 \declaretheorem[style=plain]{theorem}
 \declaretheorem[style=plain]{example}
 \AtEndEnvironment{example}{\par\addvspace{\baselineskip}}
@@ -106,29 +105,33 @@
 \declaretheorem{proposition}
 \declaretheorem{corollary}
 
-% --- Figures and floats ---
+% ------------------------------------------------------------------
+% Figures and floats
+% ------------------------------------------------------------------
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{listings}
+\usepackage{listings}      % for code (but pseudocode uses algpseudocode)
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{tikz}
-\usetikzlibrary{positioning}
-\usetikzlibrary{calc,fit,shapes.geometric,patterns}
-\usetikzlibrary{intersections}
+\usetikzlibrary{positioning,calc,fit,shapes.geometric,patterns,intersections}
 \usepackage{pst-node,pst-plot}
 
-% --- Colours ---
+% ------------------------------------------------------------------
+% Colours
+% ------------------------------------------------------------------
 \definecolor{blue}{HTML}{0000A4}
 \definecolor{green}{HTML}{025C5D}
 \definecolor{red}{HTML}{C30A18}
 \definecolor{mediumblue}{rgb}{0.173,0.498,0.722}
 \definecolor{darkblue}{rgb}{0.145,0.204,0.580}
 
-% --- Hyperlinks ---
+% ------------------------------------------------------------------
+% Hyperlinks and cross-references
+% ------------------------------------------------------------------
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=darkblue,urlcolor=blue]{hyperref}
 \usepackage[nameinlink]{cleveref}
 \usepackage{url}
@@ -138,17 +141,19 @@
 \Crefname{subfigure}{Subfigure}{Subfigures}
 \crefname{section}{section}{sections}
 \Crefname{section}{Section}{Sections}
-\crefname{subsection}{subsection}{Subsections}
+\crefname{subsection}{subsection}{subsections}
 \Crefname{subsection}{Subsection}{Subsections}
 \Crefname{cxt}{Formal Context}{Formal Contexts}
 
+% ------------------------------------------------------------------
+% Index
+% ------------------------------------------------------------------
 \usepackage{makeidx}
 \makeindex
-\usepackage{csquotes}
 
-% --- Citation Style (IJCAI-like) ---
-% This code implements the citation style you provided.
-% It is designed to work with BibTeX and a .bst file like 'named.bst'.
+% ------------------------------------------------------------------
+% Citation Style (IJCAI-like, square brackets)
+% ------------------------------------------------------------------
 \makeatletter
 \def\leftcite{\@up[}
 \def\rightcite{\@up]}
@@ -157,19 +162,12 @@
 \def\shortcite{\def\citeauthoryear##1##2{##2}\@icite}
 \def\citeauthor{\def\citeauthoryear##1##2{##1}\@nbcite}
 \def\citeyear{\def\citeauthoryear##1##2{##2}\@nbcite}
-% internal macro for citations with [] and with breaks between citations
-% used in \cite and \shortcite
 \def\@icite{\leavevmode\def\@citeseppen{-1000}%
  \def\@cite##1##2{\leftcite\nobreak\hskip 0in{##1\if@tempswa , ##2\fi}\rightcite}%
  \@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
-% internal macro for citations without [] and with no breaks
-% used in \citeauthor and \citeyear
 \def\@nbcite{\leavevmode\def\@citeseppen{1000}%
  \def\@cite##1##2{{##1\if@tempswa , ##2\fi}}%
  \@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
-% don't box citations, separate with ; and a space
-% also, make the penalty between citations a parameter,
-% it may be a good place to break
 \def\@citex[#1]#2{%
   \def\@lastauthor{}\def\@citea{}%
   \@cite{\@for\@citeb:=#2\do
@@ -178,42 +176,38 @@
      \@ifundefined{b@\@citeb}{\def\@thisauthor{}{\bf ?}\@warning
        {Citation `\@citeb' on page \thepage \space undefined}}%
      {\csname b@\@citeb\endcsname}\let\@lastauthor\@thisauthor}}{#1}}
-% raise the brackets in bibliography labels
 \def\@biblabel#1{\def\citeauthoryear##1##2{##1, ##2}\@up{[}#1\@up{]}\hfill}
 \def\@up#1{\leavevmode\raise.2ex\hbox{#1}}
 \makeatother
 
-% --- Custom commands for metadata ---
+% ------------------------------------------------------------------
+% Custom commands for metadata
+% ------------------------------------------------------------------
 \newcommand{\thetitle}{}
 \newcommand{\theauthor}{}
 \newcommand{\thedate}{}
-
 \renewcommand{\title}[1]{\renewcommand{\thetitle}{#1}}
 \renewcommand{\author}[1]{\renewcommand{\theauthor}{#1}}
 \renewcommand{\date}[1]{\renewcommand{\thedate}{#1}}
 
-% --- Miscellaneous tweaks ---
+% ------------------------------------------------------------------
+% Counters and ToC depth
+% ------------------------------------------------------------------
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
 
 % ------------------------------------------------------------------
-% Hilbert-style proof environment with header
+% Hilbert-style proofs
 % ------------------------------------------------------------------
 \usepackage{proof}
 \newcounter{proofHstep}
-
-% \begin{proofH}[<heading>] … \end{proofH}
-% Optional argument lets you override the heading if you need to:
-%   \begin{proofH}[Sketch] … \end{proofH}
 \newenvironment{proofH}[1][Proof]{%
-  \par\smallskip\noindent\textit{#1.\\}  % “Proof.” by default
+  \par\smallskip\noindent\textit{#1.\\}  % default heading “Proof.”
   \setcounter{proofHstep}{0}%
   \ignorespaces
 }{%
   \par\smallskip\qed
 }
-
-% \Hstep[<rule>]{<formula>}
 \newcommand{\Hstep}[2][]{%
   \refstepcounter{proofHstep}%
   \noindent\makebox[2.1em][r]{\bfseries\arabic{proofHstep}.}\,
@@ -231,9 +225,37 @@
 #3
 \end{array}
 }
+\newcommand{\inferLeftNoLabel}[2]{
+\begin{array}{c}
+#1 \\
+\hline
+#2
+\end{array}
+}
 
 % ------------------------------------------------------------------
-%  Useful
+% Algorithms and pseudocode
+% ------------------------------------------------------------------
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+% Customise algorithmic keywords
+\algrenewcommand\algorithmicrequire{\textbf{Input:}}
+\algrenewcommand\algorithmicensure{\textbf{Output:}}
+\algrenewcommand\alglinenumber[1]{\scriptsize #1} % smaller line numbers
+\algrenewcommand\algorithmiccomment[1]{\hfill\(\triangleright\) #1}
+
+% Convenient wrapper: algo environment
+% Usage: \begin{algo}{Caption} ... \end{algo}
+\newenvironment{algo}[2][htbp]
+  {\begin{algorithm}[#1]
+   \caption{#2}
+   \begin{algorithmic}[1]} % numbered lines
+  {\end{algorithmic}
+   \end{algorithm}}
+
+% ------------------------------------------------------------------
+% Commonly used symbols
 % ------------------------------------------------------------------
 \newcommand{\pset}[1]{\mathfrak{P}({#1})}
 \newcommand{\tiff}{\quad \text{if and only if}\quad}

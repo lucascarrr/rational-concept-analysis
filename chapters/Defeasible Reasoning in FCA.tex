@@ -1,36 +1,70 @@
 \chapter{Defeasible Reasoning in Formal Concept Analysis}
 \label{chapter:defeasible-reasoning-in-fca}
 
-The conclusion of \Cref{chapter:defeasible-reasoning-in-fca} marks the completion of the scaffolding of this work. In the
-remaining chapters, the more novel research contributes of this work will be discussed. We begin by formalising an approach
-to the KLM style of defeasible reasoning within the setting of FCA.
+% The conclusion of \Cref{chapter:defeasible-reasoning-in-fca} marks the completion of the scaffolding of this work. In the
+% remaining chapters, the more novel research contributes of this work will be discussed. We begin by formalising an approach
+% to the KLM style of defeasible reasoning within the setting of FCA.
 
-Fortunately (perhaps by design), the context switch is fairly negligible. As we progress, the reasons behind the
-selection of the KLM framework as an ideal candidate for defeasible reasoning in FCA should become apparent. Indeed,
-understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented
-here, and their counterparts from prior chapters; and so we encourage---and will attempt to facilitate---these frequent backward
-references.
+% Fortunately (perhaps by design), the context switch is fairly negligible. As we progress, the reasons behind the
+% selection of the KLM framework as an ideal candidate for defeasible reasoning in FCA should become apparent. Indeed,
+% understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented
+% here, and their counterparts from prior chapters; and so we encourage---and will attempt to facilitate---these frequent backward
+% references.
 
 \section{Motivation}
 \label{section:motivation}
 
-There are many perspectives one may adopt as lense with which to understand the purpose of FCA. Certainly, some of these
-perspectives should result in strong arguments against accepting non-monotonicity. Likewise, there are several, distinct,
-arguments in favour. One of the most compelling reasons for the adoption of defeasibility in FCA follows from the argument
-put forward in \cite{Wille2005}, where the view that concepts are frequently \textit{personal} or \textit{prototypical}
-units is discussed. The recognition that defeasible reasoning facilitates a kind of prototypicality is the basis for \Cref{chapter:rational-concepts},
-and so we will say no more until then.
+% There are many perspectives one may adopt as lense with which to understand the purpose of FCA. Certainly, some of these
+% perspectives should result in strong arguments against accepting non-monotonicity. Likewise, there are several, distinct,
+% arguments in favour. One of the most compelling reasons for the adoption of defeasibility in FCA follows from the argument
+% put forward in \cite{Wille2005}, where the view that concepts are frequently \textit{personal} or \textit{prototypical}
+% units is discussed. The recognition that defeasible reasoning facilitates a kind of prototypicality is the basis for \textcolor{red}{chapter:rational-concepts},
+% and so we will say no more until then.
 
-\clearpage
+\subsection{Association Rules}
+\label{subsection:association-rules}
 
-\section{Preferential and Ranked Contexts}
-\clearpage
+% \clearpage
 
-\section{Finding order}
-\clearpage
-This phenomenon was already known to the ancient Greeks, who used the term enthymeme to refer to an argument in which one
-or more premises are left implicit. That is the idea that we develop in this section. Also called \textit{expectations}.
-\cite{makinson2003bridges}.
+% \section{Preferential and Ranked Contexts}
+% \clearpage
 
-\section{Rational Entailment}
-\clearpage
+% \section{Finding order}
+% \clearpage
+% This phenomenon was already known to the ancient Greeks, who used the term enthymeme to refer to an argument in which
+% one or more premises are left implicit. That is the idea that we develop in this section. Also called \textit{expectations}.
+% \cite{makinson2003bridges}.
+
+\chapter{Rational Entailment}
+\begin{definition}
+	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if
+	$\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$ is the \emph{test context}. It \emph{contextually
+	follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
+\end{definition}
+
+\begin{definition}
+	A set $\mathcal{T}$ is \emph{closed} with respect to a pair if and only if it contains every conditional that is
+	rationally entailed. That is, if
+	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$
+	is \emph{contextually closed} if it contains every conditional that is contextually entailed, i.e.
+	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R}, \mathcal{T}\dentails A \rightarrow B\}$.
+\end{definition}
+
+\begin{definition}
+	A set $\mathcal{T}$ of conditionals is \emph{rationally complete} with respect to $\mathbb{T},\Delta$ if and only if
+	every conditional that is in the rational closure of $\mathbb{T}, \Delta$ rationally follows from $\mathcal{T}$, i.e.,
+	$\mathbb{T},\mathcal{T}$ and $\mathbb{T}, \Delta$ define the same entailment relation.
+\end{definition}
+
+Is it possible to find a $\mathcal{T}$ such that $\mathcal{T}$ is a compact form of $\Delta$. I.e., it should produce the
+same ranking on $\mathbb{T}$.
+
+\begin{definition}
+	A set $\mathcal{T}$ of conditionals is \emph{contextually complete} with respect to $\mathbb{R}, \Delta$ if and only
+	if every implication that is in the contextual closure of $\mathbb{R}, \Delta$ rationally follows from $\mathcal{T}$.
+\end{definition}
+
+A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$
+provides abstracted perspective, in terms of defeasible conditionals, on the information contained in the pair
+$(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsection:the-canonical-basis}, to find such a set that
+is non-redundant, or the \textit{rational basis} of $(\mathbb{R},\Delta)$.

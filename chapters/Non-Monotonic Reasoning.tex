@@ -510,8 +510,8 @@ monotonic, while the object level expresses non-monotonic behaviour, facilitatin
 Humans experience chronological time}, \textit{Billy Pilgrim is a Human}, \textit{Billy Pilgrim experiences non-chronological
 time}.
 
-There are arguments, in fact we make one in \Cref{chapter:defeasible-reasoning-in-fca}, which suggest that object level
-non-monotonicity is sufficient.
+There are arguments, in fact we make one in \textcolor{red}{chapter:defeasible-reasoning-in-fca}, which suggest that object
+level non-monotonicity is sufficient.
 
 % \begin{theorem}
 % 	\label{theorem:preferential-compactness} If $\phi$ is a singular, and $\Delta$ a set of defeasible conditionals in
@@ -535,31 +535,32 @@ non-monotonicity is sufficient.
 \subsection{Rational Consequence Relations}
 \label{subsection:rational-consequence-relations}
 
-System P provides a characterisation, in the form of its postulates, of a particular style of non-monotonic reasoning.
-There are other kinds of reasoning, not valid in system P, for which there are good reasons think of as reasonable
-properties of non-monotonic reasoning \cite{kraus1990nonmonotonic,lehmann1992what}.
+System P provides a characterisation, in the form of its postulates, of a particular style of non-monotonic reasoning. There
+are other kinds of reasoning, not valid in system P, for which there are good reasons think of as reasonable properties of
+non-monotonic reasoning \cite{kraus1990nonmonotonic,lehmann1992what}.
 
-\textit{Negation Rationality} suggests that our defeasible inferences should withstand piercing the veil of ignorance.
-Suppose Alice is a university student, if she holds the belief that \textit{Normally, she will pass her exams}, then it would
-not be reasonable for her to simultaneously think \textit{Normally, if she studies, she will not pass her exams} and
-also \textit{Normally, if she does not study, she will not pass her exams}.
+\textit{Negation Rationality} suggests that our defeasible inferences should withstand piercing the veil of ignorance. Suppose
+Alice is a university student, if she holds the belief that \textit{Normally, she will pass her exams}, then it would
+not be reasonable for her to simultaneously think \textit{Normally, if she studies, she will not pass her exams} and also
+\textit{Normally, if she does not study, she will not pass her exams}.
 %
 \begin{align}
 	\inferLeft{Negation Rationality}{\phi \land \psi \ntwiddle \gamma, \quad \phi \land \neg \psi \ntwiddle \gamma}{\phi \ntwiddle \gamma}
 \end{align}
-Either Alice studies or she does not. If, in either case, she will not pass her exams, then it is difficult to
-comprehend how it might be normal for her to pass her exams.
+Either Alice studies or she does not. If, in either case, she will not pass her exams, then it is difficult to comprehend
+how it might be normal for her to pass her exams.
 
-\textit{Disjunctive Rationality} says that a plausible inference made from a disjunction should be plausible from at least
-one of the disjuncts.
+\textit{Disjunctive Rationality} says that a plausible inference made from a disjunction should be plausible from at
+least one of the disjuncts.
 \begin{align}
 	\inferLeft{Disjunctive Rationality}{\phi \ntwiddle \gamma, \quad \psi \ntwiddle \gamma}{\phi \lor \psi \ntwiddle \gamma}
 \end{align}
 
-\textit{Rational monotony} is a much stronger form of restricted monotony than cautious monotony. Where cautious monotony
-holds the position that we should only reason monotonically with the addition of new information that was already expected
-given our beliefs, rational monotony suggests that we should reason monotonically with the addition of new information
-if it is merely \textit{consistent} with existing beliefs; that is, we did not expect the negation of the new information.
+\textit{Rational monotony} is a much stronger form of restricted monotony than cautious monotony. Where cautious
+monotony holds the position that we should only reason monotonically with the addition of new information that was
+already expected given our beliefs, rational monotony suggests that we should reason monotonically with the addition of new
+information if it is merely \textit{consistent} with existing beliefs; that is, we did not expect the negation of the
+new information.
 \begin{align}
 	\inferLeft{Rational Monotony}{\phi \land \psi \ntwiddle \gamma, \quad \phi \ntwiddle \neg \psi }{\phi \ntwiddle \gamma}
 \end{align}
@@ -569,22 +570,22 @@ Rational monotony can be equivalently stated as the following, which makes the i
 	\inferLeft{Rational Monotony}{\phi \twiddle \psi, \quad \phi \ntwiddle \neg \gamma}{\phi \land \gamma \twiddle \psi}
 \end{align}
 
-At a university, it might be normal for students to graduate. At the same time, it would be too great a requirement to suggest
-that it is normal for students to be exceptionally clever. It seems completely appropriate to maintain our belief that
-it is normal for students, who are not exceptionally clever, to graduate.
+At a university, it might be normal for students to graduate. At the same time, it would be too great a requirement to
+suggest that it is normal for students to be exceptionally clever. It seems completely appropriate to maintain our belief
+that it is normal for students, who are not exceptionally clever, to graduate.
 
 Stalnaker \cite{Stalnaker1994,sep-logic-nonmonotonic-Stanford}, and separately Ginsberg \shortcite{GinsberCounterfactuals},
-provide an argument against accepting rational monotony. The objection is that rational monotony commits us to make
-inferences when the more reasonable position is to remain undecided. Paraphrasing, we are asked to consider three
-composers: \textit{Verdi}, who is believed to be Italian, and \textit{Satie} and \textit{Bizet}, who are believed to be French.
-If it were learned that Verdi and Bizet were compatriots, then it seems reasonable that the conclusion that either of them
-are French or Italian is indeterminate. What is reasonable, however, is to maintain the belief that Satie is French.\footnote{We
+provide an argument against accepting rational monotony. The objection is that rational monotony commits us to make inferences
+when the more reasonable position is to remain undecided. Paraphrasing, we are asked to consider three composers:
+\textit{Verdi}, who is believed to be Italian, and \textit{Satie} and \textit{Bizet}, who are believed to be French. If it
+were learned that Verdi and Bizet were compatriots, then it seems reasonable that the conclusion that either of them are
+French or Italian is indeterminate. What is reasonable, however, is to maintain the belief that Satie is French.\footnote{We
 will use some syntax from predicate logic, this is merely an aid to make Stalnaker's example clearer.}
 \begin{align}
 	\texttt{Compatriots(Bizet, Verdi)}\twiddle \texttt{French(Satie)}
 \end{align}
-The argument proceeds by considering that Verdi and Satie may too be compatriots. Since Verdi's nationality is now unknown,
-we are no longer equipped to reject the plausibility of the new compatriotship, and so
+The argument proceeds by considering that Verdi and Satie may too be compatriots. Since Verdi's nationality is now
+unknown, we are no longer equipped to reject the plausibility of the new compatriotship, and so
 \begin{align}
 	\texttt{Compatriots(Bizet, Verdi)}\ntwiddle \neg \texttt{Compatriots(Verdi,Satie)}
 \end{align}
@@ -593,25 +594,25 @@ The two conditions of rational monotony have been met, and so the following infe
 	\texttt{Compatriots(Bizet, Verdi)}\land \texttt{Compatriots(Verdi,Satie)}\twiddle \texttt{French(Satie)}
 \end{align}
 
-The issue, as Stalnaker sees it, is that rational monotony forces the inference Satie is still French, and by their
-compatriotship, so are Bizet and Verdi. The ``correct'' thing to do in this scenario is to remain uncertain about which
-nationality they all share.
+The issue, as Stalnaker sees it, is that rational monotony forces the inference Satie is still French, and by their compatriotship,
+so are Bizet and Verdi. The ``correct'' thing to do in this scenario is to remain uncertain about which nationality they
+all share.
 
-However, the result Stalnaker objects to is dependent his particular construction of this problem, rather than being
-intrinsic to rational monotony. The second condition for rational monotony, that $\phi \ntwiddle \neg \gamma$, makes no requirement
-about the syntactic structure of $\gamma$ outside of it being a formula in the language. In the example, Stalnaker could
-just as easily have written
+However, the result Stalnaker objects to is dependent his particular construction of this problem, rather than being intrinsic
+to rational monotony. The second condition for rational monotony, that $\phi \ntwiddle \neg \gamma$, makes no
+requirement about the syntactic structure of $\gamma$ outside of it being a formula in the language. In the example,
+Stalnaker could just as easily have written
 \begin{align}
 	\texttt{Compatriots(Bizet,Verdi)}\ntwiddle \neg (\neg \texttt{Compatriots(Verdi,Satie))}
 \end{align}
-meaning that it is not expected that Verdi and Satie are compatriots, to which we can apply an instance of rational
-monotony, from which we are not forced to believe that all three composers are French.
+meaning that it is not expected that Verdi and Satie are compatriots, to which we can apply an instance of rational monotony,
+from which we are not forced to believe that all three composers are French.
 \begin{align}
 	\texttt{Compatriots(Bizet, Verdi)}\land \neg(\texttt{Compatriots(Verdi,Satie))}\twiddle \texttt{French(Satie)}
 \end{align}
 
-There is another objection to rational monotony, which will be considered later on. For now, we accept it as a valid
-property of non-monotonic reasoning, and thus introduce \textit{rational relations}.
+There is another objection to rational monotony, which will be considered later on. For now, we accept it as a valid property
+of non-monotonic reasoning, and thus introduce \textit{rational relations}.
 %
 \begin{definition}
 	\label{definition:rational-relation}
@@ -627,11 +628,11 @@ Quite evidently, they are a particular kind of preferential relation.
 \label{subsubsection:ranked-interpretations}
 
 From the knowledge that rational relations are a particular kind of preferential relation, it seems a reasonable jump to
-think that the semantics we give to rational relations may be a particular kind of preferential interpretation. Before
-discussing this jump, a useful exercise is to recognise how preferential interpretations may fail to satisfy rational monotony.
+think that the semantics we give to rational relations may be a particular kind of preferential interpretation. Before discussing
+this jump, a useful exercise is to recognise how preferential interpretations may fail to satisfy rational monotony.
 
-Consider the two preferential interpretations shown in \Cref{figure:two-preferential-models}, which model the scenario
-which was discussed in the example near the end of the last subsection.
+Consider the two preferential interpretations shown in \Cref{figure:two-preferential-models}, which model the scenario which
+was discussed in the example near the end of the last subsection.
 
 \begin{example}
 	\label{example:university}
@@ -687,15 +688,15 @@ which was discussed in the example near the end of the last subsection.
 	$\texttt{student}\land \neg \texttt{clever}\twiddle \texttt{graduate}$ be satisfied, which is not the case in \Cref{subfigure:not-rational}.
 \end{example}
 %
-Fortunately, the culprit is quite easy to spot. Bob, who is not under consideration in the context of normal students,
-appears when we discuss normal students who are not clever. In isolation, this seems acceptable: if all the normal students
-were also clever, then we would be fine accepting the appearance of a normal, non-clever student who was not a normal student.
-However, we have explicitly ruled out this line of argument---by the second antecedent of rational monotony---as Alice is
-a normal student who is also not clever.
+Fortunately, the culprit is quite easy to spot. Bob, who is not under consideration in the context of normal students, appears
+when we discuss normal students who are not clever. In isolation, this seems acceptable: if all the normal students were
+also clever, then we would be fine accepting the appearance of a normal, non-clever student who was not a normal student.
+However, we have explicitly ruled out this line of argument---by the second antecedent of rational monotony---as Alice
+is a normal student who is also not clever.
 
 In order to ensure rational monotony, it is required that the preference relation commit to Alice being preferred to Bob;
-more generally, all normal students should be explicitly preferred to non-normal students. This notion is formalised by the
-following property called \textit{modualarity}:
+more generally, all normal students should be explicitly preferred to non-normal students. This notion is formalised by
+the following property called \textit{modualarity}:
 
 \begin{definition}
 	\label{definition:modular-order} \index{partial-order! modular}
@@ -704,10 +705,10 @@ following property called \textit{modualarity}:
 	x$ then also $z \prec y$.
 \end{definition}
 
-One perspective on \textit{modular} partial orders is that they partition the set of states into equivalence classes of
-preference, so that all states in the same class are incomparable to one another \cite{GinsberCounterfactuals}. Then, if
-the preference relation is defined as the equivalence relation itself, such that one state is preferred to another if
-the class it belongs to is preferred to the other's, we get a modular order.
+One perspective on \textit{modular} partial orders is that they partition the set of states into equivalence classes of preference,
+so that all states in the same class are incomparable to one another \cite{GinsberCounterfactuals}. Then, if the
+preference relation is defined as the equivalence relation itself, such that one state is preferred to another if the class
+it belongs to is preferred to the other's, we get a modular order.
 
 \begin{definition}
 	\label{definition:ranked-interpretation}
@@ -715,9 +716,9 @@ the class it belongs to is preferred to the other's, we get a modular order.
 	A \emph{ranked interpretation} is a preferential interpretation $\Pin$ where the preference relation $\prec$ is \emph{modular}.
 \end{definition}
 
-A somewhat superficial result of ranked interpretations is that they admit a new representation as a stratified
-equivalence relation, depicted in \Cref{figure:ranked-interpretation-representation}. Each strata, or \textit{rank}, has
-an associated ordinal.
+A somewhat superficial result of ranked interpretations is that they admit a new representation as a stratified equivalence
+relation, depicted in \Cref{figure:ranked-interpretation-representation}. Each strata, or \textit{rank}, has an
+associated ordinal.
 
 \begin{lemma}
 	\label{lemma:modular-ranking-function}
@@ -743,10 +744,10 @@ an associated ordinal.
 	\label{figure:ranked-interpretation-representation}
 \end{figure}
 
-A second, less superficial, departure is that \Cref{lemma:states-preferential} does not hold in the context of ranked interpretations
-and rational consequence relations. This follows directly from modularity, as the en pessant style arguments, discussed
-earlier, are avoided by modularity. This allows the elements which populate the ranks of a ranked interpretation to be
-valuations directly, rather than states.
+A second, less superficial, departure is that \Cref{lemma:states-preferential} does not hold in the context of ranked
+interpretations and rational consequence relations. This follows directly from modularity, as the en pessant style
+arguments, discussed earlier, are avoided by modularity. This allows the elements which populate the ranks of a ranked interpretation
+to be valuations directly, rather than states.
 
 \begin{definition}
 	\label{definition:ranked-interpretation-real}

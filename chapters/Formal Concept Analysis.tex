@@ -33,15 +33,16 @@ underlying structural relationship that exists between elements in this universe
 
 We consider the set of objects $G$ (from the German \textit{Gegenstände}) as the extensional dimension of the context, whereas
 the set of attributes $M$ (from the German \textit{Merkmale}) represents the intensional dimension. However, the
-distinction between the extensional and intensional dimensions of the context is largely a matter of convention, or a means of improving intuition when one is first introduced to FCA. There is no strict requirement around what these sets are made up of, or
-even that they be distinct, and so it is perfectly acceptable to have a context where the objects and attributes are the
-same set; for example, the context $(\mathbb{N}, \mathbb{N}, \texttt{divides })$ which describes the division
-relationship between natural numbers.
+distinction between the extensional and intensional dimensions of the context is largely a matter of convention, or a means
+of improving intuition when one is first introduced to FCA. There is no strict requirement around what these sets are
+made up of, or even that they be distinct, and so it is perfectly acceptable to have a context where the objects and
+attributes are the same set; for example, the context $(\mathbb{N}, \mathbb{N}, \texttt{divides })$ which describes the
+division relationship between natural numbers.
 
 It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is
 interpreted as the object satisfying the respective attribute, FCA is concerned only with \textit{positive} information.
-The absence of an object-attribute pair from the relation is not usually interpreted to mean that the object has the negation of the attribute.
-We will discuss, in more depth, the rather troubling matter of negation and negative attributes in
+The absence of an object-attribute pair from the relation is not usually interpreted to mean that the object has the negation
+of the attribute. We will discuss, in more depth, the rather troubling matter of negation and negative attributes in
 \Cref{section:attribute-logic}.
 
 When the cardinality of $G$ and $M$ is small, contexts may be represented as a cross-table such as in \Cref{context:formal-context-group-structures}.
@@ -468,7 +469,10 @@ $(A_{0},B_{0}) \leq (A_{1},B_{1})$. When considering the set of concepts $\BGMI$
 the resulting structure is the same concept lattice $\CLGMI$ from before. As an illustration, consider the two selected
 concepts in \Cref{figure:concept-lattice-group-likes}.
 
-\textcolor{red}{I think it is worth mentioning some discussion on how, as a result of the basic theorem, formal concept analysis is just a restructuring of lattice theory. I.e., it makes work on complete lattices more accessible. Worthwhile in terms of motivations behind formal concept analysis. Restructuring also relates to attribute logic, so this is a good place to do it. }
+\textcolor{red}{I think it is worth mentioning some discussion on how, as a result of the basic theorem, formal concept
+analysis is just a restructuring of lattice theory. I.e., it makes work on complete lattices more accessible. Worthwhile
+in terms of motivations behind formal concept analysis. Restructuring also relates to attribute logic, so this is a good
+place to do it. }
 % \subsection{Weaker Concepts}
 % \label{subsection:weaker-concepts} \textcolor{red}{I was going to introduce existing ideas in FCA about ``protoconcepts''; but I think maybe
 % this should be done right before we discuss typical concepts. }
@@ -476,24 +480,25 @@ concepts in \Cref{figure:concept-lattice-group-likes}.
 \section{Attribute Logic}
 \label{section:attribute-logic}
 
-This section explores the \textit{attribute logic(s)} \cite{ganter1999contextual,ganter2025language} which provide a contextual
-version of the Boolean logic of signs and classes. The necessary limit, referred to as the \textit{universe}, that Boole
-imposes on one's consideration is characterised by the formal contexts discussed in prior sections, interpreting the
-attributes as \textit{signs}. The extent of some attribute $m$ may then be interpreted as the \textit{class} \cite{Wille2000}.
+This section explores the \textit{attribute logic(s)} \cite{ganter1999contextual,ganter2025language} which provide a
+contextual version of the Boolean logic of signs and classes. The necessary limit, referred to as the \textit{universe},
+that Boole imposes on one's consideration is characterised by the formal contexts discussed in prior sections, interpreting
+the attributes as \textit{signs}. The extent of some attribute $m$ may then be interpreted as the \textit{class}
+\cite{Wille2000}.
 
-The purpose of attribute logic is to investigate the relationships between the attributes of a formal context. On the
-surface, much of the machinery of attribute logic has been discussed in mathematical logic, and in light of
-\Cref{section:propositional-logic} may be familiar to the reader. It is better to resist the impulse to regard what we are
-doing here as propositional logic by another name and, instead of the truth of propositions, to think of the meaning of attributes
-and the objects they describe \cite{ganter2025language}.
+The purpose of attribute logic is to investigate the relationships between the attributes of a formal context. On the surface,
+much of the machinery of attribute logic has been discussed in mathematical logic, and in light of \Cref{section:propositional-logic}
+may be familiar to the reader. It is better to resist the impulse to regard what we are doing here as propositional
+logic by another name and, instead of the truth of propositions, to think of the meaning of attributes and the objects
+they describe \cite{ganter2025language}.
 
 \subsection{Compound Attributes}
 \label{subsection:compound-attributes}
 
-The first point is to describe the process by which attributes may construct (contextual) logical expressions. These constructs
-are called \textit{compound attributes}. In harmony with the notational choices we made in the discussion on propositional
-logic, we denote ``normal'' attributes with lower case letters in the Latin alphabet, and compound attributes with lower
-case Greek letters.
+The first point is to describe the process by which attributes may construct (contextual) logical expressions. These
+constructs are called \textit{compound attributes}. In harmony with the notational choices we made in the discussion on
+propositional logic, we denote ``normal'' attributes with lower case letters in the Latin alphabet, and compound
+attributes with lower case Greek letters.
 
 \begin{definition}
 	\label{definition:compound-attributes} \index{attribute!compound}
@@ -531,15 +536,16 @@ their extension, relative to a formal context.
 	in the extension of $\varphi$ and we say $g$ \emph{satisfies} $\varphi$, otherwise $g \nvDash \varphi$.
 \end{definition}
 
-Other kinds of compound attributes which express useful intution, in particular the disjunction of compound attributes, have
-an equivalent construction using only \Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes,
-then the disjunction of its elements $\bigvee \Gamma$ then its' extension $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$
-is the union of all extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge
-\Gamma$.
+Other kinds of compound attributes which express useful intution, in particular the disjunction of compound attributes,
+have an equivalent construction using only \Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes,
+then the disjunction of its elements $\bigvee \Gamma$ then its' extension $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$ is
+the union of all extensions of compound attributes in the set. Such a compound attribute is equivalent to
+$\neg \bigwedge \Gamma$.
 
-The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion on equivalence
-in attribute logic. The kind of equivalence we have spoken of is more aptly called \textit{global equivalence}. As the
-name suggests, the equivalence is not a local property of the formal context which gives semantics to compound attributes.
+The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion on
+equivalence in attribute logic. The kind of equivalence we have spoken of is more aptly called \textit{global
+equivalence}. As the name suggests, the equivalence is not a local property of the formal context which gives semantics
+to compound attributes.
 
 \begin{definition}
 	\label{definition:equivalence-compound-attributes}
@@ -573,15 +579,15 @@ name suggests, the equivalence is not a local property of the formal context whi
 	that it is globally equivalent to the attribute \texttt{violent}.
 \end{example}
 
-A somewhat blunt approach to determining if two compound attributes, over a set $M$ of attributes, are globally equivalent
-is to test for extensional equivalence in the formal context $(\pset{M}, M, \ni)$, such a context is called the \textit{test
-context} over $M$.
+A somewhat blunt approach to determining if two compound attributes, over a set $M$ of attributes, are globally
+equivalent is to test for extensional equivalence in the formal context $(\pset{M}, M, \ni)$, such a context is called the
+\textit{test context} over $M$.
 
 \subsection{Implication Logic}
 \label{subsection:implication-logic}
 
-It is often enough to study a restriction of attribute logic, which limits the expressivity in a way that is analogous to
-propositional Horn logic. Much of the interest in this restriction has to do with FCA-style \textit{implications}:
+It is often enough to study a restriction of attribute logic, which limits the expressivity in a way that is analogous
+to propositional Horn logic. Much of the interest in this restriction has to do with FCA-style \textit{implications}:
 
 \begin{definition}
 	\label{definition:implication}
@@ -609,8 +615,8 @@ there is an obvious analogue between valuations as discussed in propositional lo
 	$\context \vDash A \rightarrow B$. A context respects a set of implications in the same way as before.
 \end{definition}
 
-The definition for when a context respects an implication admits a considerably more concise representation; it is equivalent
-to the expression that $A^{\downarrow}\subseteq B^{\downarrow}$, or that \say{All those objects satisfying (all) attributes in $A$ also satisfy (all) attributes in $B$.}
+The definition for when a context respects an implication admits a considerably more concise representation; it is
+equivalent to the expression that $A^{\downarrow}\subseteq B^{\downarrow}$, or that \say{All those objects satisfying (all) attributes in $A$ also satisfy (all) attributes in $B$.}
 Recalling \Cref{corollary:derivation-closure-systems}, which asserts that both $A^{\downarrow}$ and $B^{\downarrow}$ are
 concept extents, we have the following:
 
@@ -622,8 +628,8 @@ concept extents, we have the following:
 	$(A^{\downarrow}, A^{\downarrow \uparrow}) \leq (B^{\downarrow}, B^{\downarrow \uparrow})$ holds.
 \end{proposition}
 
-\Cref{proposition:implication-concepts} suggests that the concept lattice may be used to determine whether an
-implication holds in its' respective context.
+\Cref{proposition:implication-concepts} suggests that the concept lattice may be used to determine whether an implication
+holds in its' respective context.
 
 \begin{example}
 	The implication $\{\texttt{traumatized}\}\rightarrow \{\texttt{human,soldier}\}$ holds as the concept derived from the
@@ -665,9 +671,75 @@ implication holds in its' respective context.
 	\end{figure}
 \end{example}
 
+\subsubsection{Implication Inference}
+\label{subsubsection:implication-inference}
+
+From a set of implications we may determine which other implications could be made. This was the subject of \Cref{subsection:logical-consequence},
+and many of the ideas from there are recontextualised here.
+
+\begin{definition}
+	\label{definition:implication-inference}
+
+	An implication $A\rightarrow B$ \emph{logically follows} from a set $\mathcal{T}$ of implications over $M$ if and only
+	if each attribute subset $C \subseteq M$ that respects $\mathcal{T}$ also respects $A \rightarrow B$, then we write
+	$\mathcal{T}\vDash A \rightarrow B$. We say that $\mathcal{T}$ is \emph{closed}, or an \emph{implication theory}, when
+	it contains all implications that are a logical consequence of $\mathcal{T}$.
+
+	$\mathcal{T}$ is said to be \emph{complete} with respect to a context $\GMI$ when every implication respected by the
+	context logically follows from $\mathcal{T}$.
+\end{definition}
+
+For a more familiar treatment of this kind consequence, consider the \textit{models} of an implication to be $\mathsf{Mod}
+(i) \coloneqq \{X \subseteq M \mid X \vDash i\}$. Then, the implication $A\rightarrow B$ logically follows from the set $\mathcal{T}$
+of implications when $\mathsf{Mod}(\mathcal{T}) \subseteq \mathsf{Mod}(A\rightarrow B)$. It is then obvious that this is
+merely a Tarskian definition of consequence, and behaves in accordance with the expected properties.
+
+A counterpart to the semantic notion of consequence is defined in terms of the Armstrong axioms \cite{armstrong1974dependency}.
+
+\begin{definition}
+	\label{definition:armstrong-axioms} The \emph{Armstrong axioms} are defined as inference rules of the form:
+	\begin{align}
+		\inferLeftNoLabel{}{A \rightarrow A}, \qquad \inferLeftNoLabel{A \rightarrow B}{A \cup C \rightarrow B}, \qquad \inferLeftNoLabel{A \rightarrow B, \quad B \cup C \rightarrow D}{A \cup C \rightarrow D}
+	\end{align}
+	where $A,B,C,D \subseteq M$.
+\end{definition}
+
+The interpretation should be that, if the instantiation of an Armstrong axiom has its premise contained in a set $\mathcal{T}$
+of implications, then the conclusion of the axiom is a logical consequence of $\mathcal{T}$. The next proposition relates
+the semantic notion of a closed set of implications to the syntactic setting.
+
+\begin{proposition}
+	\label{proposition:armstrong-closed}
+
+	A set of implications $\mathcal{T}$ over $M$ is \emph{closed} (in the sense of \Cref{definition:implication-inference})
+	if and only if it is closed under application of the Armstrong axioms.
+\end{proposition}
+
+
+
+\begin{algo}
+	{CLOSURE}
+
+	\label{algorithm:Closure}
+
+	\Require An attribute set $X\subseteq M$ and a set $\mathcal{T}$ of implications over $M$.
+
+	\Ensure The closure of $X$ with respect to $\mathcal{T}$.
+
+	\Repeat \State $stable \gets \text{true}$ \ForAll{$A \to B \in \mathcal{T}$} \If{$A \subseteq X$} \State $X \gets X \cup
+	B$ \State $stable \gets \text{false}$ \State $\mathcal{T}\gets \mathcal{T}\setminus \{A \to B\}$ \EndIf \EndFor \Until{$stable$}
+	\State \Return $X$
+\end{algo}
+
+\nameref{algorithm:Closure}
+
+\subsection{The Canonical Basis}
+\label{subsection:the-canonical-basis}
+
 \textcolor{red}{The rest of this subsection is quite straightforward, I will do it later. Remaining things include: semantic
 consequence, armstrong axioms, closure system of implications => context, DQ-basis}
 
+\clearpage
 \subsection{Clause Logic}
 \label{subsection:clause-logic}
 
@@ -704,7 +776,6 @@ A disjoint clause $(A,S)$ is called \textit{full} when also $A \cup S$ is the en
 	globally equivalent to $\varphi$
 \end{proposition}
 
-\clearpage
 \begin{definition}
 	\label{definition:compound-attributes-2} Let $M$ be a set of attributes, then the language of (finite) compound
 	attributes is inductively as

@@ -715,7 +715,31 @@ the semantic notion of a closed set of implications to the syntactic setting.
 	if and only if it is closed under application of the Armstrong axioms.
 \end{proposition}
 
+Echoing the earlier discussion on proofs within a Hilbert system, repeated application of instantiated Armstrong axioms is
+infrequently a reasonable approach to inference. A far more elegant one is to determine whether the conclusion of an
+implication is contained within the closure, with respect to a set of implications, of the premise.
 
+\begin{definition}
+	\label{definition:closure-operator-implications}
+
+	Let $\mathcal{T}$ be a set of implications over $M$. The closure of a set $X \subseteq M$ with respect to $\mathcal{T}$,
+	denoted $\text{cl}_{\mathcal{T}}(X)$, is defined as:
+	\[
+		\mathsf{cl}_{\mathcal{T}}(X) = \bigcap \; \{W \mid X \subseteq W \subseteq M \tand W \vDash \mathcal{T}\}
+	\]
+\end{definition}
+
+An algorithmic description of this closure operator detailed by the \nameref{algorithm:Closure} procedure.
+
+\begin{proposition}
+	\label{proposition:} An implication $A \rightarrow B$ is a logical consequence of a set of implications $\mathcal{T}$ over
+	$M$ if and only if $B \subseteq \mathsf{cl}_{\mathcal{T}}(A)$.
+\end{proposition}
+
+That is, to determine whether $\mathcal{T}\vDash A \rightarrow B$, it needs to be shown that
+\[
+	B \subseteq \mathcal{T}(A).
+\]
 
 \begin{algo}
 	{CLOSURE}
@@ -731,6 +755,10 @@ the semantic notion of a closed set of implications to the syntactic setting.
 	\State \Return $X$
 \end{algo}
 
+\begin{corollary}
+	\label{corollary:closure-system-intents} wefawef
+\end{corollary}
+
 \nameref{algorithm:Closure}
 
 \subsection{The Canonical Basis}
@@ -743,8 +771,8 @@ consequence, armstrong axioms, closure system of implications => context, DQ-bas
 \subsection{Clause Logic}
 \label{subsection:clause-logic}
 
-The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may
-represent them, up to global equivalence, as \textit{clauses}:
+The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may represent
+them, up to global equivalence, as \textit{clauses}:
 \begin{definition}
 	\label{definition:clauses}
 
@@ -752,14 +780,14 @@ represent them, up to global equivalence, as \textit{clauses}:
 	attribute $\bigvee S \cup \{\neg a \mid a \in A\}$.
 \end{definition}
 
-The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in $S$
-or fail to satisfy at least one attribute in $A$. Formally,
+The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in
+$S$ or fail to satisfy at least one attribute in $A$. Formally,
 \[
 	(A,S)^{\vDash}= \{ g \in G \mid \exists s \in S,\; g\vDash s \} \;\cup\; \{ g \in G \mid \exists a \in A,\; g \nvDash a
 	\}
 \]
-Clauses are called \textit{disjoint} when $A \cap S$ is the emptyset. The following definition is helpful to describe the
-set of all clauses which are satisfied by a context:
+Clauses are called \textit{disjoint} when $A \cap S$ is the emptyset. The following definition is helpful to describe
+the set of all clauses which are satisfied by a context:
 %
 \begin{definition}
 	\label{definition:all-extensional}

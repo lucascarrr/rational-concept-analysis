@@ -236,6 +236,12 @@
 % ------------------------------------------------------------------
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{refcount}
+
+\newcommand{\linelabel}[1]{%
+  \refstepcounter{ALC@line}\label{#1}%
+  \addtocounter{ALC@line}{-1}%
+}
 
 % Customise algorithmic keywords
 \algrenewcommand\algorithmicrequire{\textbf{Input:}}
@@ -265,3 +271,4 @@
 \newcommand{\Lang}{\mathcal{L}_+}
 \newcommand{\Cn}[1]{\mathcal{C}n_{#1}}
 \newcommand{\Ca}[1]{C(#1)}
+\newcommand{\cl}[2]{\mathsf{cl}_{#1}({#2})}

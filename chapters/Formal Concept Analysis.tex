@@ -705,8 +705,9 @@ A counterpart to the semantic notion of consequence is defined in terms of the A
 \end{definition}
 
 The interpretation should be that, if the instantiation of an Armstrong axiom has its premise contained in a set $\mathcal{T}$
-of implications, then the conclusion of the axiom is a logical consequence of $\mathcal{T}$. The next proposition relates
-the semantic notion of a closed set of implications to the syntactic setting.
+of implications, then the conclusion of the axiom is a logical consequence of $\mathcal{T}$. To show that an implication
+is a logical consequence of some set, it can be shown that there is a sequence to that implication using Armstrong rules.
+The next proposition relates the semantic notion of a closed set of implications to the syntactic setting.
 
 \begin{proposition}
 	\label{proposition:armstrong-closed}
@@ -720,49 +721,155 @@ infrequently a reasonable approach to inference. A far more elegant one is to de
 implication is contained within the closure, with respect to a set of implications, of the premise.
 
 \begin{definition}
-	\label{definition:closure-operator-implications}
-
-	Let $\mathcal{T}$ be a set of implications over $M$. The closure of a set $X \subseteq M$ with respect to $\mathcal{T}$,
-	denoted $\text{cl}_{\mathcal{T}}(X)$, is defined as:
+	\label{definition:closure-operator-implications} Let $\mathcal{T}$ be a set of implications over a set of attributes $M$.
+	For $X \subseteq M$, define the set:
 	\[
-		\mathsf{cl}_{\mathcal{T}}(X) = \bigcap \; \{W \mid X \subseteq W \subseteq M \tand W \vDash \mathcal{T}\}
+		X^{\mathcal{T}}= X \cup \bigcup \{\, B \mid (A \rightarrow B) \in \mathcal{T}, \; A \subseteq X \,\},
 	\]
+	which extends $X$ by adding all consequents of implications in $\mathcal{T}$ whose antecedents are contained within
+	$X$. The sequence $X^{\mathcal{T}}, X^{\mathcal{T} \mathcal{T}}, \ldots$ will reach a fixed-point $\cl{\mathcal{T}}{X}\coloneqq
+	X^{\mathcal{T} \ldots \mathcal{T}}$ where $\cl{\mathcal{T}}{X}= \cl{\mathcal{T}}{X}^{\mathcal{T}}$. This fixed point
+	defines the \emph{closure of $X$ under $\mathcal{T}$}. Equivalently, for the infinite case, we have:
+	\[
+		\cl{\mathcal{T}}{X}= \bigcap \{\, W \mid X \subseteq W \subseteq M, \; W \vDash \mathcal{T}\,\},
+	\]
+	the intersection of all models $W$ of $\mathcal{T}$ that contain $X$.
 \end{definition}
 
-An algorithmic description of this closure operator detailed by the \nameref{algorithm:Closure} procedure.
+Closing an attribute set under implications provides an elegant way of determining logical consequence:
 
 \begin{proposition}
 	\label{proposition:} An implication $A \rightarrow B$ is a logical consequence of a set of implications $\mathcal{T}$ over
-	$M$ if and only if $B \subseteq \mathsf{cl}_{\mathcal{T}}(A)$.
+	$M$ if and only if $B \subseteq \cl{\mathcal{T}}{A}$.
 \end{proposition}
 
-That is, to determine whether $\mathcal{T}\vDash A \rightarrow B$, it needs to be shown that
-\[
-	B \subseteq \mathcal{T}(A).
-\]
+If it is surprising that the condition under which an implication is a logical consequence of a given set of
+implications has such a concise representation, then it may be even more surprising to learn that the inference of implications
+may be done in linear time.
+
+The \nameref{algorithm:LinClosure} \cite{maier1983chapter4}, slightly modified by \cite{ganter2016conceptual}, describes
+a procedure which finds the closure of an attribute set with respect to a set of implications. The first block of the algorithm,
+lines \ref{line:1}--\ref{line:8}, determines the size of the antecedent for each implication, the respective implication
+is then associated with each individual attribute in the antecedent. All implications with an empty premise are
+vacuously satisfied, and so their consequents are added to $X$.
+
+The result is a tally, for each implication, of how many attributes are required to satisfy the antecedent; and, for each
+attribute $m \in M$ a list of implications for which $m$ appears in the antecdent. All attributes from $X$, alongside the
+consequents of vacuously satisfied implications, are stored in \textit{update}.
 
 \begin{algo}
-	{CLOSURE}
+	{\textsc{LinClosure}}
 
-	\label{algorithm:Closure}
+	\label{algorithm:LinClosure}
 
 	\Require An attribute set $X\subseteq M$ and a set $\mathcal{T}$ of implications over $M$.
 
 	\Ensure The closure of $X$ with respect to $\mathcal{T}$.
 
-	\Repeat \State $stable \gets \text{true}$ \ForAll{$A \to B \in \mathcal{T}$} \If{$A \subseteq X$} \State $X \gets X \cup
-	B$ \State $stable \gets \text{false}$ \State $\mathcal{T}\gets \mathcal{T}\setminus \{A \to B\}$ \EndIf \EndFor \Until{$stable$}
+	\ForAll {$A\rightarrow B \in \mathcal{T}$} \label{line:1}
+
+	\State $\textit{count}[A \rightarrow B] \coloneqq \vert A \vert$
+
+	\If {$\vert A \vert = 0$}
+
+	\State $X \coloneqq X \cup B$
+
+	\EndIf
+
+	\ForAll{ $m \in A$ }
+
+	\State add $A \rightarrow B$ to \textit{list}$[a]$
+
+	\EndFor
+
+	\EndFor \label{line:8}
+
+	\State \textit{update} $\coloneqq X$
+
+	\While{$\textit{update}\neq \emptyset$} \label{line:11}
+
+	\State Choose $m \in \textit{update}$
+
+	\State $\textit{update}\coloneqq \textit{update}\setminus \{m\}$
+
+	\ForAll {$A\rightarrow B \in \textit{list}[m]$}
+
+	\State $\textit{count}[A \rightarrow B] \coloneqq \textit{count}[A \rightarrow B] - 1$
+
+	\EndFor
+
+	\If {$\textit{count}[A \rightarrow B] = 0$}
+
+	\State $\textit{add}\coloneqq B \setminus X$
+
+	\State $X \coloneqq X \cup \textit{add}$
+
+	\State $\textit{update}\coloneqq \textit{update}\cup \textit{add}$
+
+	\EndIf
+
+	\EndWhile \label{line:22}
+
 	\State \Return $X$
 \end{algo}
+
+The second block, lines \ref{line:11}--\ref{line:22}, chooses an attribute $m \in \textit{update}$ and for each of its'
+associated implications, given by $\textit{list}[m]$, decrements the counter associated with the implications antecedent.
+If an implication's counter reaches zero, the consequent (after removing any attributes which have already been dealt with,
+or will be dealt with in future) is added to \textit{update}. The process repeats until \textit{update} is empty, afterwhich
+the closed set is returned.
+
+\begin{proposition}
+	\label{proposition:complexity-lin-closure}
+
+	The complexity of \nameref{algorithm:LinClosure} is $O(\vert \mathcal{T}\vert)$, and so the procedure is linear on the
+	size of the implication set.
+\end{proposition}
+
+% \begin{algo}
+% 	{CLOSURE} \label{algorithm:Closure}
+
+% 	\Require An attribute set $X\subseteq M$ and a set $\mathcal{T}$ of implications over $M$.
+
+% 	\Ensure The closure of $X$ with respect to $\mathcal{T}$.
+
+% 	\Repeat \State $stable \coloneqq \text{true}$ \ForAll{$A \to B \in \mathcal{T}$} \If{$A \subseteq X$} \State
+% 	$X \coloneqq X \cup B$ \State $stable \coloneqq \text{false}$ \State
+% 	$\mathcal{T}\coloneqq \mathcal{T}\setminus \{A \to B\}$ \EndIf \EndFor \Until{$stable$} \State \Return $X$
+% \end{algo}
 
 \begin{corollary}
 	\label{corollary:closure-system-intents} wefawef
 \end{corollary}
 
-\nameref{algorithm:Closure}
-
 \subsection{The Canonical Basis}
 \label{subsection:the-canonical-basis}
+
+\begin{definition}
+	\label{definition:implication-basis} If $\mathcal{T}$ is a set of implications then $\mathcal{B}$ is an \emph{implication
+	basis} of $\mathcal{T}$ if and only if
+	\begin{enumerate}
+		\item $\mathcal{B}$ is sound with respect to $\mathcal{T}$ (if $\mathcal{B}\vDash A \rightarrow B$ then
+			$\mathcal{T}\vDash A \rightarrow B$)
+
+		\item $\mathcal{B}$ is complete with respect to $\mathcal{T}$ (if $\mathcal{T}\vDash A \rightarrow B$ then
+			$\mathcal{B}\vDash A \rightarrow B$)
+
+		\item $\mathcal{B}$ is non-redundant
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	\label{definition:pseudo-closed}
+
+	A set $X\subseteq M$ is \emph{pseudo-closed} if it is not closed, and each proper subset of $X$ is itself pseudo
+	closed. Formally,
+	\begin{enumerate}
+		\item $X \neq X^{\downarrow \uparrow}$
+
+		\item $Y \subset X$ is pseudo-closed for all $Y \subset X$
+	\end{enumerate}
+\end{definition}
 
 \textcolor{red}{The rest of this subsection is quite straightforward, I will do it later. Remaining things include: semantic
 consequence, armstrong axioms, closure system of implications => context, DQ-basis}
@@ -771,8 +878,8 @@ consequence, armstrong axioms, closure system of implications => context, DQ-bas
 \subsection{Clause Logic}
 \label{subsection:clause-logic}
 
-The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may represent
-them, up to global equivalence, as \textit{clauses}:
+The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may
+represent them, up to global equivalence, as \textit{clauses}:
 \begin{definition}
 	\label{definition:clauses}
 
@@ -780,14 +887,14 @@ them, up to global equivalence, as \textit{clauses}:
 	attribute $\bigvee S \cup \{\neg a \mid a \in A\}$.
 \end{definition}
 
-The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in
-$S$ or fail to satisfy at least one attribute in $A$. Formally,
+The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in $S$
+or fail to satisfy at least one attribute in $A$. Formally,
 \[
 	(A,S)^{\vDash}= \{ g \in G \mid \exists s \in S,\; g\vDash s \} \;\cup\; \{ g \in G \mid \exists a \in A,\; g \nvDash a
 	\}
 \]
-Clauses are called \textit{disjoint} when $A \cap S$ is the emptyset. The following definition is helpful to describe
-the set of all clauses which are satisfied by a context:
+Clauses are called \textit{disjoint} when $A \cap S$ is the emptyset. The following definition is helpful to describe the
+set of all clauses which are satisfied by a context:
 %
 \begin{definition}
 	\label{definition:all-extensional}

@@ -32,11 +32,11 @@
 % ------------------------------------------------------------------
 \usepackage{geometry}
 \geometry{
- a4paper,
- left=1in,
- right=1in,
- top=1in,
- headsep=0.25in,
+	a4paper,
+	left=1in,
+	right=1in,
+	top=1in,
+	headsep=0.25in,
 }
 \usepackage{setspace}
 \setstretch{1.25}            % line spacing
@@ -48,8 +48,8 @@
 
 % Example: make section headings slightly smaller
 \titleformat{\section}
-  {\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
-  {\thesection}{1em}{}
+{\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
+{\thesection}{1em}{}
 
 % ------------------------------------------------------------------
 % Headers and footers
@@ -65,9 +65,9 @@
 \fancyhead[OR]{\textit{\small Chapter \leftmark}}     % chapter name (odd, right)
 \renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{        % plain pages (e.g., chapter openings)
-  \fancyhf{}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0pt}
+	\fancyhf{}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
 }
 
 % ------------------------------------------------------------------
@@ -156,24 +156,24 @@
 \def\leftcite{\@up[}
 \def\rightcite{\@up]}
 \def\cite{\def\citeauthoryear##1##2{\def\@thisauthor{##1}%
-             \ifx \@lastauthor \@thisauthor \relax \else##1, \fi ##2}\@icite}
+		\ifx \@lastauthor \@thisauthor \relax \else##1, \fi ##2}\@icite}
 \def\shortcite{\def\citeauthoryear##1##2{##2}\@icite}
 \def\citeauthor{\def\citeauthoryear##1##2{##1}\@nbcite}
 \def\citeyear{\def\citeauthoryear##1##2{##2}\@nbcite}
 \def\@icite{\leavevmode\def\@citeseppen{-1000}%
- \def\@cite##1##2{\leftcite\nobreak\hskip 0in{##1\if@tempswa , ##2\fi}\rightcite}%
- \@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
+\def\@cite##1##2{\leftcite\nobreak\hskip 0in{##1\if@tempswa , ##2\fi}\rightcite}%
+\@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
 \def\@nbcite{\leavevmode\def\@citeseppen{1000}%
- \def\@cite##1##2{{##1\if@tempswa , ##2\fi}}%
- \@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
+\def\@cite##1##2{{##1\if@tempswa , ##2\fi}}%
+\@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\@citex[]}}
 \def\@citex[#1]#2{%
-  \def\@lastauthor{}\def\@citea{}%
-  \@cite{\@for\@citeb:=#2\do
-    {\@citea\def\@citea{;\penalty\@citeseppen\ }%
-     \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
-     \@ifundefined{b@\@citeb}{\def\@thisauthor{}{\bf ?}\@warning
-       {Citation `\@citeb' on page \thepage \space undefined}}%
-     {\csname b@\@citeb\endcsname}\let\@lastauthor\@thisauthor}}{#1}}
+	\def\@lastauthor{}\def\@citea{}%
+	\@cite{\@for\@citeb:=#2\do
+		{\@citea\def\@citea{;\penalty\@citeseppen\ }%
+			\if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
+			\@ifundefined{b@\@citeb}{\def\@thisauthor{}{\bf ?}\@warning
+				{Citation `\@citeb' on page \thepage \space undefined}}%
+			{\csname b@\@citeb\endcsname}\let\@lastauthor\@thisauthor}}{#1}}
 \def\@biblabel#1{\def\citeauthoryear##1##2{##1, ##2}\@up{[}#1\@up{]}\hfill}
 \def\@up#1{\leavevmode\raise.2ex\hbox{#1}}
 \makeatother
@@ -200,35 +200,35 @@
 \usepackage{proof}
 \newcounter{proofHstep}
 \newenvironment{proofH}[1][Proof]{%
-  \par\smallskip\noindent\textit{#1.\\}  % default heading “Proof.”
-  \setcounter{proofHstep}{0}%
-  \ignorespaces
+	\par\smallskip\noindent\textit{#1.\\}  % default heading “Proof.”
+	\setcounter{proofHstep}{0}%
+	\ignorespaces
 }{%
-  \par\smallskip\qed
+	\par\smallskip\qed
 }
 \newcommand{\Hstep}[2][]{%
-  \refstepcounter{proofHstep}%
-  \noindent\makebox[2.1em][r]{\bfseries\arabic{proofHstep}.}\,
-  $#2$%
-  \ifstrempty{#1}{}{%
-    \hfill(\text{#1})%
-  }%
-  \par
+	\refstepcounter{proofHstep}%
+	\noindent\makebox[2.1em][r]{\bfseries\arabic{proofHstep}.}\,
+	$#2$%
+	\ifstrempty{#1}{}{%
+		\hfill(\text{#1})%
+	}%
+	\par
 }
 \newcommand{\inferLeft}[3]{
-\text{(#1)} \quad &
-\begin{array}{c}
-#2 \\
-\hline
-#3
-\end{array}
+	\text{(#1)} \quad &
+	\begin{array}{c}
+		#2 \\
+		\hline
+		#3
+	\end{array}
 }
 \newcommand{\inferLeftNoLabel}[2]{
-\begin{array}{c}
-#1 \\
-\hline
-#2
-\end{array}
+	\begin{array}{c}
+		#1 \\
+		\hline
+		#2
+	\end{array}
 }
 
 % ------------------------------------------------------------------
@@ -239,8 +239,8 @@
 \usepackage{refcount}
 
 \newcommand{\linelabel}[1]{%
-  \refstepcounter{ALC@line}\label{#1}%
-  \addtocounter{ALC@line}{-1}%
+	\refstepcounter{ALC@line}\label{#1}%
+	\addtocounter{ALC@line}{-1}%
 }
 
 % Customise algorithmic keywords
@@ -252,11 +252,11 @@
 % Convenient wrapper: algo environment
 % Usage: \begin{algo}{Caption} ... \end{algo}
 \newenvironment{algo}[2][htbp]
-  {\begin{algorithm}[#1]
-   \caption{#2}
-   \begin{algorithmic}[1]} % numbered lines
-  {\end{algorithmic}
-   \end{algorithm}}
+{\begin{algorithm}[#1]
+		\caption{#2}
+		\begin{algorithmic}[1]} % numbered lines
+			{\end{algorithmic}
+	\end{algorithm}}
 
 % ------------------------------------------------------------------
 % Commonly used symbols

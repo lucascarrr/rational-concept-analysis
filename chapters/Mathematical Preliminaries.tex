@@ -2,25 +2,24 @@
 \label{chapter:mathematical-preliminaries}
 
 The ultimate interest of this dissertation is to introduce a style of non-monotonic reasoning, originally situated in propositional
-logic, into Formal Concept Analysis. We use the first chapter to recall some of the more foundational ideas relating to more
-developed topics occurring further on; as well as taking this opportunity to clarify the notation deployed throughout
-the rest of this work.
+logic, into Formal Concept Analysis. We use the first chapter to recall some of the more foundational ideas relating to topics
+which will be developed further on. In addition, we use this chapter as an opportunity to clarify the notation which will
+be deployed throughout the remainder of this work.
 
 This chapter begins by discussing notions in \textit{order} and \textit{lattice theory}, then moving onto \textit{closures}
-and \textit{Galois connections}, and concluding with a brief introduction to \textit{propositional logic} and some more general
-notions relating to logic.
+and \textit{Galois connections}, and concluding with a brief introduction to \textit{propositional logic} and some more
+general notions relating to logic.
 
 \section{Order and Lattice Theory}
 \label{section:order-theory}
 
-In substantially different ways, the two areas on which this work is based---non-monotonic reasoning via preferential semantics,
-and Formal Concept Analysis---both depend on foundational notions from the theory of mathematical orders. We recount some
-of the necessary, and unnecessary but interesting, ideas in the following subsections.
+In substantially different ways, the two areas on which this work is based---non-monotonic reasoning via preferential
+semantics, and Formal Concept Analysis---both depend on notions from the theory of mathematical orders. We recount some
+of the necessary, and unnecessary but interesting, ideas in the following subsections. The proceeding follow largely from
+the treatments by \cite{davey2002introduction} and \cite{bergman2015invitation}.
 
 \subsection{Orders}
 \label{subsection:orders}
-
-The proceeding follow largely from \cite{davey2002introduction} and \cite{bergman2015invitation}.
 
 A \textit{binary relation} \index{binary relation} $R$ over the sets $X$ and $Y$ is a set of ordered pairs $\op{x,y}$ where
 $x \in X$ and $y \in Y$. We may choose to express that $\op{x,y}\in R$ using infix notation and write $xRy$, which tells
@@ -32,7 +31,7 @@ such relation, which will be used in almost every section of this dissertation, 
 \begin{definition}
 	\label{definition:partial-order}
 
-	A \textit{partial-order} \index{partial-order} is a binary relation $\preceq \; \subseteq X \times X$ that satisfies the
+	A \textit{partial order} \index{partial order} is a binary relation $\preceq \; \subseteq X \times X$ that satisfies the
 	following properties:
 	\begin{align}
 		\text{(Reflexivity)}\quad  & x \preceq x                                      \\
@@ -66,9 +65,8 @@ An \textit{ordered set} is a pair $(X, \preceq)$ with $X$ being a set and $\prec
 $X$. We make notation easier, and use $\mathbf{X}$ to denote the pair. We may reference the order relation associated with
 $\mathbf{X}$ by writing $\preceq_{X}$ in settings where there is ambiguity. If $\mathbf{Y}$ is a subset of $\mathbf{X}$,
 then $\mathbf{Y}$ inherits the order relation from $\mathbf{X}$; and so, for $x,y \in \mathbf{Y}$, $x \preceq_{Y}y$ if
-and only if $x \preceq_{X}y$. \index{ordered set}
-
-We can visually describe ordered sets as \textit{Hasse diagrams} \cite{Huth_Ryan_2004}. \index{Hasse diagrams}
+and only if $x \preceq_{X}y$. \index{ordered set} Ordered sets may be described visually by \textit{Hasse diagrams}
+\cite{Huth_Ryan_2004}. \index{Hasse diagrams}
 
 \begin{figure}[H]
 	\centering
@@ -110,20 +108,23 @@ We can visually describe ordered sets as \textit{Hasse diagrams} \cite{Huth_Ryan
 		\end{tikzpicture}
 		\subcaption{$\mathbf{B}$} \label{subfigure:partial-order-b}
 	\end{subfigure}%
-	\caption{Hasse diagrams of two partially ordered sets}
+	\caption{The Hasse diagrams of two partially ordered sets}
 	\label{figure:hasse-diagram}
 \end{figure}
 
-As an illustrative example, from the ordered set in \Cref{subfigure:partial-order-a} we read that $z \preceq x$, as
-there is a (strictly) upward path from $z$ to $x$. In fact, it is clear that $z \preceq w, x,y,z$, or that \say{$z$ is preferred to every other element in $\mathbf{A}$}.
+As an illustrative example, from the ordered set in \Cref{subfigure:partial-order-a} we read that $z \preceq x$, as there
+is a (strictly) upward path from $z$ to $x$. In fact, it is clear that $z \preceq w, x,y,z$, or that \say{$z$ is preferred to every other element in $\mathbf{A}$}.
 We say such an element is \textit{minimal}.
 
-More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to the ordering on its' container set if there
-exists no distinct element $y \in \mathbf{X}$ such that $y \preceq x$. Conversely, we say $x$ is \textit{maximal} if
-there exists no distinct $y \in \mathbf{X}$ where $x \preceq y$. Then $x$ is the \textit{minimum} element if
-$x \preceq y$ for all $y \in \mathbf{X}$; the dual notion of a \textit{maximum} is defined as we might expect. In the ordered
-set $\mathbf{B}$ shown in \Cref{subfigure:partial-order-b}, $\omega$ is the maximum element and the order has no minimum.
+More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to the ordering on its' container set if
+there exists no distinct element $y \in \mathbf{X}$ such that $y \preceq x$. Conversely, we say $x$ is \textit{maximal} if
+there exists no distinct $y \in \mathbf{X}$ where $x \preceq y$. Then $x$ is the \textit{minimum} element if $x \preceq y$
+for all $y \in \mathbf{X}$; the dual notion of a \textit{maximum} is defined as we might expect. In the ordered set
+$\mathbf{B}$ shown in \Cref{subfigure:partial-order-b}, $\omega$ is the maximum element and the order has no minimum.
 \index{maximum} \index{minimum} \index{maximal} \index{minimal}
+
+The following definition captures how we might describe certain mappings from one ordered set to another, and how these
+mappings relate to the orders of their respective sets.
 
 \begin{definition}
 	\label{definition:order-maps} \index{map!order-preserving} \index{map!isotone} \index{map!order-embedding} \index{map!order-isomorphism}
@@ -247,7 +248,7 @@ lattice---as a corollary every finite lattice is also bounded.
 			\draw (root) -- (7);
 			\draw (root) -- (C);
 		\end{tikzpicture}
-		\caption{The division lattice $(\mathbb{N}, \leq)$}
+		\caption{The Division Lattice $(\mathbb{N}, \leq)$}
 		\label{figure:complete-lattice}
 	\end{figure}
 \end{example}
@@ -255,7 +256,7 @@ lattice---as a corollary every finite lattice is also bounded.
 \subsubsection{Lattices as algebraic structures}
 \label{subsubsection:lattices-as-algebraic-structures}
 
-Lattices can also be considered from an algebraic perspective. Although, as we will soon show, the algebraic and order-theroetic
+Lattices may also be considered from an algebraic perspective. Although, as we will soon show, the algebraic and order-theroetic
 perspectives coincide, it is frequently beneficial for one's intuition to be able to switch between these two perspectives.
 
 Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the following properties
@@ -363,8 +364,8 @@ will be visited again in \Cref{chapter:formal-concept-analysis}.
 
 \subsection{Closure Systems}
 We frequently encounter collections of elements that satisfy certain properties of interest. A fundamental question that
-might arise is whether our collection includes all such elements satisfying the specified properties. jWe aliken this to
-the more formal notion of \textit{closure} and \textit{closed sets}.
+might arise is whether our collection includes all such elements satisfying the specified properties. We aliken this to
+the more formal notions of \textit{closures} and \textit{closed sets}.
 
 \begin{definition}
 	\index{closed set} \label{definition:closed-set}
@@ -408,8 +409,8 @@ From \Cref{example:power-set-lattice}, we know that under the inclusion order, t
 lattice. Then, from \Cref{definition:closure-system} it follows that a closure system on $S$ is a meet subsemilattice of
 $\pset{S}$.
 
-Apart from their nomenclature, it is not obvious how closure operators and closure systems are related, the following
-theorem shows that they are indeed \textit{cryptomorphic} \cite{CASPARD2003241}.
+Apart from their nomenclature, it is not immediately obvious how closure operators and closure systems are related, the
+following theorem shows that they are indeed \textit{cryptomorphic} \cite{CASPARD2003241}.
 
 \begin{theorem}
 	\label{theorem:relation-closure-operator-systems} If $\mathcal{C}$ is a closure system on $S$, then

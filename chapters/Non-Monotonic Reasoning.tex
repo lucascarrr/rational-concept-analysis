@@ -18,7 +18,7 @@ helpful to distinguish this subject---classical consequence---from the common co
 results which do not appear at all congruent with how a person, or otherwise intelligent agent should reason
 \cite{tarski1936consequence,kraus1990nonmonotonic}. As a demonstration of a result which may be surprising in this way,
 consider the following propositions, which state that \textit{humans experience chronological time \text{,} soldiers are
-human}, and \textit{Billy Pilgrim experiences non-chronological time}.
+	human}, and \textit{Billy Pilgrim experiences non-chronological time}.
 \begin{enumerate}
 	\item $\texttt{human}\rightarrow \texttt{chronological time}$
 
@@ -34,7 +34,7 @@ knowledge that the individual does not experience time chronologically.
 
 Such recourse is not, as it stands, possible. When we see the that the individual is a soldier, the possible worlds
 satisfying our existing knowledge are reduced to the single model: $\{\overline{b},c, h,s\}$ (where $b$: \texttt{Billy
-Pilgrim}, $c$: \texttt{chronological time}, $h$: \texttt{human}, and $s$: \texttt{soldier}). Should we later learn that the
+	Pilgrim}, $c$: \texttt{chronological time}, $h$: \texttt{human}, and $s$: \texttt{soldier}). Should we later learn that the
 individual is indeed Billy Pilgrim, the theory becomes inconsistent.
 %TODO: Add section in preliminaries about principle of explosion
 And, by the principle of explosion, discussed in \Cref{subsection:logical-consequence}, our theory now entails that the
@@ -59,9 +59,9 @@ To make the previous paragraph more formal, we remind the reader of the discussi
 A formula $\phi$ is a logical consequence of a set $\Gamma$ thereof if every model of $\Gamma$ is also a model of $\phi$.
 Put differently, there is no valuation (or, possible world) where $\Gamma$ is true and $\phi$ is false. It follows
 directly that $\phi$ remains a logical consequence of $\Gamma \cup \{\psi\}$, since $\Gamma$ is true in any world where $\Gamma
-\cup \{\psi\}$ is true. It was pointed out in \cite{shohamSemanticApproach} that we may \say{bend the rules} and restrict
+	\cup \{\psi\}$ is true. It was pointed out in \cite{shohamSemanticApproach} that we may \say{bend the rules} and restrict
 semantic consideration to a privileged subset of models deemed ``preferable''. We call these selected models the \textit{minimal
-models}---the reasons for this name should become clearer as the chapter progresses.
+	models}---the reasons for this name should become clearer as the chapter progresses.
 
 \section{Preferential Reasoning and the KLM Framework}
 \label{section:klm-framework}
@@ -93,16 +93,16 @@ relation is being referred to, and so $\twiddle_{p}$ would refer to a cumulative
 \subsection{System P}
 \label{subsection:system-P} \index{non-monotonic reasoning! system P}
 
-We begin the exposition of the KLM framework by looking at \textit{system P}. The pattern of reasoning associated with
+We will begin the exposition of the KLM framework by looking at \textit{system P}. The pattern of reasoning associated with
 this system is captured by \textit{preferential consequence relations}. \textcolor{red}{Either we need to justify the
-choice of omitting cumulative relations, or include them.}
+	choice of omitting cumulative relations, or include them.}
 
 \begin{definition}
 	\label{definition:preferential-relation}
 
 	The consequence relation $\twiddle$ is a \emph{preferential consequence relation} if and only if it satisfies the properties
 	of \emph{Reflexivity}, \emph{Left Logical Equivalence}, \emph{Right Weakening}, \emph{And}, \emph{Or}, and \emph{Cautious
-	Monotony}.
+		Monotony}.
 \end{definition}
 %
 The first axiom, \textit{Reflexivity}, is largely self justifying. It makes little sense to speak about a notion of
@@ -222,7 +222,7 @@ to make this inference.
 \label{subsubsection:preferential-interpretations}
 
 The semantics of system P, provided by Kraus, Lehmann, and Magidor \cite{kraus1990nonmonotonic}, are based on the \textit{preference
-logics} introduced by Shoham \cite{shohamSemanticApproach}. The fundamental idea is that valuations, or \textit{worlds},
+	logics} introduced by Shoham \cite{shohamSemanticApproach}. The fundamental idea is that valuations, or \textit{worlds},
 can be ordered by a \textit{preference relation} so that one world being preferred to another is a normative claim that we
 should consider deductions which hold in the preferred world---but may not in other worlds---as plausible.
 
@@ -236,7 +236,7 @@ $\phi \twiddle \psi$ is a sentence in $\Lang$ when $\phi, \psi \in \mathcal{L}$.
 the `$\twiddle$' has now shifted from an element of the metalanguage, where it refers to a kind of consequence relation,
 to an object level connective, used analogously to the classical Boolean operator `$\rightarrow$'. Certain restrictions
 on the usage of `$\twiddle$' do apply. In particular, the nesting of defeasible statements is not permitted, and so $\phi
-\twiddle (\psi \twiddle \gamma )$ is not a statement in the language $\Lang$. At times, we may wish to distinguish between
+	\twiddle (\psi \twiddle \gamma )$ is not a statement in the language $\Lang$. At times, we may wish to distinguish between
 formulae in $\Lang$ which do not use `$\twiddle$', and so we refer to these as classical, and the alternative as defeasible
 formulae.
 
@@ -255,7 +255,7 @@ a normal state of affairs. This idea is formalised as \textit{minimal states}:
 
 	Given a preferential interpretation $\Pin$ and some $\phi \in \Lang$, we write $\underline{\hat{\phi}}$ to denote the set
 	$\{s \in \hat{\phi}\mid \nexists s' \in \hat{\phi}\text{ such that }s' \prec s \}$, which is the set of \textit{preferred
-	states} that satisfy $\phi$. We may also call these the \textit{$\phi$-minimal} states.
+		states} that satisfy $\phi$. We may also call these the \textit{$\phi$-minimal} states.
 \end{definition}
 
 It is necessary to stress the distinction between states in a preferential interpretation and valuations. There is no requirement
@@ -270,7 +270,7 @@ condition (which has also been called \textit{bounded} in \cite{shohamSemanticAp
 
 	A preferential interpretation $\Pin$ is called \textit{smooth} if and only if for each $\phi \in \Lang$, and each
 	state $s \in \hat{\phi}$ satisfying $\phi$, either $s \in \underline{\hat{\phi}}$ or there exists another state $s' \in
-	\hat{\phi}$ where $s' \in \underline{\hat{\phi}}$.
+		\hat{\phi}$ where $s' \in \underline{\hat{\phi}}$.
 \end{definition}
 
 The smoothness condition is violated by preference relations which fail to satisfy transitivity, or where there are infinite
@@ -327,13 +327,13 @@ of classical formulae, only with a restricted consideration on states.
 			\draw[rounded corners=10pt, line width=0.1mm] (1,6) -- (1,3) -- (5,3) -- (5,6);
 			\node[fill=none] (human) at (0.75,5.5) [] {$\hat{h}$};
 			\draw[rounded corners=10pt, line width=0.1mm]
-				(1.5,4.5) --
-				(4.5,4.5) --
-				(4.5,2) --
-				(6,2) --
-				(6,0.5) --
-				(1.5,0.5) --
-				cycle;
+			(1.5,4.5) --
+			(4.5,4.5) --
+			(4.5,2) --
+			(6,2) --
+			(6,0.5) --
+			(1.5,0.5) --
+			cycle;
 			\node[fill=none] (time) at (1.25,2.5) [] {$\hat{c}$};
 			\draw[rounded corners=10pt, line width=0.1mm] (4,6) -- (4,4) -- (7,4) -- (7,6);
 			\node[fill=none] (s) at (7.25, 5.5) [] {$\hat{s}$};
@@ -374,7 +374,7 @@ of classical formulae, only with a restricted consideration on states.
 	\Cref{figure:preferential-interpretation} demonstrates one model of $\Delta$. It is relatively easy to verify that
 	each statement (classical and defeasible) in $\Delta$ is satisfied by the preferential interpretation. As a means of providing
 	some intuition for the preceding discussion, we remind the reader of \Cref{lemma:cut-cautious}, which says that ``If $\phi
-	\twiddle \psi$, then the plausible consequences of $\phi \land \psi$ coincide with those of just $\phi$.'' As we have a
+		\twiddle \psi$, then the plausible consequences of $\phi \land \psi$ coincide with those of just $\phi$.'' As we have a
 	model of $h \twiddle c$, the plausible consequences of $h$ and $h \land c$ should coincide. This Lemma becomes quite apparent
 	when it is recognised that the two sets $\underline{\hat{h}}$ and $\underline{\widehat{h \land c}}$ are precisely the same
 	sets.
@@ -391,7 +391,7 @@ to defeasible syntax.
 	\label{lemma:classical-to-defeasible}
 
 	If $\phi$ is a classical formula in the language $\Lang$, then it can be expressed as the defeasible conditional $\neg
-	\phi \twiddle \bot$. Then, any preferential interpretation $\pin$ is a model of $\phi$ if and only if it is a model of
+		\phi \twiddle \bot$. Then, any preferential interpretation $\pin$ is a model of $\phi$ if and only if it is a model of
 	the defeasible conditional $\neg \phi \twiddle \bot$.
 \end{lemma}
 
@@ -399,7 +399,7 @@ To explain the mechanics behind \Cref{lemma:classical-to-defeasible}, consider t
 being a model of the conditional $\neg \phi \twiddle \bot$ is equivalent to the $\neg \phi$-minimal states being a subset
 of the states which satisfy $\bot$. Of course, $\bot$ represents logical falshood, and the set of states which satisfy
 it is the emptyset. In turn, if $\pin$ is a model of $\neg \phi \twiddle \bot$, there can be no states which satisfy $\neg
-\phi$, which is equivalent to the condition that all states satisfy $\phi$. If $\phi$ is thought of as the proposition \say{All men are mortal},
+	\phi$, which is equivalent to the condition that all states satisfy $\phi$. If $\phi$ is thought of as the proposition \say{All men are mortal},
 then the defeasible counterpart reads as \say{If not all men are mortal, then it is normal to infer anything, including a contradiction}
 \cite{kraus1990nonmonotonic,lehmann1992what}.
 
@@ -412,7 +412,7 @@ where $\phi \in \Lang$ is a defeasible conditional.
 	\label{theorem:soundness-preferential}
 
 	If $\Pin$ is a preferential interpretation and $\phi, \psi \in \Lang$, then $\pin$ defines the consequence relation $\twiddle
-	_{\pin}$ given by the set $\{\phi \twiddle_{\pin}\psi \mid \pin \VDash \phi \twiddle \psi\}$, which satisfies \textit{Reflexivity},
+		_{\pin}$ given by the set $\{\phi \twiddle_{\pin}\psi \mid \pin \VDash \phi \twiddle \psi\}$, which satisfies \textit{Reflexivity},
 	\textit{Left Logical Equivalence}, \textit{Right Weakening}, \textit{Or}, and \textit{Cautious Monotony} and is thus a
 	preferential consequence relation.
 \end{theorem}
@@ -480,7 +480,7 @@ which is a model of $s\twiddle c$; that is, a distinct consequence relation.
 
 Equipped with definitions for the class of preferential relations and a representation theorem that relates these to a
 corresponding semantics in the form of preferential interpretations, it is appropriate to discuss the matter of \textit{preferential
-entailment}, or \textit{p-entailment}.
+	entailment}, or \textit{p-entailment}.
 
 \begin{definition}
 	\label{definition:p-entailment}
@@ -496,7 +496,7 @@ described in \Cref{subsection:logical-consequence}. It is ``worrying'' in the se
 and we are interested in non-monotonic entailment relations. Indeed, our fear is justified: If we consider the set of preferential
 models of a defeasible knowledge base $\Delta$, then the set of conditionals they all agree on is exactly the
 preferential closure, $\Cn{p}(\Delta)$. The addition of another conditional to our knowledge base, resulting in $\Delta \cup
-\{\phi \}$, only serves to reduce consideration to those models of $\Delta$ that also satisfy $\phi$. Within this restricted
+	\{\phi \}$, only serves to reduce consideration to those models of $\Delta$ that also satisfy $\phi$. Within this restricted
 set of models, the consensus on $\Cn{p}(\Delta )$ remains. Formally, we have:
 \begin{align}
 	\Delta \subseteq \Delta \cup \{\phi\} \quad \textit{implies}\quad \Cn{p}(\Delta) \subseteq \Cn{p}(\Delta \cup \{ \phi \})
@@ -507,8 +507,8 @@ There is room for some (justified) confusion here. After all, we have carefully 
 because they imply monotonicity, only to end up with precisely that. To clarify this, we recognise that a system can
 display non-monotonic behaviour in different areas. Indeed the entailment relation of system P---which reasons on the metalevel---is
 monotonic, while the object level expresses non-monotonic behaviour, facilitating the expression of statements like \textit{Normally
-Humans experience chronological time}, \textit{Billy Pilgrim is a Human}, \textit{Billy Pilgrim experiences non-chronological
-time}.
+	Humans experience chronological time}, \textit{Billy Pilgrim is a Human}, \textit{Billy Pilgrim experiences non-chronological
+	time}.
 
 There are arguments, in fact we make one in \textcolor{red}{chapter:defeasible-reasoning-in-fca}, which suggest that object
 level non-monotonicity is sufficient.
@@ -580,7 +580,7 @@ when the more reasonable position is to remain undecided. Paraphrasing, we are a
 \textit{Verdi}, who is believed to be Italian, and \textit{Satie} and \textit{Bizet}, who are believed to be French. If it
 were learned that Verdi and Bizet were compatriots, then it seems reasonable that the conclusion that either of them are
 French or Italian is indeterminate. What is reasonable, however, is to maintain the belief that Satie is French.\footnote{We
-will use some syntax from predicate logic, this is merely an aid to make Stalnaker's example clearer.}
+	will use some syntax from predicate logic, this is merely an aid to make Stalnaker's example clearer.}
 \begin{align}
 	\texttt{Compatriots(Bizet, Verdi)}\twiddle \texttt{French(Satie)}
 \end{align}
@@ -619,7 +619,7 @@ of non-monotonic reasoning, and thus introduce \textit{rational relations}.
 
 	The consequence relation $\twiddle$ is a \emph{rational consequence relation} if and only if it satisfies the properties
 	of \emph{Reflexivity}, \emph{Left Logical Equivalence}, \emph{Right Weakening}, \emph{And}, \emph{Or}, \emph{Cautious
-	Monotony}, and \emph{Rational Monotony}.
+		Monotony}, and \emph{Rational Monotony}.
 \end{definition}
 
 Quite evidently, they are a particular kind of preferential relation.
@@ -702,7 +702,7 @@ the following property called \textit{modualarity}:
 	\label{definition:modular-order} \index{partial-order! modular}
 
 	A partial order $\prec$ on the set $X$ is \emph{modular} if and only if for any incomparable $x,y \in X$ when $z \prec
-	x$ then also $z \prec y$.
+		x$ then also $z \prec y$.
 \end{definition}
 
 One perspective on \textit{modular} partial orders is that they partition the set of states into equivalence classes of preference,
@@ -725,7 +725,7 @@ associated ordinal.
 
 	If $\prec$ is a modular partial order on $X$ then there is a \emph{ranking function} $\mathsf{r}\colon X \to \Omega$,
 	with $\Omega$ being a totally ordered set for which the strict order is denoted $<$, such that if $x \prec y$ then $\mathsf{r}
-	(x) < \mathsf{r}(y)$ for any $x,y \in X$.
+		(x) < \mathsf{r}(y)$ for any $x,y \in X$.
 \end{lemma}
 
 \begin{figure}[H]

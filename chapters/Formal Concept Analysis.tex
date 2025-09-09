@@ -3,16 +3,17 @@
 
 
 \FCA (FCA) \cite{Wille_Restructuring,WILLE1992493,ganter1999formal} is an
-approach to reasoning about \textit{concepts} and corresponding \textit{conceptual
-	structures} in terms of lattice theory and sets. It was first proposed by Wille in
-his monograph \textit{Restructuring Lattice Theory} \cite{Wille_Restructuring}, which
-was an attempt to reestablish a connection between the theory and practice of lattices.
+approach to reasoning about \textit{concepts} and corresponding
+\textit{conceptual structures} in terms of lattice theory and sets. It was
+first proposed by Wille in his monograph \textit{Restructuring Lattice Theory}
+\cite{Wille_Restructuring}, which was an attempt to reestablish a connection
+between the theory and practice of lattices.
 
-A core aspect of FCA’s foundation is the mathematisation of the philosophical view
-of concepts, in which a they are understood as a unit comprising two parts: the \textit{extension},
-which is the collection of things said to be instances of the concept, and the
-\textit{intension}, which contains those properties used to ascribe meaning to
-the concept \cite{DUQUENNE1999407}.
+A core aspect of FCA’s foundation is the mathematisation of the philosophical
+view of concepts, in which a they are understood as a unit comprising two
+parts: the \textit{extension}, which is the collection of things said to be
+instances of the concept, and the \textit{intension}, which contains those
+properties used to ascribe meaning to the concept \cite{DUQUENNE1999407}.
 
 \section{Basic Notions in Formal Concept Analysis}
 \label{section:basic-notions}
@@ -1089,30 +1090,27 @@ entire attribute set $M$.
 	$(A,S)$ with $A,S \subseteq M$ that is globally equivalent to $\varphi$
 \end{proposition}
 
-\begin{definition}
-	\label{definition:compound-attributes-2} Let $M$ be a set of attributes, then
-	the language of (finite) compound attributes is inductively as
-	\begin{align}
-		\phi ::= m \mid (\neg \phi) \mid (\phi_{1}\lor \phi_{2}) \mid (\phi_{1}\land \phi_{2}) \mid (\phi_{1}\rightarrow \phi_{2})
-	\end{align}
-	where $m \in M$ is a ``plain'' attribute. Then, the satisfaction relation
-	$\Vdash$ is
+\begin{definition} \label{definition:compound-attributes-2} Let $M$ be a set of
+	attributes, then the language of (finite) compound attributes is
+	inductively as \begin{align} \phi ::= m \mid (\neg \phi) \mid (\phi_{1}\lor
+		\phi_{2}) \mid (\phi_{1}\land \phi_{2}) \mid (\phi_{1}\rightarrow
+		\phi_{2})\end{align} where $m \in M$ is a ``plain'' attribute. Then,
+	the satisfaction relation $\Vdash$ is
 
-	\begin{itemize}
-		\item $g \Vdash \varphi$ if and only if $g \in \varphi^{\downarrow}$
+	\begin{itemize} \item $g \Vdash \varphi$ if and only if $g \in
+			      \varphi^{\downarrow}$
 
-		\item $g \Vdash \neg \varphi$ if and only if $g \in G \setminus \varphi^{\Vdash}$
+		\item $g \Vdash \neg \varphi$ if and only if $g \in G \setminus
+			      \varphi^{\Vdash}$
 
-		\item $g \Vdash \varphi \lor \gamma$ if and only if $g \in \varphi^{\Vdash}\cup
-			      \gamma^{\Vdash}$
+		\item $g \Vdash \varphi \lor \gamma$ if and only if $g \in
+			      \varphi^{\Vdash}\cup \gamma^{\Vdash}$
 
-		\item $g \Vdash \varphi \land \gamma$ if and only if $g \in \varphi^{\Vdash}\cap
-			      \gamma^{\Vdash}$
+		\item $g \Vdash \varphi \land \gamma$ if and only if $g \in
+			      \varphi^{\Vdash}\cap \gamma^{\Vdash}$
 
-		\item $g \Vdash \varphi \rightarrow \gamma$ if and only if $g \in \neg \varphi
-			      ^{\Vdash}\lor \gamma^{\Vdash}$
-	\end{itemize}
-\end{definition}
+		\item $g \Vdash \varphi \rightarrow \gamma$ if and only if $g \in \neg
+			      \varphi ^{\Vdash}\lor \gamma^{\Vdash}$ \end{itemize} \end{definition}
 
 \begin{example}
 	Consider the context below, which represents a portion of the $1984$ United

@@ -1,25 +1,41 @@
 \chapter{Defeasible Reasoning in Formal Concept Analysis}
 \label{chapter:defeasible-reasoning-in-fca}
 
-% The conclusion of \Cref{chapter:defeasible-reasoning-in-fca} marks the completion of the scaffolding of this work. In the
-% remaining chapters, the more novel research contributes of this work will be discussed. We begin by formalising an approach
-% to the KLM style of defeasible reasoning within the setting of FCA.
+The conclusion of \Cref{chapter:defeasible-reasoning-in-fca} marks the completion of the scaffolding of this work. The remaining chapters are dedicated to the unification of these ideas. That is, to developing an approach to defeasible reasoning in FCA in the style of the KLM framework.
 
-% Fortunately (perhaps by design), the context switch is fairly negligible. As we progress, the reasons behind the
-% selection of the KLM framework as an ideal candidate for defeasible reasoning in FCA should become apparent. Indeed,
-% understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented
-% here, and their counterparts from prior chapters; and so we encourage---and will attempt to facilitate---these frequent backward
-% references.
+Fortunately (perhaps by design), the context switch is quite natural. As we progress, the reasons behind the
+selection of the KLM framework as an ideal candidate for defeasible reasoning in FCA should become apparent. Indeed,
+understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented
+here, and their counterparts from prior chapters; and so we encourage---and will attempt to facilitate---these frequent backward
+references.
 
 \section{Motivation}
 \label{section:motivation}
 
-% There are many perspectives one may adopt as lense with which to understand the purpose of FCA. Certainly, some of these
-% perspectives should result in strong arguments against accepting non-monotonicity. Likewise, there are several, distinct,
-% arguments in favour. One of the most compelling reasons for the adoption of defeasibility in FCA follows from the argument
-% put forward in \cite{Wille2005}, where the view that concepts are frequently \textit{personal} or \textit{prototypical}
-% units is discussed. The recognition that defeasible reasoning facilitates a kind of prototypicality is the basis for \textcolor{red}{chapter:rational-concepts},
-% and so we will say no more until then.
+There are many perspectives one may adopt as a lense with which to understand the purpose of FCA. Certainly, some of these
+perspectives should result in strong arguments against accepting non-monotonicity. Likewise, there are several, distinct,
+arguments in favour. One of the most compelling reasons for the adoption of defeasibility in FCA follows from the argument
+put forward in \cite{Wille2005}, where the view that concepts are frequently \textit{personal} or \textit{prototypical}
+units is discussed. The recognition that defeasible reasoning facilitates a kind of prototypicality is the basis for \textcolor{red}{chapter:rational-concepts},
+and so we will say no more until then.
+
+Another argument comes to the fold when considering the utility of implications in FCA.
+
+\begin{figure}[H]
+	\centering
+	\small
+	\begin{cxt}
+		\cxtName{\textbf{\texttt{Congressional Voting Records}}} \att{\texttt{democrat}}
+		\att{\texttt{republican}} \att{\texttt{mx-missile}}
+		\att{\texttt{inverse}} \att{\texttt{commutativity}}
+		\obj{x....}{\texttt{magma}} \obj{xx...}{\texttt{semigroup}}
+		\obj{xxx..}{\texttt{monoid}} \obj{xxxx.}{\texttt{group}}
+		\obj{xxxxx}{\texttt{abelian group}} \obj{x.xx.}{\texttt{loop}}
+		\obj{x..x.}{\texttt{quasigroup}} \obj{.xxx.}{\texttt{groupoid}}
+		\obj{.xx..}{\texttt{category}} \obj{.x...}{\texttt{semicategory}} \end{cxt}
+	\caption{A formal context showing necessary properties of group-like
+		structures.} \label{context:congressional-voting-records}
+\end{figure}
 
 \subsection{Association Rules}
 \label{subsection:association-rules}
@@ -35,11 +51,40 @@
 % one or more premises are left implicit. That is the idea that we develop in this section. Also called \textit{expectations}.
 % \cite{makinson2003bridges}.
 
+\begin{algo} {\textsc{ObjectRank}}
+
+	\label{algorithm:ObjectRank}
+
+	\Require A set $\Delta$ of defeasible conditionals over an attribute set
+	$M$ \Require A formal context $\GMI$
+
+	\Ensure A ranking $\mathsf{R} \colon G \to \mathbb{N}$ such that $\Delta$
+	holds in $\RGMI$ if $\GMI$ is $\Delta$-compatible; $\bot$, otherwise.
+
+	\State $i \coloneq 0$ \State \textit{initialise} $\mathsf{R}(g) \coloneq
+		\vert G \vert$ for all $g \in G$ \State $\Gamma \coloneq \Delta$
+
+	\While{$\exists \, g \in G \colon \mathsf{R}(g) = \vert G \vert$}
+	\ForAll{$g \in G$ with $\mathsf{R}(g) = \vert G \vert$}
+	\If{$g \vDash \Gamma$}
+	\textit{update} $\mathsf{R}(g) = i$
+	\EndIf
+	\If{$\forall \, g \in G \colon \mathsf{R}(g) \neq i$}
+	\State \Return $\bot$ \EndIf
+	\State $\Gamma \coloneq \{(\phi \twiddle \psi) \in \Gamma \mid g \nvDash
+		\phi \; \text{for all} \; g \in G \; \text{with}\; \mathsf{R}(g) = i\}$
+	\State $i \coloneq i + 1$
+	\EndFor
+	\EndWhile
+
+	\State \Return $\mathsf{R}$
+\end{algo}
+
 \chapter{Rational Entailment}
 \begin{definition}
 	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if
 	$\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$ is the \emph{test context}. It \emph{contextually
-	follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
+		follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
 \end{definition}
 
 \begin{definition}

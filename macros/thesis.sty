@@ -157,8 +157,7 @@
 \def\rightcite{\@up]}
 \def\cite{\def\citeauthoryear##1##2{\def\@thisauthor{##1}%
 		\ifx \@lastauthor \@thisauthor \relax \else##1, \fi ##2}\@icite}
-\def\shortcite{\
-ef\citeauthoryear##1##2{##2}\@icite}
+\def\shortcite{\def\citeauthoryear##1##2{##2}\@icite}
 \def\citeauthor{\def\citeauthoryear##1##2{##1}\@nbcite}
 \def\citeyear{\def\citeauthoryear##1##2{##2}\@nbcite}
 \def\@icite{\leavevmode\def\@citeseppen{-1000}%

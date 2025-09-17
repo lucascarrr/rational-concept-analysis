@@ -1,40 +1,38 @@
 \chapter{Defeasible Reasoning in Formal Concept Analysis}
 \label{chapter:defeasible-reasoning-in-fca}
 
-The conclusion of \Cref{chapter:defeasible-reasoning-in-fca} marks the completion of the scaffolding of this work. The remaining chapters are dedicated to the unification of these ideas. That is, to developing an approach to defeasible reasoning in FCA in the style of the KLM framework.
+The conclusion of \Cref{part:1} marks the completion of the scaffolding of this work. The remaining chapters are devoted to the unification of these ideas. That is, to develop an approach
+to defeasible reasoning in FCA in the style of the KLM framework. We begin this construction by introducing an FCA-counterpart to the defeasible conditionals that were discussed in
+\Cref{chapter:defeasible-reasoning}.
 
-Fortunately (perhaps by design), the context switch is quite natural. As we progress, the reasons behind the
-selection of the KLM framework as an ideal candidate for defeasible reasoning in FCA should become apparent. Indeed,
-understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented
-here, and their counterparts from prior chapters; and so we encourage---and will attempt to facilitate---these frequent backward
-references.
+Fortunately (perhaps by design), the context switch is quite natural. As we progress, the reasons behind the selection of the KLM framework as an ideal candidate for defeasible reasoning
+in FCA should become apparent. Indeed, understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented here, and their counterparts
+from prior chapters. So we encourage---and will attempt to facilitate---these frequent backwards-facing references.
 
 \section{Motivation}
 \label{section:motivation}
 
-There are many perspectives one may adopt as a lense with which to understand the purpose of FCA. Certainly, some of these
-perspectives should result in strong arguments against accepting non-monotonicity. Likewise, there are several, distinct,
-arguments in favour. One of the most compelling reasons for the adoption of defeasibility in FCA follows from the argument
-put forward in \cite{Wille2005}, where the view that concepts are frequently \textit{personal} or \textit{prototypical}
-units is discussed. The recognition that defeasible reasoning facilitates a kind of prototypicality is the basis for \textcolor{red}{chapter:rational-concepts},
-and so we will say no more until then.
+The existence, in a formal context, of any counter-example to an attribute implication will prevent the implication from holding.
 
-Another argument comes to the fold when considering the utility of implications in FCA.
+The requirements for accepting when an attribute implicaiton holds in a formal context are quite strong; the existence of any counter example prevents this.
+
+% There are many perspectives one may adopt as a lense with which to understand the purpose of FCA. Certainly, some of these perspectives should result in strong arguments against
+% accepting non-monotonicity. Likewise, there are several, distinct, arguments in favour. One of the most compelling reasons for the adoption of defeasibility in FCA follows from the
+% argument put forward in \cite{Wille2005}, where the view that concepts are frequently \textit{personal} or \textit{prototypical} units is discussed. The recognition that defeasible
+% reasoning facilitates a kind of prototypicality is the basis for \textcolor{red}{chapter:rational-concepts}, and so we will say no more until then.
+
+% Another argument comes to the fold when considering the utility of implications in FCA.
 
 \begin{figure}[H]
 	\centering
 	\small
 	\begin{cxt}
-		\cxtName{\textbf{\texttt{Congressional Voting Records}}} \att{\texttt{democrat}}
-		\att{\texttt{republican}} \att{\texttt{mx-missile}}
-		\att{\texttt{inverse}} \att{\texttt{commutativity}}
-		\obj{x....}{\texttt{magma}} \obj{xx...}{\texttt{semigroup}}
-		\obj{xxx..}{\texttt{monoid}} \obj{xxxx.}{\texttt{group}}
-		\obj{xxxxx}{\texttt{abelian group}} \obj{x.xx.}{\texttt{loop}}
-		\obj{x..x.}{\texttt{quasigroup}} \obj{.xxx.}{\texttt{groupoid}}
-		\obj{.xx..}{\texttt{category}} \obj{.x...}{\texttt{semicategory}} \end{cxt}
-	\caption{A formal context showing necessary properties of group-like
-		structures.} \label{context:congressional-voting-records}
+		\cxtName{\textbf{\texttt{Congressional Voting Records}}} \att{\texttt{democrat}} \att{\texttt{republican}} \att{\texttt{mx-missile}} \att{\texttt{inverse}} \att{\texttt{commutativity}}
+		\obj{x....}{\texttt{magma}} \obj{xx...}{\texttt{semigroup}} \obj{xxx..}{\texttt{monoid}} \obj{xxxx.}{\texttt{group}} \obj{xxxxx}{\texttt{abelian group}} \obj{x.xx.}{\texttt{loop}}
+		\obj{x..x.}{\texttt{quasigroup}} \obj{.xxx.}{\texttt{groupoid}} \obj{.xx..}{\texttt{category}} \obj{.x...}{\texttt{semicategory}}
+	\end{cxt}
+	\caption{A formal context showing necessary properties of group-like structures.}
+	\label{context:congressional-voting-records}
 \end{figure}
 
 \subsection{Association Rules}
@@ -43,7 +41,7 @@ Another argument comes to the fold when considering the utility of implications 
 % \clearpage
 
 % \section{Preferential and Ranked Contexts}
-% \clearpage
+% \clearpage`
 
 % \section{Finding order}
 % \clearpage
@@ -51,70 +49,63 @@ Another argument comes to the fold when considering the utility of implications 
 % one or more premises are left implicit. That is the idea that we develop in this section. Also called \textit{expectations}.
 % \cite{makinson2003bridges}.
 
-\begin{algo} {\textsc{ObjectRank}}
+\begin{algo}
+	{\textsc{ObjectRank}}
 
 	\label{algorithm:ObjectRank}
 
-	\Require A set $\Delta$ of defeasible conditionals over an attribute set
-	$M$ \Require A formal context $\GMI$
+	\Require A set $\Delta$ of defeasible conditionals over an attribute set $M$ \Require A formal context $\GMI$
 
-	\Ensure A ranking $\mathsf{R} \colon G \to \mathbb{N}$ such that $\Delta$
-	holds in $\RGMI$ if $\GMI$ is $\Delta$-compatible; $\bot$, otherwise.
+	\Ensure A ranking $\mathsf{R}\colon G \to \mathbb{N}$ such that $\Delta$ holds in $\RGMI$ if $\GMI$ is $\Delta$-compatible; $\bot$, otherwise.
 
-	\State $i \coloneq 0$ \State \textit{initialise} $\mathsf{R}(g) \coloneq
-		\vert G \vert$ for all $g \in G$ \State $\Gamma \coloneq \Delta$
+	\State $i \coloneq 0$ \State \textit{initialise} $\mathsf{R}(g) \coloneq \vert G \vert$ for all $g \in G$ \State $\Gamma \coloneq \Delta$
 
-	\While{$\exists \, g \in G \colon \mathsf{R}(g) = \vert G \vert$}
-	\ForAll{$g \in G$ with $\mathsf{R}(g) = \vert G \vert$}
-	\If{$g \vDash \Gamma$}
-	\textit{update} $\mathsf{R}(g) = i$
-	\EndIf
-	\If{$\forall \, g \in G \colon \mathsf{R}(g) \neq i$}
-	\State \Return $\bot$ \EndIf
-	\State $\Gamma \coloneq \{(\phi \twiddle \psi) \in \Gamma \mid g \nvDash
-		\phi \; \text{for all} \; g \in G \; \text{with}\; \mathsf{R}(g) = i\}$
-	\State $i \coloneq i + 1$
-	\EndFor
-	\EndWhile
+	\While{$\exists \, g \in G \colon \mathsf{R}(g) = \vert G \vert$} \ForAll{$g \in G$ with $\mathsf{R}(g) = \vert G \vert$} \If{$g \vDash \Gamma$} \textit{update}
+	$\mathsf{R}(g) = i$ \EndIf \If{$\forall \, g \in G \colon \mathsf{R}(g) \neq i$} \State \Return $\bot$ \EndIf \State $\Gamma \coloneq \{(\phi \twiddle \psi) \in \Gamma \mid g \nvDash
+	\phi \; \text{for all}\; g \in G \; \text{with}\; \mathsf{R}(g) = i\}$ \State $i \coloneq i + 1$ \EndFor \EndWhile
 
 	\State \Return $\mathsf{R}$
 \end{algo}
 
 \chapter{Rational Entailment}
 \begin{definition}
-	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if
-	$\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$ is the \emph{test context}. It \emph{contextually
-		follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
+	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if $\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$
+	is the \emph{test context}. It \emph{contextually follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
 \end{definition}
 
 \begin{definition}
-	A set $\mathcal{T}$ is \emph{closed} with respect to a pair if and only if it contains every conditional that is
-	rationally entailed. That is, if
-	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$
-	is \emph{contextually closed} if it contains every conditional that is contextually entailed, i.e.
-	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R}, \mathcal{T}\dentails A \rightarrow B\}$.
+	A set $\mathcal{T}$ is \emph{closed} with respect to a pair if and only if it contains every conditional that is rationally entailed. That is, if
+	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$ is \emph{contextually closed} if it contains every
+	conditional that is contextually entailed, i.e. $\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R}, \mathcal{T}\dentails A \rightarrow B\}$.
 \end{definition}
 
 \begin{definition}
-	A set $\mathcal{T}$ of conditionals is \emph{rationally complete} with respect to $\mathbb{T},\Delta$ if and only if
-	every conditional that is in the rational closure of $\mathbb{T}, \Delta$ rationally follows from $\mathcal{T}$, i.e.,
-	$\mathbb{T},\mathcal{T}$ and $\mathbb{T}, \Delta$ define the same entailment relation.
+	A set $\mathcal{T}$ of conditionals is \emph{rationally complete} with respect to $\mathbb{T},\Delta$ if and only if every conditional that is in the rational closure of
+	$\mathbb{T}, \Delta$ rationally follows from $\mathcal{T}$, i.e., $\mathbb{T},\mathcal{T}$ and $\mathbb{T}, \Delta$ define the same entailment relation.
 \end{definition}
 
-Is it possible to find a $\mathcal{T}$ such that $\mathcal{T}$ is a compact form of $\Delta$. I.e., it should produce the
-same ranking on $\mathbb{T}$.
+Is it possible to find a $\mathcal{T}$ such that $\mathcal{T}$ is a compact form of $\Delta$. I.e., it should produce the same ranking on $\mathbb{T}$.
 
 \begin{definition}
-	A set $\mathcal{T}$ of conditionals is \emph{contextually complete} with respect to $\mathbb{R}, \Delta$ if and only
-	if every implication that is in the contextual closure of $\mathbb{R}, \Delta$ rationally follows from $\mathcal{T}$.
+	A set $\mathcal{T}$ of conditionals is \emph{contextually complete} with respect to $\mathbb{R}, \Delta$ if and only if every implication that is in the contextual closure of
+	$\mathbb{R}, \Delta$ rationally follows from $\mathcal{T}$.
 \end{definition}
 
-A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$
-provides abstracted perspective, in terms of defeasible conditionals, on the information contained in the pair
-$(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsection:implication-bases}, to find such a set that
-is non-redundant, or the \textit{rational basis} of $(\mathbb{R},\Delta)$.
+A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$ provides abstracted perspective, in terms of defeasible conditionals,
+on the information contained in the pair $(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsubsection:implication-bases}, to find such a set that is non-redundant,
+or the \textit{rational basis} of $(\mathbb{R},\Delta)$.
 
-\section{Lexicographic Closure}
+\begin{definition}
+	\label{definition:defeasible-closure}
 
+	Let $\mathcal{T}$ be a set of defeasible conditionals over $M$. The operator $X \mapsto \Cn{\twiddle}(X)$ given by $X \cup \{Y \subseteq M \mid X \twiddle Y\}$ is called the \emph{defeasible
+	closure} of $X$. It is idempotent, extensive, and non-monotonic.
+\end{definition}
 
-\section{C-Inference}
+\textcolor{red}{
+\begin{remark}
+	If $\mathcal{T}$ were the defeasible basis we would want $\Cn{\twiddle}(X) = (\underline{X^{\downarrow}})^{\uparrow}$
+\end{remark}
+}
+
+If we compute the minimal-cover of a ranked context, with respect to the defeasible closure.

@@ -1,41 +1,41 @@
 \documentclass[8pt, a4paper, twoside]{report}
 \usepackage{macros/thesis}
-\title{Rational Concept Analysis}
+\title{Rationalr Concept Analysis}
 \author{Lucas Carr}
 \date{2025}
 
 \begin{document}
-\begin{titlepage}
-	\centering
-	\vspace*{2cm}
-	{\Huge \bfseries \thetitle \par}
-	\vspace{1.5cm}
-	{\Large \theauthor \par}
-	\vfill
-	A thesis submitted for the degree of \\ \textit{Master of Computer Science} \\ Department of Computer Science \\
-	University of Cape Town \\
-	\vspace{1cm}
-	\thedate
-\end{titlepage}
+	\begin{titlepage}
+		\centering
+		\vspace*{2cm}
+		{\Huge \bfseries \thetitle \par}
+		\vspace{1.5cm}
+		{\Large \theauthor \par}
+		\vfill
+		A thesis submitted for the degree of \\ \textit{Master of Computer Science} \\ Department of Computer Science \\ University of Cape Town \\
+		\vspace{1cm}
+		\thedate
+	\end{titlepage}
 
-\addcontentsline{toc}{chapter}{Abstract}
-\addcontentsline{toc}{chapter}{Acknowledgements}
+	\addcontentsline{toc}{chapter}{Abstract}
+	\addcontentsline{toc}{chapter}{Acknowledgements}
 
-\input{chapters/Foreword.tex}
-\tableofcontents
-\input{chapters/Introduction.tex}
+	\input{chapters/Foreword.tex}
+	\tableofcontents
+	\input{chapters/Introduction.tex}
 
-\part{Foundations}
-\input{chapters/Mathematical Preliminaries.tex}
-\input{chapters/Formal Concept Analysis.tex}
-\input{chapters/Non-Monotonic Reasoning.tex}
-\part{Rational Concept Analysis}
-\input{chapters/Defeasible Reasoning in FCA.tex}
-\input{chapters/Rational Concepts.tex}
-\input{chapters/Conclusions.tex}
+	\part{Foundations}
+	\label{part:1}
+	\input{chapters/Mathematical Preliminaries.tex}
+	\input{chapters/Formal Concept Analysis.tex}
+	\input{chapters/Non-Monotonic Reasoning.tex}
+	\part{Rational Concept Analysis}
+	\input{chapters/Defeasible Reasoning in FCA.tex}
+	\input{chapters/Rational Concepts.tex}
+	\input{chapters/Conclusions.tex}
 
-\bibliographystyle{macros/named}
-\bibliography{references}
-\printindex \listoffigures
-\input{chapters/Appendix.tex}
+	\bibliographystyle{macros/named}
+	\bibliography{references}
+	\printindex \listoffigures
+	\input{chapters/Appendix.tex}
 \end{document}

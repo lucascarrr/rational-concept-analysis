@@ -448,69 +448,54 @@ We begin by studying the \textit{implication logic} of FCA, which is perhaps mos
 It is often sufficient to study what is, in terms of expressivity, a fairly restricted logic. This is the \textit{implication} logic of FCA. From the perspective of mathematical
 logic, it is analogous to prositional Horn logic.
 
+An implication describes a correspondence between attributes, expressing the idea that \say{Whenever we see attribute $m$, we also see attribute $n$}. Formally, we have:
+
 \begin{definition}
 	\label{definition:implication}
 
 	An \emph{implication} over a set $M$ of attributes is written $A \rightarrow B$, where $A,B \subseteq M$. We call $A$ the \textit{premise} and $B$ the \textit{conclusion} of the implication.
 \end{definition}
 
+The semantics of attribute implications quite closely resemble the material implications outlined in \Cref{section:propositional-logic}; however, are primarily interested in
+attribute implications as they relate to formal contexts, and so we define the semantics with this in mind.
+
 \begin{definition}
 	\label{definition:implication-respect}
 
-	Another set of attributes $C \subseteq M$ \textit{respects} the implication if either $A \not \subseteq C$ or $B \subseteq C$, in which case we write $C \vDash A \rightarrow B$. If
-	$\mathcal{T}$ is a set of implications, $C$ respects $\mathcal{T}$ if it respects every implication in $\mathcal{T}$.
+	Another set of attributes $C \subseteq M$ \textit{respects} the implication if either $A \not \subseteq C$ or $B \subseteq C$, in which case we write $C \vDash A \rightarrow B$
+	and call $C$ a \emph{model} of the implication. If $\mathcal{T}$ is a set of implications, $C$ is a model of $\mathcal{T}$ if it respects every implication in $\mathcal{T}$. A
+	formal context $\context = \GMI$ \emph{respects} an implication $A \rightarrow B$ over $M$ if and only if the intent $g^{\uparrow}$ of each object $g \in G$ respects the implication,
+	in which case we write $\context \vDash A \rightarrow B$; this idea is extended to a set of implications as expected.
 \end{definition}
 
-Attribute implications quite clearly resemble the material implications discussed in \Cref{section:propositional-logic}. However, recall that in FCA we are usually only interested in
-positive information, and so we cannot---at least for the time being---talk about attribute implications with disjunction or negation.
+Recall that in FCA we are usually only interested in positive information, we cannot---at least for the time being---speak about attribute implications with disjunction or negation.
+In \Cref{subsection:compound-attributes} we discuss how we might increase the expressivity of the logic.
 
-Each row in a formal context represents the set of attributes belonging to an object, and so implications directly relate to formal contexts. We can generalise the previous notion
-as:
-%
-\begin{definition}
-	\label{definition:implication-respect-context}
-
-	A formal context $\context = \GMI$ \emph{respects} an implication $A \rightarrow B$ over $M$ if and only if the intent $g^{\uparrow}$ of each object $g \in G$ respects the implication,
-	in which case we write $\context \vDash A \rightarrow B$. A context respects a set of implications in the same way as before.
-\end{definition}
-%
 The definition for when a context respects an implication admits a more concise representation: It is equivalent to the expression that $A^{\downarrow}\subseteq B^{\downarrow}$, or
-$B \subseteq A^{\downarrow \uparrow}$. Recalling \Cref{corollary:derivation-closure-systems}, which asserts that both $A^{\downarrow}$ and $B^{\downarrow}$ are always concept extents,
-we have the following:
+$B \subseteq A^{\downarrow \uparrow}$. Recalling \Cref{corollary:derivation-closure-systems}, which asserts that both $A^{\downarrow}$ and $B^{\downarrow}$ are always concept
+extents, we have the following:
 
 \begin{proposition}
 	\label{proposition:implication-concepts}
 
-	The implication $A \rightarrow B$ is respected by a context $\GMI$ if and only if the attribute concept $\mu A$ is a subset of $\mu B$. Formally, if
+	The implication $A \rightarrow B$ is respected by a context $\GMI$ if and only if the concept derived from $A$ is a subconcept of the one derived from $B$. Formally, if
 	$(A^{\downarrow}, A^{\downarrow \uparrow}) \leq (B^{\downarrow}, B^{\downarrow \uparrow})$ holds.
 \end{proposition}
 
-For an illustration, we consider whether the implication $\{\texttt{inverse,associative}\} \rightarrow \{\texttt{identity}\}$ holds in the context of group-likes. Indeed, the
-concept lattice in \Cref{figure:concept-lattice-group-likes} confirms that
+For an illustration, we consider whether the implication $\{\texttt{inverse,associative}\} \rightarrow \{\texttt{identity}\}$ holds in the context of group-likes. Indeed, the concept
+lattice in \Cref{figure:concept-lattice-group-likes} confirms that
 \[
 	(\{\texttt{inverse,associative}\}^{\downarrow},\{\texttt{inverse,associative}\}^{\downarrow \uparrow}) \leq (\{\texttt{identity}\}^{\uparrow}, \{\texttt{identity}\}^{\uparrow
 	\downarrow}),
 \]
-and so the implication holds. Reading implications off a concept lattice in this \textit{bottom-up} manner is convenient, but there is a more significant connection between attribute
-implications and concept lattices.
-
-\begin{proposition}
-	\label{proposition:implication-sets-and-concept-intents}
-
-	If $\mathcal{T}$ is a set of implications over an attribute set $M$, then the set $\Mod{\mathcal{T}}\coloneq \{ A \subseteq M \mid A \vDash \mathcal{T}\}$ is a closure system on $\pset
-	{M}$.
-
-	If $\mathcal{T}$ happens to be the set of all implications that hold in a context $\GMI$, then $\Mod{\mathcal{T}}$ is the set of all concept intents in $\BGMI$.
-\end{proposition}
-
-In other words, if $\mathcal{T}$ is the set of (all) implications which hold in formal context, then the set of attribute sets which respect $\mathcal{T}$ is isomorphic to the
-closure system $\mathcal{M}$ of $\GMI$, and dually isomorphic to the concept lattice $\CLGMI$.
+and so the implication holds. Reading implications off a concept lattice in this \textit{bottom-up} manner is convenient, but there is a more significant connection between
+attribute implications and concept lattices. We explore this connection next.
 
 \subsubsection{Implication Inference}
 \label{subsubsection:implication-inference}
 
-From a set of implications we may determine which other implications could be made. This was the subject of \Cref{subsection:logical-consequence}, and many of the ideas from there
-are recontextualised here.
+Given a set of implications, it is interesting to explore which other implications follow. This was exactly the subject of $\Cref{subsection:logical-consequence}$, and many of those
+ideas are recontextualised here.
 
 \begin{definition}
 	\label{definition:implication-inference}
@@ -519,12 +504,22 @@ are recontextualised here.
 	also respects $A \rightarrow B$, then we write $\mathcal{T}\vDash A \rightarrow B$.
 \end{definition}
 
-We say that a set $\mathcal{T}$ of implications is \emph{closed}, or an \emph{implication theory}, when it contains all implications that are a logical consequence of $\mathcal{T}$.
-It is \emph{complete} with respect to a context $\GMI$ when every implication respected by the context logically follows from $\mathcal{T}$. It is reasonably obvious that this
-definition of consequence is Tarskian and would satisfy the expected properties of monotonicity, idempotence, and extensivity.
+A set $\mathcal{T}$ of attribute implications is called \textit{closed}, or an \textit{implication theory}, when it contains all implications that logically follow from it. It is \textit{complete}
+with respect to a closure operator if every implication that holds in the respective closure system follows. Then, $\mathcal{T}$ is complete with respect to a context $\GMI$ if for
+every $A,B \subseteq M$ where $B \subseteq A^{\downarrow \uparrow}$ it follows that $\mathcal{T}\vDash A \rightarrow B$. In other words, when every implication that is respected by
+$\GMI$ follows from $\mathcal{T}$. This correspondence can be formalised as:
 
-A syntactic counterpart to the semantic notion of consequence is defined in terms of the Armstrong axioms \cite{armstrong1974dependency}.
+\begin{proposition}
+	\label{proposition:implication-sets-and-concept-intents}
 
+	If $\mathcal{T}$ is a set of implications over an attribute set $M$, then the set $\Mod{\mathcal{T}}\coloneq \{ A \subseteq M \mid A \vDash \mathcal{T}\}$ is a closure system on $\pset
+	{M}$.
+
+	If $\mathcal{T}$ is the complete implication theory of $\GMI$ then the closure system $\Mod{\mathcal{T}}$ is the system $\pset{M}$ of concept intents.
+\end{proposition}
+
+Indeed, a complete implication theory is sufficient to fully describe the structure of a concept lattice, or its corresponding formal context \cite{ganter2024formal}. There is a syntactic
+counterpart to the semantic notions of consequence, defined in terms of the Armstrong axioms \cite{armstrong1974dependency}.
 \begin{definition}
 	\label{definition:armstrong-axioms} The \emph{Armstrong axioms} are defined as inference rules of the form:
 	\begin{align}
@@ -534,18 +529,9 @@ A syntactic counterpart to the semantic notion of consequence is defined in term
 \end{definition}
 
 The interpretation should be that, if the instantiation of an Armstrong axiom has its premise contained in a set $\mathcal{T}$ of implications, then the conclusion of the axiom may
-be inferred. To show that an implication is a consequence of some set one shows that there is a sequence of application of these rules that leads to the desired implication. The next
-proposition relates the semantic notion of a closed set of implications to the syntactic setting.
+be inferred. To show that an implication is a consequence of some set one shows that there is a sequence of application of these rules that leads to the desired implication.
 
-\begin{proposition}
-	\label{proposition:armstrong-closed}
-
-	A set of implications $\mathcal{T}$ over $M$ is \emph{closed} (in the sense of \Cref{definition:implication-inference}) if and only if it is closed under application of the Armstrong
-	axioms.
-\end{proposition}
-
-Echoing the earlier discussion on proofs within a Hilbert system, repeated application of instantiated Armstrong axioms is infrequently a reasonable approach to inference. A far
-more elegant one is to determine whether the conclusion of an implication is contained within the closure, with respect to a set of implications, of the premise.
+The following closure operator describes how a set of attributes can be closed under a set of implications.
 
 \begin{definition}
 	\label{definition:closure-operator-implications} Let $\mathcal{T}$ be a set of implications over a set of attributes $M$. For $X \subseteq M$, define the set:
@@ -563,22 +549,27 @@ more elegant one is to determine whether the conclusion of an implication is con
 	% the intersection of all models $W$ of $\mathcal{T}$ that contain $X$.
 \end{definition}
 
-Closing an attribute set under implications provides an elegant way of describing when one implication follows from others.
+It is much simpler to consider this closure operator, instead of a sequence of Armstrong axioms, when determining whether a set of implications logically imply another.
 
 \begin{proposition}
 	\label{proposition:} An implication $A \rightarrow B$ is a logical consequence of a set of implications $\mathcal{T}$ over $M$ if and only if $B \subseteq \Cna{\mathcal{T}}{A}$.
 \end{proposition}
 
-If it is surprising that the condition under which an implication is a logical consequence of a given set of implications has such a concise representation, then it may be even more
-surprising to learn that the inference of implications may be done in linear time.
+\begin{remark}
+	It is important to recognise the connections that exist between the topics of discussion. We have established that an implication $A \rightarrow B$ holds in a context $\GMI$ when
+	$B \subseteq A^{\downarrow \uparrow}$. Here, $(\cdot)^{\downarrow \uparrow}$ is one closure operator. By \Cref{definition:closure-operator-implications} there is another closure operator,
+	$\Cna{\mathcal{T}}{\cdot}$ which operators on the syntactic level. We have just shown that if there is a set of implications $\mathcal{T}$, then another implication
+	$A \rightarrow B$ follows (holds) when $B \subseteq \Cna{\mathcal{T}}{A}$. If $\mathcal{T}$ is the complete implication theory of a context, then these two closure operators are
+	identical.
+\end{remark}
 
-The \nameref{algorithm:LinClosure} algorithm \cite{maier1983chapter4}, and slightly modified by \cite{ganter2016conceptual}, describes a procedure which finds the closure of an
-attribute set with respect to a set of implications. The first block of the algorithm, lines \ref{line:1}--\ref{line:8}, determines the size of the premise for each implication, the
-respective implication is then associated with each individual attribute in the premise. All implications with an empty premise are vacuously satisfied, and so their conclusions are
-added to $X$.
+Computationally, computing the closure under a set of implications is quite efficient. The \nameref{algorithm:LinClosure} algorithm \cite{maier1983chapter4}, and slightly modified
+by \cite{ganter2016conceptual}, describes a procedure which finds the closure of an attribute set with respect to a set of implications. The first block of the algorithm, lines \ref{line:1}--\ref{line:8},
+determines the size of the premise for each implication, the respective implication is then associated with each individual attribute in the premise. All implications with an empty
+premise are vacuously satisfied, and so their conclusions are added to $X$.
 
-The result is a tally, for each implication, of how many attributes are required to satisfy the premise; and, for each attribute $m \in M$ a list of implications for which $m$ appears
-in the antecdent. All attributes from $X$, alongside the conclusions of vacuously satisfied implications, are stored in \textit{update}.
+The result is a tally, for each implication, of how many attributes are required to satisfy the premise; and, for each attribute $m \in M$ a list of implications for which $m$
+appears in the antecdent. All attributes from $X$, alongside the conclusions of vacuously satisfied implications, are stored in \textit{update}.
 
 \begin{algo}
 	{\textsc{LinClosure}}
@@ -636,9 +627,9 @@ in the antecdent. All attributes from $X$, alongside the conclusions of vacuousl
 	\State \Return $X$
 \end{algo}
 
-The second block, lines \ref{line:11}--\ref{line:22}, chooses an attribute $m \in \textit{update}$ and for each of its' associated implications, given by $\textit{ list}[m]$,
-decrements the counter associated with the implications premise. If an implication's counter reaches zero, the conclusion (after removing any attributes which have already been dealt
-with, or will be dealt with in future) is added to \textit{update}. The process repeats until \textit{update} is empty, afterwhich the closed set is returned.
+The second block, lines \ref{line:11}--\ref{line:22}, chooses an attribute $m \in \textit{update}$ and for each of its' associated implications, given by $\textit{ list}[m]$, decrements
+the counter associated with the implications premise. If an implication's counter reaches zero, the conclusion (after removing any attributes which have already been dealt with, or
+will be dealt with in future) is added to \textit{update}. The process repeats until \textit{update} is empty, afterwhich the closed set is returned.
 
 \begin{proposition}
 	\label{proposition:complexity-lin-closure}
@@ -646,10 +637,10 @@ with, or will be dealt with in future) is added to \textit{update}. The process 
 	The complexity of \nameref{algorithm:LinClosure} is $O(\vert \mathcal{T}\vert)$, and so the procedure is linear on the size of the implication set.
 \end{proposition}
 
+
+
 \subsubsection{Implication Bases}
 \label{subsubsection:implication-bases}
-
-In conjunction with logical consequence, a set of implications that is complete with respect to a formal context is useful: it would make inference from a formal context linear.
 
 \begin{definition}
 	\label{definition:implication-basis}
@@ -664,8 +655,8 @@ In conjunction with logical consequence, a set of implications that is complete 
 	\end{enumerate}
 \end{definition}
 
-Soundness and completeness are obviously properties that an implication basis should satisfy. Given that checking logical consequence is linear on the size of the implication set,
-having non-redundant implications is computationally appealing.
+Soundness and completeness are obviously properties that an implication basis should satisfy. Given that checking logical consequence is linear on the size of the implication set, having
+non-redundant implications is computationally appealing.
 
 \begin{definition}
 	\label{definition:pseudo-closed}
@@ -684,8 +675,8 @@ having non-redundant implications is computationally appealing.
 \subsection{Compound Attributes}
 \label{subsection:compound-attributes}
 
-The first point is to describe the process by which attributes may construct (contextual) logical expressions. These constructs are called \textit{compound attributes}. In harmony with
-the notational choices we made in the discussion on propositional logic, we denote ``normal'' attributes with lower case letters in the Latin alphabet, or, by attribute names in
+The first point is to describe the process by which attributes may construct (contextual) logical expressions. These constructs are called \textit{compound attributes}. In harmony
+with the notational choices we made in the discussion on propositional logic, we denote ``normal'' attributes with lower case letters in the Latin alphabet, or, by attribute names in
 monospaced text, and compound attributes with lower case Greek letters.
 
 \begin{definition}
@@ -719,12 +710,13 @@ The definition allows for arbitrarily complex compound attributes to be construc
 	$\varphi$, otherwise $g \nvDash \varphi$.
 \end{definition}
 
-Other kinds of compound attributes which express useful intution, in particular the disjunction of compound attributes, have an equivalent construction using only \Cref{definition:compound-attributes}.
-If $\Gamma$ is a set of compound attributes, then the disjunction of its elements $\bigvee \Gamma$ then its' extension $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$ is the union of
-all extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge \Gamma$.
+Other kinds of compound attributes which express useful intution, in particular the disjunction of compound attributes, have an equivalent construction using only
+\Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes, then the disjunction of its elements $\bigvee \Gamma$ then its' extension $\bigcup_{\gamma \in
+\Gamma}\gamma^{\vDash}$ is the union of all extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge \Gamma$.
 
-The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion on equivalence in attribute logic. The kind of equivalence we have
-spoken of is more aptly called \textit{global equivalence}. As the name suggests, the equivalence is not a local property of the formal context which gives semantics to compound attributes.
+The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion on equivalence in attribute logic. The kind of equivalence we have spoken
+of is more aptly called \textit{global equivalence}. As the name suggests, the equivalence is not a local property of the formal context which gives semantics to compound
+attributes.
 
 \begin{definition}
 	\label{definition:equivalence-compound-attributes}
@@ -775,8 +767,8 @@ spoken of is more aptly called \textit{global equivalence}. As the name suggests
 	equivalent to the attribute \texttt{violent}.
 \end{example}
 
-A somewhat blunt approach to determining if two compound attributes, over a set $M$ of attributes, are globally equivalent is to test for extensional equivalence in the formal
-context $(\pset{M}, M, \ni)$, such a context is called the \textit{test context} over $M$.
+A somewhat blunt approach to determining if two compound attributes, over a set $M$ of attributes, are globally equivalent is to test for extensional equivalence in the formal context
+$(\pset{M}, M, \ni)$, such a context is called the \textit{test context} over $M$.
 
 \begin{definition}
 	\label{definition:compound-attributes-2} Let $M$ be a set of attributes, then the language of (finite) compound attributes is inductively as

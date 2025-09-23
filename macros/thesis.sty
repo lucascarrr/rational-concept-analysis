@@ -55,14 +55,14 @@
 % Headers and footers
 % ------------------------------------------------------------------
 \RequirePackage{fancyhdr}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ : #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\ : #1}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[EL]{\textit{\small Section \rightmark}}    % section name (even, left)
+\fancyhead[EL]{\textit{\small \rightmark}}    % section name (even, left)
 \fancyhead[ER]{\textit{\small \thepage}}              % page number (even, right)
 \fancyhead[OL]{\textit{\small \thepage}}              % page number (odd, left)
-\fancyhead[OR]{\textit{\small Chapter \leftmark}}     % chapter name (odd, right)
+\fancyhead[OR]{\textit{\small \leftmark}}     % chapter name (odd, right)
 \renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{        % plain pages (e.g., chapter openings)
 	\fancyhf{}
@@ -109,6 +109,7 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
+\usepackage{nicefrac}
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -271,7 +272,11 @@
 \newcommand{\Lang}{\mathcal{L}_+}
 \newcommand{\Cn}[1]{\mathcal{C}n_{#1}}
 \newcommand{\Cna}[2]{\mathcal{C}n_{#1}({#2})}
-\newcommand{\Ca}[1]{C(#1)}
+\newcommand{\Ca}[1]{#1^+}
 \newcommand{\cl}[2]{\mathsf{cl}_{#1}({#2})}
+
+\newcommand{\pcontext}{\mathbb{P}}
+\newcommand{\PGMI}{(G,M,I,\preceq)}
 \newcommand{\RGMI}{(G,M,\relI,\mathsf{R})}
 \newcommand{\Mod}[1]{\mathsf{Mod} ({#1})}
+\newcommand{\Min}[1]{\underline{#1}}

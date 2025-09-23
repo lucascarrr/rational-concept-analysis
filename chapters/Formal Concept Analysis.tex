@@ -505,9 +505,9 @@ ideas are recontextualised here.
 \end{definition}
 
 A set $\mathcal{T}$ of attribute implications is called \textit{closed}, or an \textit{implication theory}, when it contains all implications that logically follow from it. It is \textit{complete}
-with respect to a closure operator if every implication that holds in the respective closure system follows. Then, $\mathcal{T}$ is complete with respect to a context $\GMI$ if for
-every $A,B \subseteq M$ where $B \subseteq A^{\downarrow \uparrow}$ it follows that $\mathcal{T}\vDash A \rightarrow B$. In other words, when every implication that is respected by
-$\GMI$ follows from $\mathcal{T}$. This correspondence can be formalised as:
+with respect to some closure operator if every implication that holds in the respective closure system follows. Then, $\mathcal{T}$ is complete with respect to a context $\GMI$ if
+for every $A,B \subseteq M$ where $B \subseteq A^{\downarrow \uparrow}$ it follows that $\mathcal{T}\vDash A \rightarrow B$. In other words, when every implication that is
+respected by $\GMI$ follows from $\mathcal{T}$ \cite{ganter2016conceptual,ganter2024formal}. This correspondence can be formalised as:
 
 \begin{proposition}
 	\label{proposition:implication-sets-and-concept-intents}
@@ -637,8 +637,6 @@ will be dealt with in future) is added to \textit{update}. The process repeats u
 	The complexity of \nameref{algorithm:LinClosure} is $O(\vert \mathcal{T}\vert)$, and so the procedure is linear on the size of the implication set.
 \end{proposition}
 
-
-
 \subsubsection{Implication Bases}
 \label{subsubsection:implication-bases}
 
@@ -669,15 +667,27 @@ non-redundant implications is computationally appealing.
 	\end{enumerate}
 \end{definition}
 
-\textcolor{red}{The rest of this subsection is quite straightforward, I will do it later. Remaining things include: semantic consequence, armstrong axioms, closure system of implications
-=> context, DQ-basis}
+\begin{example}
+	\textcolor{red}{Give an the canonical base of the algebraic structures}
+
+	\begin{center}
+		$\left\{ \;
+		\begin{aligned}
+			 & \{\texttt{commutative}\} \rightarrow \{\texttt{closure, identity, inverse, associative}\} \\
+			 & \{\texttt{inverse, associative}\} \rightarrow \{\texttt{identity}\}
+		\end{aligned}
+		\right\}$
+	\end{center}
+
+	Examine \Cref{cxt:truth-table}
+\end{example}
 
 \subsection{Compound Attributes}
 \label{subsection:compound-attributes}
 
-The first point is to describe the process by which attributes may construct (contextual) logical expressions. These constructs are called \textit{compound attributes}. In harmony
-with the notational choices we made in the discussion on propositional logic, we denote ``normal'' attributes with lower case letters in the Latin alphabet, or, by attribute names in
-monospaced text, and compound attributes with lower case Greek letters.
+The implication logic of FCA, despite giving rise to interesting results like the canonical basis, is quite limited. Certain settings require more expressive power. \textit{Compound
+attributes} are introduced for this purpose. We use the lowercase Greek alphabet to denote compound attributes as they quite closely resemble propositional formulae, \textit{atomic}
+(normal) attributes will continue to be denoted with lowercase Latin alphabet.
 
 \begin{definition}
 	\label{definition:compound-attributes} \index{attribute!compound}
@@ -714,9 +724,9 @@ Other kinds of compound attributes which express useful intution, in particular 
 \Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes, then the disjunction of its elements $\bigvee \Gamma$ then its' extension $\bigcup_{\gamma \in
 \Gamma}\gamma^{\vDash}$ is the union of all extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge \Gamma$.
 
-The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion on equivalence in attribute logic. The kind of equivalence we have spoken
-of is more aptly called \textit{global equivalence}. As the name suggests, the equivalence is not a local property of the formal context which gives semantics to compound
-attributes.
+The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion; it is possible for two compound attributes to be equivalent in one formal
+context, but not in another. We might say that in the former case, these attributes are \textit{locally} equivalent. \textit{Global} equivalence is stronger, requiring that the
+equivalence hold for any context.
 
 \begin{definition}
 	\label{definition:equivalence-compound-attributes}
@@ -789,30 +799,6 @@ $(\pset{M}, M, \ni)$, such a context is called the \textit{test context} over $M
 		\item $g \Vdash \varphi \rightarrow \gamma$ if and only if $g \in \neg \varphi^{\Vdash}\lor \gamma^{\Vdash}$
 	\end{itemize}
 \end{definition}
-
-\begin{example}
-	Consider the context below, which represents a portion of the $1984$ United States Congressional voting records taken from the UC Irvine Machine Learning repository
-	\cite{congressional_voting_records_105}.
-
-	\begin{figure}[H]
-		\centering
-		\begin{cxt}
-			\label{cxt:voting} \cxtName{\textbf{\texttt{Congressional Voting Records}}} \atr{\texttt{mx-missile}} \atr{\texttt{crime}} \atr{\texttt{immigration}} \atr{\texttt{satellite ban}}
-			\atr{\texttt{education}} \atr{\texttt{republican}} \atr{\texttt{democrat}} \obj{.xx.xx.}{\texttt{Representative 1}} \obj{......x}{\texttt{Representative 4}} \obj{.x..xx.}{\texttt{Representative 9}}
-			\obj{..x.x.x}{\texttt{Representative 17}}
-		\end{cxt}
-		\caption{A context describing a portion of congressional voting records for 1984}
-		\label{figure:voting-records}
-	\end{figure}
-
-	We can construct meaningful compound attributes such as $\texttt{education}\land \neg \texttt{immigration}$, the extension of which consists of all representatives who voted ``yay''
-	with respect to the education bill, and either abstained or voted ``nay'' to the immigration bill. This compound attribute is extensionally equivalent to
-	$\texttt{republican}\land \neg \texttt{immigration}$.
-
-	We may be tempted to say that $\texttt{republican}$ and $\neg \texttt{democrat}$ are globally equivalent compound attributes; but this would be an error. Globally equivalent
-	attributes have the same extension in any conceivable context, not only those which align with background assumptions about the nature of the attributes. For an example of global
-	equivalence, consider $\texttt{democrat}$ and $\neg \neg \texttt{democrat }$.
-\end{example}
 
 % \clearpage
 % \subsection{Clause Logic}

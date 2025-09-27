@@ -18,11 +18,13 @@
 \usepackage{microtype}     % typographic refinements
 \usepackage{dirtytalk}     % for quotations: \say{...}
 \usepackage{csquotes}      % recommended for quotes and biblatex
+\let\openbox\undefined
+\usepackage{amsthm}
 
 % ------------------------------------------------------------------ % Fonts % ------------------------------------------------------------------
 \usepackage{mathtools}
-\RequirePackage{stix2} % main text + math font
-\usepackage{inconsolata} % monospaced font for code
+\usepackage{newtxtext,newtxmath} % main text + math font
+\usepackage[var0]{inconsolata}  % var0 prevents italic issues
 
 % ------------------------------------------------------------------
 % Page Geometry and Spacing
@@ -36,7 +38,7 @@
 	headsep=0.25in,
 }
 \usepackage{setspace}
-\setstretch{1.25}            % line spacing
+\setstretch{1.1}            % line spacing
 \setlength{\parskip}{0.3em}  % paragraph spacing
 \setlength{\parindent}{15pt} % paragraph indentation
 

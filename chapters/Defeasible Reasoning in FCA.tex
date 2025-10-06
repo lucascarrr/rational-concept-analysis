@@ -131,7 +131,10 @@ overlooked in isolation. The more general problem is that association rules do n
 
 \section{Preferential Contexts}
 
-We begin the introduction of KLM style defeasible reasoning to FCA by defining an analogue to preferential interpretations.
+We begin the introduction of KLM style defeasible reasoning to FCA by defining an analogue to preferential interpretations. At the start, we attempt to make as few changes to the FCA setting
+as possible, resulting in some restrictions of the analogy to preferential reasoning. As we progress, we discuss the amendments necessary to lift these restrictions. The idea behind this order
+of exposition is that we view this work as largely an extension to FCA rather than addition to the KLM area; and so, there may be uses of this kind of defeasible reasoning in FCA which do not
+wish to depart too much from the original setting.
 
 \begin{definition}
 	\label{definition:preferential-context} \index{formal context! preferential context}
@@ -162,8 +165,8 @@ what such a preference order may look like for the context in \Cref{figure:votin
 \end{figure}
 %
 Preferential interpretations were defined by a relation on states which were then mapped to valuations, with no requirement that the mapping be injective. It may then be surprising that
-states have been omitted from our definition. Formal contexts have no restriction on including two objects with equivalent intension, meaning that states seem to be implicitly constructed in
-contexts.
+states seem to have been entirely omitted from our definition. The reason being that formal contexts have no restriction on the inclusion of two objects with an equivalent intension, meaning
+that states seem to be implicitly constructed in contexts.
 
 \begin{lemma}
 	\label{lemma:objects-preferential}
@@ -181,14 +184,15 @@ Under the preference relation, we describe the $\prec$-minimal states through th
 		\underline{A}\coloneqq \{\, g \in A \mid \nexists h \in A : (h \prec g) \,\}.
 	\]
 \end{definition}
-The ordering indicates that the member of Congress designated by \texttt{moc-0} is preferred, under \textit{some} metric, to all other members. They are a Republican and could thus be considered
-the most typical Republican. It is a subtle point that, in spite of their status as being the most preferred Republican, their minimal position need not be attributed to some Republican-specific
-feature. For instance, it might be that members of congress who voted in favour of the \texttt{easa} bill are preferred, irrespective of party affiliation. In this sense, \texttt{moc-0} being
-the most preferred Republican is a by-product of another preference. For the time being we remain agnostic as to \textit{how} one may construct such a preference relation in general, this
-will be the subject of \Cref{subsubsection:finding-order}.
-%
-Preferential contexts allow us to speak about \textit{defeasible conditionals} in the setting of FCA. Much like classical implications in FCA, defeasible conditionals are defined over an
-attribute set $M$, and so the expression $A \twiddle B$ should be understood to be saying that the ``most preferred'' objects in a context that have all attributes from $A$ also have all attributes
+
+If we considered the attribute $\{\, \texttt{rep}\,\}$, its' extent contains the objects $\{\,\texttt{moc-0,moc-1,moc-79}\,\}$ and the respective minimisation is the single object $\{ \, \texttt
+{moc-0}\,\}$. In some sense this conveys that \texttt{moc-0} should be regarded as the most preferred Republican. It is a subtle point that, in spite of this status, their minimal position
+need not be attributed to some Republican-specific feature. For instance, it might be that members of congress who voted in favour of the \texttt{easa} bill are preferred, irrespective of
+party affiliation. In this sense, \texttt{moc-0} being the most preferred Republican is a by-product of another preference. It makes little practical difference, but is possibly important for
+ones' intuition of how the preference relation was constructed; a matter which, for the time being, we remain agnostic to. This will be the subject of \Cref{subsubsection:finding-order}.
+
+Preferential contexts allow us to speak about \textit{defeasible conditionals} in the setting of FCA. Much like classical implications in FCA, defeasible conditionals are defined over an attribute
+set $M$, and so the expression $A \twiddle B$ should be understood to be saying that the ``most preferred'' objects in a context that have all attributes from $A$ also have all attributes
 from $B$.
 
 \begin{definition}
@@ -282,8 +286,8 @@ Is it possible to find a $\mathcal{T}$ such that $\mathcal{T}$ is a compact form
 	$\mathbb{R}, \Delta$ rationally follows from $\mathcal{T}$.
 \end{definition}
 
-A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$ provides abstracted perspective, in terms of defeasible conditionals, on the information
-contained in the pair $(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsubsection:implication-bases}, to find such a set that is non-redundant, or the \textit{rational
+A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$ provides abstracted perspective, in terms of defeasible conditionals, on the
+information contained in the pair $(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsubsection:implication-bases}, to find such a set that is non-redundant, or the \textit{rational
 basis} of $(\mathbb{R},\Delta)$.
 
 \begin{definition}

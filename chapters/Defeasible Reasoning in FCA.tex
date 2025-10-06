@@ -1,45 +1,28 @@
 \chapter{Defeasible Reasoning in Formal Concept Analysis}
 \label{chapter:defeasible-reasoning-in-fca}
 
-The conclusion of \Cref{part:1} marks the end of the scaffolding component of this work. The remaining chapters are devoted to the novel contributions of this work: the unification
-of the ideas presented in \Cref{chapter:defeasible-reasoning,chapter:formal-concept-analysis}. That is, to develop an approach to defeasible reasoning in FCA in the style of
-rational consequence.
+The conclusion of \Cref{part:1} marks the end of the scaffolding component of this work. The remaining chapters are devoted to the novel contributions of this work: the unification of the
+ideas presented in \Cref{chapter:defeasible-reasoning,chapter:formal-concept-analysis}. That is, to develop an approach to defeasible reasoning in FCA in the style of rational consequence.
 
-Fortunately, the context switch is quite natural. As we progress, the reasons behind the selection of the KLM framework as an ideal candidate for defeasible reasoning in FCA should
-become apparent. Indeed, understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented here, and their counterparts from
-prior chapters. So we encourage---and will attempt to facilitate---these frequent backwards-facing references.
+Fortunately, the context switch is quite natural. As we progress, the reasons behind the selection of the KLM framework as an ideal candidate for defeasible reasoning in FCA should become apparent.
+Indeed, understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the definitions presented here, and their counterparts from prior chapters. So we
+encourage---and will attempt to facilitate---these frequent backwards-facing references.
+
+This chapter draws on two publications, \cite{Carr2024} and \cite{Carr2025}.
 
 \section{Motivation}
 \label{section:motivation}
 
-There are multiple views one may consider when thinking about non-monotonic reasoning in FCA, each with its own implicit justification for violating monotonicity. The most familiar
-one, which has already been discussed in \Cref{chapter:defeasible-reasoning}, takes up the position that \textit{usually} there are exceptional and typical instances, and that there
-should be a clear way to reason prototypically. Certainly, there is good reason for this argument in FCA; but this will be the subject of the next chapter.
+The violation of monotonicitiy in FCA introduces peculiarities which can significantly undermine parts of the theory underlying FCA. For instance, one perspective on concept lattices is that
+they describe chains of inheritance from concepts to their subconcepts. This idea becomes difficult to conceptualise without monotonicity.
 
-The perspective we consider here views FCA as a tool which facilitates the extraction of information from data. Of course, data is frequently polluted with errors or noise, which inhibit
-the discovery of useful information. It may be infeasible to try and correct or denoise data, and yet we hope that useful information can still be learned from it. Consider the
-formal context below, which represents some of the United States congressional voting data for the House of Representatives, captured in 1984. The data only captures when a member
-of congress voted in favour of a particular bill, whereas in reality members of congress could also reject the bill, or abstain from voting.
+Nevertheless, there are certain settings where violation of monotonicity extends the utility of FCA in a reasonable way. The justifications for this are somewhat similar to those given in \Cref{section:nmr-background}:
+frequently there are exceptional instances of some class, and it is useful to be able to sometimes reason in a way which considers these exceptions, and at other times reason prototypically.
+That is, to reason in spite of the exceptions. There is an extension of this argument \cite{Belohlavek2022,Wille2005} which makes a stronger case for the prototypical view of concepts; but
+we will leave this discussion for the next chapter where it is more relevant.
 
-In addition, certain voting patterns might exist which are fail to be captured by attribute implications due to a member of congress crossing party lines.
-
-% \textit{Exceptions} in this case are erroneous datum \cite{Sacco2024}. The point, then, is to facilitate reasoning from
-
-\textcolor{red}{Represents a kind of counter factual: If these implications had been true, then these would follow}
-
-\subsection{Association Rules}
-\label{subsection:association-rules}
-
-Concerns about the brittleness of---as well as the benefits of relaxing---the semantics of (classical) attribute implications are well known in the FCA literature, and in data
-mining more generally \cite{Lakhal2005}. \textit{Association rules} are able express implication-like statements despite the existence of counterexamples in the data, or in our case
-a context. These are statements like \say{$66\%$ of the members of congress who were \textit{Democrats}, who make up $50\%$ of congress, voted on the \textit{MX-Missile} bill}.
-
-The \emph{support} of a set of attributes $X \subseteq M$ in a context $\GMI$ is the fraction of objects which have all attributes $X$ over the total number of objects; and so $\mathrm{supp}
-(X) = \nicefrac{|X^{\downarrow}|}{|G|}$, the (relative) support of a rule $A \Rightarrow B$ is simply the support of $A$. The \textit{confidence} of a rule is a measure of how
-frequently the premise and conclusion occur, relative to how frequently the premise occurs, formally
-$\mathrm{conf}(A \Rightarrow B) = \nicefrac{\mathrm{supp}(X \cup Y)}{\mathrm{supp}(X)}$. In the example above, the support of the rule is $50\%$ and its' confidence is $66\%$.
-Association rules which meet specified lower-thresholds for support and confidence are then accepted.
-
+Consider the context, which will be uses as a running example throughout this chapter.
+%
 \begin{figure}[H]
 	\centering
 	\begin{cxt}
@@ -98,30 +81,96 @@ Association rules which meet specified lower-thresholds for support and confiden
 	\caption{A portion of the 1984 United States Congressional Voting Records dataset}
 	\label{figure:voting-records}
 \end{figure}
+%
+For practical reasons, we show only a portion of this dataset. If the goal were the discovery of voting patterns, which characterise either party preferences or some other associations between
+different bills, the brittleness of attribute implications is a limiting factor on what might be learned. The existence of a single Democrat who failed to tow the party line would prevent an
+otherwise clear voting pattern from being discovered. This problem arises in other ways as well. Data might be captures incorrectly, or, in this instance, a member of congress may have been
+absent, in which case there is no way to distinguish between this as opposed to a vote to reject the bill.
 
-Indeed association rules offer a reasonable response the problems discussed at the beginning of this section. Suppose the thresholds for $\mathrm{MinSupp}$ and $\mathrm{MinConf}$
-were fixed at $0.2$ and $0.5$, respectively. We would then accept the association rules:
+\subsection{Association Rules}
+\label{subsection:association-rules}
+
+Concerns over the brittleness of---as well as the benefits of relaxing---the semantics of (classical) attribute implications are well known in the FCA literature, and in data mining more generally
+\cite{Lakhal2005}. \textit{Association rules} are able express implication-like statements despite the existence of counterexamples in the data, or in our case a context. These are statements
+like \say{$66\%$ of the members of congress who were \textit{Democrats}, which makes up $50\%$ of congress, voted on the \textit{MX-Missile} bill}.
+
+The \emph{support} of a set of attributes $X \subseteq M$ in a context $\GMI$ is the fraction of objects which have all attributes $X$ over the total number of objects; and so
+$\mathrm{supp}( X) = \nicefrac{|X^{\downarrow}|}{|G|}$, the (relative) support of a rule $A \Rightarrow B$ is simply the support of $A$. The \textit{confidence} of a rule is a measure of how
+frequently the premise and conclusion occur, relative to how frequently the premise occurs, formally $\mathrm{conf}(A \Rightarrow B) = \nicefrac{\mathrm{supp}(X \cup Y)}{\mathrm{supp}(X)}$.
+In the example above, the support of the rule is $50\%$ and its' confidence is $66\%$. Association rules which meet specified lower-thresholds for support and confidence are then accepted.
+
+While association rules present a reasonable solution to the problem of discovering and representing implications with exceptions, there are some undesirable qualities. Settling on the threshold
+vallues for support and confidence is usually dependent on human input, and there is no obvious intuition for how one might arrive at these. Frequently, it is a requirement to know the data
+well, which creates a kind of circularity as the purpose of this work is to extend a tool which helps one understand their data.
+
+The situation gets worse when we try to describe the properties of reasoning with association rules. Consider the two rules below, which should be accepted with $\mathrm{minconf}= 0.6$ and $\mathrm{minsup}
+= 0.5$.
 %
 \begin{align*}
-	\texttt{dem}\Rightarrow \texttt{mxm}\quad \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66 \\
-	\texttt{dem}\Rightarrow \texttt{dfe}\quad \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66
+	\texttt{dem}\Rightarrow \texttt{mxm} \\
+	%; \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66 \\
+	\texttt{dem}\Rightarrow \texttt{dfe} % \; \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66
 \end{align*}
 %
-Yet, the rule $\texttt{dem}\Rightarrow \texttt{mxm, dfe}$ is not accepted.
+In natural language, we might summarise this scenario as saying \say{Democrats voted in favour of the \textit{MX-Missile} and \textit{Duty-Free Exports}}. To make future analysis simpler, we
+could suggest that whenever we accept association rules of the form
+\begin{align*}
+	\phi \Rightarrow \psi    \\
+	\phi \Rightarrow \gamma,
+\end{align*}
+we may compress the information as the simpler representation:
+\begin{align*}
+	\phi \Rightarrow \psi \land \gamma
+\end{align*}
+
+Unfortunately, this is not always the case. In the above scenario, the rule $\texttt{dem}\Rightarrow \{\texttt{mxm,dfe}\}$ has a confidence of $0.47$, which is below the $\mathrm{minconf}$
+threshold.
+
+That the pattern of reasoning enforced by association rules does not satisfy the above characterisation---which is the same property as was discussed at \Cref{postulate:and}---may be
+overlooked in isolation. The more general problem is that association rules do not admit description via \lucas{the kind of axiomisation we want [source needed]}.
 
 \section{Preferential Contexts}
+
+We begin the introduction of KLM style defeasible reasoning to FCA by defining an analogue to preferential interpretations.
 
 \begin{definition}
 	\label{definition:preferential-context} \index{formal context! preferential context}
 
-	A \emph{preferential context} $\pcontext = \PGMI$ is a formal context $\GMI$ where $\prec$ denotes a strict partial order on the set of objects.
+	A \emph{preferential context} $\pcontext = \PGMI$ is a formal context $\GMI$ where $\prec$ denotes a strict partial order, or \emph{preference order}, on the set of objects.
 \end{definition}
 
-Preferential contexts, albeit with a different motivation, were first introduced by Obiedkov \shortcite{Obiedkov2012}, and later on with our purposes in mind in \cite{Carr2024}. In
-analogy to the preferential \textit{interpretations} defined earlier, the relation on objects conveys that for two objects $g,h \in G$, $g \preceq h$ should be interpreted as
-saying that \say{Object $g$ is more preferable to $h$}. While preferential interpretations were defined by a relation on states, and a not-necessarily-injective mapping from states
-to valuations, preferential contexts do not require states, and can construct the relation on objects directly. In essence, two distinct objects may have the same intent,
-implicitly functioning like states.
+Preferential contexts, albeit with a different motivation, were first introduced by Obiedkov \shortcite{Obiedkov2012}, and later on with our purposes in mind in \cite{Carr2024}. An example of
+what such a preference order may look like for the context in \Cref{figure:voting-records} is given below.
+%
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[every node/.style={ circle, text=black, inner sep=0pt, minimum size=4mm, font=\small }]
+		\node (root) at (0,0) {$\texttt{moc-0}$};
+		\node (1) at (-2,1.5) {$\texttt{moc-6}$};
+		\draw (root) -- (1);
+		\node (2) at (0,1.5) {$\texttt{moc-1}$};
+		\draw (root) -- (2);
+		\node (3) at (2,1.5) {$\texttt{moc-79}$};
+		\draw (root) -- (3);
+		\node (12) at (-4,3) {$\texttt{moc-34}$};
+		\draw (1) -- (12);
+		\node (13) at (-2,3) {$\texttt{moc-62}$};
+		\draw (1) -- (13);
+	\end{tikzpicture}
+	\caption{A preference relation on the context in \Cref{figure:voting-records}}
+	\label{figure:preference-relation-congress}
+\end{figure}
+%
+Preferential interpretations were defined by a relation on states which were then mapped to valuations, with no requirement that the mapping be injective. It may then be surprising that
+states have been omitted from our definition. Formal contexts have no restriction on including two objects with equivalent intension, meaning that states seem to be implicitly constructed in
+contexts.
+
+\begin{lemma}
+	\label{lemma:objects-preferential}
+
+	There exists a preferential context $\PGMI$ where there exist two objects, $g,h \in G$, with $g^{\uparrow}= h^{\uparrow}$ that defines the consequence relation $\twiddle_{\pin}$ such that
+	no preferential context $\pcontext'$ without `duplicate' objects defines the same relation.
+\end{lemma}
 
 Under the preference relation, we describe the $\prec$-minimal states through the process of \textit{minimisation}.
 \begin{definition}
@@ -132,10 +181,15 @@ Under the preference relation, we describe the $\prec$-minimal states through th
 		\underline{A}\coloneqq \{\, g \in A \mid \nexists h \in A : (h \prec g) \,\}.
 	\]
 \end{definition}
+The ordering indicates that the member of Congress designated by \texttt{moc-0} is preferred, under \textit{some} metric, to all other members. They are a Republican and could thus be considered
+the most typical Republican. It is a subtle point that, in spite of their status as being the most preferred Republican, their minimal position need not be attributed to some Republican-specific
+feature. For instance, it might be that members of congress who voted in favour of the \texttt{easa} bill are preferred, irrespective of party affiliation. In this sense, \texttt{moc-0} being
+the most preferred Republican is a by-product of another preference. For the time being we remain agnostic as to \textit{how} one may construct such a preference relation in general, this
+will be the subject of \Cref{subsubsection:finding-order}.
 %
-Preferential contexts allow us to speak about \textit{defeasible conditionals} in the setting of FCA. Much like classical implications in FCA, defeasible conditionals are defined
-over an attribute set $M$, and so the expression $A \twiddle B$ should be understood to be saying that the ``most preferred'' objects in a context that have all attributes from $A$
-also have all attributes from $B$.
+Preferential contexts allow us to speak about \textit{defeasible conditionals} in the setting of FCA. Much like classical implications in FCA, defeasible conditionals are defined over an
+attribute set $M$, and so the expression $A \twiddle B$ should be understood to be saying that the ``most preferred'' objects in a context that have all attributes from $A$ also have all attributes
+from $B$.
 
 \begin{definition}
 	\label{definition:satisfaction-preferential-context}
@@ -192,9 +246,9 @@ Thus far, the discussion on finding a suitable preference relation has been omit
 
 	\State $i \coloneq 0$ \State \textit{initialise} $\mathsf{R}(g) \coloneq \vert G \vert$ for all $g \in G$ \State $\Gamma \coloneq \Delta$
 
-	\While{$\exists \, g \in G \colon \mathsf{R}(g) = \vert G \vert$} \ForAll{$g \in G$ with $\mathsf{R}(g) = \vert G \vert$} \If{$g \vDash \Gamma$} \textit{update}
-	$\mathsf{R}(g) = i$ \EndIf \If{$\forall \, g \in G \colon \mathsf{R}(g) \neq i$} \State \Return $\bot$ \EndIf \State $\Gamma \coloneq \{(\phi \twiddle \psi) \in \Gamma \mid g \nvDash
-	\phi \; \text{for all}\; g \in G \; \text{with}\; \mathsf{R}(g) = i\}$ \State $i \coloneq i + 1$ \EndFor \EndWhile
+	\While{$\exists \, g \in G \colon \mathsf{R}(g) = \vert G \vert$} \ForAll{$g \in G$ with $\mathsf{R}(g) = \vert G \vert$} \If{$g \vDash \Gamma$} \textit{update} $\mathsf{R}(g) = i$ \EndIf
+	\If{$\forall \, g \in G \colon \mathsf{R}(g) \neq i$} \State \Return $\bot$ \EndIf \State $\Gamma \coloneq \{(\phi \twiddle \psi) \in \Gamma \mid g \nvDash \phi \; \text{for all}\; g \in G
+	\; \text{with}\; \mathsf{R}(g) = i\}$ \State $i \coloneq i + 1$ \EndFor \EndWhile
 
 	\State \Return $\mathsf{R}$
 \end{algo}
@@ -206,14 +260,14 @@ Thus far, the discussion on finding a suitable preference relation has been omit
 \subsection{Contextual Rational Closure}
 
 \begin{definition}
-	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if $\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$
-	is the \emph{test context}. It \emph{contextually follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
+	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if $\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$ is the \emph{test
+	context}. It \emph{contextually follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
 \end{definition}
 
 \begin{definition}
 	A set $\mathcal{T}$ is \emph{closed} with respect to a pair if and only if it contains every conditional that is rationally entailed. That is, if
-	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$ is \emph{contextually closed} if it contains every
-	conditional that is contextually entailed, i.e. $\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R}, \mathcal{T}\dentails A \rightarrow B\}$.
+	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$ is \emph{contextually closed} if it contains every conditional that
+	is contextually entailed, i.e. $\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R}, \mathcal{T}\dentails A \rightarrow B\}$.
 \end{definition}
 
 \begin{definition}
@@ -228,9 +282,9 @@ Is it possible to find a $\mathcal{T}$ such that $\mathcal{T}$ is a compact form
 	$\mathbb{R}, \Delta$ rationally follows from $\mathcal{T}$.
 \end{definition}
 
-A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$ provides abstracted perspective, in terms of defeasible
-conditionals, on the information contained in the pair $(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsubsection:implication-bases}, to find such a set that
-is non-redundant, or the \textit{rational basis} of $(\mathbb{R},\Delta)$.
+A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$ provides abstracted perspective, in terms of defeasible conditionals, on the information
+contained in the pair $(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsubsection:implication-bases}, to find such a set that is non-redundant, or the \textit{rational
+basis} of $(\mathbb{R},\Delta)$.
 
 \begin{definition}
 	\label{definition:defeasible-closure}

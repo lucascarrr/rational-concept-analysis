@@ -34,13 +34,13 @@
 \usepackage{geometry}
 \geometry{
 	a4paper,
-	left=1in,
-	right=1in,
+	left=1.2in,
+	right=1.2in,
 	top=1in,
 	headsep=0.25in,
 }
 \usepackage{setspace}
-\setstretch{1.4}            % line spacing
+\setstretch{1}            % line spacing
 \setlength{\parskip}{0.3em}  % paragraph spacing
 \setlength{\parindent}{15pt} % paragraph indentation
 
@@ -56,20 +56,20 @@
 % Headers and footers
 % ------------------------------------------------------------------
 \RequirePackage{fancyhdr}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\renewcommand{\sectionmark}[1]{\markright{#1}}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[EL]{\textit{\small \rightmark}}    % section name (even, left)
-\fancyhead[ER]{\textit{\small \thepage}}              % page number (even, right)
-\fancyhead[OL]{\textit{\small \thepage}}              % page number (odd, left)
-\fancyhead[OR]{\textit{\small \leftmark}}     % chapter name (odd, right)
-\renewcommand{\headrulewidth}{0.4pt}
-\fancypagestyle{plain}{        % plain pages (e.g., chapter openings)
-	\fancyhf{}
-	\renewcommand{\headrulewidth}{0pt}
-	\renewcommand{\footrulewidth}{0pt}
-}
+% \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+% \renewcommand{\sectionmark}[1]{\markright{#1}}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyhead[EL]{\textit{\small \rightmark}}    % section name (even, left)
+% \fancyhead[ER]{\textit{\small \thepage}}              % page number (even, right)
+% \fancyhead[OL]{\textit{\small \thepage}}              % page number (odd, left)
+% \fancyhead[OR]{\textit{\small \leftmark}}     % chapter name (odd, right)
+% \renewcommand{\headrulewidth}{0.4pt}
+% \fancypagestyle{plain}{        % plain pages (e.g., chapter openings)
+% 	\fancyhf{}
+% 	\renewcommand{\headrulewidth}{0pt}
+% 	\renewcommand{\footrulewidth}{0pt}
+% }
 
 % ------------------------------------------------------------------
 % Lists
@@ -281,3 +281,5 @@
 \newcommand{\RGMI}{(G,M,\relI,\mathsf{R})}
 \newcommand{\Mod}[1]{\mathsf{Mod} ({#1})}
 \newcommand{\Min}[1]{\underline{#1}}
+\newcommand{\Mind}[1]{\underline{#1^\downarrow}}
+\newcommand{\Minr}[1]{(\underline{#1^\downarrow})^\uparrow}

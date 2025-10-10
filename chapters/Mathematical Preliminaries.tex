@@ -104,10 +104,10 @@ inherits the order relation from $\mathbf{X}$; and so, for $x,y \in \mathbf{Y}$,
 As an illustrative example, from the ordered set in \Cref{subfigure:partial-order-a} we read that $z \preceq x$, as there is a (strictly) upward path from $z$ to $x$. In fact, it is clear that
 $z \preceq w, x,y,z$, or that \say{$z$ is preferred to every other element in $\mathbf{A}$}. We say such an element is \textit{minimal}.
 
-More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to the ordering on its' container set if there exists no distinct element $y \in \mathbf{X}$ such that
-$y \preceq x$. Conversely, we say $x$ is \textit{maximal} if there exists no distinct $y \in \mathbf{X}$ where $x \preceq y$. Then $x$ is the \textit{minimum} element if $x \preceq y$ for all
-$y \in \mathbf{X}$; the dual notion of a \textit{maximum} is defined as we might expect. In the ordered set $\mathbf{B}$ shown in \Cref{subfigure:partial-order-b}, $\omega$ is the maximum element
-and the order has no minimum. \index{maximum} \index{minimum} \index{maximal} \index{minimal}
+More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to the ordering on its container set if there exists no distinct element $y \in \mathbf{X}$ such that $y \preceq
+x$. Conversely, we say $x$ is \textit{maximal} if there exists no distinct $y \in \mathbf{X}$ where $x \preceq y$. Then $x$ is the \textit{minimum} element if $x \preceq y$ for all
+$y \in \mathbf{X}$; the dual notion of a \textit{maximum} is defined as we might expect. In the ordered set $\mathbf{B}$ shown in \Cref{subfigure:partial-order-b}, $\omega$ is the maximum
+element and the order has no minimum. \index{maximum} \index{minimum} \index{maximal} \index{minimal}
 
 The following definition captures how we might describe certain mappings from one ordered set to another, and how these mappings relate to the orders of their respective sets.
 
@@ -125,18 +125,18 @@ The following definition captures how we might describe certain mappings from on
 \subsection{Lattice Theory}
 \label{subsection:lattice-theory}
 
-Lattice theory studies partially ordered sets that behave well with respect to certain properties involving upper and lower bounds \cite{davey2002introduction}. Given an ordered set $\mathbf{X}$
-and a subset $\mathbf{Y}\subseteq \mathbf{X}$, the set of upper bounds of $\mathbf{Y}$ is defined as
+Lattice theory studies partially ordered sets that behave well with respect to certain properties involving upper and lower bounds \cite{davey2002introduction}. Given an ordered set
+$\mathbf{X}$ and a subset $\mathbf{Y}\subseteq \mathbf{X}$, the set of upper bounds of $\mathbf{Y}$ is defined as
 \[
 	\mathbf{Y}^{u}\coloneqq \{x \in \mathbf{X}\mid \forall y \in \mathbf{Y}: y \preceq x\},
 \]
-and the set of lower bounds, $\mathbf{Y}^{l}$, is defined dually. If $\mathbf{Y}^{u}$ has a minimum element, then we call that element the \textit{supremum} of $\mathbf{Y}$. Dually, if $\mathbf{Y}
-^{l}$ has a maximum element, then we call that element the \textit{infimum} of $\mathbf{Y}$ (the supremum and infinum are also referred to as the \textit{least upper bound} and \textit{greatest
-lower bound}, respectively).
+and the set of lower bounds, $\mathbf{Y}^{l}$, is defined dually. If $\mathbf{Y}^{u}$ has a minimum element, then we call that element the \textit{supremum} of $\mathbf{Y}$. Dually, if
+$\mathbf{Y}^{l}$ has a maximum element, then we call that element the \textit{infimum} of $\mathbf{Y}$ (the supremum and infinum are also referred to as the \textit{least upper bound} and
+\textit{greatest lower bound}, respectively).
 
 \index{upper bound} \index{lower bound} \index{lattice!join} \index{lattice!meet} Instead of talking about the supremum of two elements $x,y \in \mathbf{X}$, we opt for the term \textit{join}
-and write $x \vee y$, or $\bigvee \mathbf{Y}$. Instead of infimum, we say \textit{meet} and write $x \wedge y$, or $\textstyle \bigwedge \mathbf{Y}$. With these definitions of meets and
-joins in mind, we are able to define a lattice as:
+and write $x \vee y$, or $\bigvee \mathbf{Y}$. Instead of infimum, we say \textit{meet} and write $x \wedge y$, or $\textstyle \bigwedge \mathbf{Y}$. With these definitions of meets and joins
+in mind, we are able to define a lattice as:
 
 \begin{definition}
 	\label{definition:lattice} Given a partially ordered set $\mathbf{L}$, we say that $\mathbf{L}$ is a \textit{lattice} if for every pair $x, y \in \mathbf{L}$ the join $x \vee y$ and meet $x
@@ -146,9 +146,9 @@ joins in mind, we are able to define a lattice as:
 
 \index{lattice!bounded}
 
-A lattice $\mathbf{L}$ is \textit{bounded} if there exists an element $x \in \mathbf{L}$ such that $x \vee y = x$ for all $y \in \mathbf{L}$, and there exists an element $z \in \mathbf{L}$ with
-$z \wedge y = z$ for all $y \in \mathbf{L}$. Frequently we refer to such an $x$ and $y$ as a top and bottom element and denote them by $\top$ and $\bot$, respectively. It is not difficult to
-spot that every complete lattice is bounded---in fact this is true by definition of a complete lattice---as a corollary every finite lattice is also bounded.
+A lattice $\mathbf{L}$ is \textit{bounded} if there exists an element $x \in \mathbf{L}$ such that $x \vee y = x$ for all $y \in \mathbf{L}$, and there exists an element $z \in \mathbf{L}$
+with $z \wedge y = z$ for all $y \in \mathbf{L}$. Frequently we refer to such an $x$ and $y$ as a top and bottom element and denote them by $\top$ and $\bot$, respectively. It is not difficult
+to spot that every complete lattice is bounded---in fact this is true by definition of a complete lattice---as a corollary every finite lattice is also bounded.
 
 % \begin{remark}
 % 	The lattice $(\mathbb{Z}, <)$, constructed by imposing the natural order over the integers, is an example of an lattice
@@ -231,8 +231,8 @@ spot that every complete lattice is bounded---in fact this is true by definition
 \subsubsection{Lattices as algebraic structures}
 \label{subsubsection:lattices-as-algebraic-structures}
 
-Lattices may also be considered from an algebraic perspective. Although, as we will soon show, the algebraic and order-theroetic perspectives coincide, it is frequently beneficial for one's intuition
-to be able to switch between these two perspectives.
+Lattices may also be considered from an algebraic perspective. Although, as we will soon show, the algebraic and order-theroetic perspectives coincide, it is frequently beneficial for one's
+intuition to be able to switch between these two perspectives.
 
 Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the following properties
 %
@@ -243,9 +243,8 @@ Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the fo
 \end{align}
 for all elements $x,y,z \in L$.
 
-From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partial order $\preceq$ on $L$ by construction of the relation $\{( x, x \vee y) \mid x,y \in L \}$
-\cite{bergman2015invitation}. The structure $(L, \vee)$ is called an algebraic \textit{join semilattice}, and $\preceq$ its \textit{underlying partial order}. The relation can equivalently be
-described as \say{$x \preceq y$ if and only if $x \vee y = y$}.
+From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partial order $\preceq$ on $L$ by construction of the relation $\{( x, x \vee y) \mid x,y \in L \}$ \cite{bergman2015invitation}.
+The structure $(L, \vee)$ is called an algebraic \textit{join semilattice}, and $\preceq$ its \textit{underlying partial order}. The relation can equivalently be described as \say{$x \preceq y$ if and only if $x \vee y = y$}.
 
 \begin{example}
 	\label{example:power-set-lattice} Consider the set $S = \{1,2,3\}$ and the union operation $\cup$. From $(\pset{S}, \cup)$ we can induce the order relation characterised by the set
@@ -290,9 +289,9 @@ described as \say{$x \preceq y$ if and only if $x \vee y = y$}.
 If we instead consider the structure $(L, \wedge)$ where $\wedge$ is a different binary operation on $L$ satisfying the same properties \Cref{eq:idempotence}--\Cref{eq:associativity}, we can
 construct a partial order characterised by the set $\{( x,y) \mid x \wedge y = x \tand x,y \in L\}$. The structure $(L, \wedge)$ is called a \textit{meet semilattice}.
 
-It is an obvious next step to wonder how these two algebraic structures might be related. Fix a set non-empty set $L$ with the two binary operations, $\vee$ and $\wedge$, introduced in the
-prior paragraphs. We have already seen that the underlying order of the join semilattice can be described as $x \preceq y$ if and only if $x \vee y = y$, while the underlying order of the
-meet semilattice is described by $x \preceq y$ if and only if $x \wedge y = x$. These two partial orders are \textit{compatible} under the following condition:
+It is an obvious next step to wonder how these two algebraic structures might be related. Fix a set non-empty set $L$ with the two binary operations, $\vee$ and $\wedge$, introduced in the prior
+paragraphs. We have already seen that the underlying order of the join semilattice can be described as $x \preceq y$ if and only if $x \vee y = y$, while the underlying order of the meet semilattice
+is described by $x \preceq y$ if and only if $x \wedge y = x$. These two partial orders are \textit{compatible} under the following condition:
 \begin{align}
 	\text{(Compatibility)} & \quad x \vee (x \wedge y) = x & \text{(resp.)} & \quad x \wedge (x \vee y) = x
 \end{align}
@@ -321,15 +320,15 @@ as $x \vee y = y$ if and only if $x \wedge y = x$. The formal definition of an a
 	\end{enumerate}
 \end{lemma}
 
-Moving forward, we will no longer maintain a rigid distinction between these two perspectives on lattices; and rather, will tacitly adopt whichever viewpoint best suits the surrounding context.
-Lattices are central to Formal Concept Analysis, and will be visited again in \Cref{chapter:formal-concept-analysis}.
+Moving forward, we will no longer maintain a rigid distinction between these two perspectives on lattices; and rather, will tacitly adopt whichever viewpoint best suits the surrounding
+context. Lattices are central to Formal Concept Analysis, and will be visited again in \Cref{chapter:formal-concept-analysis}.
 
 \section{Closures \& Galois Connections}
 \label{section:closure-systems}
 
 \subsection{Closure Systems}
-We frequently encounter collections of elements that satisfy certain properties of interest. A fundamental question that might arise is whether our collection includes all such elements satisfying
-the specified properties. We aliken this to the more formal notions of \textit{closures} and \textit{closed sets}.
+We frequently encounter collections of elements that satisfy certain properties of interest. A fundamental question that might arise is whether our collection includes all such elements
+satisfying the specified properties. We aliken this to the more formal notions of \textit{closures} and \textit{closed sets}.
 
 \begin{definition}
 	\index{closed set} \label{definition:closed-set}
@@ -337,12 +336,12 @@ the specified properties. We aliken this to the more formal notions of \textit{c
 	A subset $X$ of $S$ is \textit{closed} under an operation $\varphi$ if and only if the application of $\varphi$ to elements of $X$ always results in an element of $X$.
 \end{definition}
 
-This condition can be expressed equivalently by stating that $X$ is closed under the operation $\varphi$ when $\varphi [X ] \subseteq X$, where $\varphi[X]$ denotes the image of $X$ under
-$\varphi$. This formulation suggests that a natural approach to finding the closure of any subset: systematically add all elements that result from applying the operation to existing
-elements in the set, continuing this process until no new elements are generated.
+This condition can be expressed equivalently by stating that $X$ is closed under the operation $\varphi$ when $\varphi [X ] \subseteq X$, where $\varphi[X]$ denotes the image of $X$ under $\varphi$.
+This formulation suggests that a natural approach to finding the closure of any subset: systematically add all elements that result from applying the operation to existing elements in the set,
+continuing this process until no new elements are generated.
 
-In some cases, consider the singleton set $\{1\}$ as a subset of the natural numbers with the operation `$+ 2$', this process may fail to reach a fixed point. It is not that the there is no
-set closed under the operation `$+2$', but rather that it will not be found with this approach.
+In some cases, consider the singleton set $\{1\}$ as a subset of the natural numbers with the operation `$+ 2$', this process may fail to reach a fixed point. It is not that the there is no set
+closed under the operation `$+2$', but rather that it will not be found with this approach.
 
 In light of this, it is useful to abstract the idea to that of a \textit{closure operator} and \textit{closure system}:
 
@@ -368,7 +367,8 @@ In light of this, it is useful to abstract the idea to that of a \textit{closure
 From \Cref{example:power-set-lattice}, we know that under the inclusion order, the powerset of any set forms a complete lattice. Then, from \Cref{definition:closure-system} it follows that a
 closure system on $S$ is a meet subsemilattice of $\pset{S}$.
 
-Apart from their nomenclature, it is not immediately obvious how closure operators and closure systems are related, the following theorem shows that they are indeed \textit{cryptomorphic} \cite{CASPARD2003241}.
+Apart from their nomenclature, it is not immediately obvious how closure operators and closure systems are related, the following theorem shows that they are indeed \textit{cryptomorphic}
+\cite{CASPARD2003241}.
 
 \begin{theorem}
 	\label{theorem:relation-closure-operator-systems} If $\mathcal{C}$ is a closure system on $S$, then $\varphi : \pset{S}\to \pset{S}$ where
@@ -428,8 +428,8 @@ as they are fundamental to FCA, and closely related to ideas around closures.
 	for all $x \in \mathbf{X}$ and $y \in \mathbf{Y}$.
 \end{definition}
 
-In future, we will drop the \textit{antitone}, and just write \textit{Galois connection}. We recount some well-known propositions which are helpful for one's intuition, in that they provide several
-different perspectives on Galois connections.
+In future, we will drop the \textit{antitone}, and just write \textit{Galois connection}. We recount some well-known propositions which are helpful for one's intuition, in that they provide
+several different perspectives on Galois connections.
 
 \begin{proposition}
 	\label{proposition:fundamental-galois} Let $(\varphi, \psi)$ refer to the same pair of maps constituting a Galois connection, then
@@ -455,8 +455,8 @@ different perspectives on Galois connections.
 	are \textit{monotone, extensive} and \textit{idempotent} and thus constitute closure operators on $\mathbf{X}$ and $\mathbf{Y}$, respectively.
 \end{proposition}
 %
-So, we have it that two mappings that constitute a Galois connection will further define two closure operators by taking their compositions. By \Cref{theorem:closure-systems-lattices} each of
-these closure operators will induce a closure system on its' respective domain, between which the mappings are dually isomorphic.
+So, we have it that two mappings that constitute a Galois connection will further define two closure operators by taking their compositions. By \Cref{theorem:closure-systems-lattices} each
+of these closure operators will induce a closure system on its respective domain, between which the mappings are dually isomorphic.
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[every node/.style={ circle, fill=black, text=black, inner sep=0pt, minimum size=2mm, font=\scriptsize }]

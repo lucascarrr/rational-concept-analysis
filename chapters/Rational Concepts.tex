@@ -2,7 +2,49 @@
 \label{chapter:rational-concepts}
 
 \section{Motivation}
+\begin{figure}[H]
+	\centering
+	\unitlength 1.75mm
+	\begin{diagram}
+		{50}{100} %
 
+		% Row 1
+		\Node{1}{25}{95}
+
+		\Node{2}{32.5}{84} \Edge{1}{2} \rightAttbox{2}{0}{1}{wpcs}
+
+		\Node{3}{10}{75} \Edge{1}{3} \leftAttbox{3}{0}{1}{crm,esa,pff}
+
+		\Node{4}{32.5}{62} \Edge{2}{4} \rightAttbox{4}{0}{1}{easa}
+
+		\Node{5}{45}{60} \Edge{2}{5} \rightAttbox{5}{0}{1}{dem}
+
+		\Node{6}{4}{58} \Edge{3}{6} \leftAttbox{6}{0}{1}{rep,edu,srs}
+
+		\Node{7}{17}{58} \Edge{3}{7} \Edge{2}{7} \leftAttbox{7}{1}{1}{rgs}
+
+		\Node{8}{0}{47} \Edge{6}{8} \leftAttbox{8}{1}{1}{imm} \leftObjbox{8}{1}{1}{moc-79}
+
+		\Node{9}{40}{46} \Edge{4}{9} \Edge{5}{9} \leftAttbox{9}{1}{1}{dfe}
+
+		\Node{10}{50}{46} \Edge{5}{10} \rightObjbox{10}{1}{1}{moc-62}
+
+		\Node{11}{10}{40} \Edge{6}{11} \Edge{7}{11} \rightObjbox{11}{1}{1}{moc-1}
+
+		\Node{12}{22.5}{43} \Edge{7}{12} \Edge{4}{12}
+
+		\Node{13}{45}{33} \Edge{9}{13} \Edge{10}{13} \rightObjbox{13}{1}{1}{moc-34}
+
+		\Node{14}{30}{28} \Edge{9}{14} \Edge{12}{14} \leftObjbox{14}{1}{1}{moc-6}
+
+		\Node{15}{12.5}{23} \Edge{8}{15} \Edge{11}{15} \Edge{12}{15} \leftObjbox{15}{1}{1}{moc-0}
+
+		\Node{16}{25}{10} \Edge{13}{16} \Edge{14}{16} \Edge{15}{16} \leftAttbox{16}{2}{0}{scc}
+	\end{diagram}
+	% \vspace{-6em}
+	\caption{The concept lattice corresponding to \Cref{cxt:grouplikes}}
+	\label{figure:concept-lattice-congress}
+\end{figure}
 \section{Background}
 
 \section{Preconcepts}

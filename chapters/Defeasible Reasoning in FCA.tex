@@ -96,14 +96,14 @@ rules} are able express implication-like statements despite the existence of cou
 The \emph{support} of a set of attributes $X \subseteq M$ in a context $\GMI$ is the fraction of objects which have all attributes $X$ over the total number of objects; and so
 $\mathrm{supp}( X) = \nicefrac{|X^{\downarrow}|}{|G|}$, the (relative) support of a rule $A \Rightarrow B$ is simply the support of $A$. The \textit{confidence} of a rule is a measure of how
 frequently the premise and conclusion occur, relative to how frequently the premise occurs, formally $\mathrm{conf}(A \Rightarrow B) = \nicefrac{\mathrm{supp}(X \cup Y)}{\mathrm{supp}(X)}$.
-In the example above, the support of the rule is $50\%$ and its' confidence is $66\%$. Association rules which meet specified lower-thresholds for support and confidence are then accepted.
+In the example above, the support of the rule is $50\%$ and its confidence is $66\%$. Association rules which meet specified lower-thresholds for support and confidence are then accepted.
 
-While association rules present a reasonable solution to the problem of discovering and representing implications with exceptions, there are some undesirable qualities. Settling on the threshold
-vallues for support and confidence is usually dependent on human input, and there is no obvious intuition for how one might arrive at these. Frequently, it is a requirement to know the data
-well, which creates a kind of circularity as the purpose of this work is to extend a tool which helps one understand their data.
+While association rules present a reasonable solution to the problem of discovering and representing implications with exceptions, there are some undesirable qualities. Settling on the
+threshold vallues for support and confidence is usually dependent on human input, and there is no obvious intuition for how one might arrive at these. Frequently, it is a requirement to know
+the data well, which creates a kind of circularity as the purpose of this work is to extend a tool which helps one understand their data.
 
-The situation gets worse when we try to describe the properties of reasoning with association rules. Consider the two rules below, which should be accepted with $\mathrm{minconf}= 0.6$ and $\mathrm{minsup}
-= 0.5$.
+The situation gets worse when we try to describe the properties of reasoning with association rules. Consider the two rules below, which should be accepted with $\mathrm{minconf}= 0.6$ and
+$\mathrm{minsup}= 0.5$.
 %
 \begin{align*}
 	\texttt{dem}\Rightarrow \texttt{mxm} \\
@@ -122,19 +122,18 @@ we may compress the information as the simpler representation:
 	\phi \Rightarrow \psi \land \gamma
 \end{align*}
 
-Unfortunately, this is not always the case. In the above scenario, the rule $\texttt{dem}\Rightarrow \{\texttt{mxm,dfe}\}$ has a confidence of $0.47$, which is below the $\mathrm{minconf}$
-threshold.
+Unfortunately, this is not always the case. In the above scenario, the rule $\texttt{dem}\Rightarrow \{\texttt{mxm,dfe}\}$ has a confidence of $0.47$, which is below the $\mathrm{minconf}$ threshold.
 
-That the pattern of reasoning enforced by association rules does not satisfy the above characterisation---which is the same property as was discussed at \Cref{postulate:and}---may be
-overlooked in isolation. The more general problem is that association rules do not admit description via \lucas{the kind of axiomisation we want [source needed]}.
+That the pattern of reasoning enforced by association rules does not satisfy the above characterisation---which is the same property as was discussed at \Cref{postulate:and}---may be overlooked
+in isolation. The more general problem is that association rules do not admit description via \lucas{the kind of axiomisation we want [source needed]}.
 
 \section{Preferential Contexts}
 
 We begin the introduction of KLM style defeasible reasoning to FCA by defining an analogue to preferential interpretations. At the start, we attempt to make as few changes to the FCA setting
-as possible, resulting in some restrictions on the analogy to preferential reasoning; for example, we start with a language without negation or disjunction and so do not talk about the `or'
-postulate. As we progress, we discuss the amendments to the FCA setting that necessary to lift these restrictions and get closed to the full KLM setting. The idea behind the order of this exposition
-is that we view this work largely as extending FCA with ideas from preferential reasoning. As such, there may be some use cases in FCA of preferential reasoning which benefit from remaining faithful
-to the original setting, and do not require the full expressivity of the KLM framework.
+as possible, resulting in some restrictions on the analogy to preferential reasoning; for example, we start with a language without negation or disjunction and so do not talk about the `or' postulate.
+As we progress, we discuss the amendments to the FCA setting that necessary to lift these restrictions and get closed to the full KLM setting. The idea behind the order of this exposition is
+that we view this work largely as extending FCA with ideas from preferential reasoning. As such, there may be some use cases in FCA of preferential reasoning which benefit from remaining
+faithful to the original setting, and do not require the full expressivity of the KLM framework.
 
 With that said, we define the first extension of a \textit{preferential context}.
 %
@@ -144,8 +143,8 @@ With that said, we define the first extension of a \textit{preferential context}
 	A \emph{preferential context} $\pcontext = \PGMI$ is a formal context $\GMI$ where $\prec$ denotes a strict partial order, or \emph{preference order}, on the set of objects.
 \end{definition}
 %
-Preferential contexts, albeit with a different motivation, were first introduced by Obiedkov \shortcite{Obiedkov2012}, and later on with our purposes in mind in \cite{Carr2024}. They are
-nothing more than a formal context with a preference relation. An example of what such a preference relation might look like, with respect to the context in \Cref{figure:voting-records}, is given
+Preferential contexts, albeit with a different motivation, were first introduced by Obiedkov \shortcite{Obiedkov2012}, and later on with our purposes in mind in \cite{Carr2024}. They are nothing
+more than a formal context with a preference relation. An example of what such a preference relation might look like, with respect to the context in \Cref{figure:voting-records}, is given
 below.
 %
 \begin{figure}[H]
@@ -167,9 +166,9 @@ below.
 	\label{figure:preference-relation-congress}
 \end{figure}
 %
-Recall that preferential interpretations were defined by a relation on states which were then mapped to valuations, with no requirement that the mapping be injective. It may then be
-surprising that states seem to have been entirely omitted from our definition. The reason being that formal contexts have no restriction on the inclusion of two objects with an equivalent intension,
-meaning that states seem to be implicitly constructed in contexts.
+Recall that preferential interpretations were defined by a relation on states which were then mapped to valuations, with no requirement that the mapping be injective. It may then be surprising
+that states seem to have been entirely omitted from our definition. The reason being that formal contexts have no restriction on the inclusion of two objects with an equivalent intension, meaning
+that states seem to be implicitly constructed in contexts.
 
 \begin{lemma}
 	\label{lemma:objects-preferential}
@@ -188,20 +187,20 @@ Under the preference relation, we describe the $\prec$-minimal states as one mig
 	\]
 \end{definition}
 
-Frequently, the minimisation operator is applied to a set of objects that is the result of previous derivation from a set of attributes. That is, we begin with the attribute set $\{\, \texttt
-{rep}\,\}$ and wish to find the most preferred objects who are democrats, $\Mind{\{\texttt{rep}\}}$. We refer to this process as the \textit{minimised-derivation}. The process of applying another
-derivation operator to the result of a minimised-derivation is called the \textit{minimised-return} and denoted $\Minr{\{\texttt{rep}\}}$.
+Frequently, the minimisation operator is applied to a set of objects that is the result of previous derivation from a set of attributes. That is, we begin with the attribute set
+$\{\, \texttt{rep}\,\}$ and wish to find the most preferred objects who are democrats, $\Mind{\{\texttt{rep}\}}$. We refer to this process as the \textit{minimised-derivation}. The process
+of applying another derivation operator to the result of a minimised-derivation is called the \textit{minimised-return} and denoted $\Minr{\{\texttt{rep}\}}$.
 
-The derivation of $\{\texttt{rep}\}$ is the object set $\{\texttt{moc-0,moc-1,moc-79}\}$. The minimised-derivation, with respect to the preference conveyed by
-\Cref{figure:preference-relation-congress}, is the singleton $\{\texttt{moc-0}\}$. This may be understood as conveying the information that \texttt{moc-0} should be regarded as the most preferred
-Republican. In some sense this is correct, however, we note some subtletly here. The status of \texttt{moc-0} as the unique minimal Republican need not be the result of some Republican-specific
-feature absent from all other Republicans. Instead, it may be that the preference were for any members of congress who voted in favour of the \texttt{easa} and \texttt{imm} bills. The point we
-are making has little material impact, but is rather important for ones' intuition of what preference relations represent, or how they may be constructed. For the time being, we remain
-agnostic to this latter question---how they might be constructed. This will be the subject of \Cref{subsubsection:finding-order}.
+The derivation of $\{\texttt{rep}\}$ is the object set $\{\texttt{moc-0,moc-1,moc-79}\}$. The minimised-derivation, with respect to the preference conveyed by \Cref{figure:preference-relation-congress},
+is the singleton $\{\texttt{moc-0}\}$. This may be understood as conveying the information that \texttt{moc-0} should be regarded as the most preferred Republican. In some sense this is correct,
+however, we note some subtletly here. The status of \texttt{moc-0} as the unique minimal Republican need not be the result of some Republican-specific feature absent from all other Republicans.
+Instead, it may be that the preference were for any members of congress who voted in favour of the \texttt{easa} and \texttt{imm} bills. The point we are making has little material impact, but
+is rather important for ones' intuition of what preference relations represent, or how they may be constructed. For the time being, we remain agnostic to this latter question---how they might
+be constructed. This will be the subject of \Cref{subsubsection:finding-order}.
 
-Preferential contexts allow us to speak about \textit{defeasible conditionals} in the setting of FCA. Much like classical implications in FCA, defeasible conditionals are defined over an
-attribute set $M$, and so the expression $A \twiddle B$ should be understood to be saying that the ``typical'' objects which have all attributes from $A$ have all attributes from $B$.
-Defeasible conditionals are satisfied with respect to a preferential context, admitting the following definition.
+Preferential contexts allow us to speak about \textit{defeasible conditionals} in the setting of FCA. Much like classical implications in FCA, defeasible conditionals are defined over an attribute
+set $M$, and so the expression $A \twiddle B$ should be understood to be saying that the ``typical'' objects which have all attributes from $A$ have all attributes from $B$. Defeasible conditionals
+are satisfied with respect to a preferential context, admitting the following definition.
 
 \begin{definition}
 	\label{definition:satisfaction-preferential-context}
@@ -214,23 +213,46 @@ The condition for satisfaction of $A \twiddle B$ is that all the objects in the 
 minimal-return operator, giving us $B \subseteq \Minr{A}$.
 
 \begin{example}
-	The preferential context composed from \Cref{figure:voting-records} and \Cref{figure:preference-relation-congress} satisfies the conditional
-	\[
-		\texttt{dem}\twiddle \texttt{crm}
-	\]
-	as the minimised-derivation of \texttt{democrat}---$\{\texttt{moc-6}\}$---is a subset of $\{\texttt{crm}\}^{\downarrow}$.
+	In the preferential context composed from \Cref{figure:voting-records} and \Cref{figure:preference-relation-congress} the following holds:
+	\begin{itemize}
+		\item $\{\texttt{dem}\} \twiddle \{\texttt{crm}\}$
+
+		\item $\{\texttt{dem,abr}\} \ntwiddle \{\texttt{crm}\}$
+	\end{itemize}
 \end{example}
 
-\begin{theorem}
+With respect to the preference relation, members of congress who were Democrats usually voted in favour of the crime bill, while those Democrats who additionally voted to adopt the budget
+resolution usually did not. It is clear that the logic is non-monotonic, and that it captures the spirit of KLM style reasoning in the sense that we are now able to speak about proto-typical
+properties of classes. It might be suspected that in fac this corresponds completely to the preferential systems discussed earlier. We now show that this correspondence is not complete.
 
+\begin{theorem}
 	\label{theorem:preferential-context-soundness}
 
-	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\PGMI$ is \textit{preferential}.
+	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\PGMI$ satisfies \textit{Reflexivity, Left-logical equivalence, Right weakening, And,} and \textit{Cautious
+	Monotony}.
 \end{theorem}
 
 \begin{proof}
 	\label{proof:preferential-context-soundness}
+
+	Let $\pcontext = \PGMI$ be a preferential context, and $A,B,C,D \subseteq M$ sets of attributes.
+
+	For \textit{Reflexivity}, it needs to be shown that $\pcontext \vDash A \twiddle A$, equivalently that $\Mind{A}\subseteq A^{\downarrow}$. This holds by definition of the minimal-derivation
+	operator. \lucas{Make sure this holds if $A^{\downarrow}= \emptyset$}
+
+	For \textit{Left-logical equivalence}, if $\pcontext \vDash_{\pcontext}A \twiddle C$ and $A = B$, then $\pcontext \vDash_{\pcontext}B \twiddle C$. Assume that
+	$\pcontext \vDash A \twiddle C$ and $A = B$ (by usual set equality). By this assumption, (i) $\Mind{A}\subseteq C^{\downarrow}$ and (ii) $\Mind{A}= \Mind{B}$ both hold. It is then clear that
+	we can make the substitution that results in $\Mind{B}\subseteq C^{\downarrow}$, which is equivalent to $\pcontext \vDash B \twiddle C$.
+
+	For \textit{Right weakening} we show that if $\pcontext \vDash A \rightarrow B, B \twiddle C$ then $\pcontext \vDash A \twiddle C$.
 \end{proof}
+
+Failure to satisfy the \textit{Or} postulate is due to limitations of FCA's attribute logic. In the essential setting, attribute logic is restricted to consideration of conjunctions of positive
+attributes, without the expressivity for negation or disjunction. It is a frustrating point, since it is quite obvious what disjunction should mean in this setting.
+
+\begin{definition}
+	\label{definition:preferential-context-compound}
+\end{definition}
 
 \begin{theorem}
 	\label{theorem:preferential-context-completeness}
@@ -239,26 +261,18 @@ minimal-return operator, giving us $B \subseteq \Minr{A}$.
 \begin{proof}
 	\label{proof:preferential-context-completeness}
 \end{proof}
-
 \begin{proposition}
 	\label{proposition:preferential-context-irrational}
 \end{proposition}
-
 \begin{example}
 	\label{example:counter-example-rationality}
 \end{example}
-
 \begin{definition}
 	\label{definition:ranked-context}
 \end{definition}
-
 \textcolor{red}{a ranked context clarifies (removes equivalent objects)}
-
 \subsubsection{Finding Order}
-\label{subsubsection:finding-order}
-
-Thus far, the discussion on finding a suitable preference relation has been omitted. It is a non-trivial task to compare objects in a context.
-
+\label{subsubsection:finding-order}Thus far, the discussion on finding a suitable preference relation has been omitted. It is a non-trivial task to compare objects in a context.
 \begin{algo}
 	{\textsc{ObjectRank}}
 
@@ -278,37 +292,29 @@ Thus far, the discussion on finding a suitable preference relation has been omit
 \end{algo}
 
 \subsubsection{Complexity}
-
 \section{Entailment}
-
 \subsection{Contextual Rational Closure}
-
 \begin{definition}
 	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if $\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$ is the \emph{test
 	context}. It \emph{contextually follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
 \end{definition}
-
 \begin{definition}
 	A set $\mathcal{T}$ is \emph{closed} with respect to a pair if and only if it contains every conditional that is rationally entailed. That is, if
 	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$ is \emph{contextually closed} if it contains every conditional that
 	is contextually entailed, i.e. $\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R}, \mathcal{T}\dentails A \rightarrow B\}$.
 \end{definition}
-
 \begin{definition}
 	A set $\mathcal{T}$ of conditionals is \emph{rationally complete} with respect to $\mathbb{T},\Delta$ if and only if every conditional that is in the rational closure of
 	$\mathbb{T}, \Delta$ rationally follows from $\mathcal{T}$, i.e., $\mathbb{T},\mathcal{T}$ and $\mathbb{T}, \Delta$ define the same entailment relation.
 \end{definition}
-
-Is it possible to find a $\mathcal{T}$ such that $\mathcal{T}$ is a compact form of $\Delta$. I.e., it should produce the same ranking on $\mathbb{T}$.
-
+Is it possible to find a$\mathcal{T}$such that$\mathcal{T}$is a compact form of$\Delta$. I.e., it should produce the same ranking on$\mathbb{T}$.
 \begin{definition}
 	A set $\mathcal{T}$ of conditionals is \emph{contextually complete} with respect to $\mathbb{R}, \Delta$ if and only if every implication that is in the contextual closure of
 	$\mathbb{R}, \Delta$ rationally follows from $\mathcal{T}$.
 \end{definition}
-
-A set of conditionals that is contextually complete to a ranked context $\mathbb{R}$ and constraint set $\Delta$ provides abstracted perspective, in terms of defeasible conditionals, on the
-information contained in the pair $(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsubsection:implication-bases}, to find such a set that is non-redundant, or the \textit{rational
-basis} of $(\mathbb{R},\Delta)$.
+A set of conditionals that is contextually complete to a ranked context$\mathbb{R}$and constraint set$\Delta$provides abstracted perspective, in terms of defeasible conditionals, on the info
+rmation contained in the pair$(\mathbb{R}, \Delta )$. It is now the goal, as was done in \Cref{subsubsection:implication-bases}, to find such a set that is non-redundant, or the \textit{rational
+basis}of$(\mathbb{R},\Delta)$.
 
 \begin{definition}
 	\label{definition:defeasible-closure}
@@ -328,3 +334,99 @@ basis} of $(\mathbb{R},\Delta)$.
 \subsection{A Basis for Ranked Contexts}
 
 \subsection{Lexicographic Closure}
+
+\begin{figure}
+	\centering
+	\begin{cxt}
+		\cxtName{\textbf{\texttt{games}}}
+
+		\atr{\texttt{single-p}}
+
+		\atr{\texttt{multi-p}}
+
+		\atr{\texttt{spatial-r}}
+
+		\atr{\texttt{verbal-r}}
+
+		\atr{\texttt{planning}}
+
+		\atr{\texttt{motor-skills}}
+
+		\atr{\texttt{competitive}}
+
+		\atr{\texttt{cooperative}}
+
+		\atr{\texttt{imaginative}}
+
+		\atr{\texttt{constructive}}
+
+		\atr{\texttt{modular}}
+
+		\atr{\texttt{moving-parts}}
+
+		\atr{\texttt{goal}}
+
+		\atr{\texttt{rules}}
+
+		\atr{\texttt{ends}}
+
+		\obj{.xx.x.x.x..xxxx}{\texttt{chess}}
+
+		\obj{x.x.x.x....xx.x}{\texttt{rubik's cube}}
+
+		\obj{.xx.x..xxxxx...}{\texttt{lego}}
+
+		\obj{x....xx.x..x..x}{\texttt{yo-yo}}
+
+		\obj{.xx.xxx...xxxxx}{\texttt{pick-up-sticks}}
+
+		\obj{.x.....xxx.x...}{\texttt{toy soldiers}}
+	\end{cxt}
+\end{figure}
+
+% \begin{figure}
+% 	\centering
+% 	\begin{cxt}
+% 		\cxtName{\textbf{\texttt{parks}}}
+
+% 		\atr{\texttt{walking-paths}}
+
+% 		\atr{\texttt{body-of-water}}
+
+% 		\atr{\texttt{ball-games}}
+
+% 		\atr{\texttt{allowed-on-grass}}
+
+% 		\atr{\texttt{grass}}
+
+% 		\atr{\texttt{bicycling}}
+
+% 		\atr{\texttt{rowing}}
+
+% 		\atr{\texttt{playground}}
+
+% 		\atr{\texttt{public}}
+
+% 		\atr{\texttt{private}}
+
+% 		\atr{\texttt{allowed-picnics}}
+
+% 		\atr{\texttt{animals}}
+
+% 		\atr{\texttt{in-city}}
+
+% 		\atr{\texttt{trees}}
+
+% 		\obj{}{\texttt{Central Park}}
+
+% 		\obj{x.x.x.x....xx.x}{\texttt{Kruger}}
+
+% 		\obj{.xx.x..xxxxx...}{\texttt{Großer Garten}}
+
+% 		\obj{x....xx.x..x..x}{\texttt{Jardin du Luxembourg}}
+
+% 		\obj{.xx.xxx...xxxxx}{\texttt{Washington Mall}}
+
+% 		\obj{.x.....xxx.x...}{\texttt{Tempelhof}}
+% 	\end{cxt}
+% \end{figure}

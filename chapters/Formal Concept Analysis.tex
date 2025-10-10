@@ -506,8 +506,8 @@ is formalised as:
 \begin{proposition}
 	\label{proposition:implication-sets-and-concept-intents}
 
-	If $\mathcal{T}$ is a set of implications over an attribute set $M$, then the set $\Mod{\mathcal{T}}\coloneq \{ A \subseteq M \mid A \vDash \mathcal{T}\}$ of its' models form a closure
-	system on $\pset{M}$.
+	If $\mathcal{T}$ is a set of implications over an attribute set $M$, then the set $\Mod{\mathcal{T}}\coloneq \{ A \subseteq M \mid A \vDash \mathcal{T}\}$ of its models form a closure system
+	on $\pset{M}$.
 
 	If $\mathcal{T}$ is the complete implication theory of $\GMI$ then the closure system $\Mod{\mathcal{T}}$ is precisely the system of concept intents of the context.
 \end{proposition}
@@ -613,9 +613,9 @@ antecdent. All attributes from $X$, alongside the conclusions of vacuously satis
 	\State \Return $X$
 \end{algo}
 
-The second block, lines \ref{line:11}--\ref{line:22}, chooses an attribute $m \in \textit{update}$ and for each of its' associated implications, given by $\textit{ list}[m]$, decrements the
-counter associated with the implications premise. If an implication's counter reaches zero, the conclusion (after removing any attributes which have already been dealt with, or will be dealt
-with in future) is added to \textit{update}. The process repeats until \textit{update} is empty, afterwhich the closed set is returned.
+The second block, lines \ref{line:11}--\ref{line:22}, chooses an attribute $m \in \textit{update}$ and for each of its associated implications, given by $\textit{ list}[m]$, decrements the counter
+associated with the implications premise. If an implication's counter reaches zero, the conclusion (after removing any attributes which have already been dealt with, or will be dealt with in
+future) is added to \textit{update}. The process repeats until \textit{update} is empty, afterwhich the closed set is returned.
 
 % \begin{proposition}
 % 	\label{proposition:complexity-lin-closure}
@@ -633,8 +633,8 @@ There is a syntactic counterpart to the semantic notions of consequence, defined
 	where $A,B,C,D \subseteq M$.
 \end{definition}
 
-The interpretation should be that, if the instantiation of an Armstrong axiom has its premise contained in a set $\mathcal{T}$ of implications, then the conclusion of the axiom may be inferred.
-To show that an implication is a consequence of some set one shows that there is a sequence of application of these rules that leads to the desired implication.
+The interpretation should be that, if the instantiation of an Armstrong axiom has its premise contained in a set $\mathcal{T}$ of implications, then the conclusion of the axiom may be
+inferred. To show that an implication is a consequence of some set one shows that there is a sequence of application of these rules that leads to the desired implication.
 
 \subsubsection{Implication Bases}
 \label{subsubsection:implication-bases}
@@ -719,9 +719,9 @@ The definition allows for arbitrarily complex compound attributes to be construc
 	otherwise $g \nvDash \varphi$.
 \end{definition}
 
-Other kinds of compound attributes which express useful intution, in particular the disjunction of compound attributes, have an equivalent construction using only \Cref{definition:compound-attributes}.
-If $\Gamma$ is a set of compound attributes, then the disjunction of its elements $\bigvee \Gamma$ then its' extension $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$ is the union of all
-extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge \Gamma$.
+Other kinds of compound attributes which express useful intution, in particular the disjunction of compound attributes, have an equivalent construction using only
+\Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes, then the disjunction of its elements $\bigvee \Gamma$ then its extension
+$\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$ is the union of all extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge \Gamma$.
 
 The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion; it is possible for two compound attributes to be equivalent in one formal
 context, but not in another. We might say that in the former case, these attributes are \textit{locally} equivalent. \textit{Global} equivalence is stronger, requiring that the equivalence hold

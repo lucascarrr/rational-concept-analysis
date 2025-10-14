@@ -1,0 +1,126 @@
+# .localSettings.yaml  — single, self-contained config for cxt environment
+# --- control how line breaks are modified for environments/commands ---
+modifyLineBreaks:
+  preserveBlankLines: 1
+  condenseMultipleBlankLinesInto: 0
+  environments:
+    cxt:
+      BeginStartsOnOwnLine: 1
+      BodyStartsOnOwnLine: 1
+      EndStartsOnOwnLine: 1
+      EndFinishesWithLineBreak: 1
+    algo:
+      BeginStartsOnOwnLine: 1
+      BodyStartsOnOwnLine: 1
+      EndStartsOnOwnLine: 1
+      EndFinishesWithLineBreak: 1
+  commands:
+    cxtName:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 1
+    att:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 1
+    obj:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 0
+    State:
+      CommandStartsOnOwnLine: 2
+      CommandNameFinishesWithLineBreak: 2
+    While:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 0
+    EndWhile:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 1
+    ForAll:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 0
+    EndFor:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 1
+    If:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 0
+    EndIf:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 1
+    Return:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 0
+    Require:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 0
+    Ensure:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 0
+# --- declare these commands as "command code blocks" so latexindent treats them specially ---
+commandCodeBlocks:
+  roundParenthesesAllowed: 1
+  stringsAllowedBetweenArguments:
+    - amalgamate: 1
+  commandNameSpecial:
+    - cxtName
+    - atr
+    - obj
+# --- indentation rules (single place only) ---
+indentRules:
+  cxt: "\t"
+  cxtName: "\t\t"
+  atr: "\t\t"
+  obj: "\t\t"
+  algo: "\t"
+  State: "\t"
+  While: "\t"
+  ForAll: "\t"
+  If: "\t"
+# --- don't suppress extra indentation for these codeblocks ---
+noAdditionalIndent:
+  cxt: 0
+  cxtName: 0
+  atr: 0
+  obj: 0
+  algo: 0
+# --- optional: align the first argument of \obj{<bits>}{<label>} so bit-strings line up ---
+# This uses the brace boundary '}{' as the logical delimiter between the two args.
+# If alignment causes problems you can remove this entire block.
+lookForAlignDelims:
+  obj:
+    delims: 1
+    alignDoubleBackSlash: 0
+    spacesBeforeDoubleBackSlash: 0
+    multiColumnGrouping: 0
+    alignRowsWithoutMaxDelims: 1
+    lookForChildCodeBlocks: 0
+    # find the boundary between first and second mandatory argument: the '}{' point
+    # NOTE: use single quotes so YAML doesn't interpret backslashes.
+    delimiterRegEx: '(?<=\})\s*(?=\{)'
+    delimiterJustification: left
+    spacesBeforeAmpersand: 1
+    spacesAfterAmpersand: 1
+    alignContentAfterDoubleBackSlash: 0
+# --- keep verbatim-like environments untouched (copied from default settings) ---
+verbatimEnvironments:
+  verbatim: 1
+  lstlisting: 1
+  minted: 1
+# --- global toggles that help ensure our rules apply inside environments ---
+noAdditionalIndentGlobal:
+  environments: 0
+  commands: 1
+  optionalArguments: 0
+  mandatoryArguments: 0
+  ifElseFi: 0
+  items: 0
+  keyEqualsValuesBracesBrackets: 0
+  namedGroupingBracesBrackets: 0
+  UnNamedGroupingBracesBrackets: 0
+  specialBeginEnd: 0
+  afterHeading: 0
+  filecontents: 0
+# --- small fine-tuning so latexindent recognizes the command/environment names we use ---
+fineTuning:
+  commands:
+    name: [+a-zA-Z@\*0-9_\:]+?
+  environments:
+    name: [a-zA-Z@\*0-9_\\]+

@@ -101,7 +101,7 @@ lookForAlignDelims:
     alignContentAfterDoubleBackSlash: 0
 # --- keep verbatim-like environments untouched (copied from default settings) ---
 verbatimEnvironments:
-  verbatim: 1
+  verbatim: 0
   lstlisting: 1
   minted: 1
 # --- global toggles that help ensure our rules apply inside environments ---

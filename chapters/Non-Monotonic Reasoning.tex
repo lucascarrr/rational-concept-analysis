@@ -26,8 +26,9 @@ consider the following propositions which state that \textit{humans experience c
 \end{enumerate}
 
 Knowing these propositions, if one were to encounter an individual who were a soldier then it would seem appropriate, by propositions 1 and 2, to deduce that
-the individual's experience of time was chronological. Suppose that after some conversation, it was learned that the individual's name was Billy Pilgrim. In
-light of this, one should retract the previous inference and instead deduce that the individual's experience of time were in fact non-chronological.
+the individual's experience of time was chronological. Suppose that after some conversation, it was learned that the individual's name was Billy Pilgrim (this
+could be represented more formally by adding the statement $\texttt{Billy Pilgrim} \rightarrow \texttt{soldier}$ to our knowledge base). In light of this, one
+should retract the previous inference and instead deduce that the individual's experience of time were in fact non-chronological.
 
 If one were using some classical system, such as propositional logic, such recourse would not be possible. On first encounter with the individual, the set of
 valuations which are consistent with the prior knowledge, alongside the recognition that the individual were a soldier, is reduced to the single model:
@@ -139,24 +140,22 @@ we reason monotonically with respect to expected information.
 
 The above postulates capture the essence of preferential (consequence) relations. Much like we saw with Hilbert systems, however, certain rules, which reveal
 interesting properties of system P, may be derived. A version of \textit{Cut}:
+%
 \begin{align}
 	\label{postulate:cut}
 	\inferLeft{Cut}{\phi \land \psi \twiddle \gamma, \quad \phi \twiddle \psi}{\phi \twiddle \gamma}
 \end{align}
-The original version due to Gentzen \cite{Ben1993Mathematical}, which is
-presented as:
+%
+The original version due to Gentzen \cite{Ben1993Mathematical}, which is presented as:
+%
 \begin{align}
-	\inferLeft{Monotonic Cut}{\phi \land \psi \twiddle \gamma, \quad \alpha \twiddle \psi}{\phi \land \alpha \twiddle \gamma}
+	\inferLeft{Monotonic Cut}{\phi \land \psi \twiddle \gamma, \quad \alpha \twiddle \psi}{\phi \land \alpha \twiddle \gamma}.
 \end{align}
-implies monotonicity, as it requires that if $\psi$ is a typical
-consequence of $\alpha$, then it must remain a consequence of $\alpha
-	\land \phi$: ergo, monotonicity. The former variation does not enforce
-this, and rather says \say{Suppose I have certain knowledge of $\phi$, and
-	that if I were to assume $\psi$ I should expect to conclude $\gamma$. Then
-	if I can show that infact $\psi$ was already an expected consequence of
-	knowing $\phi$, I should expect that $\gamma$ follows from $\phi$}. When
-considered alongside the argument for Cautious Monotony, Cut seems
-obviously acceptable.
+%
+This construction implies monotonicity as it requires that the typical consequence of $\alpha$, which is $\psi$, must remain a consequence when the conjunction
+$\alpha \land \phi$ is considered. The former variation does not enforce this, and rather says \say{Suppose I have certain knowledge of $\phi$, and that if I
+	were to assume $\psi$ I should expect to conclude $\gamma$. Then if I can show that infact $\psi$ was already an expected consequence of knowing $\phi$, I
+	should expect that $\gamma$ follows from $\phi$}. When considered alongside the argument for Cautious Monotony, Cut seems acceptable.
 
 The rule $S$, which is analogous to one half of the deduction theorem (cf. \Cref{axiom:deduction-theorem}), expresses the notion that we retain plausible
 inferences when conditioned on a hypothesis.
@@ -164,7 +163,20 @@ inferences when conditioned on a hypothesis.
 	\inferLeft{S}{\phi \land \psi \twiddle \gamma}{\phi \twiddle \psi \rightarrow \gamma}
 \end{align}
 
-The following Lemma is a helpful intuition pump: it suggests that we can use the consequences of plausible inferences to make further plausible inferences.
+In light of the properties preferential consequence relations do satisfy, it is also useful to consider those properties they do not.%
+%
+\begin{align}
+	\inferLeft{Monotonicity}{\phi \twiddle \psi}{\phi \land \gamma \twiddle \psi}                  \\
+	\inferLeft{Transitivity}{\phi \twiddle \psi, \quad \psi \twiddle \gamma}{\phi \twiddle \gamma} \\
+	\inferLeft{Contraposition}{\phi \twiddle \psi}{\neg \psi \twiddle \neg \phi}
+\end{align}
+%
+Quite obviously, monotonicity is not satisfied. Suppose transitivity held,
+
+%
+The following lemma which, admittedly makes more sense after a discussion of semantics, provides useful intuition for how certain chains of reasoning may
+occur. It suggests that we can use the consequences of plausible inferences to make further plausible inferences.
+
 \begin{lemma}
 	\label{lemma:cut-cautious}
 
@@ -196,7 +208,7 @@ preserved in a non-classical system. Defeasible inferences are useful in
 that they can be made despite the existence of exceptions. When there are
 no exceptions, we should be able to maintain the validity of classical
 reasoning.
-\subsubsection{Preferential Interpretations}
+\subsection{Preferential Interpretations}
 \label{subsubsection:preferential-interpretations}
 
 The semantics for preferential relations, provided by Kraus, Lehmann, and Magidor \shortcite{kraus1990nonmonotonic}, are based on the \textit{preference
@@ -295,9 +307,10 @@ states.
 	which are the minimal states satisfying each proposition.
 
 	\begin{figure}[H]
+		\captionsetup{width=0.6\textwidth}
 		\centering
-		\begin{tikzpicture}[every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]
-			]
+		% \begin{tikzpicture}[every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]]
+		\begin{tikzpicture}[scale=0.8, every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]
 			% \draw[help lines] (0,0) grid (8,6);
 			\draw[rounded corners=10pt, line width=0.1mm] (0,0) rectangle (8,6);
 			\draw[rounded corners=10pt, line width=0.1mm] (1,6) -- (1,3) -- (5,3) -- (5,6);
@@ -310,19 +323,12 @@ states.
 			\draw[rounded corners=10pt, line width=0.1mm] (1.5,5.75) rectangle (2.5,4.75);
 			\node[fill=none] (billy) at (2.75,5.35) [] {$\hat{b}$};
 
-			% minimal human \draw[rounded corners=10pt, line width=0.2mm] (2,3) --
-			% (2,4) -- (3,4) -- (3,3); \node[fill=none] (minH) at (3.25,3.5) []
-			% {$\underline{\hat{h}}$};
 			\node (hb) at (2.25,3.5) [] {};
 			\node (ht) at (2.25,5) [] {};
 			\node (hr) at (2.75,3.5) [] {};
 			\node (hrt) at (2.75,4.25) [] {};
 			\draw (hr) -- (hrt);
 			\draw (hb) -- (ht);
-
-			% minimal soldier \draw[rounded corners=10pt, line width=0.2mm] (5,5.25) --
-			% (4.25,5.25) -- (4.25,4.25) -- (5,4.25); \node[fill=none] (minS) at
-			% (5.25,5) [] {$\underline{\hat{s}}$};
 			\node (sb) at (4.25, 4.25) [] {};
 			\node (st) at (4.25, 5.25) [] {};
 			\node (sr) at (4.75, 5.25) [] {};
@@ -330,9 +336,6 @@ states.
 			\draw (sb) -- (st);
 			\draw (sr) -- (hrt);
 
-			% minimal time \draw[rounded corners=10pt, line width=0.2mm] (3,0.5) --
-			% (3,1.25) -- (4,1.25) -- (4,0.5); \node[fill=none] (minC) at (4.25,1) []
-			% {$\underline{\hat{c}}$};
 			\node (cb) at (3.5,0.75) [] {};
 			\node (ct) at (3.5,1.75) [] {};
 			\draw (cb) -- (ct);
@@ -342,10 +345,6 @@ states.
 	\end{figure}
 	As a means of providing some intuition for \Cref{lemma:cut-cautious}, which says that ``If $\phi \twiddle \psi$ then the plausible consequences of $\phi$ and $\phi \land \psi$ coincide'', we
 	note that the interpretation is a model of $h \twiddle c$, and that collection of minimal states satisfying $h$ is precisely the same set as those satisfying $h \land c$.
-
-	% The example further gives a good intuition for why transitivity fails.
-	% Again, the interpretation is a model of $s \twiddle h$ and $h \twiddle
-	% c$. For transitivity to hold,
 \end{example}
 
 \begin{theorem}[Soundness]
@@ -388,8 +387,9 @@ specifically they both map to the valuation $\{\,s,h,\overline{c}\,\}$. As befor
 % satisfy $c$.
 
 \begin{figure}[H]
+	\captionsetup{width=0.4\textwidth}
 	\centering
-	\begin{tikzpicture}[scale=0.7, every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]
+	\begin{tikzpicture}[scale=0.8, every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]
 		% \draw[help lines] (0,0) grid (8,6);
 		\draw[rounded corners=10pt, line width=0.1mm] (0,0) rectangle (8,6);
 		\draw[rounded corners=10pt, line width=0.1mm] (1.5, 6) -- (1.5,2) -- (6.5,2) -- (6.5,6);
@@ -472,9 +472,9 @@ further be characterised by a single smallest preferential consequence relation 
 	Suppose that $\phi \twiddle \psi \in \Cn{p}(\Delta)$ and $\phi \twiddle \psi \not \in \Cn{p}(\Delta')$ with $\Delta \subseteq \Delta'$. For every model $\pin$ of $\Delta$ we have $\phi \twiddle_\pin \psi$ (this follows from \Cref{proposition:entailemnt-relations-intersection}), but also there exists a model $\mathcal{V}$ of $\Delta'$ such that $\phi \ntwiddle_\mathcal{V} \psi$. Since $\Delta \subseteq \Delta'$ we have that any model of $\Delta'$ is also a model of $\Delta$, then $\mathcal{V}$ is a model of $\Delta$ and so $\phi \twiddle \psi \not \in \Cn{p}(\Delta)$, which is a contradiction.
 \end{proof}
 
-We collect some further results which, apart from being interesting in their own right, will be useful in the second part of this work. The first is one that
-is probably assumed to hold, but in reality is quite surprising. It shows that the postulates that characterise preferential relations
-(\Crefrange{postulate:ref}{postulate:cm}) can be used as a deductive system of inference rules.
+We collect some further results which, apart from being interesting in their own right, will be useful in the second part of this work. The first one which,
+despite being quite easy to assume, is really quite surprising and shows that the postulates, which were initially given as a description of preferential
+consequence relations, as a kind of inference rule for preferential entailment.
 
 \begin{corollary}
 	\label{corollary:preferential-entailment-postulates}
@@ -482,6 +482,8 @@ is probably assumed to hold, but in reality is quite surprising. It shows that t
 	$\Delta \pentails \phi \twiddle \psi$ if and only if there is a proof from $\Delta$ to $\phi \twiddle \psi$ derived by application of
 	\Crefrange{postulate:ref}{postulate:cm}.
 \end{corollary}
+
+We will
 
 \clearpage
 
@@ -541,27 +543,7 @@ relation of system P---which reasons on the metalevel---is monotonic, while the 
 statements like \textit{Normally Humans experience chronological time}, \textit{Billy Pilgrim is a Human}, \textit{Billy Pilgrim experiences non-chronological
 	time}.
 
-There are arguments, in fact we make one in \textcolor{red}{chapter:defeasible-reasoning-in-fca}, which suggest that object level non-monotonicity is
-sufficient.
-
-% \begin{theorem} \label{theorem:preferential-compactness} If $\phi$ is a
-% singular, and $\Delta$ a set of defeasible conditionals in $\Lang$, then
-% the following equivalency holds: \begin{enumerate} \item The set $\Delta$
-% p-entails $\phi$; or, $\Delta \dentails_{p}\phi$
-
-% \item There is a finite sequence consisting of the properties satisfied
-% by preferential relations from $\Delta$ to $\phi$. \end{enumerate}
-% \end{theorem}
-
-% \begin{corollary} \label{corollary:monotonocity-preferential-entailment}
-% The preferential closure $\Delta^{p}$ of a set $\Delta$ of defeasible
-% conditionals is a preferential consequence relation, and therefore has a
-% preferential model $\pin$ that satisfies exactly every statement in
-% $\Delta^{p}$. \end{corollary}
-
-% RE iT not being nmr We are willing to accept these credulous inferences
-% precisely because they may be retracted we may withdraw previous
-% inferences under learning new facts.
+There are arguments, in fact we make one in \Cref{section:preferential-contexts}, which suggest that object level non-monotonicity is sufficient.
 
 \subsection{Rational Consequence Relations}
 \label{subsection:rational-consequence-relations}
@@ -705,14 +687,11 @@ the end of the last subsection.
 	rational monotony, we should expect that $\texttt{student}\land \neg \texttt{clever}\twiddle \texttt{graduate}$ be satisfied, which is not the case in
 	\Cref{subfigure:not-rational}.
 \end{example}
-Fortunately, the culprit is quite easy to spot. Bob, who is not under
-consideration in the context of normal students, appears when we discuss
-normal students who are not clever. In isolation, this seems acceptable:
-if all the normal students were also clever, then we would be fine
-accepting the appearance of a normal, non-clever student who was not a
-normal student. However, we have explicitly ruled out this line of
-argument---by the second antecedent of rational monotony---as Alice is a
-normal student who is also not clever.
+
+Fortunately, the culprit is quite easy to spot. Bob, who is not under consideration in the context of normal students, appears when we discuss normal students
+who are not clever. In isolation, this seems acceptable: if all the normal students were also clever, then we would be fine accepting the appearance of a
+normal, non-clever student who was not a normal student. However, we have explicitly ruled out this line of argument---by the second antecedent of rational
+monotony---as Alice is a normal student who is also not clever.
 
 In order to ensure rational monotony, it is required that the preference relation commit to Alice being preferred to Bob; more generally, all normal students
 should be explicitly preferred to non-normal students. This notion is formalised by the following property called \textit{modularity}:

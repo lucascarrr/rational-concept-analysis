@@ -1,7 +1,7 @@
 \chapter{Defeasible Reasoning}
 \label{chapter:defeasible-reasoning}
 
-The study of logical systems which violate monotonicity has recieved significant attention. Largely, the motivation for violating monotonicity is that it can
+The study of logical systems which violate monotonicity has received significant attention. Largely, the motivation for violating monotonicity is that it can
 be beneficial to make more credulous inferences. Frequently, we are required to make decisions without perfect knowledge of the environment. If, in light of
 new information, we are able to change our minds, then the decision making process displays non-monotonic behaviour.
 
@@ -46,22 +46,8 @@ reasonable to suggest that typically we think think that humans expereince time 
 human who experiences non-chronological time, it could be that he is simply an a-typical human.
 
 In the proceeding section, these ideas will be explored in a more formal manner. The idea observed by Shoham \shortcite{shohamSemanticApproach}, that we may
-``bend the rules'' of logical consequence and restrict consideration to priveleged subsets of valuations deemed `preferable` is foundational to this kind of
+``bend the rules'' of logical consequence and restrict consideration to privileged subsets of valuations deemed `preferable` is foundational to this kind of
 reasoning.
-
-% To make the previous paragraph more formal, we remind the reader of the
-% discussion held around \Cref{definition:logical-consequence}: A formula
-% $\phi$ is a logical consequence of a set $\Gamma$ thereof if every model
-% of $\Gamma$ is also a model of $\phi$. Put differently, there is no
-% valuation (or, possible world) where $\Gamma$ is true and $\phi$ is
-% false. It follows directly that $\phi$ remains a logical consequence of
-% $\Gamma \cup \{\,\psi\,\}$, since $\Gamma$ is true in any world where
-% $\Gamma \cup \{\,\psi\,\}$ is true. It was pointed out in
-% \cite{shohamSemanticApproach} that we may \say{bend the rules} and
-% restrict semantic consideration to a privileged subset of models deemed
-% ``preferable''. We call these selected models the \textit{minimal
-% models}---the reasons for this name should become clearer as the chapter
-% progresses.
 
 \section{Preferential Reasoning and the KLM Framework}
 \label{section:klm-framework}
@@ -74,7 +60,7 @@ Paraphrasing, the reader to imagine a machine that is supposed to do some kind o
 onto formulae, and so queries of the form \say{Does $\phi$ follow (non-monotonically) from $\psi$?}. Something goes awry (suppose some coffee was spilled),
 calling into question whether the logic of the machine still functions correctly. Even worse, the interface, which provides the mapping between formulae and
 which concrete pieces of knowledge they represent, is destroyed. Consequently, if the machine functions correctly cannot be determined based on its output
-since the meaning represented by each formula cannot be ascertainted. How might one then evaluate the machine's function? If we were interested in classical
+since the meaning represented by each formula cannot be ascertained. How might one then evaluate the machine's function? If we were interested in classical
 consequence, we would be well-equipped to assess the correctness of the machine by determining if it satisfied reflexivity, monotonicity, and cut (we point to
 \Cref{definition:consequence-relations} as a reminder). In other words, to study the more abstract properties of consequence.
 
@@ -82,7 +68,7 @@ This is precisely the starting point that Kraus, Lehmann, and Magidor took up in
 semantics of a non-monotonic system, it is a good idea to axiomatise the system as a consequence relation satisfying certain properties. The rationality
 postulates are precisely this axiomatisation, characterising a sensible pattern of reasoning for non-monotonic systems. The symbol `$\twiddle$' (pronounced
 ``twiddle'') is used instead of `$\vdash$' to denote a non-monotonic consequence relation. As may be expected, $\phi \twiddle \psi$ has the same meaning as
-$(\phi, \psi) \in \; \twiddle$, and $\phi \ntwiddle \psi$ as $(\phi , \psi)\not \in \; \twiddle$. At times of potential confusion, a subscript may be sued to
+$(\phi, \psi) \in \; \twiddle$, and $\phi \ntwiddle \psi$ as $(\phi , \psi)\not \in \; \twiddle$. At times of potential confusion, a subscript may be used to
 disambiguate which consequence relation is being referred to, and so $\twiddle_{p}$ would refer to a preferential relation, as defined below.
 
 \subsection{Preferential Consequence Relations}
@@ -98,54 +84,54 @@ We begin the exposition of the KLM framework by looking at \textit{preferential 
 
 We represent each property, or postulate, of preferential relations in a style analogous to inference rules. The intended meaning is that, if all statements
 above the line are included in the relation, then the statement below must also be included.
-
+%
 \begin{align}
 	\label[postulate]{postulate:ref}
 	\inferLeft{Reflexivity}{}{\phi \twiddle \phi}
 \end{align}
-
+%
 The first axiom, \textit{Reflexivity}, is largely self justifying. It makes little sense to speak about a notion of consequence that does not satisfy this
 property. Such systems are discussed in \Cref{subsection:association-rules}, although we are reluctant to call them ``logical''.
-
+%
 \begin{align}
 	\label[postulate]{postulate:lle}
 	\inferLeft{Left Logical Equivalence}{\vdash \phi \leftrightarrow \psi, \quad \phi \twiddle \gamma}{\psi \twiddle \gamma}
 \end{align}
-
+%
 The justification for \textit{Left Logical Equivalence} is a bit more opaque. The principle it describes is that if two scenarios represent the same state of
 affairs, and in one of these scenarios it we typically expect some consequence, then we should expect the same in the other scenario. \textcolor{red}{Invariant
 	to substitution of logically equivalent formulas?}
-
+%
 \begin{align}
 	\label[postulate]{postulate:rw}
 	\inferLeft{Right Weakning}{\vdash \psi \rightarrow \gamma, \quad \phi \twiddle \psi}{\phi \twiddle \gamma}
 \end{align}
-
+%
 \textit{Right Weakening} allows the preservation of classical consequence within preferential logic. It says that, if from $\phi$ we normally expect $\psi$, but from $\psi$ we \textit{always}
 see $\gamma$, then we are entitled to think that from $\phi$ we normally expect $\gamma$ as well.
-
+%
 \begin{align}
 	\label[postulate]{postulate:or}
 	\inferLeft{Or}{\phi \twiddle \gamma, \quad \psi \twiddle \gamma}{\phi \lor \psi \twiddle \gamma}
 \end{align}
-
+%
 As a justification for \textit{Or}, consider that \textit{Normally, if Billy were abducted by aliens he would be traumatised}, but also \textit{Normally, if
 	Billy witnessed the fire-bombing of Dresden he would be traumatised}. If we learned that either of these events took place, we should find it plausible to
 infer that Billy were traumatised.
-
+%
 \begin{align}
 	\label[postulate]{postulate:and}
 	\inferLeft{And}{\phi \twiddle \psi, \quad \phi \twiddle \gamma}{\phi \twiddle \psi \land \gamma}
 \end{align}
-
+%
 The \textit{And} postulate suggests that if $\psi$ and $\gamma$ are both expected consequence of $\phi$, then their conjunction is also expected. This
 postulate fails in probabilistic systems, such as \textit{association rules} \cite{gabbay1985theoreticalFoundations}.
-
+%
 \begin{align}
 	\label[postulate]{postulate:cm}
 	\inferLeft{Cautious Monotony}{\phi \twiddle \psi, \quad \phi \twiddle \gamma }{\phi \land \psi \twiddle \gamma}
 \end{align}
-
+%
 \textit{Cautious Monotony} (which has also be called \textit{Cumulative Monotony} by \cite{makinson2003bridges}, and \textit{Restricted Monotony} by \cite{gabbay1985theoreticalFoundations}) corresponds
 to the notion that if we are in an epistemic state $\phi$ where one expectation, among others, is that $\psi$ holds. Learning that $\psi$ indeed holds should not alter the epistemic state in
 such a way that the \textit{other} expectations are abandoned, and so the new state, $\phi \land \psi$, we should expect everything that was expected when all we knew was $\phi$. In other words,
@@ -354,10 +340,10 @@ states.
 		\caption{A preferential model of $\Delta$}
 		\label{figure:preferential-interpretation}
 	\end{figure}
-	As a means of providing some intution for \Cref{lemma:cut-cautious}, which says that ``If $\phi \twiddle \psi$ then the plausible consequences of $\phi$ and $\phi \land \psi$ coincide'', we
+	As a means of providing some intuition for \Cref{lemma:cut-cautious}, which says that ``If $\phi \twiddle \psi$ then the plausible consequences of $\phi$ and $\phi \land \psi$ coincide'', we
 	note that the interpretation is a model of $h \twiddle c$, and that collection of minimal states satisfying $h$ is precisely the same set as those satisfying $h \land c$.
 
-	% The example further gives a good intution for why transitivity fails.
+	% The example further gives a good intuition for why transitivity fails.
 	% Again, the interpretation is a model of $s \twiddle h$ and $h \twiddle
 	% c$. For transitivity to hold,
 \end{example}
@@ -379,7 +365,7 @@ states.
 
 The decision to construct the preference relation on states which map to valuations, rather than valuations directly, may seem arbitrary. Certainly, Shoham
 \shortcite{shohamSemanticApproach} makes no such distinction in his preferential logic. However, Kraus, Lehmann, and Magidor \shortcite{kraus1990nonmonotonic}
-provide an example, apty described as ``en pessant'' by \cite{Bezzazi1997}, which shows that it is necessary. The example considers a preferential consequence
+provide an example, aptly described as ``en passant'' by \cite{Bezzazi1997}, which shows that it is necessary. The example considers a preferential consequence
 relation generated by a preferential interpretation where the function mapping states to valuations is not injective. It is then shown that there is no other
 preferential interpretation with an injective mapping with an equivalent consequence relation.
 
@@ -391,7 +377,7 @@ preferential interpretation with an injective mapping with an equivalent consequ
 \end{lemma}
 
 \Cref{figure:duplicate-states-example} shows a portion of the preferential interpretation in \Cref{example:preferential-interpretation}. The states $s_{1}$ and $s_{2}$ are duplicate states,
-specifically they both map to the valuation $\{\,s,h,\overline{c}\,\}$. As before, this prefrential interpretation is a model of $s \twiddle h$ as the set of minimal $s$-states, $\{\,s_{2},s_{3}
+specifically they both map to the valuation $\{\,s,h,\overline{c}\,\}$. As before, this preferential interpretation is a model of $s \twiddle h$ as the set of minimal $s$-states, $\{\,s_{2},s_{3}
 	\,\}$, is a subset of the $h$-states.
 
 % Consider the more finely grained portion of the preferential
@@ -421,7 +407,7 @@ specifically they both map to the valuation $\{\,s,h,\overline{c}\,\}$. As befor
 		\draw[line width=0.3mm] (1) -- (3);
 		\draw[line width=0.3mm] (2) -- (4);
 	\end{tikzpicture}
-	\caption{The \textit{en pessant} argument for allowing non-injective interpretations}
+	\caption{The \textit{en passant} argument for allowing non-injective interpretations}
 	\label{figure:duplicate-states-example}
 \end{figure}
 
@@ -729,7 +715,7 @@ argument---by the second antecedent of rational monotony---as Alice is a
 normal student who is also not clever.
 
 In order to ensure rational monotony, it is required that the preference relation commit to Alice being preferred to Bob; more generally, all normal students
-should be explicitly preferred to non-normal students. This notion is formalised by the following property called \textit{modualarity}:
+should be explicitly preferred to non-normal students. This notion is formalised by the following property called \textit{modularity}:
 
 \begin{definition}
 	\label{definition:modular-order}
@@ -775,7 +761,7 @@ A somewhat superficial result of ranked interpretations is that they admit a new
 \end{figure}
 
 A second, less superficial, departure is that \Cref{lemma:states-preferential} does not hold in the context of ranked interpretations and rational consequence
-relations. This follows directly from modularity, as the en pessant style arguments, discussed earlier, are avoided by modularity. This allows the elements
+relations. This follows directly from modularity, as the en passant style arguments, discussed earlier, are avoided by modularity. This allows the elements
 which populate the ranks of a ranked interpretation to be valuations directly, rather than states.
 
 \begin{definition}

@@ -1,58 +1,65 @@
 \chapter{Formal Concept Analysis}
 \label{chapter:formal-concept-analysis}
 
-\FCA (FCA) \cite{Wille_Restructuring,WILLE1992493,ganter1999formal} is an approach to reasoning about \textit{concepts} and their corresponding \textit{conceptual structures} in terms of
-lattice theory. It was first proposed by Wille in his monograph \textit{Restructuring Lattice Theory} \cite{Wille_Restructuring}, which was an attempt to reestablish a connection between the
+\FCA (FCA) \cite{Wille_Restructuring,WILLE1992493,ganter1999formal} is an approach to reasoning about \textit{concepts} and
+their corresponding \textit{conceptual structures} in terms of lattice theory. It was first proposed by Wille in his monograph
+\textit{Restructuring Lattice Theory} \cite{Wille_Restructuring}, which was an attempt to reestablish a connection between the
 theory and practice of lattices.
 
-A core aspect of FCA's foundation is the mathematisation of the philosophical view of concepts, in which a they are understood as a unit comprising two parts:
-the \textit{extension}, which is the collection of things said to be instances of the concept, and the \textit{intension}, which contains those properties used
-to ascribe meaning to the concept \cite{DUQUENNE1999407}.
+A core aspect of FCA's foundation is the mathematisation of the philosophical view of concepts, in which a they are understood as
+a unit comprising two parts: the \textit{extension}, which is the collection of things said to be instances of the concept, and
+the \textit{intension}, which contains those properties used to ascribe meaning to the concept \cite{DUQUENNE1999407}.
 
 \lucas{I think more needs to be added to this pre-discussion}
 
 \section{Basic Notions}
 \label{section:basic-notions}
 
-Despite our omission of a formal introduction to the topic of concepts, one is readily able to grasp the concept of a `person'. Many sense-making properties
-come to mind: \textit{mortal}, \textit{warm-blooded}, \textit{mammalian}, and so on. Listing some of the instances included in the extension of this concept is
-not particularly challenging either---for example, \textit{the author of this work}, or \textit{the reader}. What is also clear is that exhaustively detailing
-a list of either the intension or extension is likely to be a challenging task, even when these lists are finite, although finiteness need not be a property.
+Despite our omission of a formal introduction to the topic of concepts, one is readily able to grasp the concept of a `person'.
+Many sense-making properties come to mind: \textit{mortal}, \textit{warm-blooded}, \textit{mammalian}, and so on. Listing some of
+the instances included in the extension of this concept is not particularly challenging either---for example, \textit{the author
+	of this work}, or \textit{the reader}. What is also clear is that exhaustively detailing a list of either the intension or
+extension is likely to be a challenging task, even when these lists are finite, although finiteness need not be a property.
 
-This leads us to---what is usually the starting point of FCA---a structure called a \textit{formal context}, or simply a context. A context restricts our
-ontological consideration to a reduced universe of discourse, as well as detailing the underlying structural relationship that exists between elements in this
-universe \cite{Wille_Restructuring,Dau2005}.
+This leads us to---what is usually the starting point of FCA---a structure called a \textit{formal context}, or simply a context.
+A context restricts our ontological consideration to a reduced universe of discourse, as well as detailing the underlying
+structural relationship that exists between elements in this universe \cite{Wille_Restructuring,Dau2005}.
 
 \begin{definition}
 	\index{formal context} \label{definition:formal-context}
 
-	A formal context $\context = \GMI$ is a triple comprised of a set $G$ of objects , a set $M$ of attributes, and a binary relation $I \subseteq G \times M$
-	referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we may say \say{The object $g$ \textit{has} the attribute $m$}.
+	A formal context $\context = \GMI$ is a triple comprised of a set $G$ of objects , a set $M$ of attributes, and a binary relation
+	$I \subseteq G \times M$ referred to as an `incidence' relation. For an object-attribute pair $(g,m) \in I$ we may say \say{The
+		object $g$ \textit{has} the attribute $m$}.
 \end{definition}
 
-We consider the set of objects $G$ (from the German \textit{Gegenstände}) as the extensional dimension of the context, whereas the set of attributes $M$ (from
-the German \textit{Merkmale}) represents the intensional dimension. However, the distinction between the extensional and intensional dimensions of the context
-is largely a matter of convention, or a means of improving intuition for when one is first introduced to FCA. There is no strict requirement around what these
-sets are made up of, or even that they be distinct. It is perfectly acceptable to have a context where the objects and attributes are the same set: for
-example, the context $(\mathbb{N}, \mathbb{N}, \texttt{divides})$ which describes the division relationship between natural numbers.
+We consider the set of objects $G$ (from the German \textit{Gegenstände}) as the extensional dimension of the context, whereas
+the set of attributes $M$ (from the German \textit{Merkmale}) represents the intensional dimension. However, the distinction
+between the extensional and intensional dimensions of the context is largely a matter of convention, or a means of improving
+intuition for when one is first introduced to FCA. There is no strict requirement around what these sets are made up of, or even
+that they be distinct. It is perfectly acceptable to have a context where the objects and attributes are the same set: for
+example, the context $(\mathbb{N}, \mathbb{N}, \texttt{divides})$ which describes the division relationship between natural
+numbers.
 
-It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is interpreted as the object satisfying the
-respective attribute, FCA is usually concerned with \textit{positive} information. The absence of an object-attribute pair from the relation is not interpreted
-to mean that the object has the negation of the attribute. We will discuss, in more depth, the rather troubling matter of negation and negative attributes in
-\Cref{section:attribute-logic}.
+It should be noted that, while the presence of an object--attribute pair $(g,m)$ in the incidence relation is interpreted as the
+object satisfying the respective attribute, FCA is usually concerned with \textit{positive} information. The absence of an
+object-attribute pair from the relation is not interpreted to mean that the object has the negation of the attribute. We will
+discuss, in more depth, the rather troubling matter of negation and negative attributes in \Cref{section:attribute-logic}.
 
-When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table such as in \Cref{context:formal-context-group-structures}. Each
-object is represented by a row in the table, each attribute by a column, and each pair in the incidence relation is marked with an `$\times$' at the
-appropriate position \cite{ganter1999formal}. Given a context presented in this form, it is a trivial task to identify all the attributes that a particular
-object satisfies. One need only scan across the respective row and note where the marks appear. The resulting set of attributes is called the \textit{object's
-	intent}. The dual notion of an \textit{attribute's extent} can be found by traversing down a column in the table.
+When the cardinalities of $G$ and $M$ are small, contexts may be represented as a cross-table such as in
+\Cref{context:formal-context-group-structures}. Each object is represented by a row in the table, each attribute by a column, and
+each pair in the incidence relation is marked with an `$\times$' at the appropriate position \cite{ganter1999formal}. Given a
+context presented in this form, it is a trivial task to identify all the attributes that a particular object satisfies. One need
+only scan across the respective row and note where the marks appear. The resulting set of attributes is called the
+\textit{object's intent}. The dual notion of an \textit{attribute's extent} can be found by traversing down a column in the
+table.
 
 \begin{figure}[H]
 	\centering
 	\small
 	\begin{cxt}
 		\label{cxt:grouplikes}
-		\cxtName{\textbf{\texttt{Algebraic Structures}}}%
+		\cxtName{\textbf{\texttt{Algebraic Structures}}}
 		\att{\texttt{closure}}
 		\att{\texttt{associative}}
 		\att{\texttt{identity}}
@@ -70,49 +77,53 @@ object satisfies. One need only scan across the respective row and note where th
 		\obj{.x...}{\texttt{semicategory}}
 	\end{cxt}
 	\caption{A formal context showing necessary properties of group-like structures.}
+
 	\label{context:formal-context-group-structures}
 \end{figure}
 
-Using this approach, we can see that the intent of $\texttt{magma}$ is the singleton $\{\texttt{closure}\}$, while the extent of \texttt{closure} is the set
-$\{\texttt{magma,semigroup,monoid,group,abelian group,loop,quasigroup}\}$.
+Using this approach, we can see that the intent of $\texttt{magma}$ is the singleton $\{\texttt{closure}\}$, while the extent of
+\texttt{closure} is the set $\{\texttt{magma,semigroup,monoid,group,abelian group,loop,quasigroup}\}$.
 
-This approach to determining object extents and attribute intents becomes impractical when considering non-trivial contexts, or large sets of objects and
-attributes. The procedure can be formally described by the \textit{derivation operators}:
-% \footnote{It is common to denote
-% either derivation operator with a prime and use the surrounding context to resolve ambiguity, so $A^{\uparrow}$ and $B^{\downarrow}$ would become
-% $A'$ and $B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity while maintaining
-% pleasing notation. In cases where a derivation operator is applied to a singleton of objects $\{g\}$ (\textit{resp.} attributes $\{m\}$) we omit
-% the parenthesis and write $g^{\uparrow}$ (\textit{resp.} $m^{\downarrow}$)}
+This approach to determining object extents and attribute intents becomes impractical when considering non-trivial contexts, or
+large sets of objects and attributes. The procedure can be formally described by the \textit{derivation operators}:
+% \footnote{It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity,
+% so $A^{\uparrow}$ and $B^{\downarrow}$ would become $A'$ and $B'$, respectively. We avoid this notation as later on it will
+% become increasingly challenging to avoid ambiguity while maintaining pleasing notation. In cases where a derivation operator is
+% applied to a singleton of objects $\{g\}$ (\textit{resp.} attributes $\{m\}$) we omit the parenthesis and write $g^{\uparrow}$
+% (\textit{resp.} $m^{\downarrow}$)}
 
 \begin{definition}
 	\index{derivation operators} \label{definition:derivation-operators} \index{attribute!extent} \index{object!intent}
 
-	Given a context $\GMI$, the \textit{derivation operators} are two maps $(\cdot)^{\uparrow}: \pset{G}\to \pset{M}$ and $(\cdot )^{\downarrow}: \pset{M}\to
-		\pset{G}$. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
+	Given a context $\GMI$, the \textit{derivation operators} are two maps $(\cdot)^{\uparrow}: \pset{G}\to \pset{M}$ and $(\cdot
+		)^{\downarrow}: \pset{M}\to \pset{G}$. Then, for any subsets $A \subseteq G$ and $B \subseteq M$,
 	\begin{align*}
 		A^{\uparrow}   & \coloneqq \{m \in M \mid \forall g \in A, \; (g,m) \in I\} \\
 		B^{\downarrow} & \coloneqq \{g \in G \mid \forall m \in B, \; (g,m) \in I\}
 	\end{align*}
 \end{definition}
 
-The derivation operators describe a mapping from a subset $A \subseteq G$ of objects in a context to the corresponding subset of attributes that each (and
-every) object in $A$ related to. The dual notion holds for starting with a subset of attributes. As an example, we might wish to determine the set of
-attributes satisfied by the objects $\{\texttt{group,groupoid,abelian group}\}$. Application of the $(\cdot)^{\uparrow}$ derivation operator to this set yields
-$\{\texttt{associative,identity,inverse }\}$.
+The derivation operators describe a mapping from a subset $A \subseteq G$ of objects in a context to the corresponding subset of
+attributes that each (and every) object in $A$ related to. The dual notion holds for starting with a subset of attributes. As an
+example, we might wish to determine the set of attributes satisfied by the objects $\{\texttt{group,groupoid,abelian group}\}$.
+Application of the $(\cdot)^{\uparrow}$ derivation operator to this set yields $\{\texttt{associative,identity,inverse }\}$.
 
-To offer another perspective on the derivation operators, obvserve that the derivation of a set $A\subseteq G$ of objects is the intersection of each object
-intent, and so we have
+To offer another perspective on the derivation operators, obvserve that the derivation of a set $A\subseteq G$ of objects is the
+intersection of each object intent, and so we have
 \begin{align*}
 	A^{\uparrow}= \bigcap \{a^{\uparrow}\mid a \in A\}     & \qquad A \subseteq G  \\
 	B^{\downarrow}= \bigcap \{b^{\downarrow}\mid b \in B\} & \qquad B \subseteq M.
 \end{align*}
 
-In fact, we have already explored a more general perspective on the derivation operators in \Cref{section:closure-systems} through the notion of closure
-operators and Galois connections. The proposition below recontextualises properties of Galois connections in the setting of FCA.
+In fact, we have already explored a more general perspective on the derivation operators in \Cref{section:closure-systems}
+through the notion of closure operators and Galois connections. The proposition below recontextualises properties of Galois
+connections in the setting of FCA.
 
 \begin{proposition}
-	\label{proposition:derivation-operators-galois} Let $\GMI$ be a formal context and consider the subsets $X,X_{1}\subseteq G$ of objects (\textit{resp.} $Y,Y_{1}\subseteq M$ of attributes)
-	then
+	\label{proposition:derivation-operators-galois}
+
+	Let $\GMI$ be a formal context and consider the subsets $X,X_{1}\subseteq G$ of objects (\textit{resp.} $Y,Y_{1}\subseteq M$ of
+	attributes) then
 	\begin{align}
 		 & X \subseteq X_{1}\Rightarrow X_{1}^{\uparrow}\subseteq X^{\uparrow} & \textit{(\textit{resp.})} & \qquad Y \subseteq Y_{1}\Rightarrow Y_{1}^{\downarrow}\subseteq Y^{\downarrow}\label{equation:galois-1} \\
 		 & X \subseteq X^{\uparrow \downarrow}                                 & \textit{(\textit{resp.})} & \qquad Y \subseteq Y^{\downarrow \uparrow}\label{equation:galois-2}                                     \\
@@ -121,29 +132,30 @@ operators and Galois connections. The proposition below recontextualises propert
 	\end{align}
 \end{proposition}
 
-If we consider the powerset lattices of $\pset{G}$ and $\pset{M}$ equipped with their usual inclusion orders, then the derivation operators constitute a Galois
-connection on these sets: \Cref{equation:galois-1,equation:galois-2,equation:galois-3} are just a rephrasing of
-\Cref{equation:ord_galois-1,equation:ord-galois-2,equation:ord-galois-3}; while \Cref{equation:galois-4} rephrases \Cref{proposition:fundamental-galois}.
-Mirroring the discussion on Galois connections, we obtain the closure systems $\mathcal{G}$ and $\mathcal{M}$ on $G$ and $M$, respectively. Each of these
-closure systems form a complete lattice where, recounting \Cref{theorem:closure-systems-lattices}, meets and joins are given by:
-%
+If we consider the powerset lattices of $\pset{G}$ and $\pset{M}$ equipped with their usual inclusion orders, then the derivation
+operators constitute a Galois connection on these sets: \Cref{equation:galois-1,equation:galois-2,equation:galois-3} are just a
+rephrasing of \Cref{equation:ord_galois-1,equation:ord-galois-2,equation:ord-galois-3}; while \Cref{equation:galois-4} rephrases
+\Cref{proposition:fundamental-galois}. Mirroring the discussion on Galois connections, we obtain the closure systems
+$\mathcal{G}$ and $\mathcal{M}$ on $G$ and $M$, respectively. Each of these closure systems form a complete lattice where,
+recounting \Cref{theorem:closure-systems-lattices}, meets and joins are given by:
 \begin{align*}
 	 & \underset{i \in I}\bigwedge A_{i}= \underset{i \in I}\bigcap A_{i}\quad \text{ and }\quad \underset{i \in I}\bigvee A_{i}= \big(\underset{i \in I}\bigcup A_{i}\big)^{\uparrow \downarrow} & \quad A\subseteq \mathcal{G} \\
 	 & \underset{i \in I}\bigwedge B_{i}= \underset{i \in I}\bigcap B_{i}\quad \text{ and }\quad\underset{i \in I}\bigvee B_{i}= \big( \underset{i \in I}\bigcup B_{i}\big)^{\downarrow \uparrow} & \quad B\subseteq \mathcal{M}
 \end{align*}
 
-For a set of objects $A \subseteq G$, it follows directly from \Cref{equation:galois-3} that $A^{\uparrow}$ is a member of the closure system on $\mathcal{M}$.
+For a set of objects $A \subseteq G$, it follows directly from \Cref{equation:galois-3} that $A^{\uparrow}$ is a member of the
+closure system on $\mathcal{M}$.
 
 \begin{corollary}
 	\label{corollary:derivation-closure-systems}
 
-	Given a context $\GMI$ the derivation of a set of objects $A \subseteq G$ (\textit{resp.} attributes $B \subseteq M$) is always a member of the closure system
-	$\mathcal{M}$ (\textit{resp.} $\mathcal{G}$).
+	Given a context $\GMI$ the derivation of a set of objects $A \subseteq G$ (\textit{resp.} attributes $B \subseteq M$) is always a
+	member of the closure system $\mathcal{M}$ (\textit{resp.} $\mathcal{G}$).
 \end{corollary}
 
-We recall the discussion at the end of \Cref{subsection:galois-connections} where it was shown that a pair of mappings that form a Galois connection are dually
-isomorphic when their domains are restricted to the associated closure systems. With the aid of \Cref{figure:two-lattices}, we note this correspondence between
-the lattices of closure systems $\mathcal{G}$ and $\mathcal{M}$.
+We recall the discussion at the end of \Cref{subsection:galois-connections} where it was shown that a pair of mappings that form
+a Galois connection are dually isomorphic when their domains are restricted to the associated closure systems. With the aid of
+\Cref{figure:two-lattices}, we note this correspondence between the lattices of closure systems $\mathcal{G}$ and $\mathcal{M}$.
 
 \vspace{-5em}
 \begin{figure}[H]
@@ -268,56 +280,58 @@ the lattices of closure systems $\mathcal{G}$ and $\mathcal{M}$.
 		\draw[red, dotted, stealth-stealth, line width=0.8pt] (0,4.5) to[out=90, in=270] (12,-5.5);
 		\draw[blue, dotted, stealth-stealth, line width=0.8pt] (0,-2.5) to[out=270, in=90] (12,1.5);
 	\end{tikzpicture}
-	\vspace{-6em}
-	\captionsetup{width=0.8\textwidth}
-	\caption{The lattices induced by the closure systems $\mathcal{G}$ and $\mathcal{M}$. \textcolor{red}{Each node in a lattice represents the set comprising of all labels reachable from
-			below}}
+	\vspace{-6em} \captionsetup{width=0.8\textwidth} \caption{The lattices induced by the closure systems $\mathcal{G}$ and
+		$\mathcal{M}$. \textcolor{red}{Each node in a lattice represents the set comprising of all labels reachable from below}}
 	\label{figure:two-lattices}
 \end{figure}
 
-Earlier, it was suggested that Galois connections are particularly interesting when the closure systems they induce are themselves interesting, and, future
-discussion of an example of such interesting closure systems was promised. Let us now give such an example, and in doing so provide some intuition for why
-Galois connections are a useful way of modelling formal concepts, to be introduced immediately afterwards.
+Earlier, it was suggested that Galois connections are particularly interesting when the closure systems they induce are
+themselves interesting, and, future discussion of an example of such interesting closure systems was promised. Let us now give
+such an example, and in doing so provide some intuition for why Galois connections are a useful way of modelling formal concepts,
+to be introduced immediately afterwards.
 
-Consider the concept derived from the algebraic structure of a \textit{monoid}: a set equipped with a binary operation that satisfies the properties of
-closure, associativity, and has an identity element. We should want to include in the extension of this concept all those algebraic structures that would be
-considered subclasses of monoids. These are those structures which satisfy the properties of a monoid (and possibly additional properties). Of course, a
-\textit{monoid} should be a member of this extension. Another structure we should expect to see in this extension is that of a \textit{group}, which satisfies
-the requirements while also having an inverse.
+Consider the concept derived from the algebraic structure of a \textit{monoid}: a set equipped with a binary operation that
+satisfies the properties of closure, associativity, and has an identity element. We should want to include in the extension of
+this concept all those algebraic structures that would be considered subclasses of monoids. These are those structures which
+satisfy the properties of a monoid (and possibly additional properties). Of course, a \textit{monoid} should be a member of this
+extension. Another structure we should expect to see in this extension is that of a \textit{group}, which satisfies the
+requirements while also having an inverse.
 
-Now let us consider the concept derived from a \textit{group}. We have just shown that a group is a subclass of monoid, so it should follow that the extension
-of a group must be a subset of the extension of a monoid. What of the intension? Suppose the intension of the concept of a monoid were not a subset of that of
-a group, then monoids would have to satisfy some property that groups did not. This creates a contradiction, as it would mean we could not properly consider a
-group to be a subclass of a monoid.
+Now let us consider the concept derived from a \textit{group}. We have just shown that a group is a subclass of monoid, so it
+should follow that the extension of a group must be a subset of the extension of a monoid. What of the intension? Suppose the
+intension of the concept of a monoid were not a subset of that of a group, then monoids would have to satisfy some property that
+groups did not. This creates a contradiction, as it would mean we could not properly consider a group to be a subclass of a
+monoid.
 
-This reveals the relationship between concepts, such that when we move from the more general concept (monoid) to the more specific concept (group), the
-extension becomes smaller while the intension grows. The extension of group is contained within the extension of monoid, but the intension of monoid is
-contained within the intension of group. This inverse relationship between the extensions and intensions of concepts is precisely the kind of relationship
-described by a Galois connection.
+This reveals the relationship between concepts, such that when we move from the more general concept (monoid) to the more
+specific concept (group), the extension becomes smaller while the intension grows. The extension of group is contained within the
+extension of monoid, but the intension of monoid is contained within the intension of group. This inverse relationship between
+the extensions and intensions of concepts is precisely the kind of relationship described by a Galois connection.
 
 With this in mind, it is finally an appropriate time to define what is meant by \textit{formal concept}:
 
 \begin{definition}
-	\index{formal concept} \index{lattice! concept lattice} \label{definition:formal-concept} A \emph{formal concept} of a context $\GMI$ is a pair $(A,B)$ where $A \subseteq G$ and
-	$B\subseteq M$ where $A^{\uparrow}= B$ and $B^{\downarrow}= A$. We call $A$ the \emph{concept extent} and $B$ the \emph{concept intent}. We write $\BGMI$ to denote the set of all concepts
-	of $\GMI$.
+	\index{formal concept} \index{lattice! concept lattice} \label{definition:formal-concept}
+
+	A \emph{formal concept} of a context $\GMI$ is a pair $(A,B)$ where $A \subseteq G$ and $B\subseteq M$ where $A^{\uparrow}= B$
+	and $B^{\downarrow}= A$. We call $A$ the \emph{concept extent} and $B$ the \emph{concept intent}. We write $\BGMI$ to denote the
+	set of all concepts of $\GMI$.
 \end{definition}
 
-A concept is a pair of closed sets, each representing either the extensional or intensional perspective. Indeed, there is some degree of redundancy in this
-definition, as the extension fully determines the intension and vice verse \cite{ganter2016conceptual}. However, this redundancy is beneficial for ones'
-intuition, and so we persevere with it.
+A concept is a pair of closed sets, each representing either the extensional or intensional perspective. Indeed, there is some
+degree of redundancy in this definition, as the extension fully determines the intension and vice verse
+\cite{ganter2016conceptual}. However, this redundancy is beneficial for ones' intuition, and so we persevere with it.
 
-A pleasing result of the definition of concepts is that, for any set $A \subseteq G$ of objects, the derivation $A^{\uparrow}$ will always define a concept
-intent (the intent of the concept constructed by $(A^{\uparrow \downarrow}, A^{\uparrow})$). For the same reason, the derivation of any set of attributes $B
-	\subseteq M$ will always be a concept extent. In fact, this is fact is merely a rephrasing of \Cref{corollary:derivation-closure-systems} within the
-perspective of concepts.
+A pleasing result of the definition of concepts is that, for any set $A \subseteq G$ of objects, the derivation $A^{\uparrow}$
+will always define a concept intent (the intent of the concept constructed by $(A^{\uparrow \downarrow}, A^{\uparrow})$). For the
+same reason, the derivation of any set of attributes $B \subseteq M$ will always be a concept extent. In fact, this is fact is
+merely a rephrasing of \Cref{corollary:derivation-closure-systems} within the perspective of concepts.
 
-To make this idea concrete, we reconsider the previous discussion where we (informally) described the concept of a monoid. It follows that the derivation
-$\{\texttt{monoid }\}^{\uparrow}$ yields the concept intent:
+To make this idea concrete, we reconsider the previous discussion where we (informally) described the concept of a monoid. It
+follows that the derivation $\{\texttt{monoid }\}^{\uparrow}$ yields the concept intent:
 \[
 	\{\texttt{closure,associative,identity}\}.
 \]
-%
 In turn, the derivation of the concept intent results in the set
 \[
 	\{\texttt{monoid,group,abelian group}\},
@@ -327,27 +341,31 @@ In turn, the derivation of the concept intent results in the set
 \]
 is a formal concept of \Cref{cxt:grouplikes}.
 
-The union of concept extents (\textit{resp.}\ intents) does not in general yield another concept extent (\textit{resp.}\ intent), whereas the intersection of
-concept extents (\textit{resp.}\ intents) always yields a concept extent (\textit{resp.}\ intent). \textcolor{red}{Equivalently, the closure systems
-	$\mathcal{G}$ and $\mathcal{M}$ are not closed under arbitrary unions, but they are closed under arbitrary intersections.}
+The union of concept extents (\textit{resp.}\ intents) does not in general yield another concept extent (\textit{resp.}\ intent),
+whereas the intersection of concept extents (\textit{resp.}\ intents) always yields a concept extent (\textit{resp.}\ intent).
+\textcolor{red}{Equivalently, the closure systems $\mathcal{G}$ and $\mathcal{M}$ are not closed under arbitrary unions, but they
+	are closed under arbitrary intersections.}
 
 \begin{proposition}
-	\label{proposition:intersection-union-concepts} Let $T$ be an indexing set, for every $t \in T$, let $A_{t}\subseteq G$ be a set of objects. Then,
+	\label{proposition:intersection-union-concepts}
+
+	Let $T$ be an indexing set, for every $t \in T$, let $A_{t}\subseteq G$ be a set of objects. Then,
 	\[
 		\big( \underset{t \in T}\bigcup A_{t}\big)^{\uparrow}= \underset{t \in T}\bigcap A_{t}^{\uparrow}
 	\]
 \end{proposition}
 
-If we examine the lattices in \Cref{figure:two-lattices}, we observe that the two derivation operators map to and from the concept intent and extent (shown by
-the dotted blue arrows). This observation suggests a more consolidated perspective: The two lattices can be unified into a single structure where elements of
-the lattice are precisely the pairs $(A ,B)$ where $A \in \mathcal{G}$ and $B \in \mathcal{M}$ and also $A^{\uparrow}= B$ and $B^{\downarrow}= A$. In other
-words, the lattice of concepts. We appropriately call this structure the \textit{concept lattice} of a formal context, and write $\CLGMI$ to refer to the set
-of all concepts equipped with this structure.
+If we examine the lattices in \Cref{figure:two-lattices}, we observe that the two derivation operators map to and from the
+concept intent and extent (shown by the dotted blue arrows). This observation suggests a more consolidated perspective: The two
+lattices can be unified into a single structure where elements of the lattice are precisely the pairs $(A ,B)$ where $A \in
+	\mathcal{G}$ and $B \in \mathcal{M}$ and also $A^{\uparrow}= B$ and $B^{\downarrow}= A$. In other words, the lattice of concepts.
+We appropriately call this structure the \textit{concept lattice} of a formal context, and write $\CLGMI$ to refer to the set of
+all concepts equipped with this structure.
 
 \begin{figure}[H]
 	\centering
 	\unitlength 1.75mm
-	\begin{diagram}{40}{60} %
+	\begin{diagram}{40}{60}
 
 		% Row 1
 		\Node{1}{20}{60}
@@ -387,13 +405,12 @@ of all concepts equipped with this structure.
 		\Node{15}{20}{10} \leftAttbox{15}{1}{1}{commutative} \leftObjbox{15}{1}{1}{abelian group} \Edge{15}{14}
 	\end{diagram}
 	% \vspace{-6em}
-	\caption{The concept lattice corresponding to \Cref{cxt:grouplikes}}
-	\label{figure:concept-lattice-group-likes}
+	\caption{The concept lattice corresponding to \Cref{cxt:grouplikes}} \label{figure:concept-lattice-group-likes}
 \end{figure}
 
-Reading a concept lattice requires a small amount of getting used to: The labels above a node in the diagram correspond to attributes, while objects are
-labelled below a node. Each node represents a concept $C \in \BGMI$. The labelled nodes in the concept lattice diagram correspond to either \textit{object} or
-\textit{attribute concepts}.
+Reading a concept lattice requires a small amount of getting used to: The labels above a node in the diagram correspond to
+attributes, while objects are labelled below a node. Each node represents a concept $C \in \BGMI$. The labelled nodes in the
+concept lattice diagram correspond to either \textit{object} or \textit{attribute concepts}.
 
 \begin{definition}
 	\label{definition:object-attribute-concepts} \index{attribute!concept}
@@ -409,11 +426,12 @@ labelled below a node. Each node represents a concept $C \in \BGMI$. The labelle
 	for each $m \in M$.
 \end{definition}
 
-Given a node in the diagram for a concept lattice, the extension of the concept is given by all those objects labelled at nodes for which there is a (strictly)
-downward path from the respective node. The concept intent is given by the labelled attributes with a strictly upward path.
+Given a node in the diagram for a concept lattice, the extension of the concept is given by all those objects labelled at nodes
+for which there is a (strictly) downward path from the respective node. The concept intent is given by the labelled attributes
+with a strictly upward path.
 
-The concept lattice is isomorphic to the closure system $\mathcal{G}$ of objects, and dually isomorphic to the closure system $\mathcal{M}$ of attributes. We
-now consider the first part of the fundamental result in FCA.
+The concept lattice is isomorphic to the closure system $\mathcal{G}$ of objects, and dually isomorphic to the closure system
+$\mathcal{M}$ of attributes. We now consider the first part of the fundamental result in FCA.
 
 \begin{theorem}[The Basic Theorem of Concept Lattices: Part one]
 	\label{theorem:basic-theorem-part1} The concept lattice $\CLGMI$ of a formal context is a complete lattice in which meets and joins are given by
@@ -423,100 +441,115 @@ now consider the first part of the fundamental result in FCA.
 	\end{align*}
 \end{theorem}
 
-Part one of the basic theorem describes how we might find the meet and join of concepts in the concept lattice. To make this clear, recall the isomorphism
-between $\mathcal{G}$ and $\CLGMI$, which tells us that
+Part one of the basic theorem describes how we might find the meet and join of concepts in the concept lattice. To make this
+clear, recall the isomorphism between $\mathcal{G}$ and $\CLGMI$, which tells us that
 \[
 	A_{0}\wedge A_{1}\cong (A_{0},B_{0}) \wedge (A_{1},B_{1})
 \]
 for any $A_{0},A_{1}\in \mathcal{G}$ where $(A_{i},B_{i})$ is the concept with extent $A_{i}$.
 
-The isomorphism between the concept lattice $\CLGMI$ and the lattice corresponding to the closure system $\mathcal{G}$ means that the meet of any two
-concepts--- that is, their most general sub-concept---can be found by considering the concept formed by taking the meet of each of their extensions with
-respect to $\mathcal{G}$. Of course, since $\mathcal{G}$ is a closure system, the meet operation on this lattice corresponds to taking the intersection of
-these extensions. As there is a dual-isomorphism between $\CLGMI$ and $\mathcal{M}$, we may equivalently discover the most general sub-concept of two concepts
-by considering the join operation on the concept intensions with respect to the lattice of $\mathcal{M}$. This corresponds to taking the closure of the union
-of concept intensions (cf. \Cref{theorem:closure-systems-lattices} for a reminder of why).
+The isomorphism between the concept lattice $\CLGMI$ and the lattice corresponding to the closure system $\mathcal{G}$ means that
+the meet of any two concepts--- that is, their most general sub-concept---can be found by considering the concept formed by
+taking the meet of each of their extensions with respect to $\mathcal{G}$. Of course, since $\mathcal{G}$ is a closure system,
+the meet operation on this lattice corresponds to taking the intersection of these extensions. As there is a dual-isomorphism
+between $\CLGMI$ and $\mathcal{M}$, we may equivalently discover the most general sub-concept of two concepts by considering the
+join operation on the concept intensions with respect to the lattice of $\mathcal{M}$. This corresponds to taking the closure of
+the union of concept intensions (cf. \Cref{theorem:closure-systems-lattices} for a reminder of why).
 
-The join of two concepts---again, due to the dual isomorphism---corresponds to the meet operation on the concept extensions with respect to the lattice of
-$\mathcal{M}$ and can thus be found by taking the intersection of their intensions, under which $\mathcal{M}$ is closed. Or, by the join operation on
-$\mathcal{G}$, which corresponds to the closure of the union of extensions.
+The join of two concepts---again, due to the dual isomorphism---corresponds to the meet operation on the concept extensions with
+respect to the lattice of $\mathcal{M}$ and can thus be found by taking the intersection of their intensions, under which
+$\mathcal{M}$ is closed. Or, by the join operation on $\mathcal{G}$, which corresponds to the closure of the union of extensions.
 
-For another perspective, consider that each $A_{t}$ is equivalent to $B_{t}^{\downarrow}$. By \Cref{proposition:intersection-union-concepts}
+For another perspective, consider that each $A_{t}$ is equivalent to $B_{t}^{\downarrow}$. By
+\Cref{proposition:intersection-union-concepts}
+
 \begin{align*}
 	 & \underset{t \in T}\bigwedge (A_{t}, B_{t}) = \Big( \underset{t \in T}\bigcap A_{t}, \; \big(\underset{t \in T}\bigcup B_{t}\big)^{\downarrow \uparrow}\Big)
 \end{align*}
+
 can be restated as
+
 \begin{align*}
 	 & \underset{t \in T}\bigwedge (A_{t}, B_{t}) = \Big(\big(\underset{t \in T}\bigcup B_{t}\big)^{\downarrow}, \; \big(\underset{t \in T}\bigcup B_{t}\big)^{\downarrow \uparrow}\Big)
 \end{align*}
 
 We may arrive at the concept lattice in another way, by considering the rather natural order on concepts which arises from the
-\textit{subconcept--superconcept} relation. We had, earlier, discussed that `group' is a subclass of `monoid', and so the extension of the associated concept
-of a group should be a subset of that of a monoid. In line with this, we say that a concept $( A_{0},B_{0})$ is a subconcept of another $(A_{1},B_{1})$ if and
-only if $A_{0}\subseteq A_{1}$. Dually, $(A_{1},B_{1})$ is a superconcept of $(A_{0},B_{0})$ if and only if $B_{1}\subseteq B_{0}$. In this case we write
-$(A_{0},B_{0}) \leq (A_{1},B_{1})$. When considering the set of concepts $\BGMI$ with the relation defined by $\leq$, the resulting structure is the same
-concept lattice $\CLGMI$ from before. As an illustration, consider the two selected concepts in \Cref{figure:concept-lattice-group-likes}.
+\textit{subconcept--superconcept} relation. We had, earlier, discussed that `group' is a subclass of `monoid', and so the
+extension of the associated concept of a group should be a subset of that of a monoid. In line with this, we say that a concept
+$( A_{0},B_{0})$ is a subconcept of another $(A_{1},B_{1})$ if and only if $A_{0}\subseteq A_{1}$. Dually, $(A_{1},B_{1})$ is a
+superconcept of $(A_{0},B_{0})$ if and only if $B_{1}\subseteq B_{0}$. In this case we write $(A_{0},B_{0}) \leq (A_{1},B_{1})$.
+When considering the set of concepts $\BGMI$ with the relation defined by $\leq$, the resulting structure is the same concept
+lattice $\CLGMI$ from before. As an illustration, consider the two selected concepts in
+\Cref{figure:concept-lattice-group-likes}.
 
-\textcolor{red}{I think it is worth mentioning some discussion on how, as a result of the basic theorem, formal concept analysis is just a restructuring of lattice theory. I.e., it makes work
-	on complete lattices more accessible. Worthwhile in terms of motivations behind formal concept analysis. Restructuring also relates to attribute logic, so this is a good place to do it. }
-% \subsection{Weaker Concepts}
-% \label{subsection:weaker-concepts} \textcolor{red}{I was going to introduce existing ideas in FCA about ``protoconcepts''; but I think maybe
-% this should be done right before we discuss typical concepts. }
+\textcolor{red}{I think it is worth mentioning some discussion on how, as a result of the basic theorem, formal concept analysis
+	is just a restructuring of lattice theory. I.e., it makes work on complete lattices more accessible. Worthwhile in terms of
+	motivations behind formal concept analysis. Restructuring also relates to attribute logic, so this is a good place to do it. }
+% \subsection{Weaker Concepts} \label{subsection:weaker-concepts} \textcolor{red}{I was going to introduce existing ideas in FCA
+% about ``protoconcepts''; but I think maybe this should be done right before we discuss typical concepts. }
 
 \section{Attribute Logic}
 \label{section:attribute-logic}
 
-This section explores several of the more \textit{logic}-related ideas that present themselves in FCA. In light of \Cref{section:propositional-logic}, many of
-the notions here should be somewhat familiar. However, we follow the the advice from Ganter \shortcite{ganter2025language} where it is suggested that we think
-of logic, as it relates to FCA, not in terms of truth values, but rather attributes and conceptual meaning.
+This section explores several of the more \textit{logic}-related ideas that present themselves in FCA. In light of
+\Cref{section:propositional-logic}, many of the notions here should be somewhat familiar. However, we follow the the advice from
+Ganter \shortcite{ganter2025language} where it is suggested that we think of logic, as it relates to FCA, not in terms of truth
+values, but rather attributes and conceptual meaning.
 
-We begin by studying the \textit{implication logic} of FCA, which is perhaps most fundamental. Afterwards, we will discuss a more expressive logic.
+We begin by studying the \textit{implication logic} of FCA, which is perhaps most fundamental. Afterwards, we will discuss a more
+expressive logic.
 
 \subsection{Implication Logic}
 \label{subsection:implication-logic}
 
-It is often sufficient to study what is, in terms of expressivity, a fairly restricted logic. This is the \textit{implication} logic of FCA. From the
-perspective of mathematical logic, it is analogous to propositional definite Horn logic. That is, clauses with precisely one positive literal.
+It is often sufficient to study what is, in terms of expressivity, a fairly restricted logic. This is the \textit{implication}
+logic of FCA. From the perspective of mathematical logic, it is analogous to propositional definite Horn logic. That is, clauses
+with precisely one positive literal.
 
-An implication describes a correspondence between attributes, expressing the idea that \say{Whenever we see attribute $m$, we also see attribute $n$}.
-Formally, we have:
+An implication describes a correspondence between attributes, expressing the idea that \say{Whenever we see attribute $m$, we
+	also see attribute $n$}. Formally, we have:
 
 \begin{definition}
 	\label{definition:implication}
 
-	An \emph{implication} over a set $M$ of attributes is written $A \rightarrow B$, where $A,B \subseteq M$. We call $A$ the \textit{premise} and $B$ the
-	\textit{conclusion} of the implication.
+	An \emph{implication} over a set $M$ of attributes is written $A \rightarrow B$, where $A,B \subseteq M$. We call $A$ the
+	\textit{premise} and $B$ the \textit{conclusion} of the implication.
 \end{definition}
 
-The semantics of attribute implications quite closely resemble the material implications outlined in \Cref{section:propositional-logic}; however, we are
-interested in attribute implications as they relate to formal contexts, and so we define the semantics with this in mind.
+The semantics of attribute implications quite closely resemble the material implications outlined in
+\Cref{section:propositional-logic}; however, we are interested in attribute implications as they relate to formal contexts, and
+so we define the semantics with this in mind.
 
 \begin{definition}
 	\label{definition:implication-respect}
 
-	Another set of attributes $C \subseteq M$ \textit{respects} the implication if either $A \not \subseteq C$ or $B \subseteq C$, in which case we write $C \vDash
-		A \rightarrow B$ and call $C$ a \emph{model} of the implication. If $\mathcal{T}$ is a set of implications, $C$ is a model of $\mathcal{T}$ if it respects
-	every implication in $\mathcal{T}$. A formal context $\context = \GMI$ \emph{respects} an implication $A \rightarrow B$ over $M$ if and only if the intent
-	$g^{\uparrow}$ of each object $g \in G$ respects the implication, in which case we write $\context \vDash A \rightarrow B$; this idea is extended to a set of
+	Another set of attributes $C \subseteq M$ \textit{respects} the implication if either $A \not \subseteq C$ or $B \subseteq C$, in
+	which case we write $C \vDash A \rightarrow B$ and call $C$ a \emph{model} of the implication. If $\mathcal{T}$ is a set of
+	implications, $C$ is a model of $\mathcal{T}$ if it respects every implication in $\mathcal{T}$. A formal context $\context =
+		\GMI$ \emph{respects} an implication $A \rightarrow B$ over $M$ if and only if the intent $g^{\uparrow}$ of each object $g \in G$
+	respects the implication, in which case we write $\context \vDash A \rightarrow B$; this idea is extended to a set of
 	implications as expected.
 \end{definition}
 
-Recall that in FCA we are usually only interested in positive information, we cannot---at least for the time being---speak about attribute implications with
-disjunction or negation. In \Cref{subsection:compound-attributes} we discuss how we might increase the expressivity of the logic.
+Recall that in FCA we are usually only interested in positive information, we cannot---at least for the time being---speak about
+attribute implications with disjunction or negation. In \Cref{subsection:compound-attributes} we discuss how we might increase
+the expressivity of the logic.
 
-The definition for when a context respects an implication admits a more concise representation: It is equivalent to the expression that
-$A^{\downarrow}\subseteq B^{\downarrow}$, or $B \subseteq A^{\downarrow \uparrow}$. Recalling \Cref{corollary:derivation-closure-systems}, which asserts that
-both $A^{\downarrow}$ and $B^{\downarrow}$ are always concept extents, we have the following:
+The definition for when a context respects an implication admits a more concise representation: It is equivalent to the
+expression that $A^{\downarrow}\subseteq B^{\downarrow}$, or $B \subseteq A^{\downarrow \uparrow}$. Recalling
+\Cref{corollary:derivation-closure-systems}, which asserts that both $A^{\downarrow}$ and $B^{\downarrow}$ are always concept
+extents, we have the following:
 
 \begin{proposition}
 	\label{proposition:implication-concepts}
 
-	The implication $A \rightarrow B$ is respected by a context $\GMI$ if and only if the concept derived from $A$ is a sub-concept of the one derived from $B$.
-	Formally, if $(A^{\downarrow}, A^{\downarrow \uparrow}) \leq (B^{\downarrow}, B^{\downarrow \uparrow})$ holds.
+	The implication $A \rightarrow B$ is respected by a context $\GMI$ if and only if the concept derived from $A$ is a sub-concept
+	of the one derived from $B$. Formally, if $(A^{\downarrow}, A^{\downarrow \uparrow}) \leq (B^{\downarrow}, B^{\downarrow
+			\uparrow})$ holds.
 \end{proposition}
 
-For an illustration, we consider whether the implication $\{\texttt{inverse,associative}\} \rightarrow \{\texttt{identity}\}$ holds in the context of
-group-likes. Indeed, the concept lattice in \Cref{figure:concept-lattice-group-likes} confirms that
+For an illustration, we consider whether the implication $\{\texttt{inverse,associative}\} \rightarrow \{\texttt{identity}\}$
+holds in the context of group-likes. Indeed, the concept lattice in \Cref{figure:concept-lattice-group-likes} confirms that
 \[
 	(\{\texttt{inverse,associative}\}^{\downarrow},\{\texttt{inverse,associative}\}^{\downarrow \uparrow}) \leq (\{\texttt{identity}\}^{\uparrow}, \{\texttt{identity }\}^{\uparrow \downarrow}),
 \]
@@ -526,79 +559,85 @@ connection between attribute implications and concept lattices. We explore this 
 \subsubsection{Implication Inference}
 \label{subsubsection:implication-inference}
 
-It is interesting to discuss the matter of logical consequence in the setting of attribute implications. The definition is quite natural, and describes a
-Tarskian notion of consequence.
+It is interesting to discuss the matter of logical consequence in the setting of attribute implications. The definition is quite
+natural, and describes a Tarskian notion of consequence.
 
 \begin{definition}
 	\label{definition:implication-inference}
 
-	An implication $A\rightarrow B$ \emph{logically follows} from a set $\mathcal{T}$ of implications over $M$ if and only if each attribute subset $C \subseteq M$
-	that is a model of $\mathcal{T}$ is also a model of $A \rightarrow B$, then we write $\mathcal{T}\vDash A \rightarrow B$.
+	An implication $A\rightarrow B$ \emph{logically follows} from a set $\mathcal{T}$ of implications over $M$ if and only if each
+	attribute subset $C \subseteq M$ that is a model of $\mathcal{T}$ is also a model of $A \rightarrow B$, then we write
+	$\mathcal{T}\vDash A \rightarrow B$.
 \end{definition}
 
-A set $\mathcal{T}$ of attribute implications is called \textit{closed}, or an \textit{implication theory}, when it contains all implications that logically
-follow from it. It is \textit{complete} with respect to some closure operator if every implication that holds for a respective closure operator follows from
-the theory. If $\mathcal{T}$ is complete with respect to the closure operator $(\cdot)^{\downarrow\uparrow}$ then it is a complete implication theory of the
-formal context to which the derivation operators refer \cite{ganter2016conceptual,ganter2024formal}. This is formalised as:
+A set $\mathcal{T}$ of attribute implications is called \textit{closed}, or an \textit{implication theory}, when it contains all
+implications that logically follow from it. It is \textit{complete} with respect to some closure operator if every implication
+that holds for a respective closure operator follows from the theory. If $\mathcal{T}$ is complete with respect to the closure
+operator $(\cdot)^{\downarrow\uparrow}$ then it is a complete implication theory of the formal context to which the derivation
+operators refer \cite{ganter2016conceptual,ganter2024formal}. This is formalised as:
 
 \begin{proposition}
 	\label{proposition:implication-sets-and-concept-intents}
 
-	If $\mathcal{T}$ is a set of implications over an attribute set $M$, then the set $\Mod{\mathcal{T}}\coloneq \{ A \subseteq M \mid A \vDash \mathcal{T}\}$ of
-	its models form a closure system on $\pset{M}$.
+	If $\mathcal{T}$ is a set of implications over an attribute set $M$, then the set $\Mod{\mathcal{T}}\coloneq \{ A \subseteq M
+		\mid A \vDash \mathcal{T}\}$ of its models form a closure system on $\pset{M}$.
 
-	If $\mathcal{T}$ is the complete implication theory of $\GMI$ then the closure system $\Mod{\mathcal{T}}$ is precisely the system of concept intents of the
-	context.
+	If $\mathcal{T}$ is the complete implication theory of $\GMI$ then the closure system $\Mod{\mathcal{T}}$ is precisely the system
+	of concept intents of the context.
 \end{proposition}
 
-It is reasonably obvious that every concept intent of a context $\context = \GMI$ is a model of the implication theory of $\mathbb{K}$. For the converse, which
-is less clear, assume $X \subseteq M$ is a model of the implication theory but not a concept intent. Then $X \neq X^{\downarrow\uparrow}$, so there exists some
-attribute $m \in X^{\downarrow\uparrow}\setminus X$. By definition of closure, this means that every object $g \in X^{\downarrow}$ has $(g,m) \in I$, hence $X
-	\cup \{m\}$ is closed, i.e. a concept intent. But then the implication $X \rightarrow{m}$ holds in $\mathbb{K}$, and since $X$ does not contain $m$, $X$ fails
-to satisfy this implication. This contradicts the assumption that $X$ is a model. Therefore every model of the implication theory is necessarily a concept
-intent.
+It is reasonably obvious that every concept intent of a context $\context = \GMI$ is a model of the implication theory of
+$\mathbb{K}$. For the converse, which is less clear, assume $X \subseteq M$ is a model of the implication theory but not a
+concept intent. Then $X \neq X^{\downarrow\uparrow}$, so there exists some attribute $m \in X^{\downarrow\uparrow}\setminus X$.
+By definition of closure, this means that every object $g \in X^{\downarrow}$ has $(g,m) \in I$, hence $X \cup \{m\}$ is closed,
+i.e. a concept intent. But then the implication $X \rightarrow{m}$ holds in $\mathbb{K}$, and since $X$ does not contain $m$, $X$
+fails to satisfy this implication. This contradicts the assumption that $X$ is a model. Therefore every model of the implication
+theory is necessarily a concept intent.
 
 The following closure operator describes how a set of attributes can be closed under a set of implications.
 
 \begin{definition}
 	\label{definition:closure-operator-implications}
 
-	Let $\mathcal{T}$ be a set of implications over a set of attributes $M$. For a set $X \subseteq M$ of attributes, the closure of $X$ with respect to
-	$\mathcal{T}$ is given by
-	% \[
-	% 	X^{\mathcal{T}}= X \cup \bigcup \{\, B \mid (A \rightarrow B) \in \mathcal{T}, \; A \subseteq X \,\},
-	% \]
-	% which extends $X$ by adding all conclusions of implications in $\mathcal{T}$ whose premises are contained within $X$. The sequence $X^{\mathcal{T}}, X^{\mathcal{T} \mathcal{T}}, \ldots$ will
-	% reach a fixed-point $\Cna{\mathcal{T}}{X}\coloneqq X^{\mathcal{T} \ldots \mathcal{T}}$ where $\Cna{\mathcal{T}}{X}= \Cna{\mathcal{T}}{X}^{\mathcal{T}}$. This fixed point defines the \emph{closure
-	% of $X$ under $\mathcal{T}$}.
-	% Equivalently, for the infinite case, we have:
+	Let $\mathcal{T}$ be a set of implications over a set of attributes $M$. For a set $X \subseteq M$ of attributes, the closure of
+	$X$ with respect to $\mathcal{T}$ is given by
+	% \[ X^{\mathcal{T}}= X \cup \bigcup \{\, B \mid (A \rightarrow B) \in \mathcal{T}, \; A \subseteq X \,\}, \] which extends $X$ by
+	% adding all conclusions of implications in $\mathcal{T}$ whose premises are contained within $X$. The sequence $X^{\mathcal{T}},
+	% X^{\mathcal{T} \mathcal{T}}, \ldots$ will reach a fixed-point $\Cna{\mathcal{T}}{X}\coloneqq X^{\mathcal{T} \ldots \mathcal{T}}$
+	% where $\Cna{\mathcal{T}}{X}= \Cna{\mathcal{T}}{X}^{\mathcal{T}}$. This fixed point defines the \emph{closure of $X$ under
+	% $\mathcal{T}$}. Equivalently, for the infinite case, we have:
 	\[
 		\Cna{\mathcal{T}}{X}= \bigcap \{\, W \mid X \subseteq W \subseteq M, \; W \in \mathsf{Mod}(\mathcal{T})\,\}.
 	\]
 	% the intersection of all models $W$ of $\mathcal{T}$ that contain $X$.
 \end{definition}
 
-Consider the case where $X$ is already a model of the theory, the $\Cna{\mathcal{T}}{X}= X$. Otherwise, the closure of $X$ under $\mathcal{T}$ is the smallest
-closed set which subsumes $X$. It is the \textit{smallest} by the fact that $\mathsf{Mod}(\mathcal{T})$ is a closure sytem, and thus closed under arbitrary
-intersections. Then, we have a concise representation of when an implication follows from a set of implications.
+Consider the case where $X$ is already a model of the theory, the $\Cna{\mathcal{T}}{X}= X$. Otherwise, the closure of $X$ under
+$\mathcal{T}$ is the smallest closed set which subsumes $X$. It is the \textit{smallest} by the fact that
+$\mathsf{Mod}(\mathcal{T})$ is a closure sytem, and thus closed under arbitrary intersections. Then, we have a concise
+representation of when an implication follows from a set of implications.
 
 \begin{proposition}
-	\label{proposition:} An implication $A \rightarrow B$ is a logical consequence of a set of implications $\mathcal{T}$ over $M$ if and only if $B \subseteq \Cna{\mathcal{T}}{A}$.
+	\label{proposition:}
+
+	An implication $A \rightarrow B$ is a logical consequence of a set of implications $\mathcal{T}$ over $M$ if and only if $B
+		\subseteq \Cna{\mathcal{T}}{A}$.
 \end{proposition}
 
 \begin{example}
 	\lucas{I can't think of a good example to show the implicaiton/closure relation. I was thinking something to do with the Bonghard puzzles}
 \end{example}
 
-The \nameref{algorithm:LinClosure} algorithm \cite{maier1983chapter4}, and slightly modified by \cite{ganter2016conceptual}, describes a procedure which finds
-the closure of an attribute set with respect to a set of implications. The algorithm is linear on the size of the implication set, and so computing . The first
-block of the algorithm, lines \ref{line:1}--\ref{line:8}, determines the size of the premise for each implication, the respective implication is then
-associated with each individual attribute in the premise. All implications with an empty premise are vacuously satisfied, and so their conclusions are added to
+The \nameref{algorithm:LinClosure} algorithm \cite{maier1983chapter4}, and slightly modified by \cite{ganter2016conceptual},
+describes a procedure which finds the closure of an attribute set with respect to a set of implications. The algorithm is linear
+on the size of the implication set, and so computing . The first block of the algorithm, lines \ref{line:1}--\ref{line:8},
+determines the size of the premise for each implication, the respective implication is then associated with each individual
+attribute in the premise. All implications with an empty premise are vacuously satisfied, and so their conclusions are added to
 $X$.
 
-The result is a tally, for each implication, of how many attributes are required to satisfy the premise; and, for each attribute $m \in M$ a list of
-implications for which $m$ appears in the antecedent. All attributes from $X$, alongside the conclusions of vacuously satisfied implications, are stored in
-\textit{update}.
+The result is a tally, for each implication, of how many attributes are required to satisfy the premise; and, for each attribute
+$m \in M$ a list of implications for which $m$ appears in the antecedent. All attributes from $X$, alongside the conclusions of
+vacuously satisfied implications, are stored in \textit{update}.
 
 \begin{algo}{\textsc{LinClosure}}
 
@@ -655,18 +694,18 @@ implications for which $m$ appears in the antecedent. All attributes from $X$, a
 	\State \Return $X$
 \end{algo}
 
-The second block, lines \ref{line:11}--\ref{line:22}, chooses an attribute $m \in \textit{update}$ and for each of its associated implications, given by
-$\textit{ list}[m]$, decrements the counter associated with the implications premise. If an implication's counter reaches zero, the conclusion (after removing
-any attributes which have already been dealt with, or will be dealt with in future) is added to \textit{update}. The process repeats until \textit{update} is
-empty, afterwhich the closed set is returned.
+The second block, lines \ref{line:11}--\ref{line:22}, chooses an attribute $m \in \textit{update}$ and for each of its associated
+implications, given by $\textit{ list}[m]$, decrements the counter associated with the implications premise. If an implication's
+counter reaches zero, the conclusion (after removing any attributes which have already been dealt with, or will be dealt with in
+future) is added to \textit{update}. The process repeats until \textit{update} is empty, afterwhich the closed set is returned.
 
-% \begin{proposition}
-% 	\label{proposition:complexity-lin-closure}
+% \begin{proposition} \label{proposition:complexity-lin-closure}
 
-% 	The complexity of \nameref{algorithm:LinClosure} is $O(\vert \mathcal{T}\vert)$, and so the procedure is linear on the size of the implication set.
-% \end{proposition}
+% The complexity of \nameref{algorithm:LinClosure} is $O(\vert \mathcal{T}\vert)$, and so the procedure is linear on the size of
+% the implication set. \end{proposition}
 
-There is a syntactic counterpart to the semantic notions of consequence, defined in terms of the Armstrong axioms \cite{armstrong1974dependency}.
+There is a syntactic counterpart to the semantic notions of consequence, defined in terms of the Armstrong axioms
+\cite{armstrong1974dependency}.
 
 \begin{definition}
 	\label{definition:armstrong-axioms} The \emph{Armstrong axioms} are defined as inference rules of the form:
@@ -676,9 +715,9 @@ There is a syntactic counterpart to the semantic notions of consequence, defined
 	where $A,B,C,D \subseteq M$.
 \end{definition}
 
-The interpretation should be that, if the instantiation of an Armstrong axiom has its premise contained in a set $\mathcal{T}$ of implications, then the
-conclusion of the axiom may be inferred. To show that an implication is a consequence of some set one shows that there is a sequence of application of these
-rules that leads to the desired implication.
+The interpretation should be that, if the instantiation of an Armstrong axiom has its premise contained in a set $\mathcal{T}$ of
+implications, then the conclusion of the axiom may be inferred. To show that an implication is a consequence of some set one
+shows that there is a sequence of application of these rules that leads to the desired implication.
 
 \subsubsection{Implication Bases}
 \label{subsubsection:implication-bases}
@@ -696,13 +735,14 @@ rules that leads to the desired implication.
 	\end{enumerate}
 \end{definition}
 
-Soundness and completeness are obviously properties that an implication basis should satisfy. Given that checking logical consequence is linear on the size of
-the implication set, having non-redundant implications is computationally appealing.
+Soundness and completeness are obviously properties that an implication basis should satisfy. Given that checking logical
+consequence is linear on the size of the implication set, having non-redundant implications is computationally appealing.
 
 \begin{definition}
 	\label{definition:pseudo-closed}
 
-	A set $X\subseteq M$ is \emph{pseudo-closed} if it is not closed, and each proper subset of $X$ is itself pseudo closed. Formally,
+	A set $X\subseteq M$ is \emph{pseudo-closed} if it is not closed, and each proper subset of $X$ is itself pseudo closed.
+	Formally,
 	\begin{enumerate}
 		\item $X \neq X^{\downarrow \uparrow}$
 
@@ -728,15 +768,16 @@ the implication set, having non-redundant implications is computationally appeal
 \subsection{Compound Attributes}
 \label{subsection:compound-attributes}
 
-The implication logic of FCA, despite giving rise to interesting results like the canonical basis, is quite limited. Certain settings require more expressive
-power. \textit{Compound attributes} are introduced for this purpose. We use the lowercase Greek alphabet to denote compound attributes as they quite closely
-resemble propositional formulae, \textit{atomic} (normal) attributes will continue to be denoted with lowercase Latin alphabet.
+The implication logic of FCA, despite giving rise to interesting results like the canonical basis, is quite limited. Certain
+settings require more expressive power. \textit{Compound attributes} are introduced for this purpose. We use the lowercase Greek
+alphabet to denote compound attributes as they quite closely resemble propositional formulae, \textit{atomic} (normal) attributes
+will continue to be denoted with lowercase Latin alphabet.
 
 \begin{definition}
 	\label{definition:compound-attributes} \index{attribute!compound}
 
-	Let $M$ be a set of attributes (as we might find in a formal context). A compound attribute is constructed by iterative application of the following:
-	\setlist{nolistsep}
+	Let $M$ be a set of attributes (as we might find in a formal context). A compound attribute is constructed by iterative
+	application of the following: \setlist{nolistsep}
 	\begin{itemize}[itemsep=-0em]
 		\item An \textit{atomic} attribute $m\in M$ is a compound attribute
 
@@ -747,14 +788,14 @@ resemble propositional formulae, \textit{atomic} (normal) attributes will contin
 	We write $\Ca{M}$ to denote the set of all compound attributes over the attribute set $M$.
 \end{definition}
 
-The definition allows for arbitrarily complex compound attributes to be constructed. The semantics of these are given by their extension, relative to a formal
-context.
+The definition allows for arbitrarily complex compound attributes to be constructed. The semantics of these are given by their
+extension, relative to a formal context.
 
 \begin{definition}
 	\label{definition:compound-attributes-semantics} \index{semantics!compound attributes}
 
-	In a formal context $\GMI$, the extension of each compound attribute $\varphi \in \Ca{M}$ is written $\varphi^{\vDash}$ and defined inductively as follows:
-	\setlist{nolistsep}
+	In a formal context $\GMI$, the extension of each compound attribute $\varphi \in \Ca{M}$ is written $\varphi^{\vDash}$ and
+	defined inductively as follows: \setlist{nolistsep}
 	\begin{itemize}[itemsep=-0em]
 		\item If $\varphi$ is an atomic attribute (i.e., $\varphi \in M$) then $\varphi^{\vDash}\coloneq \varphi^{\downarrow}$
 
@@ -763,31 +804,33 @@ context.
 		\item If $\varphi$ is the result of a conjunction of a set of compound attributes $\bigwedge \Gamma$ then $\varphi^{\vDash}\coloneq \underset{\gamma \in
 				      \Gamma}\bigcap \gamma^{\vDash}$
 	\end{itemize}
-	For an object $g\in G$ and compound attribute $\varphi \in \Ca{M}$, we write $g \vDash \varphi$ if and only if $g$ is in the extension of $\varphi$ and we say $g$ \emph{satisfies} $\varphi$,
-	otherwise $g \nvDash \varphi$.
+	For an object $g\in G$ and compound attribute $\varphi \in \Ca{M}$, we write $g \vDash \varphi$ if and only if $g$ is in the
+	extension of $\varphi$ and we say $g$ \emph{satisfies} $\varphi$, otherwise $g \nvDash \varphi$.
 \end{definition}
 
-Other kinds of compound attributes which express useful intuition, in particular the disjunction of compound attributes, have an equivalent construction using
-only \Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes, then the disjunction of its elements $\bigvee \Gamma$ then its
-extension $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$ is the union of all extensions of compound attributes in the set. Such a compound attribute is
-equivalent to $\neg \bigwedge \Gamma$.
+Other kinds of compound attributes which express useful intuition, in particular the disjunction of compound attributes, have an
+equivalent construction using only \Cref{definition:compound-attributes}. If $\Gamma$ is a set of compound attributes, then the
+disjunction of its elements $\bigvee \Gamma$ then its extension $\bigcup_{\gamma \in \Gamma}\gamma^{\vDash}$ is the union of all
+extensions of compound attributes in the set. Such a compound attribute is equivalent to $\neg \bigwedge \Gamma$.
 
-The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion; it is possible for two compound attributes to be
-equivalent in one formal context, but not in another. We might say that in the former case, these attributes are \textit{locally} equivalent. \textit{Global}
-equivalence is stronger, requiring that the equivalence hold for any context.
+The proposed equivalence of $\bigvee \Gamma$ and $\neg \bigwedge \Gamma$ necessitates some further discussion; it is possible for
+two compound attributes to be equivalent in one formal context, but not in another. We might say that in the former case, these
+attributes are \textit{locally} equivalent. \textit{Global} equivalence is stronger, requiring that the equivalence hold for any
+context.
 
 \begin{definition}
 	\label{definition:equivalence-compound-attributes}
 
-	Two compound attributes are \textit{extensionally equivalent}, or \textit{locally equivalent}, with respect to a formal context if and only if they share the
-	same extension. They are \textit{globally equivalent} if and only if they would share the same extension in any possible context.
+	Two compound attributes are \textit{extensionally equivalent}, or \textit{locally equivalent}, with respect to a formal context
+	if and only if they share the same extension. They are \textit{globally equivalent} if and only if they would share the same
+	extension in any possible context.
 \end{definition}
 
 \begin{figure}
 	\label{figure:musical-context}
 	\begin{cxt}
 		\label{cxt:music}
-		\cxtName{\textbf{\texttt{Classical Music}}}%
+		\cxtName{\textbf{\texttt{Classical Music}}}
 		\atr{\texttt{well-rounded}}
 		\atr{\texttt{well-balanced}}
 		\atr{\texttt{dramatic}}
@@ -800,36 +843,22 @@ equivalence is stronger, requiring that the equivalence hold for any context.
 		\atr{\texttt{fast}}
 		\atr{\texttt{playful}}
 
-		\obj{XX.XX.....X}{\texttt{Beethoven: Romance for violin and orchestra F-major}}
-		\obj{XX.XXX.....}{\texttt{Bach: Contrapunctus I}}
-		\obj{..X..X.....}{\texttt{Chajkovskij: Piano concerto b flat minor, 1st movement}}
-		\obj{....X.XXXXX}{\texttt{Mahler: 2nd Symphony, 2nd movement}}
-		\obj{.....XXXX.X}{\texttt{Bartok: Concert for ochestra}}
-		\obj{..X..X..XX.}{\texttt{Beethoven: 9th symphony, 4th movement (presto)}}
-		\obj{..X.XXX..X.}{\texttt{Bach: WTP 1, prelude c minor}}
-		\obj{XX.XX.XX.XX}{\texttt{Bach: 3rd Brandenburg Concerto, 3rd movement}}
-		\obj{...X..X..XX}{\texttt{Ligeti: Continuum}}
-		\obj{....XXX.X..}{\texttt{Mahler: 9th symphony, 2nd movement (Ländler)}}
-		\obj{..XX.XX.XX.}{\texttt{Beethoven: Moonlight sonata, 3rd movement}}
-		\obj{...X.XXXXXX}{\texttt{Hindemith: Chamber music No.1, finale}}
-		\obj{XX.XXX..X.X}{\texttt{Bizet: Suite arlesienne}}
-		\obj{XX.XXXXX.XX}{\texttt{Mozart: Figaro, overture}}
-		\obj{..X..XX.XX.}{\texttt{Schubert: Wayfarer fantasy}}
-		\obj{XX.XX.XX..X}{\texttt{Beethoven: Spring sonata, 1st movement}}
-		\obj{XX.XX.XXX.X}{\texttt{Bach: WTP 1, fuge c minor}}
-		\obj{....XXXX..X}{\texttt{Shostakovich: 15th symphony, 1st movement}}
-		\obj{XX.XXXXXX.X}{\texttt{Wagner: Mastersinger, overture}}
-		\obj{..XXXX..XX.}{\texttt{Beethoven: String quartet op.131, final movement}}
-		\obj{XX.XX.XXXXX}{\texttt{Johann Strauß: Spring voice waltz}}
-		\obj{..XXXXX..XX}{\texttt{Mozart: Il Seragio, ``O, how I will triumph...''}}
-		\obj{..XXXXX....}{\texttt{Bach: Mathew's passion No.5 (choir)}}
-		\obj{XX.XXXX.XX.}{\texttt{Brahms: Intermezzo op. 117, No.2}}
-		\obj{..XXXXX.X..}{\texttt{Wagner: Ride of the valkyries}}
-		\obj{..XXXXX..X.}{\texttt{Mozart: Magic flute, ``The hell revenge rages ...''}}
-		\obj{XX.XXXXXXXX}{\texttt{Mendelsohn: 4th symphony, 4th movement}}
-		\obj{XXXXXX.....}{\texttt{Brahms: 4th symphony, 4th movement}}
-		\obj{XXXXXXX.X..}{\texttt{Beethoven: Great fuge op. 133}}
-		\obj{XXXXXXX....}{\texttt{Goretzky: Lament symphony}}
+		\obj{XX.XX.....X}{\texttt{Beethoven: Romance for violin and orchestra F-major}} \obj{XX.XXX.....}{\texttt{Bach: Contrapunctus I}}
+		\obj{..X..X.....}{\texttt{Chajkovskij: Piano concerto b flat minor, 1st movement}} \obj{....X.XXXXX}{\texttt{Mahler: 2nd
+				Symphony, 2nd movement}} \obj{.....XXXX.X}{\texttt{Bartok: Concert for ochestra}} \obj{..X..X..XX.}{\texttt{Beethoven: 9th
+				symphony, 4th movement (presto)}} \obj{..X.XXX..X.}{\texttt{Bach: WTP 1, prelude c minor}} \obj{XX.XX.XX.XX}{\texttt{Bach: 3rd
+				Brandenburg Concerto, 3rd movement}} \obj{...X..X..XX}{\texttt{Ligeti: Continuum}} \obj{....XXX.X..}{\texttt{Mahler: 9th
+				symphony, 2nd movement (Ländler)}} \obj{..XX.XX.XX.}{\texttt{Beethoven: Moonlight sonata, 3rd movement}}
+		\obj{...X.XXXXXX}{\texttt{Hindemith: Chamber music No.1, finale}} \obj{XX.XXX..X.X}{\texttt{Bizet: Suite arlesienne}}
+		\obj{XX.XXXXX.XX}{\texttt{Mozart: Figaro, overture}} \obj{..X..XX.XX.}{\texttt{Schubert: Wayfarer fantasy}}
+		\obj{XX.XX.XX..X}{\texttt{Beethoven: Spring sonata, 1st movement}} \obj{XX.XX.XXX.X}{\texttt{Bach: WTP 1, fuge c minor}}
+		\obj{....XXXX..X}{\texttt{Shostakovich: 15th symphony, 1st movement}} \obj{XX.XXXXXX.X}{\texttt{Wagner: Mastersinger, overture}}
+		\obj{..XXXX..XX.}{\texttt{Beethoven: String quartet op.131, final movement}} \obj{XX.XX.XXXXX}{\texttt{Johann Strauß: Spring
+				voice waltz}} \obj{..XXXXX..XX}{\texttt{Mozart: Il Seragio, ``O, how I will triumph...''}} \obj{..XXXXX....}{\texttt{Bach:
+				Mathew's passion No.5 (choir)}} \obj{XX.XXXX.XX.}{\texttt{Brahms: Intermezzo op. 117, No.2}} \obj{..XXXXX.X..}{\texttt{Wagner:
+				Ride of the valkyries}} \obj{..XXXXX..X.}{\texttt{Mozart: Magic flute, ``The hell revenge rages ...''}}
+		\obj{XX.XXXXXXXX}{\texttt{Mendelsohn: 4th symphony, 4th movement}} \obj{XXXXXX.....}{\texttt{Brahms: 4th symphony, 4th movement}}
+		\obj{XXXXXXX.X..}{\texttt{Beethoven: Great fuge op. 133}} \obj{XXXXXXX....}{\texttt{Goretzky: Lament symphony}}
 		\obj{XXXXXXX..X.}{\texttt{Verdi: Requiem, dies irae}}
 	\end{cxt}
 	\caption{Characteristics of pieces of classical music}
@@ -838,13 +867,12 @@ equivalence is stronger, requiring that the equivalence hold for any context.
 \begin{example}
 	From the formal context described below we may construct two compound attributes $\varphi \coloneqq \bigwedge \{\texttt{human,unstuck}\}$ and $\psi \coloneqq \neg \texttt{violent}$, marked
 	in light grey.
-	%
 	\begin{figure}[H]
 		\centering
 		\small
 		\begin{cxt}
 			\label{cxt:slaughterhouse5}
-			\cxtName{\textbf{\texttt{Slaughterhouse 5}}}%
+			\cxtName{\textbf{\texttt{Slaughterhouse 5}}}
 			\atr{\texttt{human}}
 			\atr{\texttt{unstuck}}
 			\atr{\texttt{soldier}}
@@ -854,23 +882,21 @@ equivalence is stronger, requiring that the equivalence hold for any context.
 			\atr{\textcolor{gray!70}{$\varphi$}}
 			\atr{\textcolor{gray!70}{$\psi$}}
 
-			\obj{xxxxx.xx}{\texttt{Billy Pilgrim}}
-			\obj{x.x..x..}{\texttt{Roland Weary}}
-			\obj{x..x...x}{\texttt{Mary O'Hare}}
-			\obj{x.x..x..}{\texttt{Paul Lazzaro}}
-			\obj{.x...x..}{\texttt{Tralfamadorians}}
+			\obj{xxxxx.xx}{\texttt{Billy Pilgrim}} \obj{x.x..x..}{\texttt{Roland Weary}} \obj{x..x...x}{\texttt{Mary O'Hare}}
+			\obj{x.x..x..}{\texttt{Paul Lazzaro}} \obj{.x...x..}{\texttt{Tralfamadorians}}
 		\end{cxt}
 		\caption{A context describing characters and some of their qualities, from Slaughterhouse 5}
 		\label{figure:context-slaughterhouse5}
 	\end{figure}
-	%
-	Each of these compound attributes have the extension consisting solely of $\{\texttt{Billy Pilgrim}\}$, and so at least they are locally equivalent. It may
-	come as no surprise that their equivalence is not global: suppose Tralfamadorians were not violent. If we consider a third compound attribute, $\neg \neg
-		\texttt{violent}$, we would find that it is globally equivalent to the attribute \texttt{violent}.
+	Each of these compound attributes have the extension consisting solely of $\{\texttt{Billy Pilgrim}\}$, and so at least they are
+	locally equivalent. It may come as no surprise that their equivalence is not global: suppose Tralfamadorians were not violent. If
+	we consider a third compound attribute, $\neg \neg \texttt{violent}$, we would find that it is globally equivalent to the
+	attribute \texttt{violent}.
 \end{example}
 
-A somewhat blunt approach to determining if two compound attributes, over a set $M$ of attributes, are globally equivalent is to test for extensional
-equivalence in the formal context $(\pset{M}, M, \ni)$, such a context is called the \textit{test context} over $M$.
+A somewhat blunt approach to determining if two compound attributes, over a set $M$ of attributes, are globally equivalent is to
+test for extensional equivalence in the formal context $(\pset{M}, M, \ni)$, such a context is called the \textit{test context}
+over $M$.
 
 \begin{definition}
 	\label{definition:compound-attributes-2} Let $M$ be a set of attributes, then the language of (finite) compound attributes is inductively as
@@ -892,73 +918,59 @@ equivalence in the formal context $(\pset{M}, M, \ni)$, such a context is called
 	\end{itemize}
 \end{definition}
 
-% \clearpage
-% \subsection{Clause Logic}
-% \label{subsection:clause-logic}
+% \clearpage \subsection{Clause Logic} \label{subsection:clause-logic}
 
-% The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may represent them, up to global equivalence, as \textit{clauses}:
-% \begin{definition}
-% 	\label{definition:clauses}
+% The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may
+% represent them, up to global equivalence, as \textit{clauses}: \begin{definition} \label{definition:clauses}
 
-% 	A \emph{clause} $(A,S)$, where $A,S \subseteq M$, represents a compound attribute that is globally equivalent to the compound attribute $\bigvee S \cup \{\neg a \mid a \in A\}$.
-% \end{definition}
+% A \emph{clause} $(A,S)$, where $A,S \subseteq M$, represents a compound attribute that is globally equivalent to the compound
+% attribute $\bigvee S \cup \{\neg a \mid a \in A\}$. \end{definition}
 
-% The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in $S$ or fail to satisfy at least one attribute in $A$. Formally,
-% \[
-% 	(A,S)^{\vDash}= \{ g \in G \mid \exists s \in S,\; g\vDash s \} \;\cup\; \{ g \in G \mid \exists a \in A,\; g \nvDash a \}
-% \]
-% Clauses are called \textit{disjoint} when $A \cap S$ is the emptyset. The following definition is helpful to describe the set of all clauses which are satisfied by a context:
-% %
-% \begin{definition}
-% 	\label{definition:all-extensional}
+% The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in $S$ or
+% fail to satisfy at least one attribute in $A$. Formally, \[ (A,S)^{\vDash}= \{ g \in G \mid \exists s \in S,\; g\vDash s \}
+% \;\cup\; \{ g \in G \mid \exists a \in A,\; g \nvDash a \} \] Clauses are called \textit{disjoint} when $A \cap S$ is the
+% emptyset. The following definition is helpful to describe the set of all clauses which are satisfied by a context: %
+% \begin{definition} \label{definition:all-extensional}
 
-% 	A compound attribute $\varphi \in \Ca{M}$ is \emph{all-extensional} in a context $\GMI$ if and only if $\varphi^{\vDash}= G$. In other words, if the extension of the attribute is
-% 	the complete set of objects.
-% \end{definition}
+% A compound attribute $\varphi \in \Ca{M}$ is \emph{all-extensional} in a context $\GMI$ if and only if $\varphi^{\vDash}= G$. In
+% other words, if the extension of the attribute is the complete set of objects. \end{definition}
 
-% A disjoint clause $(A,S)$ is called \textit{full} when also $A \cup S$ is the entire attribute set $M$.
-% \begin{proposition}
-% 	\label{proposition:clause-up-to-equivalence}
+% A disjoint clause $(A,S)$ is called \textit{full} when also $A \cup S$ is the entire attribute set $M$. \begin{proposition}
+% \label{proposition:clause-up-to-equivalence}
 
-% 	If $\varphi \in \Ca{M}$ is a compound attribute then there exists a clause $(A,S)$ with $A,S \subseteq M$ that is globally equivalent to $\varphi$
-% \end{proposition}
+% If $\varphi \in \Ca{M}$ is a compound attribute then there exists a clause $(A,S)$ with $A,S \subseteq M$ that is globally
+% equivalent to $\varphi$ \end{proposition}
 
-% % \begin{example}
-% % 	The implication $\{\texttt{traumatized}\}\rightarrow \{\texttt{human,soldier}\}$ holds as the concept derived from the premise, is a subconcept of both $\mu \texttt{human}$
-% % 	and $\mu \texttt{soldier}$.
+% % \begin{example} % The implication $\{\texttt{traumatized}\}\rightarrow \{\texttt{human,soldier}\}$ holds as the concept
+% derived from the premise, is a subconcept of both $\mu \texttt{human}$ % and $\mu \texttt{soldier}$.
 
-% % 	\begin{figure}[H]
-% % 		\centering
-% % 		{\unitlength 1.75mm
+% % \begin{figure}[H] % \centering % {\unitlength 1.75mm
 
-% % 		\begin{diagram}{40}{50} %
-% % 		\Node{1}{20}{50}
+% % \begin{diagram}{40}{50} % % \Node{1}{20}{50}
 
-% % 		\Node{2}{10}{40} \leftAttbox{2}{1}{1}{unstuck}
+% % \Node{2}{10}{40} \leftAttbox{2}{1}{1}{unstuck}
 
-% % 		\Node{3}{20}{40} \leftAttbox{3}{1}{1}{violent}
+% % \Node{3}{20}{40} \leftAttbox{3}{1}{1}{violent}
 
-% % 		\Node{4}{30}{40} \rightAttbox{4}{1}{1}{human}
+% % \Node{4}{30}{40} \rightAttbox{4}{1}{1}{human}
 
-% % 		\Node{5}{5}{30} \leftObjbox{5}{1}{1}{Tralfmadorians}
+% % \Node{5}{5}{30} \leftObjbox{5}{1}{1}{Tralfmadorians}
 
-% % 		\Node{6}{20}{30} \leftAttbox{6}{1}{1}{pacifist} \leftObjbox{6}{1}{1}{Mary O'Hare}
+% % \Node{6}{20}{30} \leftAttbox{6}{1}{1}{pacifist} \leftObjbox{6}{1}{1}{Mary O'Hare}
 
-% % 		\Node{7}{35}{30} \rightAttbox{7}{1}{1}{soldier}
+% % \Node{7}{35}{30} \rightAttbox{7}{1}{1}{soldier}
 
-% % 		\Node{8}{30}{20} \rightObjbox{8}{1}{1}{Paul Lazzaro \\ Roland Weary}
+% % \Node{8}{30}{20} \rightObjbox{8}{1}{1}{Paul Lazzaro \\ Roland Weary}
 
-% % 		\Node{9}{20}{10} \leftAttbox{9}{1}{1}{traumatised} \leftObjbox{9}{1}{1}{Billy Pilgrim}
+% % \Node{9}{20}{10} \leftAttbox{9}{1}{1}{traumatised} \leftObjbox{9}{1}{1}{Billy Pilgrim}
 
-% % 		\Node{10}{20}{0}
+% % \Node{10}{20}{0}
 
-% % 		\Edge{1}{2} \Edge{1}{3} \Edge{1}{4}
+% % \Edge{1}{2} \Edge{1}{3} \Edge{1}{4}
 
-% % 		\Edge{2}{5} \Edge{2}{9} \Edge{3}{5} \Edge{3}{8}
+% % \Edge{2}{5} \Edge{2}{9} \Edge{3}{5} \Edge{3}{8}
 
-% % 		\Edge{4}{6} \Edge{4}{7}
+% % \Edge{4}{6} \Edge{4}{7}
 
-% % 		\Edge{5}{10} \Edge{6}{9} \Edge{7}{8} \Edge{8}{10} \Edge{7}{9} \Edge{9}{10}\end{diagram} }
-% % 		\caption{The concept lattice of the context in \Cref{figure:context-slaughterhouse5}}
-% % 	\end{figure}
-% % \end{example}}
+% % \Edge{5}{10} \Edge{6}{9} \Edge{7}{8} \Edge{8}{10} \Edge{7}{9} \Edge{9}{10}\end{diagram} } % \caption{The concept lattice of
+% the context in \Cref{figure:context-slaughterhouse5}} % \end{figure} % \end{example}}

@@ -1,34 +1,36 @@
 \chapter{Defeasible Reasoning in Formal Concept Analysis}
 \label{chapter:defeasible-reasoning-in-fca}
 
-The conclusion of \Cref{part:1} marks the end of the scaffolding component of this work. The remaining chapters are devoted to the novel contributions of this
-work: the unification of the ideas presented in \Cref{chapter:defeasible-reasoning,chapter:formal-concept-analysis}. That is, to develop an approach to
-defeasible reasoning in FCA in the style of rational consequence.
+The conclusion of \Cref{part:1} marks the end of the scaffolding component of this work. The remaining chapters are devoted to
+the novel contributions of this work: the unification of the ideas presented in
+\Cref{chapter:defeasible-reasoning,chapter:formal-concept-analysis}. That is, to develop an approach to defeasible reasoning in
+FCA in the style of rational consequence.
 
-Fortunately, the context switch is quite natural. As we progress, the reasons behind the selection of the KLM framework as an ideal candidate for defeasible
-reasoning in FCA should become apparent. Indeed, understanding the proceeding chapter(s) is benefitted by frequently ``pattern-matching'' between the
-definitions presented here, and their counterparts from prior chapters. So we encourage---and will attempt to facilitate---these frequent backwards-facing
-references.
+Fortunately, the context switch is quite natural. As we progress, the reasons behind the selection of the KLM framework as an
+ideal candidate for defeasible reasoning in FCA should become apparent. Indeed, understanding the proceeding chapter(s) is
+benefitted by frequently ``pattern-matching'' between the definitions presented here, and their counterparts from prior chapters.
+So we encourage---and will attempt to facilitate---these frequent backwards-facing references.
 
 This chapter draws on two publications,~\cite{Carr2024} and \cite{Carr2025}.
 
 \section{Motivation}
 \label{section:motivation}
 
-The violation of monotonicity in FCA introduces peculiarities which can significantly undermine parts of the theory underlying FCA. For instance, one
-perspective on concept lattices is that they describe chains of inheritance from concepts to their subconcepts. This idea becomes difficult to conceptualise
-without monotonicity.
+The violation of monotonicity in FCA introduces peculiarities which can significantly undermine parts of the theory underlying
+FCA. For instance, one perspective on concept lattices is that they describe chains of inheritance from concepts to their
+subconcepts. This idea becomes difficult to conceptualise without monotonicity.
 
-Nevertheless, there are certain settings where violation of monotonicity extends the utility of FCA in a reasonable way. The justifications for this are
-somewhat similar to those given in \Cref{section:nmr-background}: frequently there are exceptional instances of some class, and it is useful to be able to
-sometimes reason in a way which considers these exceptions, and at other times reason prototypically. That is, to reason in spite of the exceptions. There is
-an extension of this argument \cite{Belohlavek2022,Wille2005} which makes a stronger case for the prototypical view of concepts; but we will leave this
+Nevertheless, there are certain settings where violation of monotonicity extends the utility of FCA in a reasonable way. The
+justifications for this are somewhat similar to those given in \Cref{section:nmr-background}: frequently there are exceptional
+instances of some class, and it is useful to be able to sometimes reason in a way which considers these exceptions, and at other
+times reason prototypically. That is, to reason in spite of the exceptions. There is an extension of this argument
+\cite{Belohlavek2022,Wille2005} which makes a stronger case for the prototypical view of concepts; but we will leave this
 discussion for the next chapter where it is more relevant.
 
 Consider the context, which will be uses as a running example throughout this chapter.
 \begin{figure}[H]
 	\hspace{-8.2em}
-	\resizebox{1.2\columnwidth}{!}{%
+	\resizebox{1.2\columnwidth}{!}{
 
 		\begin{cxt}
 			\centering
@@ -62,63 +64,63 @@ Consider the context, which will be uses as a running example throughout this ch
 			\atr{\texttt{blue-black}}
 			\atr{\texttt{green}}
 
-			\obj{X..X.X..X.....X...X.X.......}{\texttt{Caloplaca-marina}}
-			\obj{XX.X.XXXX....X..X.XX........}{\texttt{Xanthoria-parietina}}
+			\obj{X..X.X..X.....X...X.X.......}{\texttt{Caloplaca-marina}} \obj{XX.X.XXXX....X..X.XX........}{\texttt{Xanthoria-parietina}}
 			\obj{.XX..X.XX...X..X...X........}{\texttt{Ramalina-celastri}}
 			\obj{X..X..X...X....X..XX.......X}{\texttt{Teloschistes-chrysophthalmus}}
-			\obj{X.X...X..X...XX......XX.X...}{\texttt{Psora-crenata}}
-			\obj{X.XX.X.XX.......X.....X....X}{\texttt{Crocodia-aurata}}
-			\obj{............................}{\texttt{*}}
-			\obj{X.X.X.X..X...............X.X}{\texttt{Caeruleum-terricola}}
-			\obj{XX.X.X.XX.......X....XX..XX.}{\texttt{Sticta-beauvoisii}}
-			\obj{X.XX..X.X.......X...X..X....}{\texttt{Lasallia-rubiginosa}}
+			\obj{X.X...X..X...XX......XX.X...}{\texttt{Psora-crenata}} \obj{X.XX.X.XX.......X.....X....X}{\texttt{Crocodia-aurata}}
+			\obj{............................}{\texttt{*}} \obj{X.X.X.X..X...............X.X}{\texttt{Caeruleum-terricola}}
+			\obj{XX.X.X.XX.......X....XX..XX.}{\texttt{Sticta-beauvoisii}} \obj{X.XX..X.X.......X...X..X....}{\texttt{Lasallia-rubiginosa}}
 			\obj{X...X.X.XX......X......X.X..}{\texttt{Leptogium-menziesii}}
-			\obj{X..X..X.XX.X....X......X.X..}{\texttt{Scytinium-gelatinosum}}
-			\obj{XX..X.X.XX.X..X.........X...}{\texttt{Lepraria-borealis}}
+			\obj{X..X..X.XX.X....X......X.X..}{\texttt{Scytinium-gelatinosum}} \obj{XX..X.X.XX.X..X.........X...}{\texttt{Lepraria-borealis}}
 			\obj{XX..XX.XXXXX..X.........XX..}{\texttt{Lepraria-caesiella}}
 			\obj{XX.X.X.XX.....X....X........}{\texttt{Chrysothrix-candelaris}}
 			\obj{X...XX....X......X......X...}{\texttt{Roccellinastrum-lagarostrobi}}
 			\obj{X.X..X....X......X......X...}{\texttt{Roccellinastrum-spongoideum}}
 			\obj{X.X..X.X...XX.X.......X.X...}{\texttt{Thelenella-indica}}
-		\end{cxt}}
+		\end{cxt}
+	}
 	\caption{A formal context of lichens}
 	\label{fig:lichens}
 \end{figure}
 
-The context contains several different species of lichen, described by certain morphological and ecological properties. Of course, the context is by no means
-exhaustive in either dimension. If the task is to discover patterns that exist between properties---represented by attribute implications---the brittleness of
-these implications is a significantly limiting factor on which patterns may be learned. The existence of a single counter-example to an otherwise acceptable
-correspondence between attributes is fatal. Compounding on this problem, there may be errors in the context which present false counter-examples.
+The context contains several different species of lichen, described by certain morphological and ecological properties. Of
+course, the context is by no means exhaustive in either dimension. If the task is to discover patterns that exist between
+properties---represented by attribute implications---the brittleness of these implications is a significantly limiting factor on
+which patterns may be learned. The existence of a single counter-example to an otherwise acceptable correspondence between
+attributes is fatal. Compounding on this problem, there may be errors in the context which present false counter-examples.
 
 \subsection{Association Rules}
 \label{subsection:association-rules}
 
-Concerns over brittleness in the semantics of (classical) attribute implications are well known in the FCA literature, and in data mining more generally
-\cite{Lakhal2005}. \textit{Association rules} are able express implication-like statements despite the existence of counterexamples in the data, or in our case
-a context. These are statements like \say{$66\%$ of the members of congress who were \textit{Democrats}, which makes up $50\%$ of congress, voted on the
-	\textit{MX-Missile} bill}.
+Concerns over brittleness in the semantics of (classical) attribute implications are well known in the FCA literature, and in
+data mining more generally \cite{Lakhal2005}. \textit{Association rules} are able express implication-like statements despite the
+existence of counterexamples in the data, or in our case a context. These are statements like \say{$66\%$ of the members of
+	congress who were \textit{Democrats}, which makes up $50\%$ of congress, voted on the \textit{MX-Missile} bill}.
 
-The \emph{support} of a set of attributes $X \subseteq M$ in a context $\GMI$ is the fraction of objects which have all attributes $X$ over the total number of
-objects; and so $\mathrm{supp}( X) = \nicefrac{|X^{\downarrow}|}{|G|}$, the (relative) support of a rule $A \Rightarrow B$ is simply the support of $A$. The
-\textit{confidence} of a rule is a measure of how frequently the premise and conclusion occur, relative to how frequently the premise occurs, formally
-$\mathrm{conf}(A \Rightarrow B) = \nicefrac{\mathrm{supp}(X \cup Y)}{\mathrm{supp}(X)}$. In the example above, the support of the rule is $50\%$ and its
+The \emph{support} of a set of attributes $X \subseteq M$ in a context $\GMI$ is the fraction of objects which have all
+attributes $X$ over the total number of objects; and so $\mathrm{supp}( X) = \nicefrac{|X^{\downarrow}|}{|G|}$, the (relative)
+support of a rule $A \Rightarrow B$ is simply the support of $A$. The \textit{confidence} of a rule is a measure of how
+frequently the premise and conclusion occur, relative to how frequently the premise occurs, formally $\mathrm{conf}(A \Rightarrow
+	B) = \nicefrac{\mathrm{supp}(X \cup Y)}{\mathrm{supp}(X)}$. In the example above, the support of the rule is $50\%$ and its
 confidence is $66\%$. Association rules which meet specified lower-thresholds for support and confidence are then accepted.
 
-While association rules present a reasonable solution to the problem of discovering and representing implications with exceptions, there are some undesirable
-qualities. Settling on the threshold vallues for support and confidence is usually dependent on human input, and there is no obvious intuition for how one
-might arrive at these. Frequently, it is a requirement to know the data well, which creates a kind of circularity as the purpose of this work is to extend a
-tool which helps one understand their data.
+While association rules present a reasonable solution to the problem of discovering and representing implications with
+exceptions, there are some undesirable qualities. Settling on the threshold vallues for support and confidence is usually
+dependent on human input, and there is no obvious intuition for how one might arrive at these. Frequently, it is a requirement to
+know the data well, which creates a kind of circularity as the purpose of this work is to extend a tool which helps one
+understand their data.
 
-The situation gets worse when we try to describe the properties of reasoning with association rules. Consider the two rules below, which should be accepted
-with $\mathrm{minconf}= 0.6$ and $\mathrm{minsup}= 0.5$.
+The situation gets worse when we try to describe the properties of reasoning with association rules. Consider the two rules
+below, which should be accepted with $\mathrm{minconf}= 0.6$ and $\mathrm{minsup}= 0.5$.
 
 \begin{align*}
 	\texttt{dem}\Rightarrow \texttt{mxm} \\
 	% ; \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66 \\
 	\texttt{dem}\Rightarrow \texttt{dfe} % \; \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66
 \end{align*}
-In natural language, we might summarise this scenario as saying \say{Democrats voted in favour of the \textit{MX-Missile} and \textit{Duty-Free
-		Exports}}. To make future analysis simpler, we could suggest that whenever we accept association rules of the form
+In natural language, we might summarise this scenario as saying \say{Democrats voted in
+	favour of the \textit{MX-Missile} and \textit{Duty-Free Exports}}. To make future analysis
+simpler, we could suggest that whenever we accept association rules of the form
 \begin{align*}
 	\phi \Rightarrow \psi \\
 	\phi \Rightarrow \gamma,
@@ -128,34 +130,43 @@ we may compress the information as the simpler representation:
 	\phi \Rightarrow \psi \land \gamma
 \end{align*}
 
-Unfortunately, this is not always the case. In the above scenario, the rule $\texttt{dem}\Rightarrow \{\texttt{mxm,dfe}\}$ has a confidence of $0.47$, which is
-below the $\mathrm{minconf}$ threshold.
+Unfortunately, this is not always the case. In the above scenario, the rule
+$\texttt{dem}\Rightarrow \{\texttt{mxm,dfe}\}$ has a confidence of $0.47$, which is below
+the $\mathrm{minconf}$ threshold.
 
-That the pattern of reasoning enforced by association rules does not satisfy the above characterisation---which is the same property as was discussed at
-\Cref{postulate:and}---may be overlooked in isolation. The more general problem is that association rules do not admit description via \lucas{the kind of
-	axiomisation we want [source needed]}.
+That the pattern of reasoning enforced by association rules does not satisfy the above
+characterisation---which is the same property as was discussed at \Cref{postulate:and}---may
+be overlooked in isolation. The more general problem is that association rules do not admit
+description via \lucas{the kind of axiomisation we want [source needed]}.
 
 \section{Preferential Contexts}
 \label{section:preferential-contexts}
 
-We begin the introduction of KLM style defeasible reasoning to FCA by defining a structure that is in almost perfect analogy to preferential interpretations.
-The analogy is not perfect as we initially behave quite conservatively and attempt to make as few changes as possible to the default setting of FCA. As we get
-further along in the discussion, more substantial amendments to the default setting are suggested. These amendments serve to make the faithful the analogy. The
-idea behind the order of this exposition is that we view this work largely as extending FCA with ideas borrowed from defeasible reasoning. Then, there may be
-those who find some of the essential parts of defeasible reasoning quite useful in FCA, but wish to remain in the default setting.
+We begin the introduction of KLM style defeasible reasoning to FCA by defining a structure
+that is in almost perfect analogy to preferential interpretations. The analogy is not
+perfect as we initially behave quite conservatively and attempt to make as few changes as
+possible to the default setting of FCA. As we get further along in the discussion, more
+substantial amendments to the default setting are suggested. These amendments serve to make
+the faithful the analogy. The idea behind the order of this exposition is that we view this
+work largely as extending FCA with ideas borrowed from defeasible reasoning. Then, there may
+be those who find some of the essential parts of defeasible reasoning quite useful in FCA,
+but wish to remain in the default setting.
 
 With that said, we define the first extension of a \textit{preferential context}.
 \begin{definition}
 	\label{definition:preferential-context}
 	\index{formal context! preferential context}
 
-	A \emph{preferential context} $\pcontext = \PGMI$ is a formal context $\GMI$ where $\prec$ denotes a strict partial order, or \emph{preference order}, on the
-	set of objects.
+	A \emph{preferential context} $\pcontext = \PGMI$ is a formal context $\GMI$ where $\prec$
+	denotes a strict partial order, or \emph{preference order}, on the set of objects.
 \end{definition}
 
-Preferential contexts, albeit with a different motivation, were first introduced by Obiedkov \shortcite{Obiedkov2012}, and later on with our purposes in mind
-in \cite{Carr2024}. They are nothing more than a formal context with a preference order on the set of objects. We provide an example of what such a preference
-ordering might look like below (in the interests of brevity, we consider a subcontext of \Cref{fig:lichens} constructed by taking only the first six objects).
+Preferential contexts, albeit with a different motivation, were first introduced by Obiedkov
+\shortcite{Obiedkov2012}, and later on with our purposes in mind in \cite{Carr2024}. They
+are nothing more than a formal context with a preference order on the set of objects. We
+provide an example of what such a preference ordering might look like below (in the
+interests of brevity, we consider a subcontext of \Cref{fig:lichens} constructed by taking
+only the first six objects).
 
 \begin{figure}[H]
 	\centering
@@ -177,58 +188,78 @@ ordering might look like below (in the interests of brevity, we consider a subco
 	\label{figure:preference-relation-lichen}
 \end{figure}
 
-Recall that preferential interpretations were defined by a relation on states which were then mapped to valuations, with no requirement that the mapping be
-injective. It may then be surprising that states seem to have been entirely omitted from our definition. The reason being that formal contexts have no
-restriction on the inclusion of two objects with an equivalent intension, meaning that states seem to be implicitly constructed in contexts.
+Recall that preferential interpretations were defined by a relation on states which were
+then mapped to valuations, with no requirement that the mapping be injective. It may then be
+surprising that states seem to have been entirely omitted from our definition. The reason
+being that formal contexts have no restriction on the inclusion of two objects with an
+equivalent intension, meaning that states seem to be implicitly constructed in contexts.
 
 \begin{lemma}
 	\label{lemma:objects-preferential}
 
-	There exists a preferential context $\PGMI$ where there exist two objects, $g,h \in G$, with $g^{\uparrow}= h^{\uparrow}$ that defines the consequence relation
-	$\twiddle_{\pin}$ such that no preferential context $\pcontext'$ without `duplicate' objects defines the same relation.
+	There exists a preferential context $\PGMI$ where there exist two objects, $g,h \in G$, with
+	$g^{\uparrow}= h^{\uparrow}$ that defines the consequence relation $\twiddle_{\pin}$ such
+	that no preferential context $\pcontext'$ without `duplicate' objects defines the same
+	relation.
 \end{lemma}
 
-Under the preference relation, we describe the $\prec$-minimal states as one might expect, through the process of \textit{minimisation}.
+Under the preference relation, we describe the $\prec$-minimal states as one might expect,
+through the process of \textit{minimisation}.
 \begin{definition}
 	\label{definition:minimisation}
 
-	In a preferential context $\pcontext = \PGMI$, the \emph{minimisation} of a set $A \subseteq G$ is defined by
+	In a preferential context $\pcontext = \PGMI$, the \emph{minimisation} of a set $A \subseteq
+		G$ is defined by
 	\[
 		\underline{A}\coloneqq \{\, g \in A \mid \nexists h \in A : (h \prec g) \,\}.
 	\]
 \end{definition}
 
-Frequently, the minimisation operator is applied to a set of objects that is the result of previous derivation from a set of attributes. That is, we might
-begin with the attribute set $\{\, \texttt {rock-substrate}\,\}$ and wish to find the most preferred objects that have this attribute. We call this the
-\textit{minimised-derivation}, and write $\Mind{\{\,\texttt{rock-substrate}\,\}}$. If one were to apply a second derivation to the set resulting from a
-minimised-derivation, the result represents all those attributes shared by the preferred objects satisfying the initial set. In turn, we refer to this as
+Frequently, the minimisation operator is applied to a set of objects that is the result of
+previous derivation from a set of attributes. That is, we might begin with the attribute set
+$\{\, \texttt {rock-substrate}\,\}$ and wish to find the most preferred objects that have
+this attribute. We call this the \textit{minimised-derivation}, and write
+$\Mind{\{\,\texttt{rock-substrate}\,\}}$. If one were to apply a second derivation to the
+set resulting from a minimised-derivation, the result represents all those attributes shared
+by the preferred objects satisfying the initial set. In turn, we refer to this as
 \textit{minimised-return} and write $\Minr{\{ \, \texttt{rock-substrate} \, \}}$.
 
-The minimised-derivation of $\{\, \texttt{rock-substrate}\, \}$ yields \{\texttt{Caloplaca-Marina}\}. One interpretation of this is that
-\texttt{Caloplaca-Marina} has some rock-substrate related property that sets it apart from all other species of lichen that are also have a rock-substrate.
-There is some subtlety here: the status of \texttt{Caloplaca-Marina} as the uniquely preferred species of lichen with a rock-substrate may well be the
-byproduct of some unrelated preference. For example, the preference order might be that red lichens are preferred to yellow ones, who are in turn preferred to
-any other colours. The point we are making has little material impact, but is rather important for ones' intuition of what preference relations represent, or
-how they may be constructed. For the time being, we remain agnostic to this latter question---how they might be constructed. This will be the subject of
-\Cref{subsubsection:finding-order}.
+The minimised-derivation of $\{\, \texttt{rock-substrate}\, \}$ yields
+\{\texttt{Caloplaca-Marina}\}. One interpretation of this is that \texttt{Caloplaca-Marina}
+has some rock-substrate related property that sets it apart from all other species of lichen
+that are also have a rock-substrate. There is some subtlety here: the status of
+\texttt{Caloplaca-Marina} as the uniquely preferred species of lichen with a rock-substrate
+may well be the byproduct of some unrelated preference. For example, the preference order
+might be that red lichens are preferred to yellow ones, who are in turn preferred to any
+other colours. The point we are making has little material impact, but is rather important
+for ones' intuition of what preference relations represent, or how they may be constructed.
+For the time being, we remain agnostic to this latter question---how they might be
+constructed. This will be the subject of \Cref{subsubsection:finding-order}.
 
-Preferential contexts allow us to speak about \textit{defeasible conditionals} in the setting of FCA. Much like classical implications in FCA, defeasible
-conditionals are defined over an attribute set $M$, and so the expression $A \twiddle B$ should be understood to be saying that the ``typical'' objects which
-have all attributes from $A$ have all attributes from $B$. Defeasible conditionals are satisfied with respect to a preferential context, admitting the
-following definition.
+Preferential contexts allow us to speak about \textit{defeasible conditionals} in the
+setting of FCA. Much like classical implications in FCA, defeasible conditionals are defined
+over an attribute set $M$, and so the expression $A \twiddle B$ should be understood to be
+saying that the ``typical'' objects which have all attributes from $A$ have all attributes
+from $B$. Defeasible conditionals are satisfied with respect to a preferential context,
+admitting the following definition.
 
 \begin{definition}
 	\label{definition:satisfaction-preferential-context}
 
-	Let $\pcontext = \PGMI$ be a preferential context, $A,B \subseteq M$ subsets of attributes, and $A \twiddle B$ a \emph{defeasible conditional}. We say that $A
-		\twiddle B$ is \emph{satisfied} in $\pcontext$ if and only if $\Mind{A}\subseteq B^{\downarrow}$ and write $\pcontext \vDash_{\pcontext}A \twiddle B$.
+	Let $\pcontext = \PGMI$ be a preferential context, $A,B \subseteq M$ subsets of attributes,
+	and $A \twiddle B$ a \emph{defeasible conditional}. We say that $A \twiddle B$ is
+	\emph{satisfied} in $\pcontext$ if and only if $\Mind{A}\subseteq B^{\downarrow}$ and write
+	$\pcontext \vDash_{\pcontext}A \twiddle B$.
 \end{definition}
 
-The condition for satisfaction of $A \twiddle B$ is that all the objects in the minimised-derivation of $A$ are members of the derivation of $B$. For those
-with a background in FCA, satisfaction may be expressed more familiarly as $B \subseteq \Minr{A}$.
+The condition for satisfaction of $A \twiddle B$ is that all the objects in the
+minimised-derivation of $A$ are members of the derivation of $B$. For those with a
+background in FCA, satisfaction may be expressed more familiarly as $B \subseteq \Minr{A}$.
 
 \begin{example}
-	The following defeasible conditionals are all satisfied by the preferential context composed from \Cref{fig:lichens} and \Cref{figure:preference-relation-lichen}
+
+	The following defeasible conditionals are all satisfied by the preferential context composed
+	from \Cref{fig:lichens} and \Cref{figure:preference-relation-lichen}
 	\begin{enumerate}
 		\item $\{\texttt{high-light}\} \twiddle \{\texttt{red}\}$
 		\item $\{\texttt{high-light,low-moisture}\} \ntwiddle \{\texttt{red}\}$
@@ -237,61 +268,78 @@ with a background in FCA, satisfaction may be expressed more familiarly as $B \s
 		\item $\{\texttt{high-light,yellow}\} \ntwiddle \{\texttt{red}\}$
 	\end{enumerate}
 
-	These conditionals tell us that usually species of lichen that live in areas with a signficant amount of light are red, but those which additionally live in
-	areas with low-moisture usually are not red. While it is typical for yellow species of lichen that live in well-lit areas to also be orange, and it is also
-	typical for orange species of lichen to have red colouring too, it does not follow that yellow species of lichen living in well-lit areas have red. In other
-	words, the logic is non-monotonic and intransitive.
+	These conditionals tell us that usually species of lichen that live in areas with a
+	signficant amount of light are red, but those which additionally live in areas with
+	low-moisture usually are not red. While it is typical for yellow species of lichen that live
+	in well-lit areas to also be orange, and it is also typical for orange species of lichen to
+	have red colouring too, it does not follow that yellow species of lichen living in well-lit
+	areas have red. In other words, the logic is non-monotonic and intransitive.
 \end{example}
 
-It might be suspected that the kind of reasoning described by preferential contexts corresponds to the preferential consequence relations discussed earlier. We
-show that this is not quite true.
+It might be suspected that the kind of reasoning described by preferential contexts
+corresponds to the preferential consequence relations discussed earlier. We show that this
+is not quite true.
 
 \begin{theorem}
 	\label{theorem:preferential-context-partial-soundness}
 
-	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\PGMI$ satisfies \textit{Reflexivity, Left-logical equivalence, Right
-		weakening, And,} and \textit{Cautious Monotony}.
+	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\PGMI$
+	satisfies \textit{Reflexivity, Left-logical equivalence, Right weakening, And,} and
+	\textit{Cautious Monotony}.
 \end{theorem}
 
 \begin{proof}
 	\label{proof:preferential-context-partial-soundness}
 
-	Let $\pcontext = \PGMI$ be a preferential context, and $A,B,C,D \subseteq M$ sets of attributes.
+	Let $\pcontext = \PGMI$ be a preferential context, and $A,B,C,D \subseteq M$ sets of
+	attributes.
 
-	For \textit{Reflexivity}, it needs to be shown that $\pcontext \vDash A \twiddle A$, equivalently that $\Mind{A}\subseteq A^{\downarrow}$. This holds by
-	definition of the minimal-derivation operator. \lucas{Make sure this holds if $A^{\downarrow}= \emptyset$}
+	For \textit{Reflexivity}, it needs to be shown that $\pcontext \vDash A \twiddle A$,
+	equivalently that $\Mind{A}\subseteq A^{\downarrow}$. This holds by definition of the
+	minimal-derivation operator. \lucas{Make sure this holds if $A^{\downarrow}= \emptyset$}
 
-	For \textit{Left-logical equivalence}, if $\pcontext \vDash_{\pcontext}A \twiddle C$ and $A = B$, then $\pcontext \vDash_{\pcontext}B \twiddle C$. Assume that
-	$\pcontext \vDash A \twiddle C$ and $A = B$ (by usual set equality). By this assumption, (i) $\Mind{A}\subseteq C^{\downarrow}$ and (ii) $\Mind{A}= \Mind{B}$
-	both hold. It is then clear that we can make the substitution that results in $\Mind{B}\subseteq C^{\downarrow}$, which is equivalent to $\pcontext \vDash B
-		\twiddle C$.
+	For \textit{Left-logical equivalence}, if $\pcontext \vDash_{\pcontext}A \twiddle C$ and $A
+		= B$, then $\pcontext \vDash_{\pcontext}B \twiddle C$. Assume that $\pcontext \vDash A
+		\twiddle C$ and $A = B$ (by usual set equality). By this assumption, (i) $\Mind{A}\subseteq
+		C^{\downarrow}$ and (ii) $\Mind{A}= \Mind{B}$ both hold. It is then clear that we can make
+	the substitution that results in $\Mind{B}\subseteq C^{\downarrow}$, which is equivalent to
+	$\pcontext \vDash B \twiddle C$.
 
-	For \textit{Right weakening} we show that if $\pcontext \vDash A \rightarrow B, B \twiddle C$ then $\pcontext \vDash A \twiddle C$.
+	For \textit{Right weakening} we show that if $\pcontext \vDash A \rightarrow B, B \twiddle
+		C$ then $\pcontext \vDash A \twiddle C$.
 \end{proof}
 
-The failure to satisfy the \textit{Or} postulate is due more to a technical point than a counter example. The assumed setting, of FCA's attribute logic, is
-restricted to definite Horn clauses, and therefore not sufficiently expressive for either negation or disjunction. We may address this issue by consdering a
-more expressive variant of attribute logic: the compound attributes discussed in \Cref{subsection:compound-attributes}. A minimal change is to simply extend
-the language of defeasible conditionals to compound attributes; since these more expressive formulae are constructed from a (normal) set of attributes, the
-definition of a preferential context remains the same.
+The failure to satisfy the \textit{Or} postulate is due more to a technical point than a
+counter example. The assumed setting, of FCA's attribute logic, is restricted to definite
+Horn clauses, and therefore not sufficiently expressive for either negation or disjunction.
+We may address this issue by consdering a more expressive variant of attribute logic: the
+compound attributes discussed in \Cref{subsection:compound-attributes}. A minimal change is
+to simply extend the language of defeasible conditionals to compound attributes; since these
+more expressive formulae are constructed from a (normal) set of attributes, the definition
+of a preferential context remains the same.
 
 \begin{definition}
 	\label{definition:defeasible-conditionals-compound}
 
-	Let $\pcontext = \PGMI$ be a preferential context. Then $\phi \twiddle \psi$ where $\phi,\psi \in M^{+}$ is a \emph{defeasible conditional} over the compound
-	attributes of $M$.
+	Let $\pcontext = \PGMI$ be a preferential context. Then $\phi \twiddle \psi$ where
+	$\phi,\psi \in M^{+}$ is a \emph{defeasible conditional} over the compound attributes of
+	$M$.
 \end{definition}
 
-We re-emphasize the point, which was originally made in \Cref{section:klm-framework}, that although the formulae that make up the antecedent and consequent of
-a defeasible conditional $\phi \twiddle \psi$ are in the language $M^{+}$, they are not themselves allowed to be defeasible conditionals. Thus, nesting of
-defeasible conditionals—expressions such as $\phi \twiddle \gamma \twiddle \psi$—is not permitted. Fortunately, with the relatively minor extension of compound
-attributes, the logic is sufficiently expressive for disjunction, and so we construct the following representation result.
+We re-emphasize the point, which was originally made in \Cref{section:klm-framework}, that
+although the formulae that make up the antecedent and consequent of a defeasible conditional
+$\phi \twiddle \psi$ are in the language $M^{+}$, they are not themselves allowed to be
+defeasible conditionals. Thus, nesting of defeasible conditionals—expressions such as $\phi
+	\twiddle \gamma \twiddle \psi$—is not permitted. Fortunately, with the relatively minor
+extension of compound attributes, the logic is sufficiently expressive for disjunction, and
+so we construct the following representation result.
 
 \begin{theorem}
 	\label{theorem:preferential-context-soundness}
 
-	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\pcontext = \PGMI$ with defeasible conditionals over the compound attributes
-	of $M$ is a preferential consequence relation.
+	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\pcontext
+		= \PGMI$ with defeasible conditionals over the compound attributes of $M$ is a preferential
+	consequence relation.
 \end{theorem}
 
 \begin{proof}
@@ -300,8 +348,11 @@ attributes, the logic is sufficiently expressive for disjunction, and so we cons
 
 \begin{theorem}
 	\label{theorem:preferential-context-completeness}
-	Let $\twiddle_{P}$ be an arbitrary preferential consequence relation over compound attributes $M^{+}$. Then there exists a preferential context
-	$\pcontext = \PGMI$ inducing the consequence relation $\twiddle_{\pcontext}$ such that $\twiddle_{P}$ is precisely $\twiddle_{\pcontext}$.
+
+	Let $\twiddle_{P}$ be an arbitrary preferential consequence relation over compound
+	attributes $M^{+}$. Then there exists a preferential context $\pcontext = \PGMI$ inducing
+	the consequence relation $\twiddle_{\pcontext}$ such that $\twiddle_{P}$ is precisely
+	$\twiddle_{\pcontext}$.
 \end{theorem}
 
 \begin{proof}
@@ -319,16 +370,20 @@ attributes, the logic is sufficiently expressive for disjunction, and so we cons
 
 \begin{definition}
 	\label{definition:ranked-context}
-	A \emph{ranked context} $\rcontext$ is a preferential context $\RGMI$ where the preference relation $\mathsf{R}$ on objects is a \textit{strict weak order}.
+
+	A \emph{ranked context} $\rcontext$ is a preferential context $\RGMI$ where the preference
+	relation $\mathsf{R}$ on objects is a \textit{strict weak order}.
 \end{definition}
 
 \subsubsection{Finding Order}
 \label{subsubsection:finding-order}
 
-Thus far, the discussion on finding a suitable preference relation has been omitted. It is a non-trivial task to compare objects in a context.
+Thus far, the discussion on finding a suitable preference relation has been omitted. It is a
+non-trivial task to compare objects in a context.
 
 \begin{algo}{\textsc{ObjectRank}}
 	\label{algorithm:ObjectRank}
+
 	\Require A set $\Delta$ of defeasible conditionals over an attribute set $M$ \Require A formal context $\GMI$
 	\Ensure A ranking $\mathsf{R}\colon G \to \mathbb{N}$ such that $\Delta$ holds in $\RGMI$ if $\GMI$ is $\Delta$-compatible; $\bot$, otherwise.
 	\State $i \coloneq 0$ \State \textit{initialise} $\mathsf{R}(g) \coloneq \vert G \vert$ for all $g \in G$ \State $\Gamma \coloneq \Delta$
@@ -344,43 +399,53 @@ Thus far, the discussion on finding a suitable preference relation has been omit
 \subsection{Contextual Rational Closure}
 
 \begin{definition}
-	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of conditionals if and only if $\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where $\mathbb{T}$ is the \emph{test
-		context}. It \emph{contextually follows} when $\mathbb{R}, \mathcal{T}\dentails A \rightarrow B$.
+
+	A conditional $A \twiddle B$ \emph{rationally follows} from a set $\mathcal{T}$ of
+	conditionals if and only if $\mathbb{T}, \mathcal{T}\dentails A \twiddle B$, where
+	$\mathbb{T}$ is the \emph{test context}. It \emph{contextually follows} when $\mathbb{R},
+		\mathcal{T}\dentails A \rightarrow B$.
 \end{definition}
 
 \begin{definition}
-	A set $\mathcal{T}$ is \emph{closed} with respect to a pair if and only if it contains every conditional that is rationally entailed. That is, if
-	$\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$ is \emph{contextually closed} if it contains every conditional that
-	is contextually entailed, i.e. $\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R}, \mathcal{T}\dentails A \rightarrow B\}$.
+
+	A set $\mathcal{T}$ is \emph{closed} with respect to a pair if and only if it contains every
+	conditional that is rationally entailed. That is, if $\mathcal{T}= \{A \twiddle B \mid A,B
+		\subseteq M \tand \mathbb{T},\mathcal{T}\dentails A \twiddle B\}$. $\mathcal{T}$ is
+	\emph{contextually closed} if it contains every conditional that is contextually entailed,
+	i.e. $\mathcal{T}= \{A \twiddle B \mid A,B \subseteq M \tand \mathbb{R},
+		\mathcal{T}\dentails A \rightarrow B\}$.
 \end{definition}
 
 \begin{definition}
-	A set $\mathcal{T}$ of conditionals is \emph{rationally complete} with respect to $\mathbb{T},\Delta$ if and only if every conditional that is in the rational closure of
-	$\mathbb{T}, \Delta$ rationally follows from $\mathcal{T}$, i.e., $\mathbb{T},\mathcal{T}$ and $\mathbb{T}, \Delta$ define the same entailment relation.
+
+	A set $\mathcal{T}$ of conditionals is \emph{rationally complete} with respect to
+	$\mathbb{T},\Delta$ if and only if every conditional that is in the rational closure of
+	$\mathbb{T}, \Delta$ rationally follows from $\mathcal{T}$, i.e., $\mathbb{T},\mathcal{T}$
+	and $\mathbb{T}, \Delta$ define the same entailment relation.
 \end{definition}
-Is it possible to find a$\mathcal{T}$such that$\mathcal{T}$is a compact form of$\Delta$. I.e., it should produce the same ranking on$\mathbb{T}$.
+Is it possible to find a$\mathcal{T}$such that$\mathcal{T}$is a compact form of$\Delta$.
+I.e., it should produce the same ranking on$\mathbb{T}$.
 
 \begin{definition}
-	A set $\mathcal{T}$ of conditionals is \emph{contextually complete} with respect to $\mathbb{R}, \Delta$ if and only if every implication that is in the contextual closure of
+
+	A set $\mathcal{T}$ of conditionals is \emph{contextually complete} with respect to
+	$\mathbb{R}, \Delta$ if and only if every implication that is in the contextual closure of
 	$\mathbb{R}, \Delta$ rationally follows from $\mathcal{T}$.
 \end{definition}
 
-A set of conditionals that is contextually complete to a ranked context$\mathbb{R}$and constraint set$\Delta$provides abstracted perspective, in terms of
-defeasible conditionals, on the information contained in the pair$(\mathbb{R}, \Delta )$. It is now the goal, as was done in
-\Cref{subsubsection:implication-bases}, to find such a set that is non-redundant, or the \textit{rational basis}of$(\mathbb{R},\Delta)$.
+A set of conditionals that is contextually complete to a ranked context$\mathbb{R}$and
+constraint set$\Delta$provides abstracted perspective, in terms of defeasible conditionals,
+on the information contained in the pair$(\mathbb{R}, \Delta )$. It is now the goal, as was
+done in \Cref{subsubsection:implication-bases}, to find such a set that is non-redundant, or
+the \textit{rational basis}of$(\mathbb{R},\Delta)$.
 
 \begin{definition}
 	\label{definition:defeasible-closure}
 
-	Let $\mathcal{T}$ be a set of defeasible conditionals over $M$. The operator $X \mapsto \Cn{\twiddle}(X)$ given by $X \cup \{Y \subseteq M \mid X \twiddle Y\}$
-	is called the \emph{defeasible closure} of $X$. It is idempotent, extensive, and non-monotonic.
+	Let $\mathcal{T}$ be a set of defeasible conditionals over $M$. The operator $X \mapsto
+		\Cn{\twiddle}(X)$ given by $X \cup \{Y \subseteq M \mid X \twiddle Y\}$ is called the
+	\emph{defeasible closure} of $X$. It is idempotent, extensive, and non-monotonic.
 \end{definition}
-
-\textcolor{red}{
-	\begin{remark}
-		If $\mathcal{T}$ were the defeasible basis we would want $\Cn{\twiddle}(X) = (\underline{X^{\downarrow}})^{\uparrow}$
-	\end{remark}
-}
 
 \subsection{Rational Closure}
 

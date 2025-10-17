@@ -1,5 +1,6 @@
 # .localSettings.yaml  — single, self-contained config for cxt environment
 # --- control how line breaks are modified for environments/commands ---
+#
 modifyLineBreaks:
   preserveBlankLines: 1
   condenseMultipleBlankLinesInto: 0

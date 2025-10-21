@@ -1,15 +1,11 @@
 % thesis.sty – Custom style for Master's thesis Lucas — UCT Computational
 % Logic ------------------------------------------------------------------
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{macros/thesis}[2025/03/30 Master's Thesis Style]
+\NeedsTeXFormat{LaTeX2e} \ProvidesPackage{macros/thesis}[2025/03/30 Master's Thesis Style]
 % ------------------------------------------------------------------
 % Subfile support and local macros
 % ------------------------------------------------------------------
-\usepackage{subfiles} % allows splitting thesis into subfiles
-\input{macros/formal-concept-analysis.tex}
-\input{macros/general.tex}
-\input{macros/fca.sty}
-\newcommand{\lucas}[1]{\textcolor{red}{#1}}
+\usepackage{subfiles} \input{macros/formal-concept-analysis.tex} \input{macros/general.tex}
+\input{macros/fca.sty} \newcommand{\lucas}[1]{\textcolor{red}{#1}}% allows splitting thesis into subfiles
 
 % ------------------------------------------------------------------
 % Encoding and Language
@@ -28,31 +24,26 @@
 \usepackage{mathtools}
 % \usepackage{newtxtext,newtxmath} % main text + math font
 
-\usepackage{stix2}
-\usepackage[var0,scale=0.85]{inconsolata}  % var0 prevents italic issues
+\usepackage{stix2} \usepackage[var0,scale=0.85]{inconsolata} % var0 prevents italic issues
 
 % ------------------------------------------------------------------ Page
 % Geometry and Spacing
 % ------------------------------------------------------------------
-\usepackage{geometry}
-\geometry{
-	a4paper,
-	left=1.2in,
-	right=1.2in,
-	top=1in,
-	headsep=0.25in,
-}
-\usepackage{setspace}
-\setstretch{1.25}            % line spacing
-\setlength{\parskip}{0.3em}  % paragraph spacing
-\setlength{\parindent}{15pt} % paragraph indentation
+\usepackage{geometry} \geometry{ a4paper, left=1.2in, right=1.2in, top=1in, headsep=0.25in, }
+\usepackage{setspace} \setstretch{1.25} \setlength{\parskip}{0.3em} \setlength{\parindent}{15pt} % line spacing% paragraph spacing% paragraph indentation
+
+% Make top margin 3in for chapter openings
+\usepackage{etoolbox} % for patching commands
+
+\makeatletter
+% Patch \@makechapterhead (used for chapter titles)
+\patchcmd{\@makechapterhead} {\vspace*{50\p@}} {\vspace*{3in}} {}{} \makeatother% default vertical space% change to 3in% success/failure handlers
 
 % ------------------------------------------------------------------
 \usepackage{titlesec}
 
 % Example: make section headings slightly smaller
-\titleformat{\section}
-{\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
+\titleformat{\section} {\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
 {\thesection}{1em}{}
 
 % ------------------------------------------------------------------
@@ -76,10 +67,7 @@
 % ------------------------------------------------------------------ Math
 % and theorem environments
 % ------------------------------------------------------------------
-\usepackage{amsmath,amsthm,amssymb}
-\usepackage{thmtools}
-\usepackage{epigraph}
-\everymath{\displaystyle} % force displaystyle in inline math
+\usepackage{amsmath,amsthm,amssymb} \usepackage{thmtools} \usepackage{epigraph} \everymath{\displaystyle} % force displaystyle in inline math
 
 % redefine large operators to be less vertically inflated
 \let\origbigvee\bigvee
@@ -94,37 +82,23 @@
 % Theorem declarations
 \declaretheorem[style=plain]{theorem}
 \declaretheorem[style=plain]{example}
-\AtEndEnvironment{example}{\par\addvspace{\baselineskip}}
-\declaretheorem[style=definition]{definition}
-\declaretheorem[style=remark]{remark}
-\declaretheorem{lemma}
-\declaretheorem{proposition}
+\AtEndEnvironment{example}{\par\addvspace{\baselineskip}} \declaretheorem[style=definition]{definition}
+\declaretheorem[style=remark]{remark} \declaretheorem{lemma} \declaretheorem{proposition}
 \declaretheorem{corollary}
 
 % ------------------------------------------------------------------
 % Figures and floats
 % ------------------------------------------------------------------
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{caption}
-\usepackage{nicefrac}
-\usepackage{subcaption}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{listings}      % for code (but pseudocode uses algpseudocode)
-\usepackage[table,dvipsnames]{xcolor}
-\usepackage{tikz}
-\usetikzlibrary{positioning,calc,fit,shapes.geometric,patterns,intersections}
+\usepackage{graphicx} \usepackage{float} \usepackage{caption} \usepackage{nicefrac} \usepackage{subcaption}
+\usepackage{booktabs} \usepackage{tabularx} \usepackage{listings} \usepackage[table,dvipsnames]{xcolor}
+\usepackage{tikz} \usetikzlibrary{positioning,calc,fit,shapes.geometric,patterns,intersections}% for code (but pseudocode uses algpseudocode)
 % \usepackage{pst-node,pst-plot}
 
 % ------------------------------------------------------------------
 % Colours
 % ------------------------------------------------------------------
-\definecolor{blue}{HTML}{0000A4}
-\definecolor{green}{HTML}{025C5D}
-\definecolor{red}{HTML}{AF3029}
-\definecolor{mediumblue}{rgb}{0.173,0.498,0.722}
-\definecolor{darkblue}{rgb}{0.145,0.204,0.580}
+\definecolor{blue}{HTML}{0000A4} \definecolor{green}{HTML}{025C5D} \definecolor{red}{HTML}{AF3029}
+\definecolor{mediumblue}{rgb}{0.173,0.498,0.722} \definecolor{darkblue}{rgb}{0.145,0.204,0.580}
 
 % ------------------------------------------------------------------
 % Hyperlinks and cross-references
@@ -140,7 +114,8 @@
 \Crefname{section}{Section}{Sections}
 \crefname{subsection}{subsection}{subsections}
 \Crefname{subsection}{Subsection}{Subsections}
-\Crefname{cxt}{Formal Context}{Formal Contexts}
+\Crefname{fcxt}{Formal Context}{Formal Contexts}
+\Crefname{cxt}{Context}{Contexts}
 \crefname{inference}{inference rule}{inference rules}
 \Crefname{inference}{Inference rule}{Inference rules}
 \crefname{postulate}{postulate}{postulates}
@@ -148,8 +123,7 @@
 
 % ------------------------------------------------------------------ Index
 % ------------------------------------------------------------------
-\usepackage{makeidx}
-\makeindex
+\usepackage{makeidx} \makeindex
 
 % ------------------------------------------------------------------
 % Citation Style (IJCAI-like, square brackets)
@@ -183,26 +157,19 @@
 % ------------------------------------------------------------------ Custom
 % commands for metadata
 % ------------------------------------------------------------------
-\newcommand{\thetitle}{}
-\newcommand{\theauthor}{}
-\newcommand{\thedate}{}
+\newcommand{\thetitle}{} \newcommand{\theauthor}{} \newcommand{\thedate}{}
 \renewcommand{\title}[1]{\renewcommand{\thetitle}{#1}}
-\renewcommand{\author}[1]{\renewcommand{\theauthor}{#1}}
-\renewcommand{\date}[1]{\renewcommand{\thedate}{#1}}
+\renewcommand{\author}[1]{\renewcommand{\theauthor}{#1}} \renewcommand{\date}[1]{\renewcommand{\thedate}{#1}}
 
 % ------------------------------------------------------------------
 % Counters and ToC depth
 % ------------------------------------------------------------------
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3} \setcounter{tocdepth}{2}
 
 % ------------------------------------------------------------------
 % Hilbert-style proofs
 % ------------------------------------------------------------------
-\usepackage{proof}
-\usepackage{bussproofs}
-\newcounter{proofHstep}
-\newenvironment{proofH}[1][Proof]{
+\usepackage{proof} \usepackage{bussproofs} \newcounter{proofHstep} \newenvironment{proofH}[1][Proof]{
 	\par\smallskip\noindent\textit{#1.\\}  % default heading “Proof.”
 	\setcounter{proofHstep}{0}
 	\ignorespaces
@@ -237,14 +204,9 @@
 % ------------------------------------------------------------------
 % Algorithms and pseudocode
 % ------------------------------------------------------------------
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{refcount}
+\usepackage{algorithm} \usepackage{algpseudocode} \usepackage{refcount}
 
-\newcommand{\linelabel}[1]{
-	\refstepcounter{ALC@line}\label{#1}
-	\addtocounter{ALC@line}{-1}
-}
+\newcommand{\linelabel}[1]{ \refstepcounter{ALC@line}\label{#1} \addtocounter{ALC@line}{-1} }
 
 % Customise algorithmic keywords
 \algrenewcommand\algorithmicrequire{\textbf{Input:}}
@@ -254,36 +216,26 @@
 
 % Convenient wrapper: algo environment Usage: \begin{algo}{Caption} ...
 % \end{algo}
-\newenvironment{algo}[2][htbp]
-{\begin{algorithm}[#1]
+\newenvironment{algo}[2][htbp] {
+	\begin{algorithm}[#1]
 		\caption{#2}
 		\begin{algorithmic}[1]} % numbered lines
-			{\end{algorithmic}
-	\end{algorithm}}
+			{
+		\end{algorithmic}
+	\end{algorithm}
+}
 
 % ------------------------------------------------------------------
 % Commonly used symbols
 % ------------------------------------------------------------------
-\newcommand{\pset}[1]{\mathfrak{P}({#1})}
-\newcommand{\tiff}{\quad \text{if and only if}\quad}
-\newcommand{\tand}{\; \text{and} \;}
-\newcommand{\timpl}{\; \text{imply} \;}
-\newcommand{\timpls}{\; \text{implies} \;}
-\newcommand{\pin}{\mathcal{W}}
-\newcommand{\Pin}{\mathcal{W} = \langle S,l,\prec \rangle}
-\newcommand{\lang}{\mathcal{L}}
-\newcommand{\Lang}{\mathcal{L}_+}
-\newcommand{\Cn}[1]{\mathcal{C}n_{#1}}
-\newcommand{\Cna}[2]{\mathcal{C}n_{#1}({#2})}
-\newcommand{\Ca}[1]{#1^+}
-\newcommand{\cl}[2]{\mathsf{cl}_{#1}({#2})}
-\newcommand{\pcontext}{\mathbb{P}}
-\newcommand{\rcontext}{\mathbb{R}}
-\newcommand{\PGMI}{(G,M,I,\preceq)}
-\newcommand{\RGMI}{(G,M,\relI,\mathsf{R})}
-\newcommand{\Mod}[1]{\mathsf{Mod} ({#1})}
-\newcommand{\Min}[1]{\underline{#1}}
-\newcommand{\Mind}[1]{\underline{#1^\downarrow}}
-\newcommand{\Minr}[1]{(\underline{#1^\downarrow})^\uparrow}
-\newcommand{\pentails}{\dentails_P}
+\newcommand{\pset}[1]{\mathfrak{P}({#1})} \newcommand{\tiff}{\quad \text{if and only if}\quad}
+\newcommand{\tand}{\; \text{and} \;} \newcommand{\timpl}{\; \text{imply} \;} \newcommand{\timpls}{\;
+	\text{implies} \;} \newcommand{\pin}{\mathcal{W}} \newcommand{\Pin}{\mathcal{W} = \langle S,l,\prec \rangle}
+\newcommand{\lang}{\mathcal{L}} \newcommand{\Lang}{\mathcal{L}_+} \newcommand{\Cn}[1]{\mathcal{C}n_{#1}}
+\newcommand{\Cna}[2]{\mathcal{C}n_{#1}({#2})} \newcommand{\Ca}[1]{#1^+}
+\newcommand{\cl}[2]{\mathsf{cl}_{#1}({#2})} \newcommand{\pcontext}{\mathbb{P}}
+\newcommand{\rcontext}{\mathbb{R}} \newcommand{\PGMI}{(G,M,I,\prec)}
+\newcommand{\RGMI}{(G,M,\relI,\mathsf{R})} \newcommand{\Mod}[1]{\mathsf{Mod} ({#1})}
+\newcommand{\Min}[1]{\underline{#1}} \newcommand{\Mind}[1]{\underline{#1^\downarrow}}
+\newcommand{\Minr}[1]{(\underline{#1^\downarrow})^\uparrow} \newcommand{\pentails}{\dentails_P}
 \newcommand{\npentails}{\ndentails_P}

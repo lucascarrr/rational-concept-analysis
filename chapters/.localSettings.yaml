@@ -5,6 +5,11 @@ modifyLineBreaks:
   preserveBlankLines: 1
   condenseMultipleBlankLinesInto: 0
   environments:
+    rcxt:
+      BeginStartsOnOwnLine: 1
+      BodyStartsOnOwnLine: 1
+      EndStartsOnOwnLine: 1
+      EndFinishesWithLineBreak: 1
     cxt:
       BeginStartsOnOwnLine: 1
       BodyStartsOnOwnLine: 1
@@ -17,6 +22,9 @@ modifyLineBreaks:
       EndFinishesWithLineBreak: 1
   commands:
     cxtName:
+      CommandStartsOnOwnLine: 1
+      CommandNameFinishesWithLineBreak: 1
+    atr:
       CommandStartsOnOwnLine: 1
       CommandNameFinishesWithLineBreak: 1
     att:
@@ -62,6 +70,7 @@ commandCodeBlocks:
     - amalgamate: 1
   commandNameSpecial:
     - cxtName
+    - atr
     - atr
     - obj
 # --- indentation rules (single place only) ---

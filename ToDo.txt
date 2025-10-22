@@ -4,3 +4,7 @@
 
     - If we have (A1,B1) V (A2,B2), the intersection of B1 and B2 is closed, because that is the closure operator on the closure system on G. So the V operation operation on 
     the concept lattice corresponds is isomorphic to intersection on the Closure sytem on G. 
+
+
+1. Make "Figure 1: xx" the <Figure 1> part bold. 
+

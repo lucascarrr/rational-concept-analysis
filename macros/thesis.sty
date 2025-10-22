@@ -1,7 +1,4 @@
-% thesis.sty – Custom style for Master's thesis Lucas — UCT Computational
-% Logic ------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-
 \ProvidesPackage{macros/thesis}[2025/03/30 Master's Thesis Style]
 % ------------------------------------------------------------------
 % Subfile support and local macros
@@ -36,8 +33,7 @@
 % Geometry and Spacing
 % ------------------------------------------------------------------
 \usepackage{geometry}
-\geometry{ a4paper, left=1.2in, right=1.2in, top=1in,
-	headsep=0.25in, }
+\geometry{ a4paper, left=1in, right=1in, top=1in, headsep=0.25in, }
 \usepackage{setspace}
 \setstretch{1.25}
 \setlength{\parskip}{0.3em}
@@ -47,8 +43,7 @@
 \usepackage{titlesec}
 
 % Example: make section headings slightly smaller
-\titleformat{\section}
-{\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
+\titleformat{\section} {\normalfont\bfseries\fontsize{0.9\baselineskip}{1.1\baselineskip}\selectfont}
 {\thesection}{1em}{}
 
 % ------------------------------------------------------------------
@@ -74,8 +69,7 @@
 % ------------------------------------------------------------------
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{thmtools}
-\usepackage{epigraph}
-\everymath{\displaystyle} % force displaystyle in inline math
+\usepackage{epigraph} \everymath{\displaystyle} % force displaystyle in inline math
 
 % redefine large operators to be less vertically inflated
 \let\origbigvee\bigvee
@@ -102,7 +96,8 @@
 % ------------------------------------------------------------------
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{caption}
+% \usepackage{caption}
+\usepackage[format=plain, width=\linewidth, labelfont=bf]{caption}
 \usepackage{nicefrac}
 \usepackage{subcaption}
 \usepackage{booktabs}
@@ -142,6 +137,7 @@
 \Crefname{inference}{Inference rule}{Inference rules}
 \crefname{postulate}{postulate}{postulates}
 \Crefname{postulate}{Postulate}{Postulates}
+\Crefname{proposition}{Proposition}{Propositions}
 
 % ------------------------------------------------------------------ Index
 % ------------------------------------------------------------------
@@ -198,8 +194,7 @@
 % Hilbert-style proofs
 % ------------------------------------------------------------------
 \usepackage{proof}
-\usepackage{bussproofs} \newcounter{proofHstep}
-\newenvironment{proofH}[1][Proof]{
+\usepackage{bussproofs} \newcounter{proofHstep} \newenvironment{proofH}[1][Proof]{
 	\par\smallskip\noindent\textit{#1.\\}  % default heading “Proof.”
 	\setcounter{proofHstep}{0}
 	\ignorespaces
@@ -238,8 +233,7 @@
 \usepackage{algpseudocode}
 \usepackage{refcount}
 
-\newcommand{\linelabel}[1]{ \refstepcounter{ALC@line}\label{#1}
-	\addtocounter{ALC@line}{-1} }
+\newcommand{\linelabel}[1]{ \refstepcounter{ALC@line}\label{#1} \addtocounter{ALC@line}{-1} }
 
 % Customise algorithmic keywords
 \algrenewcommand\algorithmicrequire{\textbf{Input:}}
@@ -262,15 +256,12 @@
 % Commonly used symbols
 % ------------------------------------------------------------------
 \newcommand{\pset}[1]{\mathfrak{P}({#1})}
-\newcommand{\tiff}{\quad \text{if and
-		only if}\quad}
+\newcommand{\tiff}{\quad \text{if and only if}\quad}
 \newcommand{\tand}{\; \text{and} \;}
-\newcommand{\timpl}{\;
-	\text{imply} \;}
+\newcommand{\timpl}{\;\text{imply} \;}
 \newcommand{\timpls}{\;\text{implies} \;}
 \newcommand{\pin}{\mathcal{W}}
-\newcommand{\Pin}{\mathcal{W}=\langle S,l,\prec
-	\rangle}
+\newcommand{\Pin}{\mathcal{W}=\langle S,l,\prec \rangle}
 \newcommand{\lang}{\mathcal{L}}
 \newcommand{\Lang}{\mathcal{L}_+}
 \newcommand{\Cn}[1]{\mathcal{C}n_{#1}}
@@ -281,8 +272,7 @@
 \newcommand{\rcontext}{\mathbb{R}}
 \newcommand{\PGMI}{(G,M,I,\prec)}
 \newcommand{\RGMI}{(G,M,\relI,\mathsf{R})}
-\newcommand{\Mod}[1]{\mathsf{Mod}
-	({#1})}
+\newcommand{\Mod}[1]{\mathsf{Mod}({#1})}
 \newcommand{\Min}[1]{\underline{#1}}
 \newcommand{\Mind}[1]{\underline{#1^\downarrow}}
 \newcommand{\Minr}[1]{(\underline{#1^\downarrow})^\uparrow}

@@ -5,9 +5,12 @@
 \date{2025}
 
 \begin{document}
-\titleformat{\chapter}
-{\normalfont\bfseries\fontsize{36pt}{42pt}\selectfont\raggedright}
-{\thechapter} {1em} {} \titlespacing*{\chapter}{0pt}{0pt}{40pt}
+% Chapter formatting
+\titleformat{\chapter} {\normalfont\bfseries\fontsize{45pt}{42pt}\selectfont\raggedright}
+{\thechapter}{1em}{}
+
+% Extra vertical space before and after chapter titles
+\titlespacing*{\chapter}{0pt}{*8}{*12}
 
 \begin{titlepage}
 	\centering
@@ -22,12 +25,10 @@
 	\thedate
 \end{titlepage}
 
-\addcontentsline{toc}{chapter}{Abstract}
-\addcontentsline{toc}{chapter}{Acknowledgements}
+\addcontentsline{toc}{chapter}{Abstract} \addcontentsline{toc}{chapter}{Acknowledgements}
 \addcontentsline{toc}{chapter}{A Primer on Lichen}
 
-\input{chapters/Foreword.tex}
-\tableofcontents
+\input{chapters/Foreword.tex} \tableofcontents
 \input{chapters/Introduction.tex}
 
 \part{Foundations}
@@ -40,8 +41,6 @@
 \input{chapters/Rational Concepts.tex}
 \input{chapters/Conclusions.tex}
 
-\bibliographystyle{macros/named}
-\bibliography{references}
-\printindex \listoffigures
+\bibliographystyle{macros/named} \bibliography{references} \printindex \listoffigures
 \input{chapters/Appendix.tex}
 \end{document}

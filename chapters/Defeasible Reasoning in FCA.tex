@@ -48,8 +48,9 @@ recognise that this implies monotonicity, suppose the rule
 $(\texttt{Beige} \rightarrow \texttt{Shade})$ were accpeted. Then
 every object which had the attribute \texttt{Beige} also has
 \texttt{Shade}, by extension, every object that has \texttt{Beige}
-and \textit{something else} will continue to have \texttt{Shade}. In certain cases, this imposes too strong an impediment on the amount
-of useful information that may be extract from a context. Certainly,
+and \textit{something else} will continue to have \texttt{Shade}. In
+certain cases, this imposes too strong an impediment on the amount of
+useful information that may be extract from a context. Certainly,
 there are instances of meaningful correspondence between attributes
 which admit exceptions. Herein lies the first motivation for
 introducing KLM style reasoning to FCA. A second argument, consdering
@@ -132,7 +133,10 @@ that enable the organism to feed itself.
 
 Previously considered plants, or secretions from plants. Frequently,
 mistaken to be parisitic, but their substrate is purely for
-affixation, lichens draw no nutrition.
+affixation, lichens draw no nutrition.\texttt{In this sense, lichen
+	is a challenge for science: it is neither a plant nor a vegetable nor
+	a singular “a.” It is an adapted fungus – or a double star, its own
+	kingdom.}
 
 \subsection{Association Rules}
 \label{subsection:association-rules}
@@ -380,63 +384,93 @@ be expressed more familiarly as $B \subseteq \Minr{A}$.
 	words, the logic is non-monotonic and intransitive.
 \end{example}
 
-% It might be suspected that the kind of reasoning described by preferential contexts corresponds to the
-% preferential consequence relations discussed earlier. We show that this is not quite true.
+If not for the warnings at the start of this section, it might be
+suspected that the kind of reasoning described by preferential
+contexts corresponds to the preferential consequence relations
+discussed earlier. We show that this is not quite true.
 
-% \begin{theorem}
-% 	\label{theorem:preferential-context-partial-soundness}
+\begin{theorem}
+	\label{theorem:preferential-context-partial-soundness}
 
-% 	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\PGMI$ satisfies
-% 	\textit{Reflexivity, Left-logical equivalence, Right weakening, And,} and \textit{Cautious Monotony}.
-% \end{theorem}
+	The consequence relation $\twiddle_{\pcontext}$ induced by a
+	preferential context $\PGMI$ satisfies \textit{Reflexivity,
+		Left-logical equivalence, Right weakening, And,} and \textit{Cautious
+		Monotony}.
+\end{theorem}
 
-% \begin{proof}
-% 	\label{proof:preferential-context-partial-soundness}
+\begin{proof}
+	\label{proof:preferential-context-partial-soundness}
 
-% 	Let $\pcontext = \PGMI$ be a preferential context, and $A,B,C,D \subseteq M$ sets of attributes.
+	Let $\pcontext = \PGMI$ be a preferential context, and $A,B,C,D
+		\subseteq M$ sets of attributes.
 
-% 	For \textit{Reflexivity}, it needs to be shown that $\pcontext \vDash A \twiddle A$, equivalently that
-% 	$\Mind{A}\subseteq A^{\downarrow}$. This holds by definition of the minimal-derivation operator. \lucas{Make
-% 		sure this holds if $A^{\downarrow}= \emptyset$}
+	For \textit{Reflexivity}, it needs to be shown that $\pcontext \vDash
+		A \twiddle A$, equivalently that $\Mind{A}\subseteq A^{\downarrow}$.
+	This holds by definition of the minimal-derivation operator.
+	\lucas{Make sure this holds if $A^{\downarrow}= \emptyset$}
 
-% 	For \textit{Left-logical equivalence}, if $\pcontext \vDash_{\pcontext}A \twiddle C$ and $A = B$, then
-% 	$\pcontext \vDash_{\pcontext}B \twiddle C$. Assume that $\pcontext \vDash A \twiddle C$ and $A = B$ (by usual
-% 	set equality). By this assumption, (i) $\Mind{A}\subseteq C^{\downarrow}$ and (ii) $\Mind{A}= \Mind{B}$ both
-% 	hold. It is then clear that we can make the substitution that results in $\Mind{B}\subseteq C^{\downarrow}$,
-% 	which is equivalent to $\pcontext \vDash B \twiddle C$.
+	For \textit{Left-logical equivalence}, if $\pcontext
+		\vDash_{\pcontext}A \twiddle C$ and $A = B$, then $\pcontext
+		\vDash_{\pcontext}B \twiddle C$. Assume that $\pcontext \vDash A
+		\twiddle C$ and $A = B$ (by usual set equality). By this assumption,
+	(i) $\Mind{A}\subseteq C^{\downarrow}$ and (ii) $\Mind{A}= \Mind{B}$
+	both hold. It is then clear that we can make the substitution that
+	results in $\Mind{B}\subseteq C^{\downarrow}$, which is equivalent to
+	$\pcontext \vDash B \twiddle C$.
 
-% 	For \textit{Right weakening} we show that if $\pcontext \vDash A \rightarrow B, B \twiddle C$ then $\pcontext
-% 		\vDash A \twiddle C$.
-% \end{proof}
+	For \textit{Right weakening} we show that if $\pcontext \vDash A
+		\rightarrow B, B \twiddle C$ then $\pcontext \vDash A \twiddle C$.
+\end{proof}
 
-% The failure to satisfy the \textit{Or} postulate is due more to a technical point than a counter example. The
-% assumed setting, of FCA's attribute logic, is restricted to definite Horn clauses, and therefore not
-% sufficiently expressive for either negation or disjunction. We may address this issue by consdering a more
-% expressive variant of attribute logic: the compound attributes discussed in
-% \Cref{subsection:compound-attributes}. A minimal change is to simply extend the language of defeasible
-% conditionals to compound attributes; since these more expressive formulae are constructed from a (normal) set
-% of attributes, the definition of a preferential context remains the same.
+The failure to satisfy the \textit{Or} postulate is due more to a
+technical point, rather than the existence of any particular counter
+example. The assumed setting of FCA's attribute logic is restricted
+to definite Horn clauses, and therefore not sufficiently expressive
+for either negation or disjunction. With these notions absent from
+the language, we may not fulfill the missing postulate. However,
+preferential contexts and the corresponding semantics for defeasible
+conditionals correspond to \textit{cumulative consequence relations}
+\cite{kraus1990nonmonotonic}, the weakest of the systems in the KLM
+framework. Discussion of cumulative consequence relations was omitted
+from \Cref{chapter:defeasible-reasoning} as they are subsumed by
+preferential consequence relations, without much interesting
+distinction.
 
-% \begin{definition}
-% 	\label{definition:defeasible-conditionals-compound}
+We may address this issue by consdering a more expressive variant of
+attribute logic: the compound attributes discussed in
+\Cref{subsection:compound-attributes}. A minimal change is to simply
+extend the language of defeasible conditionals to compound
+attributes; since these more expressive formulae are constructed from
+a (normal) set of attributes, the definition of a preferential
+context remains the same.
 
-% 	Let $\pcontext = \PGMI$ be a preferential context. Then $\phi \twiddle \psi$ where $\phi,\psi \in M^{+}$ is a
-% 	\emph{defeasible conditional} over the compound attributes of $M$.
-% \end{definition}
+\begin{definition}
+	\label{definition:defeasible-conditionals-compound}
 
-% We re-emphasize the point, which was originally made in \Cref{section:klm-framework}, that although the
-% formulae that make up the antecedent and consequent of a defeasible conditional $\phi \twiddle \psi$ are in
-% the language $M^{+}$, they are not themselves allowed to be defeasible conditionals. Thus, nesting of
-% defeasible conditionals—expressions such as $\phi \twiddle \gamma \twiddle \psi$—is not permitted.
-% Fortunately, with the relatively minor extension of compound attributes, the logic is sufficiently expressive
-% for disjunction, and so we construct the following representation result.
+	Let $\pcontext = \PGMI$ be a preferential context. Then $\phi
+		\twiddle \psi$ where $\phi,\psi \in M^{+}$ is a \emph{defeasible
+		conditional} over the compound attributes of $M$.
+\end{definition}
 
-% \begin{theorem}
-% 	\label{theorem:preferential-context-soundness}
+We re-emphasize the point, which was originally made in
+\Cref{section:klm-framework}, that although the formulae that make up
+the antecedent and consequent of a defeasible conditional $\phi
+	\twiddle \psi$ are in the language $M^{+}$, they are not themselves
+allowed to be defeasible conditionals. Thus, nesting of defeasible
+conditionals---resulting in expressions such as $\phi \twiddle \gamma
+	\twiddle \psi$---is not permitted. Fortunately, with the relatively
+minor extension of compound attributes, the logic is sufficiently
+expressive for disjunction, and so we construct the following
+representation result.
 
-% 	The consequence relation $\twiddle_{\pcontext}$ induced by a preferential context $\pcontext = \PGMI$ with
-% 	defeasible conditionals over the compound attributes of $M$ is a preferential consequence relation.
-% \end{theorem}
+\begin{theorem}
+	\label{theorem:preferential-context-soundness}
+
+	The consequence relation $\twiddle_{\pcontext}$ induced by a
+	preferential context $\pcontext = \PGMI$ with defeasible conditionals
+	over the compound attributes of $M$ is a preferential consequence
+	relation.
+\end{theorem}
 
 % \begin{proof}
 % 	\label{proof:preferential-context-soundness}
@@ -470,25 +504,24 @@ be expressed more familiarly as $B \subseteq \Minr{A}$.
 % 	$\mathsf{R}$ on objects is a \textit{strict weak order}.
 % \end{definition}
 
-% \subsubsection{Finding Order}
-% \label{subsubsection:finding-order}
+\subsubsection{Finding Order}
+
+\label{subsubsection:finding-order}
 
 % Thus far, the discussion on finding a suitable preference relation has been omitted. It is a non-trivial task
 % to compare objects in a context.
 
-% \begin{algo}{\textsc{ObjectRank}}
-% 	\label{algorithm:ObjectRank}
-
-% 	\Require A set $\Delta$ of defeasible conditionals over an attribute set $M$ \Require A formal context $\GMI$
-% 	\Ensure A ranking $\mathsf{R}\colon G \to \mathbb{N}$ such that $\Delta$ holds in $\RGMI$ if $\GMI$ is $\Delta$-compatible; $\bot$, otherwise.
-% 	\State $i \coloneq 0$ \State \textit{initialise} $\mathsf{R}(g) \coloneq \vert G \vert$ for all $g \in G$ \State $\Gamma \coloneq \Delta$
-% 	\While{$\exists \, g \in G \colon \mathsf{R}(g) = \vert G \vert$}
-% 	\ForAll{$g \in G$ with $\mathsf{R}(g) = \vert G \vert$}
-% 	\If{$g \vDash \Gamma$} \textit{update} $\mathsf{R}(g) = i$ \EndIf
-% 	\If{$\forall \, g \in G \colon \mathsf{R}(g) \neq i$} \State \Return $\bot$ \EndIf \State $\Gamma \coloneq \{(\phi \twiddle \psi) \in \Gamma \mid g \nvDash \phi \; \text{for all}\; g \in G
-% 		\; \text{with}\; \mathsf{R}(g) = i\}$ \State $i \coloneq i + 1$ \EndFor \EndWhile
-% 	\State \Return $\mathsf{R}$
-% \end{algo}
+\begin{algo}{\textsc{ObjectRank}}
+	\label{algorithm:ObjectRank}
+	\Require A set $\Delta$ of defeasible conditionals over an attribute set $M$ \Require A formal context $\GMI$ \Ensure A ranking $\mathsf{R}\colon G \to \mathbb{N}$ such that $\Delta$ holds in $\RGMI$ if $\GMI$ is $\Delta$-compatible; $\bot$, otherwise.
+	\State $i \coloneq 0$ \State \textit{initialise} $\mathsf{R}(g) \coloneq \vert G \vert$ for all $g \in G$ \State $\Gamma \coloneq \Delta$
+	\While{$\exists \, g \in G \colon \mathsf{R}(g) = \vert G \vert$}
+	\ForAll{$g \in G$ with $\mathsf{R}(g) = \vert G \vert$}
+	\If{$g \vDash \Gamma$} \textit{update} $\mathsf{R}(g) = i$ \EndIf
+	\If{$\forall \, g \in G \colon \mathsf{R}(g) \neq i$} \State \Return $\bot$ \EndIf \State $\Gamma \coloneq \{(\phi \twiddle \psi) \in \Gamma \mid g \nvDash \phi \; \text{for all}\; g \in G
+		\; \text{with}\; \mathsf{R}(g) = i\}$ \State $i \coloneq i + 1$ \EndFor \EndWhile
+	\State \Return $\mathsf{R}$
+\end{algo}
 
 % \section{Entailment}
 % \subsection{Contextual Rational Closure}

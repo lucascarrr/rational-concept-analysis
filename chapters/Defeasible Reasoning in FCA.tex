@@ -1,35 +1,75 @@
 \chapter{Non-monotonic Reasoning in FCA}
 \label{chapter:defeasible-reasoning-in-fca}
 
-The conlcusion of \Cref{part:1} marks the end of the scaffolding component of this work. The remaining
-chapters are devoted to the introduction and subsequent discussion of the more novel contributions we make.
-Namely, the unification of the ideas presented in
-\Cref{chapter:formal-concept-analysis,chapter:defeasible-reasoning}. That is, to introduce an approach to do
-the KLM style of non-monotonic reasoning in FCA. Fortunately, as will become apparent as this chapter
-progresses, the setting of FCA may be quite naturally extended to accomodate the necessary semantics.
+The conlcusion of \Cref{part:1} marks the end of the scaffolding
+component of this work. The remaining chapters are devoted to the
+introduction and subsequent discussion of the more novel
+contributions we make. Namely, the unification of the ideas presented
+in
+\Cref{chapter:formal-concept-analysis,chapter:defeasible-reasoning}.
+That is, to introduce an approach to do the KLM style of
+non-monotonic reasoning in FCA. Fortunately, as will become apparent
+as this chapter progresses, the setting of FCA may be quite naturally
+extended to accomodate the necessary semantics.
 
-% This chapter draws on two publications, \cite{Carr2024} and \cite{Carr2025}.
+This chapter draws on two publications, \cite{Carr2024} and
+\cite{Carr2025}.
 
 \section{Motivation}
 \label{section:motivation}
 
-We begin this unification by providing justification for why non-monotonicity is beneficial in FCA at all.
-There are certain properties of FCA which are substantially undermined by the violation of monotonicity. For
-instance, a central notion of a concept lattice is that it describes chains of inheritance between concepts
-and their sub-concepts. The ability to preserve these becomes tenuous under non-monotonic semantics, as it
-requires transitivity, which we have already shown is not a property of KLM style reasoning.
+We begin this unification by providing justification for why it may
+be desirable to extend FCA to support non-monotonicity to begin with.
+There are certain properties of FCA that are substantially undermined
+by violations of monotonicity. For instance, one central notion of
+concept lattices is that they describe chains of inheritance between
+concepts and their sub-concepts. The ability to preserve these
+inheritance chains becomes tenuous under non-monotonic semantics, as
+they are essentially a form of transitivity, which has already been
+shown not to hold in KLM–style reasoning.
 
-Nonetheless, there are indeed settings where the enforcement of monotonicity has similarly undesirable
-second-order effects. Many of these settings are characterised by arguments similar to those given in
-\Cref{section:nmr-background}: that there are exceptional instances of a concept, or more generally some
-\textit{class}, and that it is often useful to be able to put aside the exceptions and reason prototypically
-with respect to the considered concept. Another consideration in FCA is how one might represent prototypical
-concepts within the concept lattice, but this discussion will be left to the next chapter for which it is
-more pertinent. The argument we consider here is borne out of the recognition that FCA is frequently used as
-a tool for data-mining.
+That being said, there are indeed compelling arguments that the
+presence of monotonicity in FCA has similarly undesirable
+second-order effects. These are somewhat similar to those given in
+\Cref{section:nmr-background}, but phrased from a different
+perspective. The perspective change stems from the dissimilarity
+between the starting point of the usual KLM setting and the starting
+point of FCA. In the former, one begins with a knowledge base of
+implications, to which new rules are added. The addition of new
+information may result in tension between deductions, which provides
+the motivation for defeasible reasoning. In contrast, the starting
+point of FCA usually begins with a formal context, which is presumed
+to be static. One task is then to perform a kind of rule learning of
+attribute implications, to discover corrpondence between attributes.
 
-Consider \Cref{cxt:lichens}, which describes several distinct species of lichen, described by certain
-morphological and ecological properties.
+In the classical setting, only those attribute corrpondences which
+are total, meaning they admit no counter examples, can be found. To
+recognise that this implies monotonicity, suppose the rule
+$(\texttt{Beige} \rightarrow \texttt{Shade})$ were accpeted. Then
+every object which had the attribute \texttt{Beige} also has
+\texttt{Shade}, by extension, every object that has \texttt{Beige}
+and \textit{something else} will continue to have \texttt{Shade}.
+
+This severely limits the amount of information we might extract from
+a context. Certainly there are instances of meaningful correspondence
+between attributes which admit exceptions.
+
+Nonetheless, there are indeed settings where the enforcement of
+monotonicity has similarly undesirable second-order effects. Many of
+these settings are characterised by arguments similar to those given
+in \Cref{section:nmr-background}: that there are exceptional
+instances of a concept, or more generally some \textit{class}, and
+that it is often useful to be able to put aside the exceptions and
+reason prototypically with respect to the considered concept. Another
+consideration in FCA is how one might represent prototypical concepts
+within the concept lattice, but this discussion will be left to the
+next chapter for which it is more pertinent. The argument we consider
+here is borne out of the recognition that FCA is frequently used as a
+tool for data-mining.
+
+Consider \Cref{cxt:lichens}, which describes several distinct species
+of lichen, described by certain morphological and ecological
+properties.
 
 \begin{figure}[]
 	\hspace{-6.5em}
@@ -72,7 +112,8 @@ morphological and ecological properties.
 			\obj{.x.......x.................x.x}{\texttt{Caeruleum terricola}}
 			\obj{x..xx.x.x.....x...x.x.........}{\texttt{Caloplaca marina}}
 			\obj{x..xxxxxx....x..x.xx..........}{\texttt{Xanthoria parietina}}
-			\obj{x..x.xx...x....x..xx..........}{\texttt{Teloschistes chrysophthalmus}}
+			\obj{x..x.xx...x....x..xx..........}{\texttt{Teloschistes
+					chrysophthalmus}}
 			\obj{x..xx..xx.......x.....x.......}{\texttt{Crocodia aurata}}
 			\obj{x..xx.x.x.......x...x....x....}{\texttt{Lasallia rubiginosa}}
 			\obj{..x....xx.......x......xx..x.x}{\texttt{Sticta beauvoisii}}
@@ -93,46 +134,62 @@ morphological and ecological properties.
 	\caption{A formal context of lichens} \label{fig:lichens}
 \end{figure}
 
-If the task were to learn patterns, or associations between properties---these would be represented by
-attribute implications---then the brittleness of these implications is a substantially limiting factor.
-Patterns for which there exists a counter-example would be completely missed. The situation may become worse
-under the recognition that frequently contexts, and data in general, may contain errors.
+If the task were to learn patterns, or associations between
+properties---these would be represented by attribute
+implications---then the brittleness of these implications is a
+substantially limiting factor. Patterns for which there exists a
+counter-example would be completely missed. The situation may become
+worse under the recognition that frequently contexts, and data in
+general, may contain errors.
 
 \subsection{Association Rules}
 \label{subsection:association-rules}
 
-Concerns over brittleness in the semantics of (classical) attribute implications are well known in the FCA
-literature, and in data mining more generally \cite{Lakhal2005}. \textit{Association rules} are able express
-implication-like statements despite the existence of counterexamples in the data, or in our case a context.
-These are statements like \say{$66\%$ of the members of congress who were \textit{Democrats}, which makes up
-	$50\%$ of congress, voted on the \textit{MX-Missile} bill}.
+Concerns over brittleness in the semantics of (classical) attribute
+implications are well known in the FCA literature, and in data mining
+more generally \cite{Lakhal2005}. \textit{Association rules} are able
+express implication-like statements despite the existence of
+counterexamples in the data, or in our case a context. These are
+statements like \say{$66\%$ of the members of congress who were
+	\textit{Democrats}, which makes up $50\%$ of congress, voted on the
+	\textit{MX-Missile} bill}.
 
-The \emph{support} of a set of attributes $X \subseteq M$ in a context $\GMI$ is the fraction of objects
-which have all attributes $X$ over the total number of objects; and so $\mathrm{supp}( X) =
-	\nicefrac{|X^{\downarrow}|}{|G|}$, the (relative) support of a rule $A \Rightarrow B$ is simply the support
-of $A$. The \textit{confidence} of a rule is a measure of how frequently the premise and conclusion occur,
-relative to how frequently the premise occurs, formally $\mathrm{conf}(A \Rightarrow B) =
-	\nicefrac{\mathrm{supp}(X \cup Y)}{\mathrm{supp}(X)}$. In the example above, the support of the rule is
-$50\%$ and its confidence is $66\%$. Association rules which meet specified lower-thresholds for support and
-confidence are then accepted.
+The \emph{support} of a set of attributes $X \subseteq M$ in a
+context $\GMI$ is the fraction of objects which have all attributes
+$X$ over the total number of objects; and so $\mathrm{supp}( X) =
+	\nicefrac{|X^{\downarrow}|}{|G|}$, the (relative) support of a rule
+$A \Rightarrow B$ is simply the support of $A$. The
+\textit{confidence} of a rule is a measure of how frequently the
+premise and conclusion occur, relative to how frequently the premise
+occurs, formally $\mathrm{conf}(A \Rightarrow B) =
+	\nicefrac{\mathrm{supp}(X \cup Y)}{\mathrm{supp}(X)}$. In the example
+above, the support of the rule is $50\%$ and its confidence is
+$66\%$. Association rules which meet specified lower-thresholds for
+support and confidence are then accepted.
 
-While association rules present a reasonable solution to the problem of discovering and representing
-implications with exceptions, there are some undesirable qualities. Settling on the threshold vallues for
-support and confidence is usually dependent on human input, and there is no obvious intuition for how one
-might arrive at these. Frequently, it is a requirement to know the data well, which creates a kind of
-circularity as the purpose of this work is to extend a tool which helps one understand their data.
+While association rules present a reasonable solution to the problem
+of discovering and representing implications with exceptions, there
+are some undesirable qualities. Settling on the threshold vallues for
+support and confidence is usually dependent on human input, and there
+is no obvious intuition for how one might arrive at these.
+Frequently, it is a requirement to know the data well, which creates
+a kind of circularity as the purpose of this work is to extend a tool
+which helps one understand their data.
 
-The situation gets worse when we try to describe the properties of reasoning with association rules. Consider
-the two rules below, which should be accepted with $\mathrm{minconf}= 0.6$ and $\mathrm{minsup}= 0.5$.
+The situation gets worse when we try to describe the properties of
+reasoning with association rules. Consider the two rules below, which
+should be accepted with $\mathrm{minconf}= 0.6$ and $\mathrm{minsup}=
+	0.5$.
 
 \begin{align*}
 	\texttt{dem}\Rightarrow \texttt{mxm} \\
 	% ; \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66 \\
 	\texttt{dem}\Rightarrow \texttt{dfe} % \; \text{with}\; \mathrm{Sup}= 0.5 \; \text{and}\; \mathrm{Conf}= 0.66
 \end{align*}
-In natural language, we might summarise this scenario as saying \say{Democrats voted in favour of the
-	\textit{MX-Missile} and \textit{Duty-Free Exports}}. To make future analysis simpler, we could suggest that
-whenever we accept association rules of the form
+In natural language, we might summarise this scenario as saying
+\say{Democrats voted in favour of the \textit{MX-Missile} and
+	\textit{Duty-Free Exports}}. To make future analysis simpler, we
+could suggest that whenever we accept association rules of the form
 \begin{align*}
 	\phi \Rightarrow \psi \\
 	\phi \Rightarrow \gamma,
@@ -142,44 +199,58 @@ we may compress the information as the simpler representation:
 	\phi \Rightarrow \psi \land \gamma
 \end{align*}
 
-Unfortunately, this is not always the case. In the above scenario, the rule $\texttt{dem}\Rightarrow
-	\{\texttt{mxm,dfe}\}$ has a confidence of $0.47$, which is below the $\mathrm{minconf}$ threshold.
+Unfortunately, this is not always the case. In the above scenario,
+the rule $\texttt{dem}\Rightarrow \{\texttt{mxm,dfe}\}$ has a
+confidence of $0.47$, which is below the $\mathrm{minconf}$
+threshold.
 
-That the pattern of reasoning enforced by association rules does not satisfy the above
-characterisation---which is the same property as was discussed at \Cref{postulate:and}---may be overlooked in
-isolation. The more general problem is that association rules do not admit description via \lucas{the kind of
-	axiomisation we want [source needed]}.
+That the pattern of reasoning enforced by association rules does not
+satisfy the above characterisation---which is the same property as
+was discussed at \Cref{postulate:and}---may be overlooked in
+isolation. The more general problem is that association rules do not
+admit description via \lucas{the kind of axiomisation we want [source
+			needed]}.
 
 \section{Preferential Contexts}
 \label{section:preferential-contexts}
 
-We begin the introduction of KLM style defeasible reasoning to FCA by defining a structure that is in almost
-perfect analogy to preferential interpretations. The analogy is not perfect as we initially behave quite
-conservatively and attempt to make as few changes as possible to the default setting of FCA. As we get
-further along in the discussion, more substantial amendments to the default setting are suggested. These
-amendments serve to make the faithful the analogy. The idea behind the order of this exposition is that we
-view this work largely as extending FCA with ideas borrowed from defeasible reasoning. Then, there may be
-those who find some of the essential parts of defeasible reasoning quite useful in FCA, but wish to remain in
-the default setting.
+We begin the introduction of KLM style defeasible reasoning to FCA by
+defining a structure that is in almost perfect analogy to
+preferential interpretations. The analogy is not perfect as we
+initially behave quite conservatively and attempt to make as few
+changes as possible to the default setting of FCA. As we get further
+along in the discussion, more substantial amendments to the default
+setting are suggested. These amendments serve to make the faithful
+the analogy. The idea behind the order of this exposition is that we
+view this work largely as extending FCA with ideas borrowed from
+defeasible reasoning. Then, there may be those who find some of the
+essential parts of defeasible reasoning quite useful in FCA, but wish
+to remain in the default setting.
 
-With that said, we define the first extension of a \textit{preferential context}.
+With that said, we define the first extension of a
+\textit{preferential context}.
 \begin{definition}
 	\label{definition:preferential-context}
 	\index{formal context! preferential context}
 
-	A \emph{preferential context} $\pcontext = \PGMI$ is a formal context $\GMI$ where $\prec$ is a strict
-	partial order, or \emph{preference order}, on the set of objects.
+	A \emph{preferential context} $\pcontext = \PGMI$ is a formal context
+	$\GMI$ where $\prec$ is a strict partial order, or \emph{preference
+		order}, on the set of objects.
 \end{definition}
 
-Preferential contexts, albeit with a different motivation, were first introduced by Obiedkov
-\shortcite{Obiedkov2012} and later, with our purposes in mind, by Carr \textit{et al.} \shortcite{Carr2024}.
-In some sense they are nothing more than a formal context with the addition of a preference order over the
-set of objects. The same understanding of preference orders on states applies, so for two objects $g_1, g_2
-	\in G$, when $g_1 \prec g_2$, we say that object $g_1$ is \textit{preferred} or more \textit{typical} than
-$g_2$.
+Preferential contexts, albeit with a different motivation, were first
+introduced by Obiedkov \shortcite{Obiedkov2012} and later, with our
+purposes in mind, by Carr \textit{et al.} \shortcite{Carr2024}. In
+some sense they are nothing more than a formal context with the
+addition of a preference order over the set of objects. The same
+understanding of preference orders on states applies, so for two
+objects $g_1, g_2 \in G$, when $g_1 \prec g_2$, we say that object
+$g_1$ is \textit{preferred} or more \textit{typical} than $g_2$.
 
-We provide an example of what such a preference ordering might look like below (in the interests of brevity,
-we consider only a subcontext of \Cref{cxt:lichens}, constructed by taking the first six objects).
+We provide an example of what such a preference ordering might look
+like below (in the interests of brevity, we consider only a
+subcontext of \Cref{cxt:lichens}, constructed by taking the first six
+objects).
 
 \begin{figure}[H]
 	\centering
@@ -201,13 +272,16 @@ we consider only a subcontext of \Cref{cxt:lichens}, constructed by taking the f
 	\label{figure:preference-relation-lichen}
 \end{figure}
 
-Recall that preferential interpretations were defined by a relation on states which were then mapped to
-valuations, with no requirement that the mapping be injective. It may then be surprising that states seem to
-have been entirely omitted from our definition of preferential contexts. The reason is slightly informal and
-is based on the recognition that unlike the set of propositional valuations, formal contexts place no
-restriction on the inclusion of distinct objects with equivalent intensions, in fact, this is quite common.
-If need be, one may quite naturally avoid the issue arising from duplicate states introduced in
-\Cref{lemma:states-preferential}.
+Recall that preferential interpretations were defined by a relation
+on states which were then mapped to valuations, with no requirement
+that the mapping be injective. It may then be surprising that states
+seem to have been entirely omitted from our definition of
+preferential contexts. The reason is slightly informal and is based
+on the recognition that unlike the set of propositional valuations,
+formal contexts place no restriction on the inclusion of distinct
+objects with equivalent intensions, in fact, this is quite common. If
+need be, one may quite naturally avoid the issue arising from
+duplicate states introduced in \Cref{lemma:states-preferential}.
 
 % \begin{lemma}
 % 	\label{lemma:objects-preferential}
@@ -217,59 +291,77 @@ If need be, one may quite naturally avoid the issue arising from duplicate state
 % 	preferential context $\pcontext'$ without `duplicate' objects defines the same relation.
 % \end{lemma}
 
-Under the preference relation, we describe the $\prec$-minimal states as one might expect, through the
-process of \textit{minimisation}.
+Under the preference relation, we describe the $\prec$-minimal states
+as one might expect, through the process of \textit{minimisation}.
 
 \begin{definition}
 	\label{definition:minimisation}
 
-	In a preferential context $\pcontext = \PGMI$, the \emph{minimisation} of a set $A \subseteq G$ is defined by
+	In a preferential context $\pcontext = \PGMI$, the
+	\emph{minimisation} of a set $A \subseteq G$ is defined by
 	\[
 		\underline{A}\coloneqq \{\, g \in A \mid \nexists h \in A : (h \prec g) \,\}.
 	\]
 \end{definition}
 
-Frequently, the starting point of a minimisation is not from a set of objects, but rather applied to a set of
-objects that is itself the result of a derivation from attributes. That is, we might begin with the attribute
-set $\{\,\texttt{soil}\,\}$ and wish to find the most preferred objects that have this attribute. We call
-this the \textit{minimised-derivation}, and write $\Mind{\{\,\texttt{soil}\,\}}$. If one were to apply a
-second derivation to the set resulting from a minimised-derivation, the result would represent all those
-attributes shared by the preferred objects that were in the minimised-derivation from the initial set of
-attributes. In turn, we refer to this as \textit{minimised-return} and write $\Minr{\{\,\texttt{soil}\,\}}$.
+Frequently, the starting point of a minimisation is not from a set of
+objects, but rather applied to a set of objects that is itself the
+result of a derivation from attributes. That is, we might begin with
+the attribute set $\{\,\texttt{soil}\,\}$ and wish to find the most
+preferred objects that have this attribute. We call this the
+\textit{minimised-derivation}, and write
+$\Mind{\{\,\texttt{soil}\,\}}$. If one were to apply a second
+derivation to the set resulting from a minimised-derivation, the
+result would represent all those attributes shared by the preferred
+objects that were in the minimised-derivation from the initial set of
+attributes. In turn, we refer to this as \textit{minimised-return}
+and write $\Minr{\{\,\texttt{soil}\,\}}$.
 
-The minimised-derivation of $\{\,\texttt{soil}\,\}$ yields the object set \{\texttt{Caeruleum terricola}\}.
-One interpretation of this is that \texttt{Caeruleum terricola} has some soil-substrate related property
-which sets it apart from other species of lichen which also have a soil-substrate. The point is subtle, but
-this interpretation is not true in general. The status of \texttt{Caeruleum terricola} as the uniquely
-preferred species of lichens which have a soil-substrate may well be the byproduct of another preference
-entirely unrelated to substrates. For example, \Cref{figure:preference-relation-lichen} may be an encoding of
-the preference that \say{lichen which tolerate indirect light are more preferable than those which tolerate
-	direct light; from those less-preferable species which do tolerate direct light, it is preferred that they
-	are orange}. This remark is of little material significance, but is rather important for preventing
-misconceptions about what preference orders represent, and provides some intuition for how they might be
-constructed. For the time being, we remain agnostic to the latter question about their construct. This will
-be the subject of \Cref{subsubsection:finding-order}.
+The minimised-derivation of $\{\,\texttt{soil}\,\}$ yields the object
+set \{\texttt{Caeruleum terricola}\}. One interpretation of this is
+that \texttt{Caeruleum terricola} has some soil-substrate related
+property which sets it apart from other species of lichen which also
+have a soil-substrate. The point is subtle, but this interpretation
+is not true in general. The status of \texttt{Caeruleum terricola} as
+the uniquely preferred species of lichens which have a soil-substrate
+may well be the byproduct of another preference entirely unrelated to
+substrates. For example, \Cref{figure:preference-relation-lichen} may
+be an encoding of the preference that \say{lichen which tolerate
+	indirect light are more preferable than those which tolerate direct
+	light; from those less-preferable species which do tolerate direct
+	light, it is preferred that they are orange}. This remark is of
+little material significance, but is rather important for preventing
+misconceptions about what preference orders represent, and provides
+some intuition for how they might be constructed. For the time being,
+we remain agnostic to the latter question about their construct. This
+will be the subject of \%Cref{subsubsection:finding-order}.
 
-Our motivation for introducing preferential contexts is quite apparent: their structural properties can be
-used to provide a semantics for defeasible attribute implications, which we refer to as \textit{defeasible
-	conditionals}. If $X,Y \subseteq M$ are sets of attributes, then the expression $X \twiddle Y$ tells us that
-the typical extension of $X$ is contained in the extension of $Y$.
+Our motivation for introducing preferential contexts is quite
+apparent: their structural properties can be used to provide a
+semantics for defeasible attribute implications, which we refer to as
+\textit{defeasible conditionals}. If $X,Y \subseteq M$ are sets of
+attributes, then the expression $X \twiddle Y$ tells us that the
+typical extension of $X$ is contained in the extension of $Y$.
 
 \begin{definition}
 	\label{definition:satisfaction-preferential-context}
 
-	Let $\pcontext = \PGMI$ be a preferential context, $A,B \subseteq M$ subsets of attributes, and $A \twiddle
-		B$ \emph{defeasible conditional}. We say that $A \twiddle B$ is \emph{satisfied} in $\pcontext$ if and only
-	if $\Mind{A}\subseteq B^{\downarrow}$ and write $\pcontext \vDash_{\pcontext}A \twiddle B$.
+	Let $\pcontext = \PGMI$ be a preferential context, $A,B \subseteq M$
+	subsets of attributes, and $A \twiddle B$ \emph{defeasible
+		conditional}. We say that $A \twiddle B$ is \emph{satisfied} in
+	$\pcontext$ if and only if $\Mind{A}\subseteq B^{\downarrow}$ and
+	write $\pcontext \vDash_{\pcontext}A \twiddle B$.
 \end{definition}
 
-The condition for satisfaction of $A \twiddle B$is that all the objects in the minimised-derivation of $A$
-are members of the derivation of $. For those with a background in FCA, satisfaction may be expressed more
-	familiarly as \subseteq \Minr{A}$.
+The condition for satisfaction of $A \twiddle B$is that all the
+objects in the minimised-derivation of $A$ are members of the
+derivation of $. For those with a background in FCA, satisfaction may
+	be expressed more familiarly as \subseteq \Minr{A}$.
 
-The condition for satisfaction of $A \twiddle B$ is that all the objects in the minimised-derivation of $A$
-are members of the derivation of $B$. For those with a background in FCA, satisfaction may be expressed more
-familiarly as $B \subseteq \Minr{A}$.
+The condition for satisfaction of $A \twiddle B$ is that all the
+objects in the minimised-derivation of $A$ are members of the
+derivation of $B$. For those with a background in FCA, satisfaction
+may be expressed more familiarly as $B \subseteq \Minr{A}$.
 
 % \begin{example}
 

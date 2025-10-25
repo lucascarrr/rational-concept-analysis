@@ -50,28 +50,19 @@ every object which had the attribute \texttt{Beige} also has
 \texttt{Shade}, by extension, every object that has \texttt{Beige}
 and \textit{something else} will continue to have \texttt{Shade}.
 
-This severely limits the amount of information we might extract from
-a context. Certainly there are instances of meaningful correspondence
-between attributes which admit exceptions.
+In certain cases, this imposes too strong an impediment on the amount
+of useful information that may be extract from a context. Certainly,
+there are instances of meaningful correspondence between attributes
+which admit exceptions. Herein lies the first motivation for
+introducing KLM style reasoning to FCA. A second argument, consdering
+how the benefits of being able to reason prototypically about
+concepts is presented in the next chapter, where it is more relevant.
 
-Nonetheless, there are indeed settings where the enforcement of
-monotonicity has similarly undesirable second-order effects. Many of
-these settings are characterised by arguments similar to those given
-in \Cref{section:nmr-background}: that there are exceptional
-instances of a concept, or more generally some \textit{class}, and
-that it is often useful to be able to put aside the exceptions and
-reason prototypically with respect to the considered concept. Another
-consideration in FCA is how one might represent prototypical concepts
-within the concept lattice, but this discussion will be left to the
-next chapter for which it is more pertinent. The argument we consider
-here is borne out of the recognition that FCA is frequently used as a
-tool for data-mining.
-
-Consider \Cref{cxt:lichens}, which describes several distinct species
-of lichen, described by certain morphological and ecological
+Consider \Cref{cxt:lichens} below, which describes several distinct
+species of lichen, described by certain morphological and ecological
 properties.
 
-\begin{figure}[]
+\begin{figure}[H]
 	\hspace{-6.5em}
 	\resizebox{1.1\textwidth}{!}{
 		\centering
@@ -134,13 +125,16 @@ properties.
 	\caption{A formal context of lichens} \label{fig:lichens}
 \end{figure}
 
-If the task were to learn patterns, or associations between
-properties---these would be represented by attribute
-implications---then the brittleness of these implications is a
-substantially limiting factor. Patterns for which there exists a
-counter-example would be completely missed. The situation may become
-worse under the recognition that frequently contexts, and data in
-general, may contain errors.
+\textit{Lichens} are quite interesting organisms: a symbiosis between
+a fungus and an alga \cite{zonca2022lichens}.
+
+The \textit{thallus} is comprised from an ascomycete fungus and
+filaments, or \textit{hyphae}, containing chlorophyll possesing cells
+that enable the organism to feed itself.
+
+Previously considered plants, or secretions from plants. Frequently,
+mistaken to be parisitic, but their substrate is purely for
+affixation, lichens draw no nutrition.
 
 \subsection{Association Rules}
 \label{subsection:association-rules}
@@ -217,15 +211,15 @@ admit description via \lucas{the kind of axiomisation we want [source
 We begin the introduction of KLM style defeasible reasoning to FCA by
 defining a structure that is in almost perfect analogy to
 preferential interpretations. The analogy is not perfect as we
-initially behave quite conservatively and attempt to make as few
-changes as possible to the default setting of FCA. As we get further
+initially behave quite conservatively, and attempt to make as few
+changes to the default setting of FCA as possible. As we get further
 along in the discussion, more substantial amendments to the default
-setting are suggested. These amendments serve to make the faithful
-the analogy. The idea behind the order of this exposition is that we
-view this work largely as extending FCA with ideas borrowed from
-defeasible reasoning. Then, there may be those who find some of the
-essential parts of defeasible reasoning quite useful in FCA, but wish
-to remain in the default setting.
+setting are suggested, these will serve to complete the analogy. The
+idea behind the order of this exposition is that we view this work
+largely as extending FCA with ideas borrowed from defeasible
+reasoning. Then, there may be those who find some of the essential
+parts of defeasible reasoning quite useful in FCA, but wish to remain
+in the default setting.
 
 With that said, we define the first extension of a
 \textit{preferential context}.
@@ -243,12 +237,12 @@ introduced by Obiedkov \shortcite{Obiedkov2012} and later, with our
 purposes in mind, by Carr \textit{et al.} \shortcite{Carr2024}. In
 some sense they are nothing more than a formal context with the
 addition of a preference order over the set of objects. The same
-understanding of preference orders on states applies, so for two
+understanding of preference orders on states applies, and so for two
 objects $g_1, g_2 \in G$, when $g_1 \prec g_2$, we say that object
-$g_1$ is \textit{preferred} or more \textit{typical} than $g_2$.
+$g_1$ is \textit{preferred} or \textit{more typical} than $g_2$.
 
-We provide an example of what such a preference ordering might look
-like below (in the interests of brevity, we consider only a
+An example of what such a preference ordering might look like is
+given below (in the interests of brevity, we consider only a
 subcontext of \Cref{cxt:lichens}, constructed by taking the first six
 objects).
 
@@ -273,15 +267,17 @@ objects).
 \end{figure}
 
 Recall that preferential interpretations were defined by a relation
-on states which were then mapped to valuations, with no requirement
-that the mapping be injective. It may then be surprising that states
-seem to have been entirely omitted from our definition of
-preferential contexts. The reason is slightly informal and is based
-on the recognition that unlike the set of propositional valuations,
-formal contexts place no restriction on the inclusion of distinct
-objects with equivalent intensions, in fact, this is quite common. If
-need be, one may quite naturally avoid the issue arising from
-duplicate states introduced in \Cref{lemma:states-preferential}.
+on states, which were subsequently mapped to valuations, with no
+requirement that the mapping be injective. That is, the same
+valuation could appear in multiple ``locations'' in the preference
+order. It may then be surprising that states see have been entirely
+omitted from our definition of preferential contexts. The reason is
+slightly informal and based on the recognition that, unlike the set
+of propositional valuations, formal contexts have no restriction on
+the inclusion of distinct objects with equivalent intensions. In
+fact, this is quite common. If need be, one may quite naturally avoid
+the issue arising from duplicate states introduced in
+\Cref{lemma:states-preferential}.
 
 % \begin{lemma}
 % 	\label{lemma:objects-preferential}
@@ -304,12 +300,12 @@ as one might expect, through the process of \textit{minimisation}.
 	\]
 \end{definition}
 
-Frequently, the starting point of a minimisation is not from a set of
-objects, but rather applied to a set of objects that is itself the
-result of a derivation from attributes. That is, we might begin with
-the attribute set $\{\,\texttt{soil}\,\}$ and wish to find the most
-preferred objects that have this attribute. We call this the
-\textit{minimised-derivation}, and write
+Frequently, the starting point of a minimisation is not directly from
+a set of objects, and is rather applied to a set of objects that is
+itself the result of a prior derivation of attributes. That is, we
+might begin with the attribute set $\{\,\texttt{soil}\,\}$ and wish
+to find the most preferred objects that have this attribute. We call
+this the \textit{minimised-derivation}, and write
 $\Mind{\{\,\texttt{soil}\,\}}$. If one were to apply a second
 derivation to the set resulting from a minimised-derivation, the
 result would represent all those attributes shared by the preferred
@@ -317,24 +313,28 @@ objects that were in the minimised-derivation from the initial set of
 attributes. In turn, we refer to this as \textit{minimised-return}
 and write $\Minr{\{\,\texttt{soil}\,\}}$.
 
-The minimised-derivation of $\{\,\texttt{soil}\,\}$ yields the object
-set \{\texttt{Caeruleum terricola}\}. One interpretation of this is
-that \texttt{Caeruleum terricola} has some soil-substrate related
-property which sets it apart from other species of lichen which also
-have a soil-substrate. The point is subtle, but this interpretation
-is not true in general. The status of \texttt{Caeruleum terricola} as
-the uniquely preferred species of lichens which have a soil-substrate
-may well be the byproduct of another preference entirely unrelated to
+The minimised-derivation of $\{\,\texttt{soil}\,\}$ yields the
+singleton object-set \{\texttt{Caeruleum terricola}\}. One
+interpretation of this might be that \texttt{Caeruleum terricola} has
+some soil-substrate related property which sets it apart from other
+species of lichen which also possess a soil-substrate. The point is
+subtle, but this reasoning that informs this interpretation is not
+true in general. The status of \texttt{Caeruleum terricola} as the
+uniquely preferred species of lichens which have a soil-substrate may
+well be the byproduct of another preference, entirely unrelated to
 substrates. For example, \Cref{figure:preference-relation-lichen} may
-be an encoding of the preference that \say{lichen which tolerate
+be an encoding of the preference that \say{lichens which tolerate
 	indirect light are more preferable than those which tolerate direct
-	light; from those less-preferable species which do tolerate direct
-	light, it is preferred that they are orange}. This remark is of
-little material significance, but is rather important for preventing
-misconceptions about what preference orders represent, and provides
-some intuition for how they might be constructed. For the time being,
-we remain agnostic to the latter question about their construct. This
-will be the subject of \%Cref{subsubsection:finding-order}.
+	light; from those less-preferrable species which do tolerate direct
+	light, it is preferred that they are orange}. These preferences would
+construct the same ordering on objects, but clearly has a distinct
+interpretation to that which was proposed previously. This remark is
+of little material significance, but is rather important for
+preventing misconceptions about what preference orders represent, and
+provides some intuition for how they might be constructed. For the
+time being, we remain agnostic to the latter question about their
+construct. This will be the subject of
+\Cref{subsubsection:finding-order}.
 
 Our motivation for introducing preferential contexts is quite
 apparent: their structural properties can be used to provide a
@@ -348,39 +348,39 @@ typical extension of $X$ is contained in the extension of $Y$.
 
 	Let $\pcontext = \PGMI$ be a preferential context, $A,B \subseteq M$
 	subsets of attributes, and $A \twiddle B$ \emph{defeasible
-		conditional}. We say that $A \twiddle B$ is \emph{satisfied} in
-	$\pcontext$ if and only if $\Mind{A}\subseteq B^{\downarrow}$ and
-	write $\pcontext \vDash_{\pcontext}A \twiddle B$.
+		conditional}. We say that $A \twiddle B$ is \emph{satisfied} by
+	$\pcontext$ if and only if $\Mind{A}\subseteq B^{\downarrow}$, then
+	we write $\pcontext \vDash_{\pcontext}A \twiddle B$.
 \end{definition}
-
-The condition for satisfaction of $A \twiddle B$is that all the
-objects in the minimised-derivation of $A$ are members of the
-derivation of $. For those with a background in FCA, satisfaction may
-	be expressed more familiarly as \subseteq \Minr{A}$.
 
 The condition for satisfaction of $A \twiddle B$ is that all the
 objects in the minimised-derivation of $A$ are members of the
-derivation of $B$. For those with a background in FCA, satisfaction
-may be expressed more familiarly as $B \subseteq \Minr{A}$.
+derivation of . For those with a background in FCA, satisfaction may
+be expressed more familiarly as $B \subseteq \Minr{A}$.
 
-% \begin{example}
+\begin{example}
 
-% 	The following defeasible conditionals are all satisfied by the preferential context composed from
-% 	\Cref{fig:lichens} and \Cref{figure:preference-relation-lichen}
-% 	\begin{enumerate}
-% 		\item $\{\texttt{high-light}\} \twiddle \{\texttt{red}\}$
-% 		\item $\{\texttt{high-light,low-moisture}\} \ntwiddle \{\texttt{red}\}$
-% 		\item $\{\texttt{high-light, yellow}\} \twiddle \{\texttt{orange}\}$
-% 		\item $\{\texttt{orange}\} \twiddle \{\texttt{red}\}$
-% 		\item $\{\texttt{high-light,yellow}\} \ntwiddle \{\texttt{red}\}$
-% 	\end{enumerate}
+	The following defeasible conditionals are all satisfied by the
+	preferential context composed from \Cref{cxt:lichens} with the
+	preference order from \Cref{figure:preference-relation-lichen}.
 
-% 	These conditionals tell us that usually species of lichen that live in areas with a signficant amount of
-% 	light are red, but those which additionally live in areas with low-moisture usually are not red. While it is
-% 	typical for yellow species of lichen that live in well-lit areas to also be orange, and it is also typical
-% 	for orange species of lichen to have red colouring too, it does not follow that yellow species of lichen
-% 	living in well-lit areas have red. In other words, the logic is non-monotonic and intransitive.
-% \end{example}
+	\begin{enumerate}[nosep]
+		\item $\{\texttt{high-light}\} \twiddle \{\texttt{red}\}$
+		\item $\{\texttt{high-light,low-moisture}\} \ntwiddle \{\texttt{red}\}$
+		\item $\{\texttt{high-light, yellow}\} \twiddle \{\texttt{orange}\}$
+		\item $\{\texttt{orange}\} \twiddle \{\texttt{red}\}$
+		\item $\{\texttt{high-light,yellow}\} \ntwiddle \{\texttt{red}\}$
+	\end{enumerate}
+
+	These conditionals convey that usually species of lichen that live in
+	areas with a signficant amount of light are red, but those which
+	additionally live in areas with low-moisture usually are not red.
+	While it is typical for yellow species of lichen that live in
+	well-lit areas to also be orange, and it is also typical for orange
+	species of lichen to have red colouring too, it does not follow that
+	yellow species of lichen living in well-lit areas have red. In other
+	words, the logic is non-monotonic and intransitive.
+\end{example}
 
 % It might be suspected that the kind of reasoning described by preferential contexts corresponds to the
 % preferential consequence relations discussed earlier. We show that this is not quite true.

@@ -69,6 +69,7 @@ commandCodeBlocks:
   stringsAllowedBetweenArguments:
     - amalgamate: 1
   commandNameSpecial:
+    - Require
     - cxtName
     - atr
     - atr
@@ -131,6 +132,6 @@ noAdditionalIndentGlobal:
 # --- small fine-tuning so latexindent recognizes the command/environment names we use ---
 fineTuning:
   commands:
-    name: [+a-zA-Z@\*0-9_\:]+?
+    name: [+a-zA-Z@\*0-9_\:]+
   environments:
     name: [a-zA-Z@\*0-9_\\]+

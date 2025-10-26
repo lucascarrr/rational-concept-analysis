@@ -22,33 +22,57 @@
 
 		\Node{7}{17}{58} \Edge{3}{7} \Edge{2}{7} \leftAttbox{7}{1}{1}{rgs}
 
-		\Node{8}{0}{47} \Edge{6}{8} \leftAttbox{8}{1}{1}{imm} \leftObjbox{8}{1}{1}{moc-79}
+		\Node{8}{0}{47} \Edge{6}{8} \leftAttbox{8}{1}{1}{imm}
+		\leftObjbox{8}{1}{1}{moc-79}
 
 		\Node{9}{40}{46} \Edge{4}{9} \Edge{5}{9} \leftAttbox{9}{1}{1}{dfe}
 
 		\Node{10}{50}{46} \Edge{5}{10} \rightObjbox{10}{1}{1}{moc-62}
 
-		\Node{11}{10}{40} \Edge{6}{11} \Edge{7}{11} \rightObjbox{11}{1}{1}{moc-1}
+		\Node{11}{10}{40} \Edge{6}{11} \Edge{7}{11}
+		\rightObjbox{11}{1}{1}{moc-1}
 
 		\Node{12}{22.5}{43} \Edge{7}{12} \Edge{4}{12}
 
-		\Node{13}{45}{33} \Edge{9}{13} \Edge{10}{13} \rightObjbox{13}{1}{1}{moc-34}
+		\Node{13}{45}{33} \Edge{9}{13} \Edge{10}{13}
+		\rightObjbox{13}{1}{1}{moc-34}
 
-		\Node{14}{30}{28} \Edge{9}{14} \Edge{12}{14} \leftObjbox{14}{1}{1}{moc-6}
+		\Node{14}{30}{28} \Edge{9}{14} \Edge{12}{14}
+		\leftObjbox{14}{1}{1}{moc-6}
 
-		\Node{15}{12.5}{23} \Edge{8}{15} \Edge{11}{15} \Edge{12}{15} \leftObjbox{15}{1}{1}{moc-0}
+		\Node{15}{12.5}{23} \Edge{8}{15} \Edge{11}{15} \Edge{12}{15}
+		\leftObjbox{15}{1}{1}{moc-0}
 
-		\Node{16}{25}{10} \Edge{13}{16} \Edge{14}{16} \Edge{15}{16} \leftAttbox{16}{2}{0}{scc}
+		\Node{16}{25}{10} \Edge{13}{16} \Edge{14}{16} \Edge{15}{16}
+		\leftAttbox{16}{2}{0}{scc}
 	\end{diagram}
 	% \vspace{-6em}
-	\caption{The concept lattice corresponding to \Cref{cxt:grouplikes}} \label{figure:concept-lattice-congress}
+	\caption{The concept lattice corresponding to \Cref{cxt:grouplikes}}
+	\label{figure:concept-lattice-congress}
 \end{figure}
 \section{Background}
 
 \section{Preconcepts}
+FCA Theory.
 
 \section{Naive Rational Concepts}
+
+I think here it would be a good place to discuss the typical concepts
+a la \cite{Carr2024}. Can go into detail, but also then discuss why
+this doesn't work. It relates to the fact that transitivity is not a
+property of this logic, but lattices rely on transitivity.
+
+Could include discussion on defeasible inheritance networks; but this
+is not really relevant because I couldn't get it to work. Maybe worth
+mentioning in a closing paragraph; i.e., \say{This is what was tried,
+	it didn't work because of X. Perhaps it is worth exploring some
+	non-monotonic lattice theory, but this was beyond the scope of this
+	thesis.}
 
 \section{Version II}
 
 \section{Relation to Contextual Rational Closure}
+Here we want to show how the information you get from these typical
+concept lattices corresponds to the information you get from rational
+closure. It's a bit obvious, but pointing it out is maybe the purpose
+of this work, since its all a bit obvious.

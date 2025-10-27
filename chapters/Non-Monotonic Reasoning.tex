@@ -177,7 +177,7 @@ non-monotonic systems. The symbol `$\twiddle$' (pronounced
 ``twiddle'') is used instead of `$\vdash$' to denote a non-monotonic
 consequence relation. As may be expected, $\phi \twiddle \psi$ has
 the same meaning as $(\phi, \psi) \in \; \twiddle$, and $\phi
-	\ntwiddle \psi$ as $(\phi , \psi)\not \in \; \twiddle$. At times of
+	\ntwiddle \psi$ as $(\phi, \psi)\not \in \; \twiddle$. At times of
 potential confusion, a subscript may be used to disambiguate which
 consequence relation is being referred to, and so $\twiddle_{p}$
 would refer to a preferential relation, as defined below.
@@ -242,7 +242,7 @@ traumatised.
 	\inferLeft{And}{\phi \twiddle \psi, \quad \phi \twiddle \gamma}{\phi \twiddle \psi \land \gamma}
 \end{align}
 The \textit{And} postulate suggests that if $\psi$ and $\gamma$ are
-both expected consequence of $\phi$ , then their conjunction is also
+both expected consequence of $\phi$, then their conjunction is also
 expected. This postulate fails in probabilistic systems, such as
 \textit{association rules} \cite{gabbay1985theoreticalFoundations}.
 \begin{align}
@@ -257,10 +257,10 @@ that if we are in an epistemic state $\phi$ where one expectation,
 among others, is that $\psi$ holds. Learning that $\psi$ indeed holds
 should not alter the epistemic state in such a way that the
 \textit{other} expectations are abandoned, and so the new state,
-$\phi \land \psi$ , we should expect everything that was expected
-when all we knew was $\phi$ . In other words, we reason monotonically
-with respect to expected information. The above postulates capture
-the essence of preferential (consequence) relations. Much like we saw
+$\phi \land \psi$, we should expect everything that was expected when
+all we knew was $\phi$. In other words, we reason monotonically with
+respect to expected information. The above postulates capture the
+essence of preferential (consequence) relations. Much like we saw
 with Hilbert systems, however, certain rules, which reveal
 interesting properties of system P, may be derived. A version of
 \textit{Cut}:
@@ -277,16 +277,16 @@ This construction implies monotonicity as it requires that the
 typical consequence of $\alpha$, which is $\psi$, must remain a
 consequence when the conjunction $\alpha \land \phi$ is considered.
 The former variation does not enforce this, and rather says
-\say{Suppose I have certain knowledge of $\phi$ , and that if I were
-	to assume $\psi$ I should expect to conclude $\gamma$ . Then if I can
+\say{Suppose I have certain knowledge of $\phi$, and that if I were
+	to assume $\psi$ I should expect to conclude $\gamma$. Then if I can
 	show that infact $\psi$ was already an expected consequence of
-	knowing $\phi$ , I should expect that $\gamma$ follows from $\phi$ }.
+	knowing $\phi$, I should expect that $\gamma$ follows from $\phi$ }.
 When considered alongside the argument for Cautious Monotony, Cut
 seems acceptable.
 
-The rule $S$ , which is analogous to one half of the deduction
-theorem (cf. \Cref{axiom:deduction-theorem}), expresses the notion
-that we retain plausible inferences when conditioned on a hypothesis.
+The rule $S$, which is analogous to one half of the deduction theorem
+(cf. \Cref{axiom:deduction-theorem}), expresses the notion that we
+retain plausible inferences when conditioned on a hypothesis.
 \begin{align}
 	\inferLeft{S}{\phi \land \psi \twiddle \gamma}{\phi \twiddle \psi \rightarrow \gamma}
 \end{align}
@@ -364,23 +364,23 @@ from the other.
 
 It will be useful to recall some definitions from propositional
 logic: a valuation $u \in \mathcal{U}$ is a \textit{model} of a
-formula $\phi \in \mathcal{L}$ if it satisfies $\phi$ , $\phi$ is
+formula $\phi \in \mathcal{L}$ if it satisfies $\phi$, $\phi$ is
 \textit{satisfiable} if it has a model. Another formula $\psi$ is a
 \textit{logical consequence} of $\phi$ if the models of $\phi$ are a
-subset of the models of $\psi$ . We now introduce analogous
+subset of the models of $\psi$. We now introduce analogous
 definitions in the setting of preferential logic. The first change is
-that we consider a richer language, $\Lang$ . This is $\lang$
-extended with the new connective `$\twiddle$' such that $\phi
-	\twiddle \psi$ is a sentence in $\Lang$ when $\phi, \psi \in
-	\mathcal{L}$ . One should not overlook that the usage of the
-`$\twiddle$' has now shifted from an element of the metalanguage,
-where it refers to a kind of consequence relation, to an object level
-connective, used somewhat analogously to the classical Boolean
-operator `$\rightarrow$'. Certain restrictions on the usage of
-`$\twiddle$' do apply. In particular, the nesting of defeasible
-statements is not permitted, and so $\phi \twiddle (\psi \twiddle
-	\gamma )$ is not a statement in the language $\Lang$ . At times, we
-may wish to distinguish between formulae in $\Lang$ which do not use
+that we consider a richer language, $\Lang$. This is $\lang$ extended
+with the new connective `$\twiddle$' such that $\phi \twiddle \psi$
+is a sentence in $\Lang$ when $\phi, \psi \in \mathcal{L}$. One
+should not overlook that the usage of the `$\twiddle$' has now
+shifted from an element of the metalanguage, where it refers to a
+kind of consequence relation, to an object level connective, used
+somewhat analogously to the classical Boolean operator
+`$\rightarrow$'. Certain restrictions on the usage of `$\twiddle$' do
+apply. In particular, the nesting of defeasible statements is not
+permitted, and so $\phi \twiddle (\psi \twiddle \gamma )$ is not a
+statement in the language $\Lang$. At times, we may wish to
+distinguish between formulae in $\Lang$ which do not use
 `$\twiddle$', and so we refer to these as classical, and the
 alternative as defeasible formulae. Defeasible conditionals may be
 satisfied by a \textit{preferential interpretation}, which is a
@@ -392,7 +392,7 @@ structure defined as:
 
 	A \emph{preferential interpretation} $\Pin$ is a triple where $S$ is
 	a set of \emph{states}, $l: S \to \mathcal{U}$ is a function mapping
-	states to valuations, and $\prec$ is a strict partial-order on $S$ .
+	states to valuations, and $\prec$ is a strict partial-order on $S$.
 \end{definition}
 
 The preference relation provides a basis for restricting ourselves to
@@ -405,8 +405,8 @@ of affairs. This idea is formalised as \textit{minimal states}:
 	Given a preferential interpretation $\Pin$ and some $\phi \in \Lang$
 	, we write $\underline{\hat{\phi}}$ to denote the set $\{\,s \in
 		\hat{\phi}\mid \nexists s' \in \hat{\phi}\text{ such that }s' \prec s
-		\,\}$ , which is the set of \textit{preferred states} that satisfy
-	$\phi$ . We may also call these the \textit{$\phi$ -minimal} states.
+		\,\}$, which is the set of \textit{preferred states} that satisfy
+	$\phi$. We may also call these the \textit{$\phi$ -minimal} states.
 \end{definition}
 
 It is necessary to stress the distinction between states in a
@@ -425,10 +425,10 @@ satisfy the \textit{smoothness} condition (which has also been called
 	\index{binary relation! smoothness}
 
 	A preferential interpretation $\Pin$ is called \textit{smooth} if and
-	only if for each $\phi \in \Lang$ , and each state $s \in \hat{\phi}$
-	satisfying $\phi$ , either $s \in \underline{\hat{\phi}}$ or there
+	only if for each $\phi \in \Lang$, and each state $s \in \hat{\phi}$
+	satisfying $\phi$, either $s \in \underline{\hat{\phi}}$ or there
 	exists another state $s' \in \hat{\phi}$ where $s' \in
-		\underline{\hat{\phi}}$ .
+		\underline{\hat{\phi}}$.
 \end{definition}
 
 The smoothness condition is violated by preference relations which
@@ -447,12 +447,12 @@ have the following:
 \begin{definition}
 	\label{definition:state-satisfaction}
 
-	Given a preferential interpretation $\pin$ , we say that a state $s
+	Given a preferential interpretation $\pin$, we say that a state $s
 		\in S$ \emph{satisfies} a classical formula $\phi \in \Lang$ if and
-	only if the valuation $l(s) \vDash \phi$ . In this case, we write
-	$\pin, s \vDash \phi$ , and use $\hat{\phi}$ to denote the set $\{\,s
-		\in S \mid \pin,s \vDash \phi \,\}$ . Then, $\pin$ \textit{satisfies}
-	$\phi$ if and only if $\pin , s \vDash \phi$ for all $s \in S$ .
+	only if the valuation $l(s) \vDash \phi$. In this case, we write
+	$\pin, s \vDash \phi$, and use $\hat{\phi}$ to denote the set $\{\,s
+		\in S \mid \pin,s \vDash \phi \,\}$. Then, $\pin$ \textit{satisfies}
+	$\phi$ if and only if $\pin, s \vDash \phi$ for all $s \in S$.
 \end{definition}
 
 What it means for a preferential interpretation to satisfy a
@@ -467,9 +467,9 @@ have:
 	A defeasible formula $\phi \twiddle \psi \in \Lang$ is
 	\emph{satisfied} by a preferential interpretation $\Pin$ if and only
 	if the every minimal state $s \in \underline{\hat{\phi}}$ also
-	satisfies $\psi$ . In this case we write $\pin \VDash \phi \twiddle
+	satisfies $\psi$. In this case we write $\pin \VDash \phi \twiddle
 		\psi$ and say that $\pin$ is a \emph{preferential model} of $\phi
-		\twiddle \psi$ .
+		\twiddle \psi$.
 \end{definition}
 
 One pleasing perspective on the semantics of preferential consequence
@@ -524,9 +524,9 @@ only with a restriction on which states should be considered.
 	As a means of providing some intuition for \Cref{lemma:cut-cautious},
 	which says that ``If $\phi \twiddle \psi$ then the plausible
 	consequences of $\phi$ and $\phi \land \psi$ coincide'', we note that
-	the interpretation is a model of $h \twiddle c$ , and that collection
+	the interpretation is a model of $h \twiddle c$, and that collection
 	of minimal states satisfying $h$ is precisely the same set as those
-	satisfying $h \land c$ .
+	satisfying $h \land c$.
 \end{example}
 
 The next two theorems constitute a representation result which shows
@@ -542,7 +542,7 @@ interpretation defines some preferential consequence relation.
 	If $\Pin$ is a preferential interpretation and $\phi, \psi \in \Lang$
 	, then $\pin$ defines the consequence relation $\twiddle_{\pin}$
 	given by the set $\{\,\phi \twiddle_{\pin}\psi \mid \pin \VDash \phi
-		\twiddle \psi\,\}$ , which satisfies \textit{Reflexivity},
+		\twiddle \psi\,\}$, which satisfies \textit{Reflexivity},
 	\textit{Left Logical Equivalence}, \textit{Right Weakening},
 	\textit{Or}, and \textit{Cautious Monotony} and is thus a
 	preferential consequence relation.
@@ -554,7 +554,7 @@ interpretation defines some preferential consequence relation.
 	If $\twiddle_{P}$ is a preferential consequence relation, then there
 	exists a preferential interpretation $W$ which induces the
 	consequence relation $\twiddle_{W}$ such that $\twiddle_{P}$ is
-	precisely $\twiddle_{W}$ .
+	precisely $\twiddle_{W}$.
 \end{theorem}
 
 The requirement that preferential interpretations define an ordering
@@ -584,9 +584,9 @@ equivalent consequence relation.
 preferential interpretation in
 \Cref{example:preferential-interpretation}. The states $s_{1}$ and
 $s_{2}$ are duplicate states, specifically they both map to the
-valuation $\{\,s,h,\overline{c}\,\}$ . As before, this preferential
+valuation $\{\,s,h,\overline{c}\,\}$. As before, this preferential
 interpretation is a model of $s \twiddle h$ as the set of minimal $s$
--states, $\{\,s_{2},s_{3} \,\}$ , is a subset of the $h$-states.
+-states, $\{\,s_{2},s_{3} \,\}$, is a subset of the $h$-states.
 
 % Consider the more finely grained portion of the preferential interpretation in \Cref{figure:preferential-interpretation}. As
 % before, the interpretation is a model of the conditional $s \twiddle h$. It is not, however, a model of $s \twiddle c$ given
@@ -618,11 +618,11 @@ interpretation is a model of $s \twiddle h$ as the set of minimal $s$
 
 The preferential interpretation in
 \Cref{figure:duplicate-states-example} is not a model of $s \twiddle
-	c$ , due to the counter example of $s_{2}$ , which is a minimal $s$
--state that does not satisfy $c$ . Should the duplicate states be
-merged into $s_{12}$ , so that now $s_{3}\prec s_{12}$ and
-$s_{4}\prec s_{12}$ , then $s \twiddle c$ would be satisfied, since
-$s_{12}$ is no longer an $s$-minimal state.
+	c$, due to the counter example of $s_{2}$, which is a minimal $s$
+-state that does not satisfy $c$. Should the duplicate states be
+merged into $s_{12}$, so that now $s_{3}\prec s_{12}$ and $s_{4}\prec
+	s_{12}$, then $s \twiddle c$ would be satisfied, since $s_{12}$ is no
+longer an $s$-minimal state.
 
 \subsection{Preferential Entailment}
 \label{subsection:preferential-entailment}
@@ -638,11 +638,11 @@ appropriate to discuss the matter of \textit{preferential
 
 	A defeasible knowledge base $\Delta$ \textit{preferentially entails}
 	a defeasible conditional $\phi \in \Lang$ if and only if $\phi$ is
-	satisfied by every preferential model of $\Delta$ . In this case we
-	write $\Delta \pentails \phi$ . The set of all defeasible
-	conditionals that can be preferentially entailed from $\Delta$ is
-	denoted by $\Cn{p}(\Delta)$ and is called the \textit{preferential
-		closure} of $\Delta$ .
+	satisfied by every preferential model of $\Delta$. In this case we
+	write $\Delta \pentails \phi$. The set of all defeasible conditionals
+	that can be preferentially entailed from $\Delta$ is denoted by
+	$\Cn{p}(\Delta)$ and is called the \textit{preferential closure} of
+	$\Delta$.
 \end{definition}
 
 When we speak of the \textit{closure} of a set of preferential
@@ -670,10 +670,10 @@ We abuse notation here, and use $\twiddle$ to mean the object-level
 connective, as well as to denote a preferential consequence relation.
 It does not cause any issue, as the connective $\phi \twiddle \psi$
 is satisfied by a preferential model $\pin$ if and only if it is in
-the preferential relation $\twiddle_\pin$ induced by $\pin$ . The
+the preferential relation $\twiddle_\pin$ induced by $\pin$. The
 proposition states that the preferential consequence operator applied
 to $\Delta$ amounts to the intersection of of the preferential
-consequence relations induced by the models of $\Delta$ . The next
+consequence relations induced by the models of $\Delta$. The next
 proposition confirms what might already be suspected: that
 preferential consequence relations are closed under arbitrary
 intersections.
@@ -690,7 +690,7 @@ intersections.
 	\label{proof:intersection-preferential-relations}
 
 	Let $\mathfrak{W}$ be a set of preferential relations and suppose the
-	intersection, $\pin$ , were not preferential. Then $\pin$ is not
+	intersection, $\pin$, were not preferential. Then $\pin$ is not
 	closed under application of \Crefrange{postulate:ref}{postulate:cm}.
 	This means that there is some $\pin' \in \mathfrak{W}$ that is also
 	not closed in the same way. Then $\pin'$ is not a preferential
@@ -717,14 +717,14 @@ preferential consequence relation which, by
 
 	Suppose that $\phi \twiddle \psi \in \Cn{p}(\Delta)$ and $\phi
 		\twiddle \psi \not \in \Cn{p}(\Delta')$ with $\Delta \subseteq
-		\Delta'$ . For every model $\pin$ of $\Delta$ we have $\phi
+		\Delta'$. For every model $\pin$ of $\Delta$ we have $\phi
 		\twiddle_\pin \psi$ (this follows from
 	\Cref{proposition:entailemnt-relations-intersection}), but also there
 	exists a model $\mathcal{V}$ of $\Delta'$ such that $\phi
-		\ntwiddle_\mathcal{V} \psi$ . Since $\Delta \subseteq \Delta'$ we
-	have that any model of $\Delta'$ is also a model of $\Delta$ , then
+		\ntwiddle_\mathcal{V} \psi$. Since $\Delta \subseteq \Delta'$ we have
+	that any model of $\Delta'$ is also a model of $\Delta$, then
 	$\mathcal{V}$ is a model of $\Delta$ and so $\phi \twiddle \psi \not
-		\in \Cn{p}(\Delta)$ , which is a contradiction.
+		\in \Cn{p}(\Delta)$, which is a contradiction.
 \end{proof}
 
 There is room for some (justified) confusion here. After all, we have
@@ -1049,10 +1049,10 @@ introduction of \textit{ranks}.
 	\label{lemma:modular-ranking-function}
 
 	If $\prec$ is a modular, strict partial order on $X$ then there is a
-	\emph{ranking function} $\mathsf{r}\colon X \to \Omega$ , with
+	\emph{ranking function} $\mathsf{r}\colon X \to \Omega$, with
 	$\Omega$ being a totally ordered set for which the strict order is
-	denoted $<$ , such that if $x \prec y$ then $\mathsf{r}(x) <
-		\mathsf{r}(y)$ for any $x,y \in X$ .
+	denoted $<$, such that if $x \prec y$ then $\mathsf{r}(x) <
+		\mathsf{r}(y)$ for any $x,y \in X$.
 \end{lemma}
 
 If, instead of the strict total order $<$, one considers a non-strict
@@ -1111,22 +1111,22 @@ formulae to defeasible syntax.
 \begin{lemma}
 	\label{lemma:classical-to-defeasible}
 
-	If $\phi$ is a classical formula in the language $\Lang$ , then it
-	can be expressed as the defeasible conditional $\neg \phi \twiddle
-		\bot$ . Then, any preferential interpretation $\pin$ is a model of
-	$\phi$ if and only if it is a model of the defeasible conditional
-	$\neg \phi \twiddle \bot$ .
+	If $\phi$ is a classical formula in the language $\Lang$, then it can
+	be expressed as the defeasible conditional $\neg \phi \twiddle \bot$
+	. Then, any preferential interpretation $\pin$ is a model of $\phi$
+	if and only if it is a model of the defeasible conditional $\neg \phi
+		\twiddle \bot$.
 \end{lemma}
 
 To explain the mechanics behind \Cref{lemma:classical-to-defeasible},
 consider that a preferential interpretation $\pin$ being a model of
 the conditional $\neg \phi \twiddle \bot$ is equivalent to the $\neg
 	\phi$ -minimal states being a subset of the states which satisfy
-$\bot$ . Of course, $\bot$ represents logical falshood, and the set
-of states which satisfy it is the emptyset. In turn, if $\pin$ is a
-model of $\neg \phi \twiddle \bot$ , there can be no states which
-satisfy $\neg \phi$ , which is equivalent to the condition that all
-states satisfy $\phi$ . If $\phi$ is thought of as the proposition
+$\bot$. Of course, $\bot$ represents logical falshood, and the set of
+states which satisfy it is the emptyset. In turn, if $\pin$ is a
+model of $\neg \phi \twiddle \bot$, there can be no states which
+satisfy $\neg \phi$, which is equivalent to the condition that all
+states satisfy $\phi$. If $\phi$ is thought of as the proposition
 \say{All men are mortal}, then the defeasible counterpart reads as
 \say{If not all men are mortal, then it is normal to infer anything,
 	including a contradiction}

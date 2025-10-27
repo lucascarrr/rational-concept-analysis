@@ -1,41 +1,50 @@
 \chapter{Preliminaries}
 \label{chapter:mathematical-preliminaries}
 
-The ultimate interest of this dissertation is to introduce a style of non-monotonic reasoning, originally
-situated in propositional logic, into Formal Concept Analysis. We use the first chapter to recall some of the
-more foundational ideas relating to topics which will be developed further on. In addition, we use this
-chapter as an opportunity to clarify the notation which will be deployed throughout the remainder of this
-work.
+The ultimate interest of this dissertation is to introduce a style of
+non-monotonic reasoning, originally situated in propositional logic,
+into Formal Concept Analysis. We use the first chapter to recall some
+of the more foundational ideas relating to topics which will be
+developed further on. In addition, we use this chapter as an
+opportunity to clarify the notation which will be deployed throughout
+the remainder of this work.
 
-This chapter begins by discussing notions in \textit{order} and \textit{lattice theory}, then moving onto
-\textit{closures} and \textit{Galois connections}, and concluding with a brief introduction to
-\textit{propositional logic} and some more general notions relating to logic.
+This chapter begins by discussing notions in \textit{order} and
+\textit{lattice theory}, then moving onto \textit{closures} and
+\textit{Galois connections}, and concluding with a brief introduction
+to \textit{propositional logic} and some more general notions
+relating to logic.
 
 \section{Order and Lattice Theory}
 \label{section:order-theory}
 
-In substantially different ways, the two areas on which this work is based---non-monotonic reasoning via
-preferential semantics, and Formal Concept Analysis---both depend on notions from the theory of mathematical
-orders. We recount some of the necessary, and unnecessary but interesting, ideas in the following
-subsections. The proceeding follow largely from the treatments by \cite{davey2002introduction} and
-\cite{bergman2015invitation}.
+In substantially different ways, the two areas on which this work is
+based---non-monotonic reasoning via preferential semantics, and
+Formal Concept Analysis---both depend on notions from the theory of
+mathematical orders. We recount some of the necessary, and
+unnecessary but interesting, ideas in the following subsections. The
+proceeding follow largely from the treatments by
+\cite{davey2002introduction} and \cite{bergman2015invitation}.
 
 \subsection{Orders}
 \label{subsection:orders}
 
-A \textit{binary relation} \index{binary relation} $R$ over the sets $X$ and $Y$ is a set of ordered pairs
-$\op{x,y}$ where $x \in X$ and $y \in Y$. We may choose to express that $\op{x,y}\in R$ using infix notation
-and write $xRy$, which tells us that $R$ relates $x$ to $y$.
+A \textit{binary relation} \index{binary relation} $R$ over the sets
+$X$ and $Y$ is a set of ordered pairs $\op{x,y}$ where $x \in X$ and
+$y \in Y$. We may choose to express that $\op{x,y}\in R$ using infix
+notation and write $xRy$, which tells us that $R$ relates $x$ to $y$.
 
-Certain binary relations, satisfying specific properties, occur frequently enough to warrant their own
-denomination. One such relation, which will be used in almost every section of this dissertation, is called a
-\textit{partial order}.
+Certain binary relations, satisfying specific properties, occur
+frequently enough to warrant their own denomination. One such
+relation, which will be used in almost every section of this
+dissertation, is called a \textit{partial order}.
 
 \begin{definition}
 	\label{definition:partial-order}
 
-	A \textit{partial order} \index{partial order} is a binary relation $\preceq \; \subseteq X \times X$ that
-	satisfies the following properties:
+	A \textit{partial order} \index{partial order} is a binary relation
+	$\preceq \; \subseteq X \times X$ that satisfies the following
+	properties:
 	\begin{align}
 		\text{(Reflexivity)}\quad  & x \preceq x                                      \\
 		\text{(Antisymmetry)}\quad & x \preceq y \tand y \preceq x \timpl x = y       \\
@@ -44,14 +53,18 @@ denomination. One such relation, which will be used in almost every section of t
 	for all $x,y,z \in X$.
 \end{definition}
 
-Frequently, ``preference'' is used as a metonym for an order. In this context, writing \say{element $x$ is
-	preferred to $y$} should be interpreted to mean that $(x, y) \in \; \preceq$, or simply $x \preceq y$. The
-metaphorical use of ``preference'' will become more apparent in \Cref{chapter:defeasible-reasoning}.
+Frequently, ``preference'' is used as a metonym for an order. In this
+context, writing \say{element $x$ is preferred to $y$} should be
+interpreted to mean that $(x, y) \in \; \preceq$, or simply $x
+	\preceq y$. The metaphorical use of ``preference'' will become more
+apparent in \Cref{chapter:defeasible-reasoning}.
 
-We write $x \npreceq y$ to indicate that $\op{x,y}$ is not in the relation, and $x \prec y$ for the case
-where $x\preceq y$ and $x \not = y$. In the scenario where $x \not \preceq y$ and $y \not \preceq x$---i.e.,
-that $x$ and $y$ are incomparable---we may write $x \parallel y$. From a partial order we can quite easily
-induce the notion of a \emph{strict partial order}.
+We write $x \npreceq y$ to indicate that $\op{x,y}$ is not in the
+relation, and $x \prec y$ for the case where $x\preceq y$ and $x \not
+	= y$. In the scenario where $x \not \preceq y$ and $y \not \preceq
+	x$---i.e., that $x$ and $y$ are incomparable---we may write $x
+	\parallel y$. From a partial order we can quite easily induce the
+notion of a \emph{strict partial order}.
 
 \begin{definition}
 	\label{definition:strict-partial-order} A \textit{strict partial-order} \index{partial-order! strict partial-order} is a binary relation $\prec \; \subseteq X \times X$ that satisfies:
@@ -63,13 +76,16 @@ induce the notion of a \emph{strict partial order}.
 	for all $x,y,z \in X$.
 \end{definition}
 
-An \textit{ordered set} is a pair $(X, \preceq)$ with $X$ being a set and $\preceq$ being an ordering on the
-elements of $X$. We make notation easier, and use $\mathbf{X}$ to denote the pair. We may reference the order
-relation associated with $\mathbf{X}$ by writing $\preceq_{X}$ in settings where there is ambiguity. If
-$\mathbf{Y}$ is a subset of $\mathbf{X}$, then $\mathbf{Y}$ inherits the order relation from $\mathbf{X}$;
-and so, for $x,y \in \mathbf{Y}$, $x \preceq_{Y}y$ if and only if $x \preceq_{X}y$. \index{ordered set}
-Ordered sets may be described visually by \textit{Hasse diagrams} \cite{Huth_Ryan_2004}. \index{Hasse
-	diagrams}
+An \textit{ordered set} is a pair $(X, \preceq)$ with $X$ being a set
+and $\preceq$ being an ordering on the elements of $X$. We make
+notation easier, and use $\mathbf{X}$ to denote the pair. We may
+reference the order relation associated with $\mathbf{X}$ by writing
+$\preceq_{X}$ in settings where there is ambiguity. If $\mathbf{Y}$
+is a subset of $\mathbf{X}$, then $\mathbf{Y}$ inherits the order
+relation from $\mathbf{X}$; and so, for $x,y \in \mathbf{Y}$, $x
+	\preceq_{Y}y$ if and only if $x \preceq_{X}y$. \index{ordered set}
+Ordered sets may be described visually by \textit{Hasse diagrams}
+\cite{Huth_Ryan_2004}. \index{Hasse diagrams}
 
 \begin{figure}[H]
 	\centering
@@ -79,8 +95,9 @@ Ordered sets may be described visually by \textit{Hasse diagrams} \cite{Huth_Rya
 		\begin{tikzpicture}[
 				every node/.style={ circle,
 						% fill=black,
-						text=black, inner sep=1.2pt, font=\small } ] \node (w) at (0,1) {$w$}; \node (y) at (-1,0) {$x$}; \node (z)
-			at (1,0) {$y$}; \node (x) at (0,-1) {$z$};
+						text=black, inner sep=1.2pt, font=\small } ] \node (w) at (0,1)
+			{$w$}; \node (y) at (-1,0) {$x$}; \node (z) at (1,0) {$y$}; \node (x)
+			at (0,-1) {$z$};
 
 			\draw (w) -- (y);
 			\draw (w) -- (z);
@@ -94,53 +111,68 @@ Ordered sets may be described visually by \textit{Hasse diagrams} \cite{Huth_Rya
 		\begin{tikzpicture}[
 				every node/.style={ circle,
 						% fill=black,
-						text=black, inner sep=1.2pt, font=\small } ] \node (y) at (-1,0) {$\phi$}; \node (z) at (1,0) {$\psi$}; \node
-			(x) at (0,1) {$\omega$};
+						text=black, inner sep=1.2pt, font=\small } ] \node (y) at (-1,0)
+			{$\phi$}; \node (z) at (1,0) {$\psi$}; \node (x) at (0,1) {$\omega$};
 
 			\draw (y) -- (x);
 			\draw (z) -- (x);
 		\end{tikzpicture}
 		\subcaption{$\mathbf{B}$} \label{subfigure:partial-order-b}
 	\end{subfigure}
-	\caption{The Hasse diagrams of two partially ordered sets} \label{figure:hasse-diagram}
+	\caption{The Hasse diagrams of two partially ordered sets}
+	\label{figure:hasse-diagram}
 \end{figure}
 
-As an illustrative example, from the ordered set in \Cref{subfigure:partial-order-a} we read that $z \preceq
-	x$, as there is a (strictly) upward path from $z$ to $x$. In fact, it is clear that $z \preceq w, x,y,z$, or
-that \say{$z$ is preferred to every other element in $\mathbf{A}$}. We say such an element is
+As an illustrative example, from the ordered set in
+\Cref{subfigure:partial-order-a} we read that $z \preceq x$, as there
+is a (strictly) upward path from $z$ to $x$. In fact, it is clear
+that $z \preceq w, x,y,z$, or that \say{$z$ is preferred to every
+	other element in $\mathbf{A}$}. We say such an element is
 \textit{minimal}.
 
-More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to the ordering on its
-container set if there exists no distinct element $y \in \mathbf{X}$ such that $y \preceq x$. Conversely, we
-say $x$ is \textit{maximal} if there exists no distinct $y \in \mathbf{X}$ where $x \preceq y$. Then $x$ is
-the \textit{minimum} element if $x \preceq y$ for all $y \in \mathbf{X}$; the dual notion of a
-\textit{maximum} is defined as we might expect. In the ordered set $\mathbf{B}$ shown in
-\Cref{subfigure:partial-order-b}, $\omega$ is the maximum element and the order has no minimum.
-\index{maximum} \index{minimum} \index{maximal} \index{minimal}
+More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with
+respect to the ordering on its container set if there exists no
+distinct element $y \in \mathbf{X}$ such that $y \preceq x$.
+Conversely, we say $x$ is \textit{maximal} if there exists no
+distinct $y \in \mathbf{X}$ where $x \preceq y$. Then $x$ is the
+\textit{minimum} element if $x \preceq y$ for all $y \in \mathbf{X}$;
+the dual notion of a \textit{maximum} is defined as we might expect.
+In the ordered set $\mathbf{B}$ shown in
+\Cref{subfigure:partial-order-b}, $\omega$ is the maximum element and
+the order has no minimum. \index{maximum} \index{minimum}
+\index{maximal} \index{minimal}
 
-The following definition captures how we might describe certain mappings from one ordered set to another, and
-how these mappings relate to the orders of their respective sets.
+The following definition captures how we might describe certain
+mappings from one ordered set to another, and how these mappings
+relate to the orders of their respective sets.
 
 \begin{definition}
 	\label{definition:order-maps} \index{map!order-preserving} \index{map!isotone} \index{map!order-embedding} \index{map!order-isomorphism} \index{map!order-reversing} \index{map!antitone} \index{isomorphism!order}
 	\index{dually isomorphic} \index{map!order-anti-isomorphic} \index{isomorphism!order-anti}
 
-	Let $\mathbf{X}$ and $\mathbf{Y}$ be ordered sets with a mapping $\varphi : \mathbf{X}\to \mathbf{Y}$. We
-	call $\varphi$ an \textit{order-preserving} (or, \textit{isotone}) map if $x \preceq_{X}y$ implies
-	$\varphi(x) \preceq_{Y}\varphi(y)$. It is an \textit{order-embedding} if it is injective, and $x
-		\preceq_{X}y$ if and only if $\varphi(x) \preceq_{Y}\varphi (y)$ for all $x,y \in \mathbf{X}$. Finally,
-	$\varphi$ is an \textit{order-isomorphism}, or just \textit{isomorphism}, if it is an order-embedding that is
-	also surjective. The dual notion to an order-preserving map is an \textit{order-reversing} (or,
-	\textit{antitone}) map. We say that two orders are \textit{dually isomorphic}, or
-	\textit{order-anti-isomorphic}, if there is an order-reversing bijection between them.
+	Let $\mathbf{X}$ and $\mathbf{Y}$ be ordered sets with a mapping
+	$\varphi : \mathbf{X}\to \mathbf{Y}$. We call $\varphi$ an
+	\textit{order-preserving} (or, \textit{isotone}) map if $x
+		\preceq_{X}y$ implies $\varphi(x) \preceq_{Y}\varphi(y)$. It is an
+	\textit{order-embedding} if it is injective, and $x \preceq_{X}y$ if
+	and only if $\varphi(x) \preceq_{Y}\varphi (y)$ for all $x,y \in
+		\mathbf{X}$. Finally, $\varphi$ is an \textit{order-isomorphism}, or
+	just \textit{isomorphism}, if it is an order-embedding that is also
+	surjective. The dual notion to an order-preserving map is an
+	\textit{order-reversing} (or, \textit{antitone}) map. We say that two
+	orders are \textit{dually isomorphic}, or
+	\textit{order-anti-isomorphic}, if there is an order-reversing
+	bijection between them.
 \end{definition}
 
 \subsection{Lattice Theory}
 \label{subsection:lattice-theory}
 
-Lattice theory studies partially ordered sets that behave well with respect to certain properties involving
-upper and lower bounds \cite{davey2002introduction}. Given an ordered set $\mathbf{X}$ and a subset
-$\mathbf{Y}\subseteq \mathbf{X}$, the set of upper bounds of $\mathbf{Y}$ is defined as
+Lattice theory studies partially ordered sets that behave well with
+respect to certain properties involving upper and lower bounds
+\cite{davey2002introduction}. Given an ordered set $\mathbf{X}$ and a
+subset $\mathbf{Y}\subseteq \mathbf{X}$, the set of upper bounds of
+$\mathbf{Y}$ is defined as
 \[
 	\mathbf{Y}^{u}\coloneqq \{x \in \mathbf{X}\mid \forall y \in \mathbf{Y}: y \preceq x\},
 \]
@@ -148,10 +180,13 @@ and the set of lower bounds, $\mathbf{Y}^{l}$, is defined dually. If $\mathbf{Y}
 $\mathbf{Y}$. Dually, if $\mathbf{Y}^{l}$ has a maximum element, then we call that element the \textit{infimum} of $\mathbf{Y}$ (the supremum and infinum are
 also referred to as the \textit{least upper bound} and \textit{greatest lower bound}, respectively).
 
-\index{upper bound} \index{lower bound} \index{lattice!join} \index{lattice!meet} Instead of talking about
-the supremum of two elements $x,y \in \mathbf{X}$, we opt for the term \textit{join} and write $x \vee y$, or
-$\bigvee \mathbf{Y}$. Instead of infimum, we say \textit{meet} and write $x \wedge y$, or $\textstyle
-	\bigwedge \mathbf{Y}$. With these definitions of meets and joins in mind, we are able to define a lattice as:
+\index{upper bound} \index{lower bound} \index{lattice!join}
+\index{lattice!meet} Instead of talking about the supremum of two
+elements $x,y \in \mathbf{X}$, we opt for the term \textit{join} and
+write $x \vee y$, or $\bigvee \mathbf{Y}$. Instead of infimum, we say
+\textit{meet} and write $x \wedge y$, or $\textstyle \bigwedge
+	\mathbf{Y}$. With these definitions of meets and joins in mind, we
+are able to define a lattice as:
 
 \begin{definition}
 	\label{definition:lattice} Given a partially ordered set $\mathbf{L}$, we say that $\mathbf{L}$ is a \textit{lattice} if for every pair $x, y \in \mathbf{L}$ the join $x \vee y$ and meet $x
@@ -161,11 +196,15 @@ $\bigvee \mathbf{Y}$. Instead of infimum, we say \textit{meet} and write $x \wed
 
 \index{lattice!bounded}
 
-A lattice $\mathbf{L}$ is \textit{bounded} if there exists an element $x \in \mathbf{L}$ such that $x \vee y
-	= x$ for all $y \in \mathbf{L}$, and there exists an element $z \in \mathbf{L}$ with $z \wedge y = z$ for all
-$y \in \mathbf{L}$. Frequently we refer to such an $x$ and $y$ as a top and bottom element and denote them by
-$\top$ and $\bot$, respectively. It is not difficult to spot that every complete lattice is bounded---in fact
-this is true by definition of a complete lattice---as a corollary every finite lattice is also bounded.
+A lattice $\mathbf{L}$ is \textit{bounded} if there exists an element
+$x \in \mathbf{L}$ such that $x \vee y = x$ for all $y \in
+	\mathbf{L}$, and there exists an element $z \in \mathbf{L}$ with $z
+	\wedge y = z$ for all $y \in \mathbf{L}$. Frequently we refer to such
+an $x$ and $y$ as a top and bottom element and denote them by $\top$
+and $\bot$, respectively. It is not difficult to spot that every
+complete lattice is bounded---in fact this is true by definition of a
+complete lattice---as a corollary every finite lattice is also
+bounded.
 
 % \begin{remark} The lattice $(\mathbb{Z}, <)$, constructed by imposing the natural order over the integers, is an example of an
 % lattice that is not bounded. \end{remark}
@@ -237,18 +276,21 @@ this is true by definition of a complete lattice---as a corollary every finite l
 			\draw (root) -- (7);
 			\draw (root) -- (C);
 		\end{tikzpicture}
-		\caption{The Division Lattice $(\mathbb{N}, \leq)$} \label{figure:complete-lattice}
+		\caption{The Division Lattice $(\mathbb{N}, \leq)$}
+		\label{figure:complete-lattice}
 	\end{figure}
 \end{example}
 
 \subsubsection{Lattices as algebraic structures}
 \label{subsubsection:lattices-as-algebraic-structures}
 
-Lattices may also be considered from an algebraic perspective. Although, as we will soon show, the algebraic
-and order-theoretic perspectives coincide, it is frequently beneficial for one's intuition to be able to
-switch between these two perspectives.
+Lattices may also be considered from an algebraic perspective.
+Although, as we will soon show, the algebraic and order-theoretic
+perspectives coincide, it is frequently beneficial for one's
+intuition to be able to switch between these two perspectives.
 
-Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the following properties
+Consider a set $L$ equipped with a binary operation $\vee$ that
+satisfies the following properties
 \begin{align}
 	\text{(Idempotence)}   & \quad x \vee x = x \label{eq:idempotence}                            \\
 	\text{(Commutativity)} & \quad x \vee y = y \vee x \label{eq:commutativity}                   \\
@@ -256,19 +298,24 @@ Consider a set $L$ equipped with a binary operation $\vee$ that satisfies the fo
 \end{align}
 for all elements $x,y,z \in L$.
 
-From the algebraic structure $(L, \vee)$ one can induce a \textit{unique} partial order $\preceq$ on $L$ by
-construction of the relation $\{( x, x \vee y) \mid x,y \in L \}$ \cite{bergman2015invitation}. The structure
-$(L, \vee)$ is called an algebraic \textit{join semilattice}, and $\preceq$ its \textit{underlying partial
-	order}. The relation can equivalently be described as \say{$x \preceq y$ if and only if $x \vee y = y$}.
+From the algebraic structure $(L, \vee)$ one can induce a
+\textit{unique} partial order $\preceq$ on $L$ by construction of the
+relation $\{( x, x \vee y) \mid x,y \in L \}$
+\cite{bergman2015invitation}. The structure $(L, \vee)$ is called an
+algebraic \textit{join semilattice}, and $\preceq$ its
+\textit{underlying partial order}. The relation can equivalently be
+described as \say{$x \preceq y$ if and only if $x \vee y = y$}.
 
 \begin{example}
 	\label{example:power-set-lattice}
 
-	Consider the set $S = \{1,2,3\}$ and the union operation $\cup$. From $(\pset{S}, \cup)$ we can induce the
-	order relation characterised by the set $\{(X, X \cup Y) \mid X,Y \subseteq S \}$ (frequently, this kind of
-	ordering is called the \textit{set inclusion order}). From the Hasse diagram in
-	\Cref{figure:set-inclusion-order} representing this order, we observe that the $\cup$ binary relation
-	corresponds to the $\vee$ described in \Cref{definition:lattice}.
+	Consider the set $S = \{1,2,3\}$ and the union operation $\cup$. From
+	$(\pset{S}, \cup)$ we can induce the order relation characterised by
+	the set $\{(X, X \cup Y) \mid X,Y \subseteq S \}$ (frequently, this
+	kind of ordering is called the \textit{set inclusion order}). From
+	the Hasse diagram in \Cref{figure:set-inclusion-order} representing
+	this order, we observe that the $\cup$ binary relation corresponds to
+	the $\vee$ described in \Cref{definition:lattice}.
 	\begin{figure}[H]
 		\centering
 		\begin{tikzpicture}[every node/.style={ circle,text=black, inner sep=0pt, minimum size=6mm, font=\scriptsize } ]
@@ -289,40 +336,51 @@ $(L, \vee)$ is called an algebraic \textit{join semilattice}, and $\preceq$ its 
 			\draw (2) -- (23);
 			\draw (3) -- (13);
 		\end{tikzpicture}
-		\caption{The underlying order of $(\pset{S}, \cup)$} \label{figure:set-inclusion-order}
+		\caption{The underlying order of $(\pset{S}, \cup)$}
+		\label{figure:set-inclusion-order}
 
-		We may call the above lattice the \textit{powerset lattice} or \textit{boolean algebra} of $S$.
-		\index{lattice!boolean}
+		We may call the above lattice the \textit{powerset lattice} or
+		\textit{boolean algebra} of $S$. \index{lattice!boolean}
 	\end{figure}
 \end{example}
 \index{lattice!semilattice}
 
-If we instead consider the structure $(L, \wedge)$ where $\wedge$ is a different binary operation on $L$
-satisfying the same properties \Cref{eq:idempotence}--\Cref{eq:associativity}, we can construct a partial
-order characterised by the set $\{( x,y) \mid x \wedge y = x \tand x,y \in L\}$. The structure $(L, \wedge)$
-is called a \textit{meet semilattice}.
+If we instead consider the structure $(L, \wedge)$ where $\wedge$ is
+a different binary operation on $L$ satisfying the same properties
+\Cref{eq:idempotence}--\Cref{eq:associativity}, we can construct a
+partial order characterised by the set $\{( x,y) \mid x \wedge y = x
+	\tand x,y \in L\}$. The structure $(L, \wedge)$ is called a
+\textit{meet semilattice}.
 
-It is an obvious next step to wonder how these two algebraic structures might be related. Fix a set non-empty
-set $L$ with the two binary operations, $\vee$ and $\wedge$, introduced in the prior paragraphs. We have
-already seen that the underlying order of the join semilattice can be described as $x \preceq y$ if and only
-if $x \vee y = y$, while the underlying order of the meet semilattice is described by $x \preceq y$ if and
-only if $x \wedge y = x$. These two partial orders are \textit{compatible} under the following condition:
+It is an obvious next step to wonder how these two algebraic
+structures might be related. Fix a set non-empty set $L$ with the two
+binary operations, $\vee$ and $\wedge$, introduced in the prior
+paragraphs. We have already seen that the underlying order of the
+join semilattice can be described as $x \preceq y$ if and only if $x
+	\vee y = y$, while the underlying order of the meet semilattice is
+described by $x \preceq y$ if and only if $x \wedge y = x$. These two
+partial orders are \textit{compatible} under the following condition:
 \begin{align}
 	\text{(Compatibility)} & \quad x \vee (x \wedge y) = x & \text{(resp.)} & \quad x \wedge (x \vee y) = x
 \end{align}
-Compatibility (which is sometimes also called \textit{absorption}) is satisfied when the underlying orders of
-both semilattices refer to the same partial order. The property can be rewritten as $x \vee y = y$ if and
-only if $x \wedge y = x$. The formal definition of an algebraic lattice is given below:
+Compatibility (which is sometimes also called \textit{absorption}) is
+satisfied when the underlying orders of both semilattices refer to
+the same partial order. The property can be rewritten as $x \vee y =
+	y$ if and only if $x \wedge y = x$. The formal definition of an
+algebraic lattice is given below:
 
 \begin{definition}
 	\label{definition:algebraic-lattice}
 
-	The algebraic structure $(L, \vee, \wedge )$, where $L$ is a set and $\vee, \wedge$ are two binary operations
-	on $L$, is a \emph{lattice} if both binary operations satisfy \textit{idempotence, commutativity,} and
-	\textit{associativity} as well as \textit{absorption}.
+	The algebraic structure $(L, \vee, \wedge )$, where $L$ is a set and
+	$\vee, \wedge$ are two binary operations on $L$, is a \emph{lattice}
+	if both binary operations satisfy \textit{idempotence,
+		commutativity,} and \textit{associativity} as well as
+	\textit{absorption}.
 \end{definition}
 
-\textcolor{red}{NEED TO INCLUDE DEFN OF DISTRIBUTIVE LATTICES \& PARAGRAPH BEFORE LAST THEOREM}
+\textcolor{red}{NEED TO INCLUDE DEFN OF DISTRIBUTIVE LATTICES \&
+	PARAGRAPH BEFORE LAST THEOREM}
 
 \begin{lemma}[The Connecting Lemma]
 	\label{lemma:the-connecting-lemma} If $\mathbf{L}$ is a lattice with $x, y \in \mathbf{L}$, then the following are equivalent:
@@ -338,43 +396,54 @@ only if $x \wedge y = x$. The formal definition of an algebraic lattice is given
 	\end{enumerate}
 \end{lemma}
 
-Moving forward, we will no longer maintain a rigid distinction between these two perspectives on lattices;
-and rather, will tacitly adopt whichever viewpoint best suits the surrounding context. Lattices are central
-to Formal Concept Analysis, and will be visited again in \Cref{chapter:formal-concept-analysis}.
+Moving forward, we will no longer maintain a rigid distinction
+between these two perspectives on lattices; and rather, will tacitly
+adopt whichever viewpoint best suits the surrounding context.
+Lattices are central to Formal Concept Analysis, and will be visited
+again in \Cref{chapter:formal-concept-analysis}.
 
 \section{Closures \& Galois Connections}
 \label{section:closure-systems}
 
 \subsection{Closure Systems}
-We frequently encounter collections of elements that satisfy certain properties of interest. A fundamental
-question that might arise is whether our collection includes all such elements satisfying the specified
-properties. We aliken this to the more formal notions of \textit{closures} and \textit{closed sets}.
+We frequently encounter collections of elements that satisfy certain
+properties of interest. A fundamental question that might arise is
+whether our collection includes all such elements satisfying the
+specified properties. We aliken this to the more formal notions of
+\textit{closures} and \textit{closed sets}.
 
 \begin{definition}
 	\index{closed set} \label{definition:closed-set}
 
-	A subset $X$ of $S$ is \textit{closed} under an operation $\varphi$ if and only if the application of
-	$\varphi$ to elements of $X$ always results in an element of $X$.
+	A subset $X$ of $S$ is \textit{closed} under an operation $\varphi$
+	if and only if the application of $\varphi$ to elements of $X$ always
+	results in an element of $X$.
 \end{definition}
 
-This condition can be expressed equivalently by stating that $X$ is closed under the operation $\varphi$ when
-$\varphi [X ] \subseteq X$, where $\varphi[X]$ denotes the image of $X$ under $\varphi$. This formulation
-suggests that a natural approach to finding the closure of any subset: systematically add all elements that
-result from applying the operation to existing elements in the set, continuing this process until no new
-elements are generated.
+This condition can be expressed equivalently by stating that $X$ is
+closed under the operation $\varphi$ when $\varphi [X ] \subseteq X$,
+where $\varphi[X]$ denotes the image of $X$ under $\varphi$. This
+formulation suggests that a natural approach to finding the closure
+of any subset: systematically add all elements that result from
+applying the operation to existing elements in the set, continuing
+this process until no new elements are generated.
 
-In some cases, consider the singleton set $\{1\}$ as a subset of the natural numbers with the operation `$+
-	2$', this process may fail to reach a fixed point. It is not that the there is no set closed under the
-operation `$+2$', but rather that it will not be found with this approach.
+In some cases, consider the singleton set $\{1\}$ as a subset of the
+natural numbers with the operation `$+ 2$', this process may fail to
+reach a fixed point. It is not that the there is no set closed under
+the operation `$+2$', but rather that it will not be found with this
+approach.
 
-In light of this, it is useful to abstract the idea to that of a \textit{closure operator} and
-\textit{closure system}:
+In light of this, it is useful to abstract the idea to that of a
+\textit{closure operator} and \textit{closure system}:
 
 \begin{definition}
 	\index{closure!operator} \label{definition:closure-operator}
 
-	A \emph{closure operator} on a set $S$ is a function $\mathsf{cl}\colon \pset{S}\to \pset{S}$ assigning each
-	subset of $S$ to its closure; $\mathsf{cl}$ satisfies the following properties for all $X,Y \subseteq S$.
+	A \emph{closure operator} on a set $S$ is a function
+	$\mathsf{cl}\colon \pset{S}\to \pset{S}$ assigning each subset of $S$
+	to its closure; $\mathsf{cl}$ satisfies the following properties for
+	all $X,Y \subseteq S$.
 	\begin{align}
 		\text{(Monotony)}\quad    & X \subseteq Y\quad \text{implies}\quad\mathsf{cl}(X) \subseteq \mathsf{cl}(Y) \\
 		\text{(Extensivity)}\quad & X \subseteq \mathsf{cl}(X)                                                    \\
@@ -385,22 +454,28 @@ In light of this, it is useful to abstract the idea to that of a \textit{closure
 \begin{definition}
 	\index{closure!system} \label{definition:closure-system}
 
-	A \emph{closure system} on a set $S$ is a family of subsets $\mathcal{C}\subseteq \pset{S}$ containing the
-	set $S$ itself and the intersection of any subsets of $\mathcal{C}$, and so if $\mathcal{D}\subseteq
-		\mathcal{C}$ then $\bigcap \mathcal{D}\in \mathcal{C}$.
+	A \emph{closure system} on a set $S$ is a family of subsets
+	$\mathcal{C}\subseteq \pset{S}$ containing the set $S$ itself and the
+	intersection of any subsets of $\mathcal{C}$, and so if
+	$\mathcal{D}\subseteq \mathcal{C}$ then $\bigcap \mathcal{D}\in
+		\mathcal{C}$.
 \end{definition}
 
-From \Cref{example:power-set-lattice}, we know that under the inclusion order, the powerset of any set forms
-a complete lattice. Then, from \Cref{definition:closure-system} it follows that a closure system on $S$ is a
-meet subsemilattice of $\pset{S}$.
+From \Cref{example:power-set-lattice}, we know that under the
+inclusion order, the powerset of any set forms a complete lattice.
+Then, from \Cref{definition:closure-system} it follows that a closure
+system on $S$ is a meet subsemilattice of $\pset{S}$.
 
-Apart from their nomenclature, it is not immediately obvious how closure operators and closure systems are
-related, the following theorem shows that they are indeed \textit{cryptomorphic} \cite{CASPARD2003241}.
+Apart from their nomenclature, it is not immediately obvious how
+closure operators and closure systems are related, the following
+theorem shows that they are indeed \textit{cryptomorphic}
+\cite{CASPARD2003241}.
 
 \begin{theorem}
 	\label{theorem:relation-closure-operator-systems}
 
-	If $\mathcal{C}$ is a closure system on $S$, then $\varphi : \pset{S}\to \pset{S}$ where
+	If $\mathcal{C}$ is a closure system on $S$, then $\varphi :
+		\pset{S}\to \pset{S}$ where
 	\[
 		\varphi(Y) = \bigcap \{D \in \mathcal{C}\mid Y \subseteq D\} \quad \text{for }Y \in \pset{S}
 	\]
@@ -413,16 +488,20 @@ related, the following theorem shows that they are indeed \textit{cryptomorphic}
 
 \begin{example}
 
-	Consider the partially ordered set $S = \{a, b, c, d\}$ where the order is given by $a \preceq b \preceq d$
-	and $a \preceq c \preceq d$. Let $\mathcal{D}$ denote the collection of all downsets in $S$, where a downset
-	is a subset $X \subseteq S$ such that if $x \in X$ and $y \preceq x$, then $y \in X$. Then we have
+	Consider the partially ordered set $S = \{a, b, c, d\}$ where the
+	order is given by $a \preceq b \preceq d$ and $a \preceq c \preceq
+		d$. Let $\mathcal{D}$ denote the collection of all downsets in $S$,
+	where a downset is a subset $X \subseteq S$ such that if $x \in X$
+	and $y \preceq x$, then $y \in X$. Then we have
 	\[
-		\mathcal{D}= \big\{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c ,d\}\big\}
+		\mathcal{D}= \big\{\emptyset, \{a\}, \{a,b\}, \{a,c\}, \{a,b,d\}, \{a,b,c,d\}\big\}
 	\]
 
-	We can verify that $\mathcal{D}$ forms a closure system: it contains $S$ and remains closed under arbitrary
-	intersections. For instance, $\{ a,b,d\} \cap \{ a,c\} = \{a\}$, which itself is a member of $\mathcal{D}$.
-	We can then induce the closure operator $\psi \colon \pset{S}\to \mathcal{D}$ as
+	We can verify that $\mathcal{D}$ forms a closure system: it contains
+	$S$ and remains closed under arbitrary intersections. For instance,
+	$\{ a,b,d\} \cap \{ a,c\} = \{a\}$, which itself is a member of
+	$\mathcal{D}$. We can then induce the closure operator $\psi \colon
+		\pset{S}\to \mathcal{D}$ as
 	\[
 		\psi(X) = \bigcap \{Y \in \mathcal{D}\mid X \subseteq Y\}
 	\]
@@ -431,9 +510,10 @@ related, the following theorem shows that they are indeed \textit{cryptomorphic}
 \begin{theorem}
 	\label{theorem:closure-systems-lattices}
 
-	Let $\mathsf{cl}$ be a closure operator on the set $S$. Then the closure system given by $\{X \subseteq S
-		\mid X = \mathsf{cl}(X) = X \}$ forms a complete lattice under the inclusion order, where meets and joins are
-	given by
+	Let $\mathsf{cl}$ be a closure operator on the set $S$. Then the
+	closure system given by $\{X \subseteq S \mid X = \mathsf{cl}(X) = X
+		\}$ forms a complete lattice under the inclusion order, where meets
+	and joins are given by
 	\[
 		\underset{i \in I}\bigwedge X_{i}= \underset{i \in I}\bigcap X_{i},
 	\]
@@ -445,16 +525,19 @@ related, the following theorem shows that they are indeed \textit{cryptomorphic}
 \subsection{Galois Connections}
 \label{subsection:galois-connections}
 
-Galois connections are a useful way of describing correspondence between two sets and with a relation
-\cite{bergman2015invitation}. We will spend a bit of time describing Galois connections, as they are
+Galois connections are a useful way of describing correspondence
+between two sets and with a relation \cite{bergman2015invitation}. We
+will spend a bit of time describing Galois connections, as they are
 fundamental to FCA, and closely related to ideas around closures.
 
 \begin{definition}
 	\index{Galois connection} \label{definition:Galois-connection-1}
 
-	Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps $\varphi \colon \mathbf{X}\to \mathbf{Y}$
-	and $\psi \colon \mathbf{Y}\to \mathbf{X}$ constitute an \emph{antitone Galois connection} between
-	$\mathbf{X}$ and $\mathbf{Y}$ if and only if they satisfy
+	Let $\mathbf{X}, \mathbf{Y}$ be ordered sets, then a pair of maps
+	$\varphi \colon \mathbf{X}\to \mathbf{Y}$ and $\psi \colon
+		\mathbf{Y}\to \mathbf{X}$ constitute an \emph{antitone Galois
+		connection} between $\mathbf{X}$ and $\mathbf{Y}$ if and only if they
+	satisfy
 	\begin{align}
 		\quad & x \preceq_{X}x' \quad \text{implies}\quad \varphi (x') \preceq_{Y}\varphi (x) \label{equation:ord_galois-1}                         \\
 		\quad & y \preceq_{Y}y' \quad \text{implies}\quad \psi (y') \preceq_{X}\psi (y) \label{equation:ord-galois-2}                               \\
@@ -463,14 +546,16 @@ fundamental to FCA, and closely related to ideas around closures.
 	for all $x \in \mathbf{X}$ and $y \in \mathbf{Y}$.
 \end{definition}
 
-In future, we will drop the \textit{antitone}, and just write \textit{Galois connection}. We recount some
-well-known propositions which are helpful for one's intuition, in that they provide several different
-perspectives on Galois connections.
+In future, we will drop the \textit{antitone}, and just write
+\textit{Galois connection}. We recount some well-known propositions
+which are helpful for one's intuition, in that they provide several
+different perspectives on Galois connections.
 
 \begin{proposition}
 	\label{proposition:fundamental-galois}
 
-	Let $(\varphi, \psi)$ refer to the same pair of maps constituting a Galois connection, then
+	Let $(\varphi, \psi)$ refer to the same pair of maps constituting a
+	Galois connection, then
 	\begin{align}
 		\quad & x \preceq_{X}\psi (y) \tiff y \preceq_{Y}\varphi (x) \label{equation:ord-galois-4}
 	\end{align}
@@ -480,7 +565,8 @@ perspectives on Galois connections.
 \begin{proposition}
 	\label{proposition:galois-idem}
 
-	Let ($\varphi, \psi$) refer to the same pair of maps constituting a Galois connection, then
+	Let ($\varphi, \psi$) refer to the same pair of maps constituting a
+	Galois connection, then
 	\begin{align}
 		\varphi (x) = \varphi \Big( \psi \big( \varphi (x)\big) \Big) & \quad \text{and}\quad \psi (y) = \psi \Big( \varphi \big( \psi (y)\big) \Big)
 	\end{align}
@@ -490,18 +576,21 @@ perspectives on Galois connections.
 \begin{proposition}
 	\label{proposition:galois-connections-closure-operators}
 
-	Let ($\varphi, \psi$) refer to the same pair of maps constituting a Galois connection, then
+	Let ($\varphi, \psi$) refer to the same pair of maps constituting a
+	Galois connection, then
 	\[
 		x \mapsto \psi \big(\varphi(x)\big) \quad \text{and}\quad y \mapsto \varphi \big(\psi (y)\big)
 	\]
 
-	are \textit{monotone, extensive} and \textit{idempotent} and thus constitute closure operators on
-	$\mathbf{X}$ and $\mathbf{Y}$, respectively.
+	are \textit{monotone, extensive} and \textit{idempotent} and thus
+	constitute closure operators on $\mathbf{X}$ and $\mathbf{Y}$,
+	respectively.
 \end{proposition}
-So, we have it that two mappings that constitute a Galois connection will further define two closure
-operators by taking their compositions. By \Cref{theorem:closure-systems-lattices} each of these closure
-operators will induce a closure system on its respective domain, between which the mappings are dually
-isomorphic.
+So, we have it that two mappings that constitute a Galois connection
+will further define two closure operators by taking their
+compositions. By \Cref{theorem:closure-systems-lattices} each of
+these closure operators will induce a closure system on its
+respective domain, between which the mappings are dually isomorphic.
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}[every node/.style={ circle, fill=black, text=black, inner sep=0pt, minimum size=2mm, font=\scriptsize }]
@@ -568,86 +657,115 @@ isomorphic.
 	\end{tikzpicture}
 	\caption{A Galois connection} \label{figure:Galois-connection}
 \end{figure}
-That is, if we consider the map $\varphi$ from the closure system on $\mathbf{X}$, it is infact surjective
-(\textit{onto}) the closure system induced for $\mathbf{Y}$. Likewise, $\psi$ is surjective to the closure
-system on $\mathbf{X}$. Consider two elements $x,x'$ of the closure system on $\mathbf{X}$ so that
-$\varphi(x) = \varphi(x')$. We may construct the equality $x = \psi \big(\varphi (x)\big) = \psi\big
-	(\varphi(x')\big) = x'$ which shows that each map is additionally injective (\textit{one-to-one}), and so
-also a bijection. That they are order-reversing can be seen from \Cref{proposition:fundamental-galois}, and
-so we have a dual isomorphism.
+That is, if we consider the map $\varphi$ from the closure system on
+$\mathbf{X}$, it is infact surjective (\textit{onto}) the closure
+system induced for $\mathbf{Y}$. Likewise, $\psi$ is surjective to
+the closure system on $\mathbf{X}$. Consider two elements $x,x'$ of
+the closure system on $\mathbf{X}$ so that $\varphi(x) =
+	\varphi(x')$. We may construct the equality $x = \psi \big(\varphi
+		(x)\big) = \psi\big (\varphi(x')\big) = x'$ which shows that each map
+is additionally injective (\textit{one-to-one}), and so also a
+bijection. That they are order-reversing can be seen from
+\Cref{proposition:fundamental-galois}, and so we have a dual
+isomorphism.
 
-\Cref{figure:Galois-connection} demonstrates a rather contrived Galois connection between two partially
-ordered sets. Generally, Galois connections are interesting when the closure systems they induce are
-interesting in their own right. We will wait until \Cref{chapter:formal-concept-analysis} to see an example
-of this.
+\Cref{figure:Galois-connection} demonstrates a rather contrived
+Galois connection between two partially ordered sets. Generally,
+Galois connections are interesting when the closure systems they
+induce are interesting in their own right. We will wait until
+\Cref{chapter:formal-concept-analysis} to see an example of this.
 
 \section{Propositional Logic}
 \label{section:propositional-logic}
 
-Propositional logic is a system for abstracting reasoning away from natural language. A \textit{propositional
-	statement} is a sentence like \say{Tralfamadorians have one eye}. That is, something that can be assigned a
-value of \textit{true} or \textit{false} \cite{Ben1993Mathematical}. More complex propositions may be
-constructed recursively from simpler ones. The main interest is then to discover which true propositions
-follow---under some agreeable sense of what it means to \textit{follow}---from others.
+Propositional logic is a system for abstracting reasoning away from
+natural language. A \textit{propositional statement} is a sentence
+like \say{Tralfamadorians have one eye}. That is, something that can
+be assigned a value of \textit{true} or \textit{false}
+\cite{Ben1993Mathematical}. More complex propositions may be
+constructed recursively from simpler ones. The main interest is then
+to discover which true propositions follow---under some agreeable
+sense of what it means to \textit{follow}---from others.
 
 \subsection{Syntax}
-\label{subsection:syntax} \index{syntax! propositional logic} \index{Atom} \index{Propositional atom}
-\index{Boolean operator} \index{Boolean operator! conjunction} \index{Boolean operator! disjunction}
-\index{Boolean operator! material implication} \index{Boolean operator! negation} \textit{Propositional
-	atoms} are the fundamental building blocks of a propositional language. They are indivisible statements that
-can either be true or false, and may be be combined with the boolean connectives $\{\neg, \lor, \land,
-	\rightarrow \}$ to construct more complex statements, or \textit{formulae}. We denote propositional atoms
-with lower-case Latin letters $p,q,r,s,$ and $t$, and the set of all atoms will usually be denoted by
-$\mathcal{P}$, sometimes this is called the \textit{universe of discourse}. Lower-case Greek letters $\alpha,
-	\beta, \gamma , \phi, \psi,$ and $\varphi$ will be used to denote formulae, and corresponding upper-case
-Greek letters will usually represent sets of formulae.
+\label{subsection:syntax} \index{syntax! propositional logic}
+\index{Atom} \index{Propositional atom} \index{Boolean operator}
+\index{Boolean operator! conjunction} \index{Boolean operator!
+	disjunction} \index{Boolean operator! material implication}
+\index{Boolean operator! negation} \textit{Propositional atoms} are
+the fundamental building blocks of a propositional language. They are
+indivisible statements that can either be true or false, and may be
+be combined with the boolean connectives $\{\neg, \lor, \land,
+	\rightarrow \}$ to construct more complex statements, or
+\textit{formulae}. We denote propositional atoms with lower-case
+Latin letters $p,q,r,s,$ and $t$, and the set of all atoms will
+usually be denoted by $\mathcal{P}$, sometimes this is called the
+\textit{universe of discourse}. Lower-case Greek letters $\alpha,
+	\beta, \gamma, \phi, \psi,$ and $\varphi$ will be used to denote
+formulae, and corresponding upper-case Greek letters will usually
+represent sets of formulae.
 
-Not all combinations of atoms and Boolean connectives result in meaningful expressions. For example, ``$\land
-	\rightarrow \phi$,'' which can be parsed as \say{Conjunction materially implies $\phi$}, has no discernible
-meaning. We distinguish between any formula and so-called \textit{well-formed formulae}. The latter being
-constructions that are valid with respect to the rules of the grammar defined in Backus--Naur form below
-\cite{Huth_Ryan_2004}.
+Not all combinations of atoms and Boolean connectives result in
+meaningful expressions. For example, ``$\land \rightarrow \phi$,''
+which can be parsed as \say{Conjunction materially implies $\phi$},
+has no discernible meaning. We distinguish between any formula and
+so-called \textit{well-formed formulae}. The latter being
+constructions that are valid with respect to the rules of the grammar
+defined in Backus--Naur form below \cite{Huth_Ryan_2004}.
 \begin{align}
 	\phi ::= p \mid (\neg \phi) \mid (\phi_{1}\lor \phi_{2}) \mid (\phi_{1}\land \phi_{2}) \mid (\phi_{1}\rightarrow \phi_{2}) \mid (\phi_{1}\leftrightarrow \phi_{2})
 \end{align}
 
-We are entirely uninterested in formulae that are not well-formed, so we drop the suffix ``well-formed''
-under the recognition that we shall never again mention the alternative \cite{Huth_Ryan_2004}.
+We are entirely uninterested in formulae that are not well-formed, so
+we drop the suffix ``well-formed'' under the recognition that we
+shall never again mention the alternative \cite{Huth_Ryan_2004}.
 
-Any formula accepted by this grammar is said to be in the language $\mathcal{L}^{\mathcal{P}}$, although we
-may also drop the superscript where possible. To make reading this dissertation slightly more enjoyable, we
-may construct examples where we denote propositional atoms by monospaced text, enabling the expression of
-formulae suggesting a more interesting domain, such as $\texttt {tralfamadorians}\rightarrow \neg
-	\texttt{human}$, which should be interpreted as proposing that \say{Tralfamadorians are not human}
+Any formula accepted by this grammar is said to be in the language
+$\mathcal{L}^{\mathcal{P}}$, although we may also drop the
+superscript where possible. To make reading this dissertation
+slightly more enjoyable, we may construct examples where we denote
+propositional atoms by monospaced text, enabling the expression of
+formulae suggesting a more interesting domain, such as $\texttt
+	{tralfamadorians}\rightarrow \neg \texttt{human}$, which should be
+interpreted as proposing that \say{Tralfamadorians are not human}
 \cite{vonnegut1969slaughterhouse}.
 
 \subsection{Semantics}
-\label{subsection:semantics} \index{semantics! propositional logic} In the previous section we described the
-syntax of propositional logic and how the boolean connectives enable the construction of arbitrary formulae
-from atoms. The semantics of propositional logic are concerned with how meaning may be ascribed to these
-formulae. The aim is to provide a method to answer questions like \say{when is this formula true?} or,
-\say{if $\phi, \psi, \varphi$ are true, what else must be true?}.
+\label{subsection:semantics} \index{semantics! propositional logic}
+In the previous section we described the syntax of propositional
+logic and how the boolean connectives enable the construction of
+arbitrary formulae from atoms. The semantics of propositional logic
+are concerned with how meaning may be ascribed to these formulae. The
+aim is to provide a method to answer questions like \say{when is this
+	formula true?} or, \say{if $\phi, \psi, \varphi$ are true, what else
+	must be true?}.
 
-Propositional atoms were described as indivisible statements that can be assigned values of \textit{true} or
-\textit{false}. We now define a function that assigns a truth value to each atom in the set $\mathcal{P}$ of
-atoms. \index{valuations}
+Propositional atoms were described as indivisible statements that can
+be assigned values of \textit{true} or \textit{false}. We now define
+a function that assigns a truth value to each atom in the set
+$\mathcal{P}$ of atoms. \index{valuations}
 
 \begin{definition}
 	\label{definition:valuation} \index{valuations}
 
-	A \textit{valuation} is a function $u : \mathcal{P}\to \{\textit{ true}, \textit{ false }\}$ that assigns a
-	truth value to each propositional atom.
+	A \textit{valuation} is a function $u : \mathcal{P}\to \{\textit{
+			true}, \textit{ false }\}$ that assigns a truth value to each
+	propositional atom.
 \end{definition}
 
-Given a set of atoms $\mathcal{P}= \{p,q,r\}$, we write $\mathcal{U}$ to denote the set of all possible
-valuations. A valuation $u \in \mathcal{U}$ \textit{satisfies} an atom $p \in \mathcal{P}$ if $u$ maps $p$ to
-\textit{true}, and so we write $u \vDash p$. Otherwise, we write $u \nvDash p$ to indicate that $u$ does not
-satisfy $p$ (in this context, meaning $u$ maps $p$ to \textit{false}) \cite{Ben1993Mathematical}. We might
-represent the valuation that maps $p$ and $q$ to true but $r$ to false by $\{p,q,\overline{r}\}$.
+Given a set of atoms $\mathcal{P}= \{p,q,r\}$, we write $\mathcal{U}$
+to denote the set of all possible valuations. A valuation $u \in
+	\mathcal{U}$ \textit{satisfies} an atom $p \in \mathcal{P}$ if $u$
+maps $p$ to \textit{true}, and so we write $u \vDash p$. Otherwise,
+we write $u \nvDash p$ to indicate that $u$ does not satisfy $p$ (in
+this context, meaning $u$ maps $p$ to \textit{false})
+\cite{Ben1993Mathematical}. We might represent the valuation that
+maps $p$ and $q$ to true but $r$ to false by $\{p,q,\overline{r}\}$.
 
-This satisfaction relation can be extended beyond propositional atoms to include more complex formulae, as
-described in \Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$, \index{satisfaction!
-	propositional logic}
+This satisfaction relation can be extended beyond propositional atoms
+to include more complex formulae, as described in
+\Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$,
+\index{satisfaction! propositional logic}
 \begin{itemize}
 	\item $u \vDash \neg \phi$ if and only if $u \nvDash \phi$ \hfill (negation)
 
@@ -660,19 +778,23 @@ described in \Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$, \in
 	\item $u \vDash \phi \leftrightarrow \psi$ if and only if $u \vDash \phi \rightarrow \psi$ and $u \vDash \psi \rightarrow \phi$ \hfill (material equivalence)
 \end{itemize}
 
-Following the idea of what it means for a formula to be satisfied, we have,
+Following the idea of what it means for a formula to be satisfied, we
+have,
 
 \begin{definition}
 	\label{definition:model} \index{model}
 
-	For a valuation $u \in \mathcal{U}$ and formula $\phi \in \mathcal{L}$ we call $u$ a \textit{model} of $\phi$
-	if and only if $u$ satisfies $\phi$. The set of all models of $\phi$ is constructed by $\hat{\phi}\coloneqq
-		\{u \in \mathcal{U}\mid u \vDash \phi \}$.
+	For a valuation $u \in \mathcal{U}$ and formula $\phi \in
+		\mathcal{L}$ we call $u$ a \textit{model} of $\phi$ if and only if
+	$u$ satisfies $\phi$. The set of all models of $\phi$ is constructed
+	by $\hat{\phi}\coloneqq \{u \in \mathcal{U}\mid u \vDash \phi \}$.
 \end{definition}
 
-Satisfiability can be extended to sets of formulae in such a way that a valuation $u \in \mathcal{U}$
-\textit{satisfies} the set $\Phi \coloneqq \{\phi_{0}, \ldots , \phi_{n}\}$, and so is a model of it, when $u
-	\vDash \phi_{i}$ for all $0 \leq i \leq n$, and we write $u \vDash \Phi$. If $\Phi$ has no model then it is
+Satisfiability can be extended to sets of formulae in such a way that
+a valuation $u \in \mathcal{U}$ \textit{satisfies} the set $\Phi
+	\coloneqq \{\phi_{0}, \ldots, \phi_{n}\}$, and so is a model of it,
+when $u \vDash \phi_{i}$ for all $0 \leq i \leq n$, and we write $u
+	\vDash \Phi$. If $\Phi$ has no model then it is
 \textit{unsatisfiable} \cite{Ben1993Mathematical}.
 
 \begin{definition}
@@ -680,117 +802,157 @@ Satisfiability can be extended to sets of formulae in such a way that a valuatio
 \end{definition}
 
 \subsection{Logical Consequence}
-\label{subsection:logical-consequence} \index{Logical consequence! propositional logic}
+\label{subsection:logical-consequence} \index{Logical consequence!
+	propositional logic}
 
-The introduction of models at the end of \Cref{section:propositional-logic} leads quite naturally into a
-discussion on the matter of \textit{logical consequence}, which provides an answer---in terms of the
-semantics---to the question of when it is appropriate to infer one formula from another
+The introduction of models at the end of
+\Cref{section:propositional-logic} leads quite naturally into a
+discussion on the matter of \textit{logical consequence}, which
+provides an answer---in terms of the semantics---to the question of
+when it is appropriate to infer one formula from another
 \cite{tarski1936consequence}.
 
-For example, if we know that \say{\textit{Billy Pilgrim lived in Slaughterhouse 5}} and that \say{\textit{The
-		inhabitants of Slaughterhouse 5 survived the bombing of Dresden}}. We may then hold the view that, as a
-consequence of these two pieces of knowledge, it would be sensible to infer that \say{\textit{Billy Pilgrim
-		survived the bombing of Dresden}}. Of course, this inference being \textit{sensible}---under some common
-concept of consequence---gives little insight into how logical consequence may be appropriately be
-formalised. Informally, it might help ones' intuition to try imagine a world where the first propositions are
-true while the final one false.
+For example, if we know that \say{\textit{Billy Pilgrim lived in
+		Slaughterhouse 5}} and that \say{\textit{The inhabitants of
+		Slaughterhouse 5 survived the bombing of Dresden}}. We may then hold
+the view that, as a consequence of these two pieces of knowledge, it
+would be sensible to infer that \say{\textit{Billy Pilgrim survived
+		the bombing of Dresden}}. Of course, this inference being
+\textit{sensible}---under some common concept of consequence---gives
+little insight into how logical consequence may be appropriately be
+formalised. Informally, it might help ones' intuition to try imagine
+a world where the first propositions are true while the final one
+false.
 
-\index{object language} \index{metalanguage} We place a brief moratorium on this discussion to (formally)
-introduce the notions of the \textit{object} and \textit{metalanguage}. In the scenario we have just
-described, the italicised sentences form a part of the object language: the language we use to model the
-world and represent information. The metalanguage facilitates reasoning about elements in the object
-language. That is, we can use the metalanguage to describe one sentence being a consequence of another (where
-these sentences are elements in the object language). Here, \textit{consequence} is an element of the
-metalanguage \cite[p 22]{Ben1993Mathematical}.
+\index{object language} \index{metalanguage} We place a brief
+moratorium on this discussion to (formally) introduce the notions of
+the \textit{object} and \textit{metalanguage}. In the scenario we
+have just described, the italicised sentences form a part of the
+object language: the language we use to model the world and represent
+information. The metalanguage facilitates reasoning about elements in
+the object language. That is, we can use the metalanguage to describe
+one sentence being a consequence of another (where these sentences
+are elements in the object language). Here, \textit{consequence} is
+an element of the metalanguage \cite[p 22]{Ben1993Mathematical}.
 
-In this case, both the object and metalanguage are comprised of English, which can certainly lead to
-confusion. The distinction is clearer in propositional logic: constructions derived from combinations of
-atoms and the boolean operators result in elements of the object language; while the metalanguage uses
-symbols like $\vDash$ and $\vdash$, which are introduced below.
+In this case, both the object and metalanguage are comprised of
+English, which can certainly lead to confusion. The distinction is
+clearer in propositional logic: constructions derived from
+combinations of atoms and the boolean operators result in elements of
+the object language; while the metalanguage uses symbols like
+$\vDash$ and $\vdash$, which are introduced below.
 
 \begin{definition}
 	\label{definition:logical-consequence}
 
-	Let $\Gamma$ be a set of formulae and $\varphi$ a formula in the language $\mathcal{L}$. We say that
-	$\varphi$ is a \textit{logical consequence} of $\Gamma$, and write $\Gamma \vDash \varphi$, if and only if
-	every model of $\Gamma$ is a model of $\varphi$, or equivalently if $\hat{\Gamma}\subseteq \hat{\varphi}$.
+	Let $\Gamma$ be a set of formulae and $\varphi$ a formula in the
+	language $\mathcal{L}$. We say that $\varphi$ is a \textit{logical
+		consequence} of $\Gamma$, and write $\Gamma \vDash \varphi$, if and
+	only if every model of $\Gamma$ is a model of $\varphi$, or
+	equivalently if $\hat{\Gamma}\subseteq \hat{\varphi}$.
 \end{definition}
 
-This semantic account of consequence, due to Tarski \shortcite{tarski1936consequence}, makes implicit the
-view that if $\varphi$ is indeed a consequence of $\Gamma$, then it should not be possible for all the
-sentences (formulae) in $\Gamma$ to be true while $\varphi$ be false.
+This semantic account of consequence, due to Tarski
+\shortcite{tarski1936consequence}, makes implicit the view that if
+$\varphi$ is indeed a consequence of $\Gamma$, then it should not be
+possible for all the sentences (formulae) in $\Gamma$ to be true
+while $\varphi$ be false.
 
 \begin{example}
 	\label{example-logical-consequence}
 
-	If we modelled the earlier example in propositional logic, we might initialise \textit{Billy Pilgrim} with
-	\texttt{b}, \textit{slaughterhouse 5} with \texttt{h}, and \textit{survived} with \texttt{s}. It is then our
-	aim to determine whether $\{\texttt{b}\rightarrow \texttt{h},\; \texttt{h}\rightarrow \texttt{s}\} \vDash
-		\texttt{b}\rightarrow \texttt{s}$. From the satisfaction relation in \Cref{subsection:semantics} it can be
-	derived that the models of $\{\texttt{b}\rightarrow \texttt{h},\; \texttt{h}\rightarrow \texttt{s}\}$ are
-	precisely:
+	If we modelled the earlier example in propositional logic, we might
+	initialise \textit{Billy Pilgrim} with \texttt{b},
+	\textit{slaughterhouse 5} with \texttt{h}, and \textit{survived} with
+	\texttt{s}. It is then our aim to determine whether
+	$\{\texttt{b}\rightarrow \texttt{h},\; \texttt{h}\rightarrow
+		\texttt{s}\} \vDash \texttt{b}\rightarrow \texttt{s}$. From the
+	satisfaction relation in \Cref{subsection:semantics} it can be
+	derived that the models of $\{\texttt{b}\rightarrow \texttt{h},\;
+		\texttt{h}\rightarrow \texttt{s}\}$ are precisely:
 	\[
 		\bigl\{ \{\overline{\texttt{b}},\,\overline{\texttt{h}},\,\overline{\texttt{s}}\}, \{\overline{\texttt{b}},\,\overline{\texttt{h}},\,{\texttt{s}}\}, \{\overline{\texttt{b}},\,{\texttt{h}}
-		,\,{\texttt{s}}\} , \{{\texttt{b}},\,{\texttt{h}}, \,{\texttt{s}}\} \bigr\}.
+		,\,{\texttt{s}}\}, \{{\texttt{b}},\,{\texttt{h}}, \,{\texttt{s}}\} \bigr\}.
 	\]
 	These are indeed all models of $\texttt{b}\rightarrow \texttt{s}$, and so we answer the question in the affirmative.
 \end{example}
 
-\textit{Consequence operators} are functions over a given language that map sets of formulae to the set of
-all their consequences. They were introduced by Tarski \shortcite{tarski1936operator} as the symbol $\cons$
-representing a general idea that sets can be closed under a specified notion consequence. In future, we use
-$\cons$ to refer specifically to closure under classical (\textit{Tarskian}) consequence; and so, application
-of the $\cons$ operator to a set $\Gamma$ would yield $\cons (\Gamma ) \coloneqq \{\varphi \mid \Gamma \vDash
-	\varphi\}$. Where we wish to reference closure under a different notion of consequence, suppose that of a
-Hilbert system, we will use a subscript to denote the system $\cons_{\mathcal{H}}$. To refer to the general
-notion of closure under \textit{some} notion of consequence, we write $\cons_{X}$ \cite[p.
-	4]{citkin2022consequence}.
+\textit{Consequence operators} are functions over a given language
+that map sets of formulae to the set of all their consequences. They
+were introduced by Tarski \shortcite{tarski1936operator} as the
+symbol $\cons$ representing a general idea that sets can be closed
+under a specified notion consequence. In future, we use $\cons$ to
+refer specifically to closure under classical (\textit{Tarskian})
+consequence; and so, application of the $\cons$ operator to a set
+$\Gamma$ would yield $\cons (\Gamma ) \coloneqq \{\varphi \mid \Gamma
+	\vDash \varphi\}$. Where we wish to reference closure under a
+different notion of consequence, suppose that of a Hilbert system, we
+will use a subscript to denote the system $\cons_{\mathcal{H}}$. To
+refer to the general notion of closure under \textit{some} notion of
+consequence, we write $\cons_{X}$ \cite[p. 4]{citkin2022consequence}.
 
-A \textit{theory} (also called a \textit{deductive system}, but we avoid this terminology) is a set of
-formulae $\Gamma$ that equals its closure $\cons_{X}(\Gamma)$. The study of such operators is useful in its
-ability to reveal properties about the respective notion of consequence. For instance, it was observed
-\cite{tarski1936operator} that $\cons$ satisfies the following properties:
+A \textit{theory} (also called a \textit{deductive system}, but we
+avoid this terminology) is a set of formulae $\Gamma$ that equals its
+closure $\cons_{X}(\Gamma)$. The study of such operators is useful in
+its ability to reveal properties about the respective notion of
+consequence. For instance, it was observed \cite{tarski1936operator}
+that $\cons$ satisfies the following properties:
 \begin{align}
 	\text{(Inclusion)}    & \quad \Gamma \subseteq \cons (\Gamma)                                               \\
 	\text{(Idempotency)}  & \quad \cons (\Gamma) = \cons (\cons (\Gamma))                                       \\
 	\text{(Monotonicity)} & \quad \Gamma \subseteq \Gamma' \Rightarrow \cons (\Gamma) \subseteq \cons (\Gamma')
 \end{align}
 
-\textit{Inclusion} is a relatively easy property to justify: all that is required is that the consequences of
-some information includes at least that starting information. \textit{Idempotency} requires that the supposed
-set of all consequences is in fact the set of \textit{all} consequences.
+\textit{Inclusion} is a relatively easy property to justify: all that
+is required is that the consequences of some information includes at
+least that starting information. \textit{Idempotency} requires that
+the supposed set of all consequences is in fact the set of
+\textit{all} consequences.
 
 \subsection{Deductive Systems}
-\label{subsection:deduction-systems} \index{Deductive system} \index{Rule of inference} \index{Axiom} Logical
-consequence, described in \Cref{subsection:logical-consequence}, offers a purely semantic account of how it
-might be inferred that one formula follows (logically) from another set thereof. In contrast, deductive
-systems answer this question syntactically by describing a system of \textit{axiomata} and \textit{rules of
-	inference} that affirm the truth of one formula from the truth of others \cite[p. 49]{Ben1993Mathematical}.
+\label{subsection:deduction-systems} \index{Deductive system}
+\index{Rule of inference} \index{Axiom} Logical consequence,
+described in \Cref{subsection:logical-consequence}, offers a purely
+semantic account of how it might be inferred that one formula follows
+(logically) from another set thereof. In contrast, deductive systems
+answer this question syntactically by describing a system of
+\textit{axiomata} and \textit{rules of inference} that affirm the
+truth of one formula from the truth of others \cite[p.
+	49]{Ben1993Mathematical}.
 
 \begin{definition}
 	\label{definition:deductive-system}
 
-	A \textit{deductive system} is a collection of axiomata and rules of inference. A \textit{proof} in such a
-	system is a sequence of formulae where each formula is either an axiom, or has been inferred by application
-	of an inference rule to previous formulae in the sequence. The final formula in the sequence, $\phi$, is
-	called the \textit{theorem} and is then \textit{provable}, and so we write $\vdash \phi$.
+	A \textit{deductive system} is a collection of axiomata and rules of
+	inference. A \textit{proof} in such a system is a sequence of
+	formulae where each formula is either an axiom, or has been inferred
+	by application of an inference rule to previous formulae in the
+	sequence. The final formula in the sequence, $\phi$, is called the
+	\textit{theorem} and is then \textit{provable}, and so we write
+	$\vdash \phi$.
 
-	A \textit{theory} (or, \textit{deductively closed theory}) in a deduction system is a set of formulae closed
-	under application of axioms and inference rules of the system; and so a set of formulae $\Gamma$ is a theory
-	if it is equal to its deductive closure $\cons_{\mathcal{H}}(\Gamma) \coloneqq \{\varphi \mid \Gamma \vdash
+	A \textit{theory} (or, \textit{deductively closed theory}) in a
+	deduction system is a set of formulae closed under application of
+	axioms and inference rules of the system; and so a set of formulae
+	$\Gamma$ is a theory if it is equal to its deductive closure
+	$\cons_{\mathcal{H}}(\Gamma) \coloneqq \{\varphi \mid \Gamma \vdash
 		\varphi \}$. As before, elements of a theory are called theorems.
 \end{definition}
 
-Deductive systems offer some advantages over their semantic counterparts; particularly, when reasoning over
-large---possibly infinite---domains, logical consequence can become difficult. Moreover, semantic consequence
-provides little insight into the relationships between pieces of information that lead to the inferences we
-make; while the sequential nature of deduction systems trace a path describing this relationship
-\cite{Ben1993Mathematical}.
+Deductive systems offer some advantages over their semantic
+counterparts; particularly, when reasoning over large---possibly
+infinite---domains, logical consequence can become difficult.
+Moreover, semantic consequence provides little insight into the
+relationships between pieces of information that lead to the
+inferences we make; while the sequential nature of deduction systems
+trace a path describing this relationship \cite{Ben1993Mathematical}.
 
 \subsubsection{Hilbert Systems}
-\label{subsubsection:hilbert-systems} \index{Deductive system! Hilbert system}
+\label{subsubsection:hilbert-systems} \index{Deductive system!
+	Hilbert system}
 
-A propositional Hilbert system $\mathcal{H}$ is characterised by three axiom schemata, \index{Axiom scheme}
+A propositional Hilbert system $\mathcal{H}$ is characterised by
+three axiom schemata, \index{Axiom scheme}
 \begin{align}
 	\text{(Axiom 1)}\quad & \vdash (\phi \rightarrow (\psi \rightarrow \phi)),                                                                               \\
 	\text{(Axiom 2)}\quad & \vdash (\phi \rightarrow (\psi \rightarrow \gamma)) \rightarrow ((\phi \rightarrow \psi) \rightarrow (\phi \rightarrow \gamma)), \\
@@ -800,14 +962,18 @@ and a single rule of inference:
 \begin{align}
 	\index{Rule of inference! \textit{modus ponens}}\text{(Modus Ponens)}\quad & \frac{\vdash \phi, \qquad \vdash \phi \rightarrow \psi}{\vdash \psi}.
 \end{align}
-The axiom schemata themselves are not axioms, but rather patterns containing meta-variables that, when
-uniformly substituted for formulae, result in an instantiated axiom. The turnstile symbol ($\vdash$) is the
-syntactic counterpart to the double-turnstile ($\vDash$) used for logical consequence. We frequently express
-that $\phi$ is a theorem by writing $\vdash \phi$ \cite[p. 55]{Ben1993Mathematical}.
+The axiom schemata themselves are not axioms, but rather patterns
+containing meta-variables that, when uniformly substituted for
+formulae, result in an instantiated axiom. The turnstile symbol
+($\vdash$) is the syntactic counterpart to the double-turnstile
+($\vDash$) used for logical consequence. We frequently express that
+$\phi$ is a theorem by writing $\vdash \phi$ \cite[p.
+	55]{Ben1993Mathematical}.
 
-As it stands, constructing proofs from instances of axiom schema and applications of modus ponens is a
-challenging ordeal. As an illustration, we provide the following Hilbert-style proof for the inference made
-in \Cref{example-logical-consequence}.
+As it stands, constructing proofs from instances of axiom schema and
+applications of modus ponens is a challenging ordeal. As an
+illustration, we provide the following Hilbert-style proof for the
+inference made in \Cref{example-logical-consequence}.
 
 \begin{example}
 	We demonstrate a Hilbert-style derivation of $\texttt{b}\to \texttt{s}$ from the assumptions $\texttt{b}\to \texttt{h}$ and $\texttt{h}\to \texttt{s}$.
@@ -820,63 +986,77 @@ in \Cref{example-logical-consequence}.
 		\Hstep[MP 4,5]{\vdash (\texttt{b} \rightarrow \texttt{h}) \rightarrow (\texttt{b} \rightarrow \texttt{s})} \Hstep[MP 1,6]{\vdash (\texttt{b} \rightarrow \texttt{s})}
 	\end{proofH}
 \end{example}
-\textit{Derived rules} are introduced as a means to make it easier to spot the next step in a proof sequence.
-Of particular importance is the so called \textit{deduction theorem}, which facilitates the construction of
-proofs that are conditioned on a hypothesis, without requiring that the hypothesis be an axiom. \index{Rule
-	of inference! deduction theorem}
+\textit{Derived rules} are introduced as a means to make it easier to
+spot the next step in a proof sequence. Of particular importance is
+the so called \textit{deduction theorem}, which facilitates the
+construction of proofs that are conditioned on a hypothesis, without
+requiring that the hypothesis be an axiom. \index{Rule of inference!
+	deduction theorem}
 \begin{align}
 	\label{axiom:deduction-theorem}\text{(Deduction Theorem)}\quad & \frac{\Delta \cup \phi \vdash \psi}{\Delta \vdash \phi \rightarrow \psi}
 \end{align}
-As an illustration, the proof in \Cref{proof:transitivity} can be restated using the \textit{transitivity}
-derived rule:
+As an illustration, the proof in \Cref{proof:transitivity} can be
+restated using the \textit{transitivity} derived rule:
 \begin{align}
 	\text{(Transitivity)}\quad & \frac{\Delta \vdash \varphi \rightarrow \psi, \qquad \Delta \vdash \psi \rightarrow \gamma}{\Delta \vdash \varphi \rightarrow \gamma}
 \end{align}
 
-Derived rules must be sound with respect to what can be proved by the three axioms and applications of modus
-ponens. That is, a derived rule should not enable one to make an inference that would not be possible without
-such a rule.
+Derived rules must be sound with respect to what can be proved by the
+three axioms and applications of modus ponens. That is, a derived
+rule should not enable one to make an inference that would not be
+possible without such a rule.
 
-The fact that it was able to be shown that \say{Billy Pilgrim survived the bombing of Dresden} through both
-semantic and syntactic notions of consequence is not a coincidence. This correspondence between logical
-consequence and Hilbert-style deduction systems holds in general for propositional logic (and, in fact for
-many other systems with relatively limited expressive power). We capture this correspondence more formally
-through the notions of \textit{soundness} and \textit{completeness}.
+The fact that it was able to be shown that \say{Billy Pilgrim
+	survived the bombing of Dresden} through both semantic and syntactic
+notions of consequence is not a coincidence. This correspondence
+between logical consequence and Hilbert-style deduction systems holds
+in general for propositional logic (and, in fact for many other
+systems with relatively limited expressive power). We capture this
+correspondence more formally through the notions of
+\textit{soundness} and \textit{completeness}.
 
 \begin{definition}
 	\label{definition:completeness-hilbert} \index{completeness ! propositional logic}
 
-	Given a set of formulae $\Gamma$ and one $\gamma$ in $\mathcal{L}$, $\Gamma \vdash \gamma$ if and only if
-	$\Gamma \vDash \gamma$. Where $\vDash$ and $\vdash$ are used in the context with which they have been
-	introduced.
+	Given a set of formulae $\Gamma$ and one $\gamma$ in $\mathcal{L}$,
+	$\Gamma \vdash \gamma$ if and only if $\Gamma \vDash \gamma$. Where
+	$\vDash$ and $\vdash$ are used in the context with which they have
+	been introduced.
 \end{definition}
 
-The proofs for \Cref{definition:completeness-hilbert} are well-known, and can be found in
-\cite{Ben1993Mathematical}.
+The proofs for \Cref{definition:completeness-hilbert} are well-known,
+and can be found in \cite{Ben1993Mathematical}.
 
 \label{subsubsection:gentzen-systems} \index{Genzten systems}
 
 \subsection{Consequence Relations}
-\label{subsection:consequence-relations} \index{consequence relations}
+\label{subsection:consequence-relations} \index{consequence
+	relations}
 
-In the preceding sections, the notion of consequence put forward by discussion(s) about the semantics or
-deductive system of a particular logic might instead be considered from the more abstract perspective of
-\textit{consequence relations}. In this sense, one considers a relation between formulae in the
-object-language. The task is then, just as was done in the definition of partial orders, to study which
-properties these consequence relations satisfy. It is these properties which provide a more general
-characterisation of how consequence behaves in the respective logic. That is, we may use them to illuminate
-the pattern and style of reasoning the logic enforces.
+In the preceding sections, the notion of consequence put forward by
+discussion(s) about the semantics or deductive system of a particular
+logic might instead be considered from the more abstract perspective
+of \textit{consequence relations}. In this sense, one considers a
+relation between formulae in the object-language. The task is then,
+just as was done in the definition of partial orders, to study which
+properties these consequence relations satisfy. It is these
+properties which provide a more general characterisation of how
+consequence behaves in the respective logic. That is, we may use them
+to illuminate the pattern and style of reasoning the logic enforces.
 
-When discussing consequence relations we will reuse notation and denote the relation with ``$\vdash$''
-(relying on the surrounding context to disambiguate consequence relations from proof derivations). At times
-of potential confusion, a particular consequence relation may be distinguished with a subscript that
+When discussing consequence relations we will reuse notation and
+denote the relation with ``$\vdash$'' (relying on the surrounding
+context to disambiguate consequence relations from proof
+derivations). At times of potential confusion, a particular
+consequence relation may be distinguished with a subscript that
 references the respective system.
 
 \begin{definition}
 	\label{definition:consequence-relations}
 
-	A \textit{consequence relation} $\vdash \; \subseteq \mathcal{L}\times \mathcal{L}$ is a binary relation over
-	a formal language that satisfies the following properties:
+	A \textit{consequence relation} $\vdash \; \subseteq
+		\mathcal{L}\times \mathcal{L}$ is a binary relation over a formal
+	language that satisfies the following properties:
 	\begin{align}
 		\text{(Reflexivity)}\quad  & \varphi \in \Gamma \timpls \Gamma \vdash \varphi                                                    \\
 		\text{(Monotonicity)}\quad & \Gamma \vdash \varphi \tand \Gamma \subseteq \Psi \timpl \Psi \vdash \varphi                        \\
@@ -884,16 +1064,23 @@ references the respective system.
 	\end{align}
 \end{definition}
 
-We can view a consequence relation as a set of ordered pairs $\{(\Gamma_{0}, \varphi_{0}), \ldots,
-	(\Gamma_{n}, \varphi_{n}), \ldots\}$. An alternative representation for the inclusion of a pair in the
-consequence relation, $(\Gamma, \varphi) \in \; \vdash$ is to use infix notation, and instead write $\Gamma
-	\vdash \varphi$. The intended meaning of such inclusions is that from $\Gamma$ one may conclude $\varphi$
-\cite{citkin2022consequence}. As such, it may be helpful to refer to $\Gamma$ as the \textit{premise} and to
-$\varphi$ as the \textit{conclusion}. The absence of such a pair from the relation, or $\Gamma \not \vdash
-	\gamma$, is understood to mean that $\gamma$ is not a consequence of $\Gamma$.
+We can view a consequence relation as a set of ordered pairs
+$\{(\Gamma_{0}, \varphi_{0}), \ldots, (\Gamma_{n}, \varphi_{n}),
+	\ldots\}$. An alternative representation for the inclusion of a pair
+in the consequence relation, $(\Gamma, \varphi) \in \; \vdash$ is to
+use infix notation, and instead write $\Gamma \vdash \varphi$. The
+intended meaning of such inclusions is that from $\Gamma$ one may
+conclude $\varphi$ \cite{citkin2022consequence}. As such, it may be
+helpful to refer to $\Gamma$ as the \textit{premise} and to $\varphi$
+as the \textit{conclusion}. The absence of such a pair from the
+relation, or $\Gamma \not \vdash \gamma$, is understood to mean that
+$\gamma$ is not a consequence of $\Gamma$.
 
-This is a much more significant abstraction on the matter of consequence, requiring no concrete proof system
-or semantics. The point is not at all to replace either of these, but rather that one's intuition for how a
-particular logic's notion of consequence behaves is frequently much simpler when viewed as properties of a
-relation. Later on, in \Cref{chapter:defeasible-reasoning}, we explore the construction of a logic that uses
-consequence relations as a starting point to build a semantics around.
+This is a much more significant abstraction on the matter of
+consequence, requiring no concrete proof system or semantics. The
+point is not at all to replace either of these, but rather that one's
+intuition for how a particular logic's notion of consequence behaves
+is frequently much simpler when viewed as properties of a relation.
+Later on, in \Cref{chapter:defeasible-reasoning}, we explore the
+construction of a logic that uses consequence relations as a starting
+point to build a semantics around.

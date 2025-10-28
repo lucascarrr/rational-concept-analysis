@@ -143,7 +143,7 @@ We begin the exposition of the KLM framework by looking at \textit{preferential 
 \textit{system P}.
 
 \begin{definition}
-	\label{definition:preferential-relation} \index{preferential ! consequence relations}
+	\label{definition:preferential-relation} \index{preferential!consequence relations}
 
 	The consequence relation $\twiddle$ is a \emph{preferential consequence relation} if and only if it satisfies
 	the properties of \emph{Reflexivity}, \emph{Left Logical Equivalence}, \emph{Right Weakening}, \emph{And},
@@ -303,8 +303,8 @@ and the alternative as defeasible formulae. Defeasible conditionals may be satis
 
 \begin{definition}
 	\label{definition:preferential-interpretation}
-	\index{preferential ! interpretations}
-	\index{interpretation ! preferential}
+	\index{preferential!interpretations}
+	\index{interpretation!preferential}
 
 	A \emph{preferential interpretation} $\Pin$ is a triple where $S$ is a set of \emph{states}, $l: S \to
 		\mathcal{U}$ is a function mapping states to valuations, and $\prec$ is a strict partial order on $S$.
@@ -430,7 +430,7 @@ preferential consequence relation is defined by some preferential interpretation
 interpretation defines some preferential consequence relation.
 
 \begin{theorem}
-	\label{theorem:soundness-preferential} \index{preferential ! soundness}
+	\label{theorem:soundness-preferential} \index{preferential!soundness}
 
 	If $\Pin$ is a preferential interpretation and $\phi, \psi \in \Lang$, then $\pin$ defines the consequence
 	relation $\twiddle_{\pin}$ given by the set $\{\,\phi \twiddle_{\pin}\psi \mid \pin \VDash \phi \twiddle
@@ -439,7 +439,7 @@ interpretation defines some preferential consequence relation.
 \end{theorem}
 
 \begin{theorem}
-	\label{theorem:completeness-preferential} \index{preferential ! completeness}
+	\label{theorem:completeness-preferential} \index{preferential!completeness}
 
 	If $\twiddle_{P}$ is a preferential consequence relation, then there exists a preferential interpretation $W$
 	which induces the consequence relation $\twiddle_{W}$ such that $\twiddle_{P}$ is precisely $\twiddle_{W}$.
@@ -508,7 +508,7 @@ these to a corresponding semantics derived from preferential interpretations, it
 the matter of \textit{preferential entailment}. Consider the following definition.
 
 \begin{definition}
-	\label{definition:p-entailment} \index{preferential ! entailment}
+	\label{definition:p-entailment} \index{preferential!entailment} \index{entailment!preferential}
 
 	A defeasible knowledge base $\Delta$ \textit{preferentially entails} a defeasible conditional $\phi \in
 		\Lang$ if and only if $\phi$ is satisfied by every preferential model of $\Delta$. In this case we write
@@ -711,7 +711,7 @@ a valid property of non-monotonic reasoning, and thus introduce \textit{rational
 %TODO argument against total preorders as representations of preference
 
 \begin{definition}
-	\label{definition:rational-relation} \index{rational ! consequence relation}
+	\label{definition:rational-relation} \index{rational!consequence relation}
 
 	The consequence relation $\twiddle$ is a \emph{rational consequence relation} if and only if it satisfies the
 	properties of \emph{Reflexivity}, \emph{Left Logical Equivalence}, \emph{Right Weakening}, \emph{And},
@@ -821,7 +821,7 @@ incomparable to \textit{Alice}, who is incomparable to \textit{Charlie}. If the 
 calling them \textit{ranked} will be made clear in a moment.
 
 \begin{definition}
-	\label{definition:ranked-interpretation} \index{interpretation ! ranked}
+	\label{definition:ranked-interpretation} \index{interpretation!ranked}
 
 	A \emph{ranked interpretation} is a preferential interpretation $\Pin$ where the preference relation $\prec$
 	is \emph{modular}.
@@ -865,7 +865,7 @@ an natural number.
 %
 \begin{figure}[H]
 	\centering
-	\captionsetup{width=0.4\textwidth}
+	\captionsetup{width=0.3\textwidth}
 	\begin{tikzpicture}[every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]
 		\draw[rounded corners=3pt, line width=0.1mm] (-1,2) rectangle (4,0);
 		\draw[rounded corners=3pt, line width=0.1mm] (-1,1) -- (4,1);
@@ -903,7 +903,7 @@ Need to add:
 \subsection{Ranked Entailment}
 \label{subsection:ranked-entailment}
 
-Considering that ranked interpretations are a particular kind of preferential interpretation, it is
+Considering that ranked interpretations are a particular kind of preferential interpretation, it may be
 interesting to discuss the analagous entailment relation. Given that ranked interpretations restrict the kind
 of preference orders to to those which are also modular---in doing so, causing the induced consequence
 relations to be rational---it seems plausible that the entailment relation defined with respect to ranked
@@ -911,25 +911,25 @@ models is indeed a rational consequence relation.
 
 \begin{definition}
 	\label{definition:ranked-entailment}
-	A defeasible knowledge base $\Delta$ \emph{rank entails} a conditional $\phi \in \Lang$ if and only if $\phi$ is satisfied by every ranked model of $\Delta$. In this case we write $\Delta \dentails_R \phi$. The set of all conditionals that are rank entailed by $\Delta$ is denoted $\Cn{R}(\Delta)$.
+	\index{entailment!ranked}
+
+	A defeasible knowledge base $\Delta$ \emph{rank entails} a conditional $\phi \in \Lang$ if and only if $\phi$
+	is satisfied by every ranked model of $\Delta$. In this case we write $\Delta \dentails_R \phi$. The set of
+	all conditionals that are rank entailed by $\Delta$ is denoted $\Cn{R}(\Delta)$.
 \end{definition}
 
 It immediately follows from the discussion on the monotonicity of preferential entailment that rank
-entailment is indeed another Tarskian operator, and also monotonic. Perhaps there is still hope that
-$\Cn{R}(\Delta)$ is rational. Unfortunately, not.
-
-Rank entailment considers all ranked models of the set $\Delta$. By the representation theorem, this
-corresponds to taking the intersection of the rational consequence relations associated with each ranked
-model. While each of these is indeed rational, it is not necessary that their intersection be. Consider the
-following example.
+entailment is indeed another Tarskian operator, and so is also monotonic. Rank entailment considers all
+ranked models of the set $\Delta$. By the representation theorem, this corresponds to taking the intersection
+of the rational consequence relations associated with each ranked model. While each of these is indeed
+rational, it is not necessary that their intersection be. The example given below illustrates one reason why
+this may be.
 
 \begin{example}
 	\label{example:rank-entailment-example}
-	Consider the
-	knowledge base consisting of a single rule:
-	\[\Delta \coloneq \{ \texttt{student} \twiddle \texttt{graduate} \}\]
 
-	Among others, two of the ranked models of $\Delta$ are
+	Consider the two ranked interpretations below, which are models of the singleton knowledge base $\Delta =
+		\{\texttt{student} \twiddle \texttt{graduate}\}$.
 
 	\begin{figure}[H]
 		\centering
@@ -943,6 +943,7 @@ following example.
 				\draw (1,0) -- (1,2);
 				\node[fill=none] (alice) at (1.8,0.5) [] {$\{s,g,\overline{c}\}$};
 				\node[fill=none] (bob) at (3.2,0.5) [] {$\{s,g,c\}$};
+				\node[fill=none] (charlie) at (2.5,1.5) [] {$\{s,\overline{g},\overline{c}\}$};
 			\end{tikzpicture}
 			\subcaption{$\mathsf{R}_1$}
 		\end{minipage}
@@ -964,17 +965,26 @@ following example.
 		\caption{Two ranked models of $\Delta$}
 	\end{figure}
 
-	Quite obviously both are models of $\Delta$. Let $\twiddle_1$ and $\twiddle_2$ be the rational consequence
-	relations associated with each respective model. It is then quite easy to verify that
-	$(\texttt{student,clever}) \not \in \; \twiddle_1$. Since this is a rational relation, $(\texttt{student}
-		\land \neg \texttt{clever}, \texttt{graduate}) \in \; \twiddle_1$. Considering $\twiddle_2$, in fact
-	$(\texttt{student,clever}) \in \; \twiddle_2$ and $(\texttt{student} \land \neg \texttt{clever},
-		\texttt{graduate}) \not \in \; \twiddle_2$.
+	Let $\twiddle_1$ and $\twiddle_2$ be the consequence relations associated with each respective
+	interpretation. Indeed, both are rational and contain the pair $(\texttt{student,graduate})$. Considering
+	only $\twiddle_1$, it is easy to verify that
+	%
+	\begin{itemize}[nosep]
+		\item $(\texttt{student,clever}) \not \in \,\twiddle_1$,
+	\end{itemize}
+	and by rationality (or inspection) that also,
+	\begin{itemize}[nosep]
+		\item $(\texttt{student} \land \neg \texttt{clever,graduate}) \in \, \twiddle_1$.
+	\end{itemize}
+	However, with respect to these two expressions, $\twiddle_2$ behaves in the opposite way:
+	$(\texttt{student,clever})$ is included while $(\texttt{student}\land \neg \texttt{clever,graduate})$ is not.
+	As a result, their intersection includes $(\texttt{student,graduate})$, does not include
+	$(\texttt{student,clever})$. By rational monotony, $(\texttt{student}\land \neg \texttt{clever,graduate})$
+	should then also be included, but it is not. Accordingly, the relation is not rational.
 
-	If $\twiddle_\Delta$ is their intersection, then $(\texttt{student,graduate}) \in \; \twiddle_\Delta$,
-	$(\texttt{student,clever}) \not \in \; \twiddle_\Delta$, but also $(\texttt{student} \land \neg
-		\texttt{clever}) \not \in \; \twiddle_\Delta$. Then, $\twiddle_\Delta$ is not rational.
 \end{example}
+
+Evidently rational consequence relations are not closed under intersections.
 
 \section{Rational Closure}
 \label{section:rational-closure}

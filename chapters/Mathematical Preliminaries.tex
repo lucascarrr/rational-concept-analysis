@@ -24,17 +24,19 @@ subsections. The proceeding follow largely from the treatments by \cite{davey200
 \label{subsection:orders}
 
 A \textit{binary relation} \index{binary relation} $R$ over the sets $X$ and $Y$ is a set of ordered pairs
-$\op{x,y}$ where $x \in X$ and $y \in Y$. We may choose to express that $\op{x,y}\in R$ using infix notation
-and write $xRy$, which tells us that $R$ relates $x$ to $y$.
+$\op{x,y}$ where $x \in X$ and $y \in Y$. It is always the case that $R \subseteq X \times Y$, and so in the
+case where at least one of the sets is infinite, the $R$ may also be infinite. We may choose to express that
+$\op{x,y}\in R$ using infix notation and write $xRy$, which tells us that $R$ relates $x$ to $y$. As
+expected, $(x,y) \not \in R$ means that $x$ is not related to $y$ by $R$; of course, this may be true while
+$(y,x) \in R$.
 
 Certain binary relations, satisfying specific properties, occur frequently enough to warrant their own
-denomination. One such relation, which will be used in almost every section of this dissertation, is called a
-\textit{partial order}.
+denomination. One such relation, is called a \textit{partial order}.
 
 \begin{definition}
 	\label{definition:partial-order} \index{partial order}
 
-	A \textit{partial order} is a binary relation $\preceq \; \subseteq X \times X$ that satisfies the following
+	A \textit{partial order} is a binary relation $\preceq \; \subseteq X \times X$ that satisfies the
 	properties:
 	\begin{align}
 		\text{(Reflexivity)}\quad  & x \preceq x                                      \\
@@ -44,14 +46,13 @@ denomination. One such relation, which will be used in almost every section of t
 	for all $x,y,z \in X$.
 \end{definition}
 
-Frequently, ``preference'' is used as a metonym for an order. In this context, writing \say{element $x$ is
+Frequently, ``preference'' is used as a metonym for an ordering. In this context, writing \say{element $x$ is
 	preferred to $y$} should be interpreted to mean that $(x, y) \in \; \preceq$, or simply $x \preceq y$. The
-metaphorical use of ``preference'' will become more apparent in \Cref{chapter:defeasible-reasoning}.
+metaphorical use of ``preference'' will become more relevant in \Cref{chapter:defeasible-reasoning}.
 
-We write $x \npreceq y$ to indicate that $\op{x,y}$ is not in the relation, and $x \prec y$ for the case
-where $x\preceq y$ and $x \not = y$. In the scenario where $x \not \preceq y$ and $y \not \preceq x$---i.e.,
-that $x$ and $y$ are incomparable---we may write $x \parallel y$. From a partial order we can quite easily
-induce the notion of a \emph{strict partial order}.
+To indicate that $x \preceq y$ but $x\not = y$, we may write $x \prec y$. In the event where $x \not \preceq
+	y$ and $y \not \preceq x$---i.e., that $x$ and $y$ are incomparable---we may write $x \parallel y$. From a
+partial order it is quite natural to describe the notion of a \emph{strict partial order}.
 
 \begin{definition}
 	\label{definition:strict-partial-order} \index{partial order! strict}
@@ -59,19 +60,16 @@ induce the notion of a \emph{strict partial order}.
 	A \textit{strict partial-order} is a binary relation $\prec \; \subseteq X \times X$ that satisfies:
 	\begin{align}
 		\text{(Irreflexivity)}\quad & x \nprec x                                 \\
-		\text{(Asymmetry)}\quad     & x \prec y \timpl y \nprec x                \\
+		\text{(Asymmetry)}\quad     & x \prec y \timpls y \nprec x               \\
 		\text{(Transitivity)}\quad  & x \prec y \tand y \prec z \timpl x \prec z
 	\end{align}
 	for all $x,y,z \in X$.
 \end{definition}
 
-An \textit{ordered set} is a pair $(X, \preceq)$ with $X$ being a set and $\preceq$ being an ordering on the
-elements of $X$. We make notation easier, and use $\mathbf{X}$ to denote the pair. We may reference the order
-relation associated with $\mathbf{X}$ by writing $\preceq_{X}$ in settings where there is ambiguity. If
-$\mathbf{Y}$ is a subset of $\mathbf{X}$, then $\mathbf{Y}$ inherits the order relation from $\mathbf{X}$;
-and so, for $x,y \in \mathbf{Y}$, $x \preceq_{Y}y$ if and only if $x \preceq_{X}y$. \index{ordered set}
-Ordered sets may be described visually by \textit{Hasse diagrams} \cite{Huth_Ryan_2004}. \index{Hasse
-	diagrams}
+An \textit{ordered set} is a pair $(X, \preceq)$. $X$ may be called the \textit{carrier set} for which
+$\preceq \; \subseteq X \times X$ is the \textit{underlying order}. For a subset $Y \subseteq X$, $Y$ may
+inherit the order associated with $X$ but restricted to $Y$. Ordered sets may be described visually by
+\textit{Hasse diagrams} \cite{Huth_Ryan_2004}. \index{Hasse diagrams} \index{ordered set}
 
 \begin{figure}[H]
 	\centering
@@ -89,7 +87,7 @@ Ordered sets may be described visually by \textit{Hasse diagrams} \cite{Huth_Rya
 			\draw (y) -- (x);
 			\draw (z) -- (x);
 		\end{tikzpicture}
-		\subcaption{$\mathbf{A}$} \label{subfigure:partial-order-a}
+		\subcaption{$(A,\preceq_A)$} \label{subfigure:partial-order-a}
 	\end{subfigure}
 	\begin{subfigure}{0.3\textwidth}
 		\centering
@@ -102,53 +100,48 @@ Ordered sets may be described visually by \textit{Hasse diagrams} \cite{Huth_Rya
 			\draw (y) -- (x);
 			\draw (z) -- (x);
 		\end{tikzpicture}
-		\subcaption{$\mathbf{B}$} \label{subfigure:partial-order-b}
+		\subcaption{$(B,\preceq_B)$} \label{subfigure:partial-order-b}
 	\end{subfigure}
 	\caption{The Hasse diagrams of two partially ordered sets} \label{figure:hasse-diagram}
 \end{figure}
 
-As an illustrative example, from the ordered set in \Cref{subfigure:partial-order-a} we read that $z \preceq
-	x$, as there is a (strictly) upward path from $z$ to $x$. In fact, it is clear that $z \preceq w, x,y,z$, or
-that \say{$z$ is preferred to every other element in $\mathbf{A}$}. We say such an element is
+As an illustrative example, from the ordered set in \Cref{subfigure:partial-order-a} it can be read that $z
+	\preceq x$, as there is a (strictly) upward path from $z$ to $x$. In fact, it is clear that $z \preceq w,
+	x,y,z$, or that \say{$z$ is preferred to every other element in $A$}. Such an element is said to be
 \textit{minimal}.
 
-More formally, an element $x \in \mathbf{X}$ is \textit{minimal} with respect to the ordering on its
-container set if there exists no distinct element $y \in \mathbf{X}$ such that $y \preceq x$. Conversely, we
-say $x$ is \textit{maximal} if there exists no distinct $y \in \mathbf{X}$ where $x \preceq y$. Then $x$ is
-the \textit{minimum} element if $x \preceq y$ for all $y \in \mathbf{X}$; the dual notion of a
-\textit{maximum} is defined as we might expect. In the ordered set $\mathbf{B}$ shown in
-\Cref{subfigure:partial-order-b}, $\omega$ is the maximum element and the order has no minimum.
+More formally, an element $x \in X$ is \textit{minimal} with respect to an ordering $\preceq$ on its carrier
+set if there is no distinct element $y \in X$ where $y \preceq x$. Conversely, $y$ is the maximal element if
+there is no distinct $x \in X$ where $y \preceq x$. There may of course be multiple minimal or maximal
+elements, for example $\phi$ and $\psi$ in \Cref{subfigure:partial-order-b}. For finite orders, there is
+always at least one minimal and maximal element. This condition is not true for all infinite orderings;
+consider for example the set of integers. In the case where $x$ is the unique minimal element it is called
+the \textit{minimum}. This may be phrased equivalently as $x \preceq y$ for all $y \in X$. The dual notion of
+the \textit{maximum} is defined in the expected way.
+
 \index{maximum} \index{minimum} \index{maximal} \index{minimal}
 
-The following definition captures how we might describe certain mappings from one ordered set to another, and
-how these mappings relate to the orders of their respective sets.
-
-\begin{definition}
-	\label{definition:order-maps} \index{map!order-preserving} \index{map!isotone} \index{map!order-embedding} \index{map!order-isomorphism} \index{map!order-reversing} \index{map!antitone} \index{isomorphism!order}
-	\index{map!dually isomorphic} \index{map!order-anti-isomorphic} \index{isomorphism!order-anti} \index{isomorphism!dual}
-
-	Let $\mathbf{X}$ and $\mathbf{Y}$ be ordered sets with a mapping $\varphi : \mathbf{X}\to \mathbf{Y}$. We
-	call $\varphi$ an \textit{order-preserving} (or, \textit{isotone}) map if $x \preceq_{X}y$ implies
-	$\varphi(x) \preceq_{Y}\varphi(y)$. It is an \textit{order-embedding} if it is injective, and $x
-		\preceq_{X}y$ if and only if $\varphi(x) \preceq_{Y}\varphi (y)$ for all $x,y \in \mathbf{X}$. Finally,
-	$\varphi$ is an \textit{order-isomorphism}, or just \textit{isomorphism}, if it is an order-embedding that is
-	also surjective. The dual notion to an order-preserving map is an \textit{order-reversing} (or,
-	\textit{antitone}) map. We say that two orders are \textit{dually isomorphic}, or
-	\textit{order-anti-isomorphic}, if there is an order-reversing bijection between them.
-\end{definition}
+Frequently ordered sets are mapped onto other ordered sets. Suppose that $\varphi \colon X \to Y$ is a
+mapping from $(X,\preceq_X)$ to $(Y,\preceq_Y)$. Then, $\varphi$ is called an \textit{order-preserving}, or
+\textit{isotone}, map when $x \preceq_X$ implies $\varphi(x) \preceq_Y \varphi(y)$. If $\varphi$ is injective
+and $x\preceq_X y$ if and only if $\varphi(x) \preceq \varphi(y)$ then it is called an
+\textit{order-embedding}. Note that an order-embedding is necessarily order-preserving. Finally, $\varphi$ is
+an \textit{order-isomorphism}, or just an \textit{isomorphism}, if it is an order-embedding that is also
+surjective. The dual notion to an order-preserving map is an \textit{order-reversing} (or, \textit{antitone})
+map. We say that two orders are \textit{dually isomorphic}, or \textit{order-anti-isomorphic}, if there is an
+order-reversing bijection between them.
 
 \subsection{Lattice Theory}
 \label{subsection:lattice-theory}
 
 Lattice theory studies partially ordered sets that behave well with respect to certain properties involving
-upper and lower bounds \cite{davey2002introduction}. Given an ordered set $\mathbf{X}$ and a subset
-$\mathbf{Y}\subseteq \mathbf{X}$, the set of upper bounds of $\mathbf{Y}$ is defined as
+upper and lower bounds \cite{davey2002introduction}. Later on it will be shown that these properties make
+them particularly well-suited to modelling hierarchical structures. Given an ordered set $(X,\preceq)$ and a
+subset $Y \subseteq X$ which inherits the order, the set of upper bounds of $Y$ is defined as
 \[
-	\mathbf{Y}^{u}\coloneqq \{x \in \mathbf{X}\mid \forall y \in \mathbf{Y}: y \preceq x\},
+	{Y}^{u}\coloneqq \{x \in {X}\mid \forall y \in {Y}: y \preceq x\}.
 \]
-and the set of lower bounds, $\mathbf{Y}^{l}$, is defined dually. If $\mathbf{Y}^{u}$ has a minimum element, then we call that element the \textit{supremum} of
-$\mathbf{Y}$. Dually, if $\mathbf{Y}^{l}$ has a maximum element, then we call that element the \textit{infimum} of $\mathbf{Y}$ (the supremum and infinum are
-also referred to as the \textit{least upper bound} and \textit{greatest lower bound}, respectively).
+The set of lower bounds, ${Y}^{l}$, is defined dually. If ${Y}^{u}$ has a minimum element $y$, then $y$ is the \textit{supremum} of $Y$. Dually, if $Y^l$ has a maximum element $x$, then $x$ is the infimum of $Y$. The supremum and infinum may also be referred to as the \textit{least upper bound} and \textit{greatest lower bound}, respectively.
 
 \index{upper bound} \index{lower bound} \index{lattice!join} \index{lattice!meet} Instead of talking about
 the supremum of two elements $x,y \in \mathbf{X}$, we opt for the term \textit{join} and write $x \vee y$, or

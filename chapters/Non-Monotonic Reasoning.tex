@@ -891,13 +891,90 @@ not be possible under any circumstances.
 It may then be more natural to add additional rank, the \textit{infinite rank}, to the co-domain of the
 ranking function. Valuations that are mapped to the infinite rank then correspond to these \textit{impossible
 	worlds}. The notion of impossible worlds is important when considering how to derive information from a
-knowledge base consisting of defeasible as well as classical statements. Intuitively, any valuations that are
+knowledge:base consisting of defeasible as well as classical statements. Intuitively, any valuations that are
 not models of the classical statements should be regarded as impossible, and assigned the infinite rank.
+
+Need to add:
+\begin{enumerate}[nosep]
+	\item definitino of satisfaction w.r.t. ranking functions
+	\item soundness \& completeness results (borign)
+\end{enumerate}
 
 \subsection{Ranked Entailment}
 \label{subsection:ranked-entailment}
 
-THe matter
+Considering that ranked interpretations are a particular kind of preferential interpretation, it is
+interesting to discuss the analagous entailment relation. Given that ranked interpretations restrict the kind
+of preference orders to to those which are also modular---in doing so, causing the induced consequence
+relations to be rational---it seems plausible that the entailment relation defined with respect to ranked
+models is indeed a rational consequence relation.
+
+\begin{definition}
+	\label{definition:ranked-entailment}
+	A defeasible knowledge base $\Delta$ \emph{rank entails} a conditional $\phi \in \Lang$ if and only if $\phi$ is satisfied by every ranked model of $\Delta$. In this case we write $\Delta \dentails_R \phi$. The set of all conditionals that are rank entailed by $\Delta$ is denoted $\Cn{R}(\Delta)$.
+\end{definition}
+
+It immediately follows from the discussion on the monotonicity of preferential entailment that rank
+entailment is indeed another Tarskian operator, and also monotonic. Perhaps there is still hope that
+$\Cn{R}(\Delta)$ is rational. Unfortunately, not.
+
+Rank entailment considers all ranked models of the set $\Delta$. By the representation theorem, this
+corresponds to taking the intersection of the rational consequence relations associated with each ranked
+model. While each of these is indeed rational, it is not necessary that their intersection be. Consider the
+following example.
+
+\begin{example}
+	\label{example:rank-entailment-example}
+	Consider the
+	knowledge base consisting of a single rule:
+	\[\Delta \coloneq \{ \texttt{student} \twiddle \texttt{graduate} \}\]
+
+	Among others, two of the ranked models of $\Delta$ are
+
+	\begin{figure}[H]
+		\centering
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]
+				\draw[rounded corners=3pt, line width=0.1mm] (0,2) rectangle (4,0);
+				\draw[rounded corners=3pt, line width=0.1mm] (0,1) -- (4,1);
+				\node[fill=none] (0) at (0.5,0.5) [] {$0$};
+				\node[fill=none] (1) at (0.5,1.5) [] {$1$};
+				\draw (1,0) -- (1,2);
+				\node[fill=none] (alice) at (1.8,0.5) [] {$\{s,g,\overline{c}\}$};
+				\node[fill=none] (bob) at (3.2,0.5) [] {$\{s,g,c\}$};
+			\end{tikzpicture}
+			\subcaption{$\mathsf{R}_1$}
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[every node/.style={circle, fill=black, inner sep=0.5pt, minimum size=1.5mm}]
+				\draw[rounded corners=3pt, line width=0.1mm] (0,2) rectangle (4,0);
+				\draw[rounded corners=3pt, line width=0.1mm] (0,1) -- (4,1);
+				\node[fill=none] (0) at (0.5,0.5) [] {$0$};
+				\node[fill=none] (1) at (0.5,1.5) [] {$1$};
+				\draw (1,0) -- (1,2);
+				\node[fill=none] (alice) at (1.8,1.5) [] {$\{s,g,\overline{c}\}$};
+				\node[fill=none] (bob) at (3.2,1.5) [] {$\{s,\overline{g},\overline{c}\}$};
+				\node[fill=none] (charlie) at (2.5,0.5) [] {$\{s,g,c\}$};
+			\end{tikzpicture}
+			\subcaption{$\mathsf{R}_2$}
+		\end{minipage}
+
+		\caption{Two ranked models of $\Delta$}
+	\end{figure}
+
+	Quite obviously both are models of $\Delta$. Let $\twiddle_1$ and $\twiddle_2$ be the rational consequence
+	relations associated with each respective model. It is then quite easy to verify that
+	$(\texttt{student,clever}) \not \in \; \twiddle_1$. Since this is a rational relation, $(\texttt{student}
+		\land \neg \texttt{clever}, \texttt{graduate}) \in \; \twiddle_1$. Considering $\twiddle_2$, in fact
+	$(\texttt{student,clever}) \in \; \twiddle_2$ and $(\texttt{student} \land \neg \texttt{clever},
+		\texttt{graduate}) \not \in \; \twiddle_2$.
+
+	If $\twiddle_\Delta$ is their intersection, then $(\texttt{student,graduate}) \in \; \twiddle_\Delta$,
+	$(\texttt{student,clever}) \not \in \; \twiddle_\Delta$, but also $(\texttt{student} \land \neg
+		\texttt{clever}) \not \in \; \twiddle_\Delta$. Then, $\twiddle_\Delta$ is not rational.
+\end{example}
 
 \section{Rational Closure}
 \label{section:rational-closure}

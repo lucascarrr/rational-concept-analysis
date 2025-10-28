@@ -862,7 +862,7 @@ Another consequence is that ranked interpretations admit a new representation. I
 they may be represented as stratified members of the equivalnce relation. As depicted in
 \Cref{figure:ranked-interpretation-representation}, where each strata, or \textit{rank}, is associated with
 an natural number.
-
+%
 \begin{figure}[H]
 	\centering
 	\captionsetup{width=0.4\textwidth}
@@ -879,7 +879,7 @@ an natural number.
 	\caption{\Cref{subfigure:rational} represented as a ranked interpretation}
 	\label{figure:ranked-interpretation-representation}
 \end{figure}
-
+%
 If $\mathsf{R} $ is a ranking function under consideration, then $\mathsf{R} (v)$ denotes the rank of the
 valuation $v$; and so, $\mathsf{R}(\{c,g,s\}) = 0$ in the above interpretation. Notice that the ranking
 funcion that gives rise to \Cref{figure:ranked-interpretation-representation} does not appear to be defined
@@ -896,6 +896,8 @@ not models of the classical statements should be regarded as impossible, and ass
 
 \subsection{Ranked Entailment}
 \label{subsection:ranked-entailment}
+
+THe matter
 
 \section{Rational Closure}
 \label{section:rational-closure}
@@ -926,105 +928,52 @@ classical formulae from this point onwards, and consolidate the notation as $\pi
 	don't have CM}
 
 \begin{algo}{\textsc{BaseRank}}
-
 	\label{algorithm:BaseRank}
 
-	\Require A (finite) set
-	$\Delta$
+	\Require A (finite) set $\Delta$ of defeasible conditionals in $\Lang$
+	\Ensure A partition $(\Delta_{0}, \ldots, \Delta_{n}, \Delta_{\infty})$ of $\Delta$
 
-	of defeasible conditionals in $\Lang$
+	\State $i \coloneq 0$
+	\State $\Gamma_{0}\coloneq \textsf{materialise}(\Delta)$
 
-	\Ensure A
-	partition
-	$(\Delta_{0}, \ldots, \Delta_{n}, \Delta_{\infty})$
+	\While{$\Gamma_{i}\not = \Gamma_{i-1}$}
 
-	of $\Delta$
-
-	\State
-	$i
-		\coloneq 0$
-
-	\State
-	$\Gamma_{0}\coloneq \textsf{materialise}(\Delta)$
-	\While{$\Gamma_{i}\not = \Gamma_{i-1}$
-
-	}
-
-	\State
-	$\Gamma_{i+1}\coloneq \{\,\, \phi \rightarrow \psi \in \Gamma_{i}\colon
-		\Gamma_{i}\vDash \neg \phi \,\,\}$
-
-	\State
-	$\Delta_{i}\coloneq \{\,\, \phi \twiddle \psi \colon (\phi \rightarrow \psi) \in
-		\Gamma_{i}\setminus \Gamma_{i+1}\,\,\}$
-
-	\State
-	$i = i + 1$
+	\State $\Gamma_{i+1}\coloneq \{\, \phi \rightarrow \psi \in \Gamma_{i}\colon \Gamma_{i}\vDash \neg \phi \,\}$
+	\State $\Delta_{i}\coloneq \{\,\phi \twiddle \psi \colon (\phi \rightarrow \psi) \in \Gamma_{i}\setminus \Gamma_{i+1}\,\}$
+	\State $i = i + 1$
 
 	\EndWhile
+	\State $\Delta_{\infty}\coloneq \Gamma_{i}$
 
-	\State
-	$\Delta_{\infty}\coloneq \Gamma_{i}$
-
-	\If {$\Gamma_{i-1}= \emptyset$
-
-	}
-
-	\State
-	$n \coloneq i - 1$
-
+	\If {$\Gamma_{i-1}= \emptyset$ }
+	\State $n \coloneq i - 1$
 	\Else
-
-	\State
-	$n \coloneq i - 2$
-
+	\State $n \coloneq i - 2$
 	\EndIf
 
-	\State \Return
-	$(\Delta_{0}, \ldots, \Delta_{n}, \Delta_{\infty})$
+	\State \Return $(\Delta_{0}, \ldots, \Delta_{n}, \Delta_{\infty})$
 \end{algo}
 
 \begin{algo}{\textsc{Rational Closure}}
-
 	\label{algorithm:RationalClosureProp}
 
-	\Require A set
-	$\Delta$
+	\Require A set $\Delta$ of defeasible conditionals and a query $\phi \twiddle \psi$ from $\Lang$
 
-	of defeasible conditionals and a query $\phi \twiddle \psi$
+	\Ensure \texttt{True} if $\Delta \dentails \phi \twiddle \psi$; \texttt{False}, otherwise.
 
-	from $\Lang$
+	\State $(\Delta_{0}, \ldots, \Delta_{n}, \Delta_{\infty}) \coloneq \textsc{BaseRank}(\Delta )$
 
-	\Ensure \texttt{True} if
-	$\Delta \dentails \phi \twiddle \psi$
+	\State $i \coloneq 0$
 
-	; \texttt{False},
-	otherwise.
+	\State $\Delta \coloneq \bigcup^{j<n}_{i=0}\Delta_{j}$
 
-	\State
-	$(\Delta_{0}, \ldots, \Delta_{n}, \Delta_{\infty}) \coloneq
-		\textsc{BaseRank}(\Delta )$
+	\While {$\Delta_{\infty}\cup \Delta \vDash \neg \phi$ and $\Delta \not = \emptyset$ }
 
-	\State
-	$i \coloneq 0$
+	\State $\Delta \coloneq \Delta \setminus \Delta_{i}$
 
-	\State
-	$\Delta \coloneq \bigcup^{j<n}_{i=0}\Delta_{j}$
-
-	\While {$\Delta_{\infty}\cup \Delta \vDash \neg \phi$
-
-		and $\Delta \not = \emptyset$
-
-	}
-
-	\State
-	$\Delta \coloneq \Delta \setminus \Delta_{i}$
-
-	\State
-	$i \coloneq i + 1$
+	\State $i \coloneq i + 1$
 
 	\EndWhile
 
-	\State \Return
-	$\Delta_{\infty}\cup \Delta \vDash \phi \twiddle \psi$
+	\State \Return $\Delta_{\infty}\cup \Delta \vDash \phi \twiddle \psi$
 \end{algo}

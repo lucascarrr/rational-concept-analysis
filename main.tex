@@ -6,8 +6,7 @@
 
 \begin{document}
 % Chapter formatting
-\titleformat{\chapter} {\normalfont\bfseries\fontsize{45pt}{42pt}\selectfont\raggedright}
-{\thechapter}{1em}{}
+\titleformat{\chapter} {\normalfont\bfseries\fontsize{45pt}{42pt}\selectfont\raggedright} {\thechapter}{1em}{}
 
 % Extra vertical space before and after chapter titles
 \titlespacing*{\chapter}{0pt}{*8}{*12}
@@ -30,13 +29,10 @@
 
 \input{chapters/Foreword.tex} \tableofcontents
 \input{chapters/Introduction.tex}
-
-\part{Foundations}
-\label{part:1}
-\input{chapters/Mathematical Preliminaries.tex}
+\input{chapters/Mathematical
+	Preliminaries.tex}
 \input{chapters/Formal Concept Analysis.tex}
 \input{chapters/Non-Monotonic Reasoning.tex}
-\part{Rational Concept Analysis}
 \input{chapters/Defeasible Reasoning in FCA.tex}
 \input{chapters/Rational Concepts.tex}
 \input{chapters/Conclusions.tex}

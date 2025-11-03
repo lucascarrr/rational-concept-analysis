@@ -80,6 +80,8 @@ marks appear. The resulting set of attributes is called the \textit{object's int
 		\obj{.xx..}{\texttt{category}}
 		\obj{.x...}{\texttt{semicategory}}
 	\end{cxt}
+	\captionsetup{width=1\textwidth}
+
 	\caption{A formal context showing necessary properties of group-like structures.}
 
 	\label{context:formal-context-group-structures}
@@ -87,16 +89,14 @@ marks appear. The resulting set of attributes is called the \textit{object's int
 
 Using this approach, we can see that the intent of $\texttt{magma}$ is the singleton $\{\texttt{closure}\}$, while
 the extent of \texttt{closure} is the set $\{\texttt{magma,semigroup,monoid,group,abelian
-		group,loop,quasigroup}\}$.
-
-This approach to determining object extents and attribute intents becomes impractical when considering non-trivial
-contexts, or large sets of objects and attributes. The procedure can be formally described by the
-\textit{derivation operators}:
-% \footnote{It is common to denote either derivation operator with a prime and use the surrounding context to resolve ambiguity,
-% so $A^{\uparrow}$ and $B^{\downarrow}$ would become $A'$ and $B'$, respectively. We avoid this notation as later on it will
-% become increasingly challenging to avoid ambiguity while maintaining pleasing notation. In cases where a derivation operator is
-% applied to a singleton of objects $\{g\}$ (\textit{resp.} attributes $\{m\}$) we omit the parenthesis and write $g^{\uparrow}$
-% (\textit{resp.} $m^{\downarrow}$)}
+		group,loop,quasigroup}\}$. However, when considering contexts of a larger size, or derivations of larger sets of
+objects or attributes, it is clear that a more general representation is required. Such a generalisation is found
+in the \textit{derivation operators}\footnote{It is common to denote either derivation operator with a prime and
+	use the surrounding context to resolve ambiguity, so $A^{\uparrow}$ and $B^{\downarrow}$ would become $A'$ and
+	$B'$, respectively. We avoid this notation as later on it will become increasingly challenging to avoid ambiguity
+	while maintaining pleasing notation. In cases where a derivation operator is applied to a singleton of objects
+	$\{g\}$ (\textit{resp.} attributes $\{m\}$) we omit the parenthesis and write $g^{\uparrow}$ (\textit{resp.}
+	$m^{\downarrow}$)}:
 
 \begin{definition}
 	\index{derivation operators} \label{definition:derivation-operators} \index{attribute!extent} \index{object!intent}
@@ -919,59 +919,3 @@ called the \textit{test context} over $M$.
 	\end{itemize}
 \end{definition}
 
-% \clearpage \subsection{Clause Logic} \label{subsection:clause-logic}
-
-% The inductive definition of compound attributes admits the construction of arbitrarily many compound attributes. We may
-% represent them, up to global equivalence, as \textit{clauses}: \begin{definition} \label{definition:clauses}
-
-% A \emph{clause} $(A,S)$, where $A,S \subseteq M$, represents a compound attribute that is globally equivalent to the compound
-% attribute $\bigvee S \cup \{\neg a \mid a \in A\}$. \end{definition}
-
-% The extension of $(A,S)$ in a context $\GMI$ is defined as the set of objects which satisfy at least one attribute in $S$ or
-% fail to satisfy at least one attribute in $A$. Formally, \[ (A,S)^{\vDash}= \{ g \in G \mid \exists s \in S,\; g\vDash s \}
-% \;\cup\; \{ g \in G \mid \exists a \in A,\; g \nvDash a \} \] Clauses are called \textit{disjoint} when $A \cap S$ is the
-% emptyset. The following definition is helpful to describe the set of all clauses which are satisfied by a context: %
-% \begin{definition} \label{definition:all-extensional}
-
-% A compound attribute $\varphi \in \Ca{M}$ is \emph{all-extensional} in a context $\GMI$ if and only if $\varphi^{\vDash}= G$. In
-% other words, if the extension of the attribute is the complete set of objects. \end{definition}
-
-% A disjoint clause $(A,S)$ is called \textit{full} when also $A \cup S$ is the entire attribute set $M$. \begin{proposition}
-% \label{proposition:clause-up-to-equivalence}
-
-% If $\varphi \in \Ca{M}$ is a compound attribute then there exists a clause $(A,S)$ with $A,S \subseteq M$ that is globally
-% equivalent to $\varphi$ \end{proposition}
-
-% % \begin{example} % The implication $\{\texttt{traumatized}\}\rightarrow \{\texttt{human,soldier}\}$ holds as the concept
-% derived from the premise, is a subconcept of both $\mu \texttt{human}$ % and $\mu \texttt{soldier}$.
-
-% % \begin{figure}[H] % \centering % {\unitlength 1.75mm
-
-% % \begin{diagram}{40}{50} % % \Node{1}{20}{50}
-
-% % \Node{2}{10}{40} \leftAttbox{2}{1}{1}{unstuck}
-
-% % \Node{3}{20}{40} \leftAttbox{3}{1}{1}{violent}
-
-% % \Node{4}{30}{40} \rightAttbox{4}{1}{1}{human}
-
-% % \Node{5}{5}{30} \leftObjbox{5}{1}{1}{Tralfmadorians}
-
-% % \Node{6}{20}{30} \leftAttbox{6}{1}{1}{pacifist} \leftObjbox{6}{1}{1}{Mary O'Hare}
-
-% % \Node{7}{35}{30} \rightAttbox{7}{1}{1}{soldier}
-
-% % \Node{8}{30}{20} \rightObjbox{8}{1}{1}{Paul Lazzaro \\ Roland Weary}
-
-% % \Node{9}{20}{10} \leftAttbox{9}{1}{1}{traumatised} \leftObjbox{9}{1}{1}{Billy Pilgrim}
-
-% % \Node{10}{20}{0}
-
-% % \Edge{1}{2} \Edge{1}{3} \Edge{1}{4}
-
-% % \Edge{2}{5} \Edge{2}{9} \Edge{3}{5} \Edge{3}{8}
-
-% % \Edge{4}{6} \Edge{4}{7}
-
-% % \Edge{5}{10} \Edge{6}{9} \Edge{7}{8} \Edge{8}{10} \Edge{7}{9} \Edge{9}{10}\end{diagram} } % \caption{The concept lattice of
-% the context in \Cref{figure:context-slaughterhouse5}} % \end{figure} % \end{example}}

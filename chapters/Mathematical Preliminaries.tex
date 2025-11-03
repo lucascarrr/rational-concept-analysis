@@ -2,7 +2,7 @@
 \label{chapter:mathematical-preliminaries}
 
 The ultimate interest of this dissertation is to introduce a style of non-monotonic reasoning, originally situated
-in propositional logic, into Formal Concept Analysis. We use the first chapter to recall some of the more
+in propositional logic, into Formal Concept Analysis. We use this chapter to recall some of the more
 foundational ideas relating to topics which will be developed further on. In addition, we use this chapter as an
 opportunity to clarify the notation which will be deployed throughout the remainder of this work.
 
@@ -15,8 +15,7 @@ This chapter begins by discussing notions in \textit{order} and \textit{lattice 
 
 In substantially different ways, the two areas on which this work is based---non-monotonic reasoning via
 preferential semantics, and Formal Concept Analysis---both depend on notions from the theory of mathematical
-orders. We recount some of the necessary, and unnecessary but interesting, ideas in the following subsections. The
-proceeding follow largely from the treatments by \cite{davey2002introduction} and \cite{bergman2015invitation}.
+orders. We recount some of the necessary, and unnecessary but interesting, ideas in the following subsections. 
 
 \subsection{Orders}
 \label{subsection:orders}
@@ -28,7 +27,7 @@ $\op{x,y}\in R$ using infix notation and write $xRy$, which tells us that $R$ re
 $(x,y) \not \in R$ means that $x$ is not related to $y$ by $R$; of course, this may be true while $(y,x) \in R$.
 
 Certain binary relations, satisfying specific properties, occur frequently enough to warrant their own
-denomination. One such relation, is called a \textit{partial order}.
+denomination. One such relation, is called a \textit{partial order} \cite{davey2002introduction}.
 
 \begin{definition}
 	\label{definition:partial-order} \index{partial order}
@@ -465,9 +464,9 @@ connections, which serve to provide further intuition \cite{ganter2024formal}.
 	\end{align}
 \end{proposition}
 
-\Cref{equation:ord_galois-1,equation:ord-galois-2} are really just rephrasings of the definition of a Galois
+\Cref{equation:ord_galois-1,equation:ord-galois-2} are really just a rephrasing of the definition of a Galois
 connection. \Cref{equation:ord-galois-3} shows that the compositions $\varphi \circ \psi$ and $\psi \circ \varphi$
-are extensive. \lucas{Maybe we should add a proof here?}
+are extensive. 
 
 % \begin{proposition}
 % 	\label{proposition:fundamental-galois}
@@ -664,11 +663,11 @@ described in \Cref{subsection:syntax}. For any $\phi, \psi \in \mathcal{L}$,
 \begin{itemize}
 	\item $u \vDash \neg \phi$ if and only if $u \nvDash \phi$ \hfill (negation)
 
-	\item $u \vDash \phi \vee \psi$ if and only if $u \vDash \phi$ or $u \vDash \psi$ \hfill (disjunction)
+	\item $u \vDash \phi \vee \psi$ if and only if $u \vDash \phi$ or $u \vDash \psi$ (or both) \hfill (disjunction) 
 
 	\item $u \vDash \phi \wedge \psi$ if and only if $u \vDash \phi$ and $u \vDash \psi$ \hfill (conjunction)
 
-	\item $u \vDash \phi \rightarrow \psi$ if and only if $u \vDash \neg \phi$ or $u \vDash \psi$ \hfill (material implication)
+	\item $u \vDash \phi \rightarrow \psi$ if and only if $u \vDash \neg \phi$ or  $u \vDash \psi$ (or both) \hfill (material implication)
 
 	\item $u \vDash \phi \leftrightarrow \psi$ if and only if $u \vDash \phi \rightarrow \psi$ and $u \vDash \psi \rightarrow \phi$ \hfill (material equivalence)
 \end{itemize}
@@ -701,8 +700,8 @@ semantics---to the question of when it is appropriate to infer one formula from 
 \cite{tarski1936consequence}.
 
 For example, if we know that \say{\textit{Billy Pilgrim lived in Slaughterhouse 5}} and that \say{\textit{The
-		inhabitants of Slaughterhouse 5 survived the bombing of Dresden}}. We may then hold the view that, as a result of
-these two pieces of knowledge, it would be sensible to infer that \say{\textit{Billy Pilgrim survived the bombing
+		inhabitants of Slaughterhouse 5 survived the bombing of Dresden}}, we may then hold the view that it 
+        would be sensible to infer that \say{\textit{Billy Pilgrim survived the bombing
 		of Dresden}}. Of course, this inference being \textit{sensible}---under some common concept of consequence---gives
 little insight into how logical consequence may be appropriately be formalised. It may help one's intuition to try
 imagine a world where the first propositions are true while the final one false.
@@ -734,7 +733,7 @@ that if $\varphi$ is indeed a consequence of $\Gamma$, then it should not be pos
 \begin{example}
 	\label{example-logical-consequence}
 
-	Ifthe earlier example were modelled in propositional logic, we might initialise \textit{Billy Pilgrim} with
+	Ift he earlier example were modelled in propositional logic, we might initialise \textit{Billy Pilgrim} with
 	\texttt{b}, \textit{slaughterhouse 5} with \texttt{h}, and \textit{survived} with \texttt{s}. It is then our aim
 	to determine whether $\{\texttt{b}\rightarrow \texttt{h},\; \texttt{h}\rightarrow \texttt{s}\} \vDash
 		\texttt{b}\rightarrow \texttt{s}$. From the satisfaction relation in \Cref{subsection:semantics} it can be derived
@@ -775,7 +774,7 @@ requires that the supposed set of all consequences is indeed the set of \textit{
 Logical consequence, described in \Cref{subsection:logical-consequence}, offers a purely semantic account of how
 it might be inferred that one formula follows (logically) from another set thereof. In contrast, deductive systems
 answer this question syntactically by describing a system of \textit{axiomata} and \textit{rules of inference}
-that affirm the truth of one formula from the truth of others \cite[p. 49]{Ben1993Mathematical}.
+that affirm the truth of one formula from the truth of others \cite{Ben1993Mathematical}.
 
 \begin{definition}
 	\label{definition:deductive-system}
@@ -817,8 +816,8 @@ a theorem by writing $\vdash \phi$ \cite[p. 55]{Ben1993Mathematical}.
 
 As it stands, constructing proofs from instances of axiom schema and applications of modus ponens is a challenging
 ordeal. As an illustration, we provide the following Hilbert-style proof for the inference made in
-\Cref{example-logical-consequence}.
-
+\lucas{There is a bit of a disconnect here in that you haven't defined inference in terms of Hilbert-style systems. That is,  you haven't defined what $K \vdash \phi$ means in this context. You've just shown what $\vdash phi$ means}
+\Cref{example-logical-consequence}
 \begin{example}
 	We demonstrate a Hilbert-style derivation of $\texttt{b}\to \texttt{s}$ from the assumptions $\texttt{b}\to \texttt{h}$ and $\texttt{h}\to \texttt{s}$.
 
@@ -857,11 +856,10 @@ notions of \textit{soundness} and \textit{completeness}.
 	\label{definition:completeness-hilbert} \index{propositional logic!completeness}
 
 	Given a set of formulae $\Gamma$ and one $\gamma$ in $\mathcal{L}$, $\Gamma \vdash \gamma$ if and only if $\Gamma
-		\vDash \gamma$. Where $\vDash$ and $\vdash$ are used in the context with which they have been introduced.
+		\vDash \gamma$, where $\vDash$ and $\vdash$ are used in the context with which they have been introduced.
 \end{definition}
 
-The proofs for \Cref{definition:completeness-hilbert} are well-known, and can be found in
-\cite{Ben1993Mathematical}.
+The proofs for \Cref{definition:completeness-hilbert} are well-known \cite{Ben1993Mathematical}.
 
 \label{subsubsection:gentzen-systems} \index{Genzten systems}
 

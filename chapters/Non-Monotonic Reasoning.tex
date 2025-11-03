@@ -126,8 +126,7 @@ of the machine by determining if it satisfied reflexivity, monotonicity, and cut
 \Cref{definition:consequence-relations} as a reminder). In other words, to study the more abstract properties
 of consequence.
 
-This is precisely the starting point that Kraus, Lehmann, and Magidor took up in
-\shortcite{kraus1990nonmonotonic}, suggesting that before getting to the semantics of a non-monotonic system,
+This is precisely the starting point that Kraus, Lehmann, and Magidor took up \shortcite{kraus1990nonmonotonic}, suggesting that before getting to the semantics of a non-monotonic system,
 it is a good idea to axiomatise the system as a consequence relation satisfying certain properties. The
 rationality postulates are precisely this axiomatisation, characterising a sensible pattern of reasoning for
 non-monotonic systems. The symbol `$\twiddle$' (pronounced ``twiddle'') is used instead of `$\vdash$' to
@@ -171,7 +170,7 @@ notion of consequence that does not satisfy this property. Such systems are disc
 The justification for \textit{Left Logical Equivalence} is a bit more opaque. The principle it describes is
 that if two scenarios represent the same state of affairs, and in one of these scenarios it we typically
 expect some consequence, then we should expect the same in the other scenario. \textcolor{red}{Invariant to
-	substitution of logically equivalent formulas?}
+	substitution of logically equivalent formulas? Yes! So, syntax-independent}
 %
 \begin{align}
 	\label[postulate]{postulate:rw}
@@ -234,7 +233,7 @@ expresses the notion that we retain plausible inferences when conditioned on a h
 \end{align}
 %
 In light of the properties preferential consequence relations do satisfy, it is also useful to consider those
-properties they do not.
+properties they may not satisfy.
 \begin{align}
 	\inferLeft{Monotonicity}{\phi \twiddle \psi}{\phi \land \gamma \twiddle \psi}                                                      \\
 	\inferLeft{Transitivity}{\phi \twiddle \psi, \quad \psi \twiddle \gamma}{\phi \twiddle \gamma} \label{inference-rule:transitivity} \\
@@ -242,7 +241,7 @@ properties they do not.
 \end{align}
 %
 Quite obviously, monotonicity is not a property of non-monotonic consequence relations. It turns out that
-transitivity implies monotonicity, and so is not satisfied either. Inforamlly, transitivity allows
+transitivity implies monotonicity, and so is not satisfied either. Informally, transitivity allows
 consequences to propagate through chains of inheritance. This is precisely in opposition to the scenario
 described earlier where Billy Pilgrim was a human, humans experienced time chronologically, and yet Billy
 Pilgrim did not. For a more technical treatment we reference the syntax of \Cref{inference-rule:transitivity}
@@ -346,7 +345,7 @@ of preferential interpretations with non-smooth preference relations may fail to
 
 Although it causes no confusion, there are distinct formulations of what it means for a preferential
 interpretation to satisfy a classical versus a defeasible formula. For the classical case, we have the
-following:
+following definition:
 
 \begin{definition}
 	\label{definition:state-satisfaction}
@@ -602,7 +601,7 @@ It may have been presumed that, due to the resemblance of the postulates to Hilb
 presumption would be technically correct, we should proceed with caution. In a moment a system very close to
 preferential reasoning will be presented, characterised by an almost identical set of postulates, for which
 the corresponding version of this corollary fails. To grasp why it holds for preferential entailment,
-consider the following proof.
+consider the following proof \cite{kraus1990nonmonotonic}.
 
 \begin{proof}
 	\label{proof:preferential-entailment-postulates}
@@ -660,6 +659,7 @@ requirement to suggest that it is normal for students to be exceptionally clever
 appropriate to maintain our belief that it is normal for students, who are not exceptionally clever, to
 graduate.
 
+%TODO Second reference is not Stalnaker
 Stalnaker \cite{Stalnaker1994,sep-logic-nonmonotonic-Stanford}, and separately Ginsberg
 \shortcite{GinsberCounterfactuals}, provide an argument against accepting rational monotony. The objection is
 that rational monotony commits us to make inferences when the more reasonable position is to remain
@@ -861,7 +861,7 @@ Ranked interpretations are then redefined accordingly.
 Another consequence is that ranked interpretations admit a new representation. Instead of Hasse diagrams,
 they may be represented as stratified members of the equivalnce relation. As depicted in
 \Cref{figure:ranked-interpretation-representation}, where each strata, or \textit{rank}, is associated with
-an natural number.
+a natural number.
 %
 \begin{figure}[H]
 	\centering
@@ -883,15 +883,15 @@ an natural number.
 If $\mathsf{R} $ is a ranking function under consideration, then $\mathsf{R} (v)$ denotes the rank of the
 valuation $v$; and so, $\mathsf{R}(\{c,g,s\}) = 0$ in the above interpretation. Notice that the ranking
 funcion that gives rise to \Cref{figure:ranked-interpretation-representation} does not appear to be defined
-for the complete set of valuations. For instance, $\{\overline{c},\overline{g},\overline{s}\}$ does not have
+for the complete set of valuations. For instance, the valuation $\{\,\overline{c},\overline{g},\overline{s}\,\}$ does not have
 a rank. While this is permissible, it may perhaps lead to questioning of \textit{why} certain valuations are
 not considered. The most reasonable justification is that the excluded valuations, or possible worlds, should
-not be possible under any circumstances.
+not be possible under any circumstance.
 
 It may then be more natural to add additional rank, the \textit{infinite rank}, to the co-domain of the
 ranking function. Valuations that are mapped to the infinite rank then correspond to these \textit{impossible
 	worlds}. The notion of impossible worlds is important when considering how to derive information from a
-knowledge:base consisting of defeasible as well as classical statements. Intuitively, any valuations that are
+knowledge base consisting of defeasible as well as classical statements. Intuitively, any valuations that are
 not models of the classical statements should be regarded as impossible, and assigned the infinite rank.
 
 Need to add:
@@ -1013,6 +1013,8 @@ defeasible counterpart reads as \say{If not all men are mortal, then it is norma
 classical formulae from this point onwards, and consolidate the notation as $\pin \VDash \phi$ where $\phi
 	\in \Lang$ is a defeasible conditional. \textcolor{red}{maybe something about how without smoothness, we
 	don't have CM}
+    %TODO This would not be the right place to add it. Rather it makes sense to add it in the section on preferential interpretations.
+    %TODO we have mentioned smoothness, so just reaffirm that it must hold
 
 \begin{algo}{\textsc{BaseRank}}
 	\label{algorithm:BaseRank}

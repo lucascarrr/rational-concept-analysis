@@ -8,3 +8,9 @@
 
 1. Make "Figure 1: xx" the <Figure 1> part bold. 
 
+
+## Symbol Usage
+1. Vdash ||- 
+    should be used when some structure satisfies a defeasible conditional. I.e., a ranked interpretation.
+2. vDash |=
+    Should be used when a single valuation satis
